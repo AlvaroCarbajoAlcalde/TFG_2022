@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TFG Alvaro</title>
+
+    <!--Imports-->
+    <script src="./js/libs/jquery/jquery.min.js"></script>
+    <script src="./js/libs/babylon/babylon.min.js"></script>
+    <script src="./js/libs/babylon/babylon.loaders.min.js"></script>
+    <script src="./js/var.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/scene.js"></script>
+    <script src="./js/userControls.js"></script>
+
+    <!--CSS-->
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/tablet.css">
+    <link rel="stylesheet" href="./styles/loading.css">
+
+</head>
+
+<body>
+
+    <section id="menu">
+        <h1>Menu</h1>
+        <button onclick="startGame()">Empezar juego</button>
+        <h4 id="firma"><i>Hecho por <b>Álvaro Carbajo</b>.</i></h4>
+    </section>
+
+    <section id="tablet" class="hidden" onclick="toggleTablet()">
+        <div id="tabletContent">
+            <p id="positionX"></p>
+            <p id="positionZ"></p>
+            <p id="positionY"></p>
+        </div>
+    </section>
+
+    <section id="game" class="hidden">
+
+    </section>
+
+</body>
+
+</html>
