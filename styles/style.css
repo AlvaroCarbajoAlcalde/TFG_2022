@@ -1,11 +1,20 @@
 /*General*/
+:root {
+  --primary: #2b4a6f;
+  --lighter: #748ba7;
+  --light: #4b688b;
+  --dark: #143153;
+  --darker: #051c38;
+}
+
 html,
 body {
   overflow: hidden;
-  margin: 0;
+  margin: 0px auto;
+  padding: 0px;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  background-color: aliceblue;
+  background-color: var(--primary);
 }
 
 canvas {

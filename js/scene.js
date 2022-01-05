@@ -4,15 +4,16 @@
 function createScene() {
   canvas = document.createElement("canvas");
   game.innerHTML = "";
-  game.appendChild(canvas);
   engine = new BABYLON.Engine(canvas, true);
   scene = new BABYLON.Scene(engine);
+
   setLight();
   setCamera();
-  setGround();
-  setSkybox();
   setPointer();
+  setSkybox();
+  setGround();
   setBalloon();
+
   if (testing) setMovement();
 }
 
@@ -48,7 +49,7 @@ function setCamera() {
 /**
  * Pointer (Lugar donde se controla el globo)
  */
-async function setPointer() {
+function setPointer() {
   pointer = BABYLON.MeshBuilder.CreateSphere("sphere", {
     diameterX: 0.1,
     diameterY: 0.1,
@@ -64,7 +65,7 @@ async function setPointer() {
 /**
  * Globo
  */
-async function setBalloon() {
+function setBalloon() {
   BABYLON.SceneLoader.ImportMesh(
     null,
     "./models/",
@@ -91,7 +92,7 @@ async function setBalloon() {
 /**
  * Skybox
  */
-async function setSkybox() {
+function setSkybox() {
   skybox = BABYLON.Mesh.CreateBox("skyBox", skyboxSize, scene);
   const skyboxMaterial = new BABYLON.StandardMaterial("skyBox", scene);
   skyboxMaterial.backFaceCulling = false;
@@ -118,13 +119,37 @@ function getRandomSkybox() {
 /**
  * Terreno
  */
-async function setGround() {
+function setGround() {
   //Map
   let k = 1;
   let mapSize = 500;
+  groundCollection = [];
 
   for (let i = 0; i < 15; i++) {
     for (let j = 0; j < 15; j++) {
+      const positionZ = mapSize * -i - mapSize / 2 + 7500;
+      const positionX = mapSize * j + mapSize / 2;
+
+      //Base Material
+      const materialBack = new BABYLON.StandardMaterial("material", scene);
+      materialBack.diffuseTexture = new BABYLON.Texture(
+        "../textures/backMap.png",
+        scene
+      );
+      materialBack.diffuseTexture.wrapU = BABYLON.Texture.CLAMP_ADDRESSMODE;
+      materialBack.diffuseTexture.wrapV = BABYLON.Texture.CLAMP_ADDRESSMODE;
+      materialBack.specularColor = new BABYLON.Color4(0, 0, 0, 0);
+
+      //Base
+      const baseGround = BABYLON.MeshBuilder.CreateGround("baseground_" + k, {
+        height: mapSize,
+        width: mapSize,
+      });
+      baseGround.material = materialBack;
+      baseGround.position.x = positionX;
+      baseGround.position.z = positionZ;
+      baseGround.position.y = 14;
+
       //Material
       const materialGMap = new BABYLON.StandardMaterial("material", scene);
       materialGMap.diffuseTexture = new BABYLON.Texture(
@@ -135,16 +160,6 @@ async function setGround() {
       materialGMap.diffuseTexture.wrapV = BABYLON.Texture.CLAMP_ADDRESSMODE;
       materialGMap.specularColor = new BABYLON.Color4(0, 0, 0, 0);
       materialGMap.alpha = 1.0;
-
-      //Base
-      const baseGround = BABYLON.MeshBuilder.CreateGround("baseground_" + k, {
-        height: mapSize,
-        width: mapSize,
-      });
-      baseGround.material = materialGMap;
-      baseGround.position.x = mapSize * j + mapSize / 2;
-      baseGround.position.z = mapSize * -i - mapSize / 2;
-      baseGround.position.y = 15;
 
       //Elevation
       const ground = BABYLON.MeshBuilder.CreateGroundFromHeightMap(
@@ -159,44 +174,25 @@ async function setGround() {
         }
       );
       ground.material = materialGMap;
-      ground.position.x = mapSize * j + mapSize / 2;
-      ground.position.z = mapSize * -i - mapSize / 2;
+      ground.position.x = positionX;
+      ground.position.z = positionZ;
+
+      ground.actionManager = new BABYLON.ActionManager(scene);
+      ground.actionManager.registerAction(
+        new BABYLON.ExecuteCodeAction(
+          {
+            trigger: BABYLON.ActionManager.OnIntersectionEnterTrigger,
+            parameter: pointer,
+          },
+          () => {
+            groundHit();
+          }
+        )
+      );
+
+      groundCollection.push(ground);
 
       k++;
     }
   }
-}
-
-function setMovement() {
-  scene.onKeyboardObservable.add((kbInfo) => {
-    switch (kbInfo.type) {
-      case BABYLON.KeyboardEventTypes.KEYDOWN:
-        switch (kbInfo.event.key) {
-          case "a":
-          case "A":
-            pointer.position.x -= 10;
-            break;
-          case "d":
-          case "D":
-            pointer.position.x += 10;
-            break;
-          case "w":
-          case "W":
-            pointer.position.z += 10;
-            break;
-          case "s":
-          case "S":
-            pointer.position.z -= 10;
-            break;
-          case " ":
-            pointer.position.y += 10;
-            break;
-          case "b":
-          case "B":
-            pointer.position.y -= 10;
-            break;
-        }
-        break;
-    }
-  });
 }

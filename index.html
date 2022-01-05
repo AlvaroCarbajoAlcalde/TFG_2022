@@ -26,7 +26,7 @@
 
 <body>
 
-    <section id="menu">
+    <section id="menu" class="">
         <h1>Menu</h1>
         <button onclick="startGame()">Empezar juego</button>
         <h4 id="firma"><i>Hecho por <b>Álvaro Carbajo</b>.</i></h4>
@@ -42,6 +42,21 @@
 
     <section id="game" class="hidden">
 
+    </section>
+
+    <section id="loading" class="hidden">
+        <!-- Icono de carga de https://loading.io/css/-->
+        <div class="lds-roller">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <p id="loadMessage"></p>
     </section>
 
 </body>
