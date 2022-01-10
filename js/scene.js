@@ -7,6 +7,7 @@ function createScene() {
   engine = new BABYLON.Engine(canvas, true);
   scene = new BABYLON.Scene(engine);
 
+  //Set elementos
   setLight();
   setCamera();
   setPointer();
@@ -72,17 +73,17 @@ function setBalloon() {
     "balloon.glb",
     scene,
     () => {
-      balloon = scene.getMeshByName("hot_air_balloon.1");
+      balloonModel = scene.getMeshByName("hot_air_balloon.1");
 
       //Scaling
-      balloon.scaling = new BABYLON.Vector3(
+      balloonModel.scaling = new BABYLON.Vector3(
         balloonScaling,
         balloonScaling,
         balloonScaling
       );
 
       //Camera target
-      camera.setTarget(balloon);
+      camera.setTarget(balloonModel);
 
       return true;
     }
@@ -122,8 +123,6 @@ function getRandomSkybox() {
 function setGround() {
   //Map
   let k = 1;
-  let mapSize = 500;
-  groundCollection = [];
 
   for (let i = 0; i < 15; i++) {
     for (let j = 0; j < 15; j++) {
@@ -131,9 +130,11 @@ function setGround() {
       const positionX = mapSize * j + mapSize / 2;
 
       //Base Material
+      //Usado para evitar en la medida de lo posible efectos
+      //de luz bajo juntas de los trozos del mapa
       const materialBack = new BABYLON.StandardMaterial("material", scene);
       materialBack.diffuseTexture = new BABYLON.Texture(
-        "../textures/backMap.png",
+        "./textures/backMap.png",
         scene
       );
       materialBack.diffuseTexture.wrapU = BABYLON.Texture.CLAMP_ADDRESSMODE;
@@ -153,7 +154,7 @@ function setGround() {
       //Material
       const materialGMap = new BABYLON.StandardMaterial("material", scene);
       materialGMap.diffuseTexture = new BABYLON.Texture(
-        "../maps/sat/m_" + i + "_" + j + ".jpg",
+        "./maps/sat/m_" + i + "_" + j + ".jpg",
         scene
       );
       materialGMap.diffuseTexture.wrapU = BABYLON.Texture.CLAMP_ADDRESSMODE;
@@ -162,6 +163,8 @@ function setGround() {
       materialGMap.alpha = 1.0;
 
       //Elevation
+      //Permite calcular la elevacion del terreno a
+      //partir de mapas topograficos
       const ground = BABYLON.MeshBuilder.CreateGroundFromHeightMap(
         "ground_" + k,
         "./maps/topo/topo_" + k + ".gif",
@@ -177,7 +180,8 @@ function setGround() {
       ground.position.x = positionX;
       ground.position.z = positionZ;
 
-      ground.actionManager = new BABYLON.ActionManager(scene);
+      //Accion que se lanza cuando algo colisiona con el suelo
+      /*ground.actionManager = new BABYLON.ActionManager(scene);
       ground.actionManager.registerAction(
         new BABYLON.ExecuteCodeAction(
           {
@@ -189,8 +193,7 @@ function setGround() {
           }
         )
       );
-
-      groundCollection.push(ground);
+      ground.showBoundingBox = true;*/
 
       k++;
     }

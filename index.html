@@ -15,12 +15,17 @@
     <script src="./js/var.js"></script>
     <script src="./js/main.js"></script>
     <script src="./js/scene.js"></script>
+    <script src="./js/balloon.js"></script>
+    <script src="./js/balloonInterface.js"></script>
     <script src="./js/userControls.js"></script>
 
     <!--CSS-->
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./styles/tablet.css">
+    <link rel="stylesheet" href="./styles/quemador.css">
+    <link rel="stylesheet" href="./styles/altimetro.css">
     <link rel="stylesheet" href="./styles/loading.css">
+    <link rel="stylesheet" href="./styles/optionsBar.css">
 
 </head>
 
@@ -37,6 +42,40 @@
             <p id="positionX"></p>
             <p id="positionZ"></p>
             <p id="positionY"></p>
+        </div>
+    </section>
+
+    <section id="optionsBar" class="hidden">
+        <div id="eyeBtn" onclick="toggleVisibility(this)">
+            <div class="shut">
+                <span></span>
+            </div>
+            <div class="ball"></div>
+        </div>
+        <a href="javascript:void(0);" class="close" onclick="endSim()"></a>
+    </section>
+
+    <section id="quemador" class="hidden">
+        <img draggable="false" id="gatilloIzq" src="./img/leftTrigger.png" onmousedown="clickQuemador(this)"
+            onmouseup="unClickQuemador(this)" onmouseleave="unClickQuemador(this)">
+        <img draggable="false" id="gatilloDch" src="./img/rightTrigger.png" onmousedown="clickQuemador(this)"
+            onmouseup="unClickQuemador(this)" onmouseleave="unClickQuemador(this)">
+    </section>
+
+    <section id="altimetro" class="hidden" onclick="toggleAltimetro()">
+        <div id="altimetroContent">
+            <label id="altTemperatura">T 23.3°C</label>
+            <label id="altSpeed">Wind: 63° <br>23.3 m/s</label>
+            <label id="altSpeedAlt">6 m/s</label>
+            <label id="altAltura">6000 feet</label>
+            <label id="altPresion">Pressure<br>932.1 hPa</label>
+            <label id="altTime">Flight Time: 02:21:49</label>
+            <img id="altRegla" src="./img/regla.png"></img>
+            <img id="altReglaInv" src="./img/reglainv.png"></img>
+            <div id="altDiffContainer">
+                <div id="altDiffUp"></div>
+                <div id="altDiffDown"></div>
+            </div>
         </div>
     </section>
 

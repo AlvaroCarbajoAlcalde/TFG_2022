@@ -1,3 +1,7 @@
+/**
+ * toggleTablet
+ * muestra u oculta la tablet
+ */
 function toggleTablet() {
   if (tablet.classList.contains("out")) {
     tablet.classList.remove("out");
@@ -6,46 +10,114 @@ function toggleTablet() {
   }
 }
 
+/**
+ * toggleAltimetro
+ * muestra u oculta el altimetro
+ */
+function toggleAltimetro() {
+  if (altimetro.classList.contains("out")) {
+    altimetro.classList.remove("out");
+  } else {
+    altimetro.classList.add("out");
+  }
+}
+
+/**
+ * clickQuemador
+ * quemador presionado
+ */
+function clickQuemador(trigger) {
+  trigger.classList.add("pressed");
+}
+
+/**
+ * unClickQuemador
+ * quemador ya no esta presionado
+ */
+function unClickQuemador(trigger) {
+  trigger.classList.remove("pressed");
+}
+
+/**
+ * toggleVisibility
+ * oculta o muestra la interfaz
+ */
+function toggleVisibility(eye) {
+  if (eye.classList.contains("closed")) {
+    tablet.classList.remove("visibleOff");
+    altimetro.classList.remove("visibleOff");
+    quemador.classList.remove("visibleOff");
+    eye.classList.remove("closed");
+  } else {
+    tablet.classList.add("visibleOff");
+    altimetro.classList.add("visibleOff");
+    quemador.classList.add("visibleOff");
+    eye.classList.add("closed");
+  }
+}
+
+/**
+ * setGasListener
+ * Timer que controla la temperatura del globo
+ */
+function setGasListener() {
+  const triggerR = $("#gatilloDch")[0];
+  const triggerL = $("#gatilloIzq")[0];
+  gasListener = setInterval(() => {
+    if (
+      triggerL.classList.contains("pressed") ||
+      triggerR.classList.contains("pressed")
+    ) {
+      balloon.temp += 0.83;
+    } else {
+      if(started) balloon.temp -= 0.16;
+    }
+  }, 300);
+}
+
 function setMovement() {
   scene.onKeyboardObservable.add((kbInfo) => {
     switch (kbInfo.type) {
       case BABYLON.KeyboardEventTypes.KEYDOWN:
         switch (kbInfo.event.key) {
           case "A":
-            pointer.position.x -= 100;
+            mX -= 100;
             break;
           case "D":
-            pointer.position.x += 100;
+            mX += 100;
             break;
           case "W":
-            pointer.position.z += 100;
+            mZ += 100;
             break;
           case "S":
-            pointer.position.z -= 100;
+            mZ -= 100;
             break;
           case " ":
-            pointer.position.y += 10;
+            altura += 10;
             break;
           case "B":
-            pointer.position.y -= 10;
+            altura -= 10;
             break;
           case "a":
-            pointer.position.x -= 5;
+            mX -= 5;
             break;
           case "d":
-            pointer.position.x += 5;
+            mX += 5;
             break;
           case "w":
-            pointer.position.z += 5;
+            mZ += 5;
             break;
           case "s":
-            pointer.position.z -= 5;
+            mZ -= 5;
             break;
           case "u":
-            pointer.position.y += 1;
+            altura += 1;
             break;
           case "b":
-            pointer.position.y -= 1;
+            altura -= 1;
+            break;
+          case "h":
+            started = true;
             break;
         }
         break;

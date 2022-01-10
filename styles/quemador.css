@@ -1,0 +1,41 @@
+:root {
+  --quemadorW: 420px;
+  --quemadorH: 114px;
+}
+
+#quemador {
+  width: calc(var(--quemadorW));
+  height: calc(var(--quemadorH));
+  z-index: 4;
+  position: absolute;
+  background-image: url("../img/quemadorSin.png");
+  top: -5px;
+  left: calc(50vw - var(--quemadorW) / 2);
+  transition: 1s ease-out;
+}
+
+#gatilloIzq {
+  position: absolute;
+  transition: 0.4s;
+  left: 119px;
+  top: 37px;
+  cursor: pointer;
+}
+
+#gatilloIzq.pressed {
+  top: 50px;
+  transform: rotate(20deg);
+}
+
+#gatilloDch {
+  position: absolute;
+  transition: 0.4s;
+  left: 235px;
+  top: 37px;
+  cursor: pointer;
+}
+
+#gatilloDch.pressed {
+  top: 50px;
+  transform: rotate(-20deg);
+}

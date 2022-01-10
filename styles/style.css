@@ -51,6 +51,15 @@ canvas {
   visibility: hidden;
 }
 
+/*Altimetro*/
+#altimetro {
+  visibility: visible;
+}
+
+#altimetro.hidden {
+  visibility: hidden;
+}
+
 /*Loading*/
 #loading {
   display: block;
@@ -58,4 +67,27 @@ canvas {
 
 #loading.hidden {
   display: none;
+}
+
+/*Quemador*/
+#quemador {
+  visibility: visible;
+}
+
+#quemador.hidden {
+  visibility: hidden;
+}
+
+/*OptionsBar*/
+#optionsBar {
+  visibility: visible;
+}
+
+#optionsBar.hidden {
+  visibility: hidden;
+}
+
+/*Ocultar interfaz*/
+.visibleOff {
+  opacity: 0;
 }

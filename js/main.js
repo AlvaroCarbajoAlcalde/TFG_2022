@@ -12,86 +12,69 @@ function queryHTML() {
   menu = $("#menu")[0];
   game = $("#game")[0];
   tablet = $("#tablet")[0];
+  quemador = $("#quemador")[0];
+  optionsBar = $("#optionsBar")[0];
+  altimetro = $("#altimetro")[0];
   loading = $("#loading")[0];
   positionX = $("#positionX")[0];
   positionZ = $("#positionZ")[0];
   positionY = $("#positionY")[0];
+
+  //Altimetro
+  altTemp = $("#altTemperatura")[0];
+  altSpeedUp = $("#altSpeedAlt")[0];
+  altTime = $("#altTime")[0];
+  altWind = $("#altSpeed")[0];
+  altPressure = $("#altPresion")[0];
+  altMedUp = $("#altDiffUp")[0];
+  altMedDown = $("#altDiffDown")[0];
+  altAltitude = $("#altAltura")[0];
 }
 
 function startGame() {
+  started = false;
   showLoader();
   createScene();
   scene.executeWhenReady(() => {
     game.appendChild(canvas);
     engine.resize();
+    timer();
+    setGasListener();
     showGame();
 
+    balloon = new Balloon(pointer, balloonModel);
     //InitPos
-    pointer.position.x = 3830;
-    pointer.position.z = 3945;
-    pointer.position.y = 30.7;
+    balloon.pointer.position.x = 3830;
+    balloon.pointer.position.z = 3945;
+    balloon.pointer.position.y = 30.7;
 
-    setMetersFromPosition();
-    setMovementInterval();
+    balloon.setMetersFromPosition();
+    balloon.setMovementInterval();
     loop();
   });
-}
-
-function setMetersFromPosition() {
-  mX = (pointer.position.x / mapTotalSize) * mapSizeMeters;
-  mZ = (pointer.position.z / mapTotalSize) * mapSizeMeters;
-  altura = 40;
 }
 
 function loop() {
   engine.runRenderLoop(() => {
     scene.render();
-    moveBalloonToPointer();
+
+    //Balloon actual.
+    balloon.moveBalloonToPointer();
+    balloon.calculateAscentRatio();
+    moveSkybox();
+
     showPositionInTablet();
-    setSpeeds(60, 12);
+    showDataInAltimeter();
+
+    if (started) {
+      balloon.setSpeeds(windDir, windSpeed);
+    }
   });
 }
 
-function setMovementInterval() {
-  setInterval(() => {
-    mX += actSpeedX / 1000;
-  }, 1);
-  setInterval(() => {
-    mZ += actSpeedZ / 1000;
-  }, 1);
-}
-
-function showPositionInTablet() {
-  positionX.innerHTML = "LON: " + calcDegreesLon();
-  positionZ.innerHTML = "LAT: " + calcDegreesLat();
-  positionY.innerHTML = "Alt: " + pointer.position.y;
-}
-
-function calcDegreesLat() {
-  const latDeg = leftDeg - (pointer.position.z / mapTotalSize) * diffDegX;
-  return latDeg.toFixed(5);
-}
-
-function calcDegreesLon() {
-  const lonDeg = upDeg - (pointer.position.x / mapTotalSize) * diffDegY;
-  return lonDeg.toFixed(5);
-}
-
-function setSpeeds(deg, speed) {
-  actSpeedZ = Math.sin(deg) * speed;
-  actSpeedX = Math.cos(deg) * speed;
-}
-
-function moveBalloonToPointer() {
-  pointer.position.x = (mX / mapSizeMeters) * mapTotalSize;
-  pointer.position.z = (mZ / mapSizeMeters) * mapTotalSize;
-
-  balloon.position.x = -pointer.position.x * 100;
-  balloon.position.y = pointer.position.y * 100;
-  balloon.position.z = pointer.position.z * 100;
-
-  skybox.position.x = pointer.position.x;
-  skybox.position.z = pointer.position.z;
+function moveSkybox() {
+  skybox.position.x = balloon.pointer.position.x;
+  skybox.position.z = balloon.pointer.position.z;
 }
 
 function showGame() {
@@ -99,12 +82,18 @@ function showGame() {
   loading.classList.add("hidden");
   game.classList.remove("hidden");
   tablet.classList.remove("hidden");
+  quemador.classList.remove("hidden");
+  altimetro.classList.remove("hidden");
+  optionsBar.classList.remove("hidden");
 }
 
 function hideGame() {
+  menu.classList.remove("hidden");
   game.classList.add("hidden");
   tablet.classList.add("hidden");
-  menu.classList.remove("hidden");
+  quemador.classList.add("hidden");
+  altimetro.classList.add("hidden");
+  optionsBar.classList.add("hidden");
 }
 
 function showLoader() {
@@ -112,6 +101,18 @@ function showLoader() {
   loading.classList.remove("hidden");
 }
 
-function groundHit() {
-  console.log("groundHit");
+function endSim() {
+  engine.stopRenderLoop();
+  clearInterval(clockInterval);
+  clearInterval(gasListener);
+  clearInterval(balloon.intervalX);
+  clearInterval(balloon.intervalY);
+  clearInterval(balloon.intervalZ);
+  hideGame();
+  scene.dispose();
+  engine.dispose();
+  canvas.remove();
+  canvas = null;
+  game.innerHML = "";
+  location.reload();
 }

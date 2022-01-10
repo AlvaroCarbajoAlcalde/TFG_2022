@@ -17,6 +17,11 @@
   box-shadow: 10px 5px 50px black;
   border-radius: 19px;
   transition: 1.4s ease-out;
+  cursor: pointer;
+}
+
+#tablet * {
+  cursor: pointer;
 }
 
 #tablet p,
