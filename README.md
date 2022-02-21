@@ -7,3 +7,11 @@ TFG-2022 Desarrollo de Aplicaciones Web.
 ![cap1](https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/screenshots/sc1.PNG)
 ![cap2](https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/screenshots/sc3.PNG)
 ![cap3](https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/screenshots/sc2.PNG)
+
+# Capturas
+<details>
+  <summary>The title of the image group</summary><details>
+  <img src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/screenshots/sc1.PNG" name="image-name">
+  <img src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/screenshots/sc3.PNG" name="image-name">
+  <img src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/screenshots/sc2.PNG" name="image-name">
+</details>
