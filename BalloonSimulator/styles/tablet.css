@@ -9,7 +9,7 @@
   height: calc(var(--tabletH) / 2);
   z-index: 4;
   position: absolute;
-  background-image: url("../img/tablet.png");
+  background-image: url("../assets/img/tablet.png");
   background-repeat: no-repeat;
   background-size: cover;
   bottom: 15px;

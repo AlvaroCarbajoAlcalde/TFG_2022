@@ -9,7 +9,7 @@
 /*Fuente*/
 @font-face {
   font-family: "digital";
-  src: url("../fonts/DS-DIGII.TTF");
+  src: url("../assets/fonts/DS-DIGII.TTF");
 }
 
 #altimetro {
@@ -17,7 +17,7 @@
   height: calc(var(--altimetroH) / 1.5);
   z-index: 4;
   position: absolute;
-  background-image: url("../img/altimetro.png");
+  background-image: url("../assets/img/altimetro.png");
   background-repeat: no-repeat;
   background-size: cover;
   top: 15px;
