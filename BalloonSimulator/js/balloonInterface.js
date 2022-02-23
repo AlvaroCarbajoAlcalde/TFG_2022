@@ -3,9 +3,9 @@
  * muestra los datos de la tablet
  */
 function showPositionInTablet() {
-  positionX.innerHTML = "LON: " + balloon.calcDegreesLon();
-  positionZ.innerHTML = "LAT: " + balloon.calcDegreesLat();
-  positionY.innerHTML = "T: " + balloon.temp.toFixed(2);
+  positionX.innerHTML = `LON: ${balloon.calcDegreesLon()}`;
+  positionZ.innerHTML = `LAT: ${balloon.calcDegreesLat()}`;
+  positionY.innerHTML = `T: ${balloon.temp.toFixed(2)}`;
 }
 
 /**
@@ -13,17 +13,18 @@ function showPositionInTablet() {
  * muestra los datos del altimetro
  */
 function showDataInAltimeter() {
-  altTemp.innerHTML = "T " + actTemp + "°C";
+  altTemp.innerHTML = `T ${actTemp} °C`;
   if (started) {
-    altSpeedUp.innerHTML = balloon.actSpeedY.toFixed(2) + " m/s";
-    altWind.innerHTML =
-      "Wind: " + windDir + "°<br>" + (windSpeed / 0.2778).toFixed(2) + " km/h";
+    altSpeedUp.innerHTML = `${balloon.actSpeedY.toFixed(2)} m/s`;
+    altWind.innerHTML = `Wind: ${windDir}°<br>${(windSpeed / 0.2778).toFixed(
+      2
+    )} km/h`;
   } else {
     altSpeedUp.innerHTML = "0 m/s";
     altWind.innerHTML = "Wind: 0°<br>0 km/h";
   }
   altPressure.innerHTML = "Pressure<br>9321.1 hPa";
-  altAltitude.innerHTML = parseInt(balloon.altura * 3.28) + " feet";
+  altAltitude.innerHTML = `${parseInt(balloon.altura * 3.28)} feet`;
   if (started) setAltBar();
 }
 
@@ -35,10 +36,10 @@ function showDataInAltimeter() {
 function setAltBar() {
   const pixels = parseInt((Math.abs(balloon.actSpeedY) / 8) * 69);
   if (balloon.actSpeedY >= 0) {
-    altMedUp.style.height = pixels + "px";
+    altMedUp.style.height = `${pixels}px`;
     altMedDown.style.height = "0px";
   } else {
-    altMedDown.style.height = pixels + "px";
+    altMedDown.style.height = `${pixels}px`;
     altMedUp.style.height = "0px";
   }
 }
@@ -62,13 +63,9 @@ function timer() {
         h++;
       }
     }
-    altTime.innerHTML =
-      "Flight Time: " +
-      getNum2Dig(h) +
-      ":" +
-      getNum2Dig(m) +
-      ":" +
-      getNum2Dig(s);
+    altTime.innerHTML = `Flight Time: ${getNum2Dig(h)}:${getNum2Dig(
+      m
+    )}:${getNum2Dig(s)}`;
   }, 1000);
 }
 
@@ -79,6 +76,6 @@ function timer() {
  * @return {*} mismo numero pero con 2 digitos
  */
 function getNum2Dig(n) {
-  if (n < 10) return "0" + n;
+  if (n < 10) return `0${n}`;
   else return n;
 }

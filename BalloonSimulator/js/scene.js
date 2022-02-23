@@ -98,7 +98,7 @@ function setSkybox() {
   const skyboxMaterial = new BABYLON.StandardMaterial("skyBox", scene);
   skyboxMaterial.backFaceCulling = false;
   skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture(
-    "../assets/textures/skybox/" + getRandomSkybox(),
+    `../assets/textures/skybox/${getRandomSkybox()}`,
     scene
   );
   skyboxMaterial.reflectionTexture.coordinatesMode =
@@ -142,7 +142,7 @@ function setGround() {
       materialBack.specularColor = new BABYLON.Color4(0, 0, 0, 0);
 
       //Base
-      const baseGround = BABYLON.MeshBuilder.CreateGround("baseground_" + k, {
+      const baseGround = BABYLON.MeshBuilder.CreateGround(`baseground_${k}`, {
         height: mapSize,
         width: mapSize,
       });
@@ -154,7 +154,7 @@ function setGround() {
       //Material
       const materialGMap = new BABYLON.StandardMaterial("material", scene);
       materialGMap.diffuseTexture = new BABYLON.Texture(
-        "../assets/maps/sat/m_" + i + "_" + j + ".jpg",
+        `../assets/maps/sat/m_${i}_${j}.jpg`,
         scene
       );
       materialGMap.diffuseTexture.wrapU = BABYLON.Texture.CLAMP_ADDRESSMODE;
@@ -166,8 +166,8 @@ function setGround() {
       //Permite calcular la elevacion del terreno a
       //partir de mapas topograficos
       const ground = BABYLON.MeshBuilder.CreateGroundFromHeightMap(
-        "ground_" + k,
-        "../assets/maps/topo/topo_" + k + ".gif",
+        `ground_${k}`,
+        `../assets/maps/topo/topo_${k}.gif`,
         {
           width: mapSize,
           height: mapSize,
