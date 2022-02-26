@@ -29,7 +29,6 @@ var tablet;
 var altimetro;
 var quemador;
 var optionsBar;
-var menu;
 var loading;
 var positionX;
 var positionZ;

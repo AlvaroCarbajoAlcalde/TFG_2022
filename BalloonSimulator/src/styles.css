@@ -1,0 +1,547 @@
+/*General*/
+:root {
+  --primary: #2b4a6f;
+  --lighter: #748ba7;
+  --light: #4b688b;
+  --dark: #143153;
+  --darker: #051c38;
+}
+
+html,
+body {
+  overflow: hidden;
+  margin: 0px auto;
+  padding: 0px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  background-color: var(--primary);
+}
+
+#sim {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0px;
+  left: 0px;
+  background-color: var(--darker);
+}
+
+canvas {
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  margin: 0 auto;
+}
+
+/*Game*/
+#game {
+  visibility: visible;
+}
+
+#game.hidden {
+  visibility: hidden;
+}
+
+/*Tablet*/
+#tablet {
+  visibility: visible;
+}
+
+#tablet.hidden {
+  visibility: hidden;
+}
+
+/*Altimetro*/
+#altimetro {
+  visibility: visible;
+}
+
+#altimetro.hidden {
+  visibility: hidden;
+}
+
+/*Loading*/
+#loading {
+  display: block;
+  -webkit-box-reflect: below 10px;
+}
+
+#loading.hidden {
+  display: none;
+}
+
+/*Quemador*/
+#quemador {
+  visibility: visible;
+}
+
+#quemador.hidden {
+  visibility: hidden;
+}
+
+/*OptionsBar*/
+#optionsBar {
+  visibility: visible;
+}
+
+#optionsBar.hidden {
+  visibility: hidden;
+}
+
+/*Ocultar interfaz*/
+.visibleOff {
+  opacity: 0;
+}
+
+:root {
+  --eyeSize: 36px;
+}
+
+#optionsBar {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+
+/*Cross*/
+.close {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  top: 20px;
+  right: 20px;
+  opacity: 0.7;
+  transition: 0.4s;
+}
+
+.close:hover {
+  opacity: 1;
+}
+
+.close:before,
+.close:after {
+  position: absolute;
+  left: 15px;
+  content: " ";
+  height: 33px;
+  width: 2px;
+  background-color: white;
+}
+
+.close:before {
+  transform: rotate(45deg);
+}
+
+.close:after {
+  transform: rotate(-45deg);
+}
+
+/*Eye*/
+#eyeBtn {
+  position: absolute;
+  background: white;
+  height: var(--eyeSize);
+  width: var(--eyeSize);
+  transform: translate(-50%, -50%) rotate(45deg);
+  border-radius: 75% 0;
+  overflow: hidden;
+  cursor: pointer;
+  top: 36px;
+  right: 55px;
+}
+
+.ball {
+  width: calc(var(--eyeSize) / 5);
+  height: calc(var(--eyeSize) / 5);
+  background: var(--darker);
+  border-radius: 50%;
+  border: calc(var(--eyeSize) / 6.667) solid var(--light);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.shut {
+  width: calc(var(--eyeSize) * 1.5);
+  height: calc(var(--eyeSize) * 0.8);
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  z-index: 999;
+}
+
+.shut span {
+  display: block;
+  width: 100%;
+  height: 15%;
+  background: var(--dark);
+  border-radius: 0 0 60% 60%;
+  transition: 0.4s all;
+}
+
+#eyeBtn.closed div span {
+  height: 100%;
+}
+
+#eyeBtn:hover div span {
+  height: 42%;
+}
+
+/*Tablet*/
+:root {
+  --tabletW: 863px;
+  --tabletH: 622px;
+}
+
+#tablet {
+  width: calc(var(--tabletW) / 2);
+  height: calc(var(--tabletH) / 2);
+  z-index: 4;
+  position: absolute;
+  background-image: url("./assets/img/tablet.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  bottom: 15px;
+  right: 15px;
+  box-shadow: 10px 5px 50px black;
+  border-radius: 19px;
+  transition: 1.4s ease-out;
+  cursor: pointer;
+}
+
+#tablet * {
+  cursor: pointer;
+}
+
+#tablet p,
+h3 {
+  padding: 0;
+  margin: 0;
+}
+
+#tablet.out {
+  right: calc(15px - var(--tabletW) / 2.1);
+}
+
+#tabletContent {
+  position: relative;
+  background-color: whitesmoke;
+  width: 398px;
+  height: 251px;
+  margin-top: 31px;
+  margin-left: 18px;
+}
+
+:root {
+  --quemadorW: 420px;
+  --quemadorH: 114px;
+}
+
+#quemador {
+  width: calc(var(--quemadorW));
+  height: calc(var(--quemadorH));
+  z-index: 4;
+  position: absolute;
+  background-image: url("./assets/img/quemadorSin.png");
+  top: -5px;
+  left: calc(50vw - var(--quemadorW) / 2);
+  transition: 1s ease-out;
+}
+
+#gatilloIzq {
+  position: absolute;
+  transition: 0.4s;
+  left: 119px;
+  top: 37px;
+  cursor: pointer;
+}
+
+#gatilloIzq.pressed {
+  top: 50px;
+  transform: rotate(20deg);
+}
+
+#gatilloDch {
+  position: absolute;
+  transition: 0.4s;
+  left: 235px;
+  top: 37px;
+  cursor: pointer;
+}
+
+#gatilloDch.pressed {
+  top: 50px;
+  transform: rotate(-20deg);
+}
+
+#loading {
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  gap: 40px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/*Loader de https://loading.io/css/*/
+.lds-roller {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.lds-roller div {
+  animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  transform-origin: 40px 40px;
+}
+
+.lds-roller div:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--lighter);
+  margin: -4px 0 0 -4px;
+}
+
+.lds-roller div:nth-child(1) {
+  animation-delay: -0.036s;
+}
+
+.lds-roller div:nth-child(1):after {
+  top: 63px;
+  left: 63px;
+}
+
+.lds-roller div:nth-child(2) {
+  animation-delay: -0.072s;
+}
+
+.lds-roller div:nth-child(2):after {
+  top: 68px;
+  left: 56px;
+}
+
+.lds-roller div:nth-child(3) {
+  animation-delay: -0.108s;
+}
+
+.lds-roller div:nth-child(3):after {
+  top: 71px;
+  left: 48px;
+}
+
+.lds-roller div:nth-child(4) {
+  animation-delay: -0.144s;
+}
+
+.lds-roller div:nth-child(4):after {
+  top: 72px;
+  left: 40px;
+}
+
+.lds-roller div:nth-child(5) {
+  animation-delay: -0.18s;
+}
+
+.lds-roller div:nth-child(5):after {
+  top: 71px;
+  left: 32px;
+}
+
+.lds-roller div:nth-child(6) {
+  animation-delay: -0.216s;
+}
+
+.lds-roller div:nth-child(6):after {
+  top: 68px;
+  left: 24px;
+}
+
+.lds-roller div:nth-child(7) {
+  animation-delay: -0.252s;
+}
+
+.lds-roller div:nth-child(7):after {
+  top: 63px;
+  left: 17px;
+}
+
+.lds-roller div:nth-child(8) {
+  animation-delay: -0.288s;
+}
+
+.lds-roller div:nth-child(8):after {
+  top: 56px;
+  left: 12px;
+}
+
+@keyframes lds-roller {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*Altimetro*/
+:root {
+  --altimetroW: 290px;
+  --altimetroH: 503px;
+  --altimContentColor: #6e816f;
+  --altimAltContentColor: #bccfbd;
+}
+
+/*Fuente*/
+@font-face {
+  font-family: "digital";
+  src: url("./assets/fonts/DS-DIGII.TTF");
+}
+
+#altimetro {
+  width: calc(var(--altimetroW) / 1.5);
+  height: calc(var(--altimetroH) / 1.5);
+  z-index: 4;
+  position: absolute;
+  background-image: url("./assets/img/altimetro.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  top: 15px;
+  left: 15px;
+  border-radius: 40px;
+  transition: 1.1s ease-out;
+  font-family: "digital";
+  cursor: pointer;
+}
+
+#altimetro * {
+  cursor: pointer;
+}
+
+#altimetro.out {
+  left: calc(15px - var(--altimetroW) / 1.6);
+}
+
+#altimetroContent {
+  position: relative;
+  background-color: var(--altimContentColor);
+  width: 136px;
+  height: 190px;
+  margin-top: 32px;
+  margin-left: 29px;
+  border-radius: 51px;
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #111411;
+}
+
+#altTemperatura {
+  position: absolute;
+  top: 0px;
+  left: 25px;
+  width: 85px;
+  text-align: center;
+}
+
+#altSpeed {
+  position: absolute;
+  top: 30px;
+  font-size: 0.8em;
+  left: 37px;
+  width: 80px;
+  text-align: right;
+  border: 1px solid var(--altimAltContentColor);
+  padding: 3px;
+}
+
+#altSpeedAlt {
+  position: absolute;
+  top: 85px;
+  left: 36px;
+}
+
+#altPresion {
+  position: absolute;
+  top: 127px;
+  font-size: 0.8em;
+  left: 37px;
+  width: 80px;
+  text-align: right;
+  border: 1px solid var(--altimAltContentColor);
+  padding: 3px;
+}
+
+#altTime {
+  position: absolute;
+  font-size: 0.65em;
+  top: 176px;
+  left: 9px;
+  width: 120px;
+  text-align: center;
+}
+
+#altAltura {
+  position: absolute;
+  font-size: 0.68em;
+  top: 106px;
+  left: 37px;
+  width: 87px;
+  text-align: right;
+  text-align: right;
+}
+
+#altDiffContainer {
+  position: relative;
+  width: 11px;
+  height: 138px;
+  background-color: var(--altimAltContentColor);
+  left: 9px;
+  top: 27px;
+  border-radius: 5px;
+}
+
+#altDiffUp {
+  position: absolute;
+  background-color: rgb(58, 87, 16);
+  height: 0px;
+  width: 100%;
+  bottom: 69px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+#altDiffDown {
+  position: absolute;
+  background-color: rgb(121, 2, 2);
+  height: 0px;
+  width: 100%;
+  top: 69px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+#altRegla {
+  position: absolute;
+  width: 7px;
+  height: 69px;
+  left: 22px;
+  top: 94px;
+}
+
+#altReglaInv {
+  position: absolute;
+  width: 7px;
+  height: 69px;
+  left: 22px;
+  top: 28px;
+}

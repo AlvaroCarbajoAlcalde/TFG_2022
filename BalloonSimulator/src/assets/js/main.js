@@ -1,15 +1,9 @@
-//On load
-window.onload = () => {
-  queryHTML();
-};
-
 //On resize
-window.onresize = () => {
+function resizeCanvas() {
   if (engine) engine.resize();
-};
+}
 
 function queryHTML() {
-  menu = $("#menu")[0];
   game = $("#game")[0];
   tablet = $("#tablet")[0];
   quemador = $("#quemador")[0];
@@ -78,17 +72,16 @@ function moveSkybox() {
 }
 
 function showGame() {
-  menu.classList.add("hidden");
   loading.classList.add("hidden");
   game.classList.remove("hidden");
   tablet.classList.remove("hidden");
   quemador.classList.remove("hidden");
   altimetro.classList.remove("hidden");
   optionsBar.classList.remove("hidden");
+  console.timeEnd("load-game");
 }
 
 function hideGame() {
-  menu.classList.remove("hidden");
   game.classList.add("hidden");
   tablet.classList.add("hidden");
   quemador.classList.add("hidden");
@@ -97,7 +90,6 @@ function hideGame() {
 }
 
 function showLoader() {
-  menu.classList.add("hidden");
   loading.classList.remove("hidden");
 }
 

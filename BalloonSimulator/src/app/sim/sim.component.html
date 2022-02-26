@@ -1,41 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TFG Alvaro</title>
-
-    <!--Imports-->
-    <script src="./js/libs/jquery/jquery.min.js"></script>
-    <script src="./js/libs/babylon/babylon.min.js"></script>
-    <script src="./js/libs/babylon/babylon.loaders.min.js"></script>
-    <script src="./js/var.js"></script>
-    <script src="./js/main.js"></script>
-    <script src="./js/scene.js"></script>
-    <script src="./js/balloon.js"></script>
-    <script src="./js/balloonInterface.js"></script>
-    <script src="./js/userControls.js"></script>
-
-    <!--CSS-->
-    <link rel="stylesheet" href="./styles/style.css">
-    <link rel="stylesheet" href="./styles/tablet.css">
-    <link rel="stylesheet" href="./styles/quemador.css">
-    <link rel="stylesheet" href="./styles/altimetro.css">
-    <link rel="stylesheet" href="./styles/loading.css">
-    <link rel="stylesheet" href="./styles/optionsBar.css">
-
-</head>
-
-<body>
-
-    <section id="menu" class="">
-        <h1>Menu</h1>
-        <button onclick="startGame()">Empezar juego</button>
-        <h4 id="firma"><i>Hecho por <b>Álvaro Carbajo</b>.</i></h4>
-    </section>
+<div id="sim">
 
     <section id="tablet" class="hidden" onclick="toggleTablet()">
         <div id="tabletContent">
@@ -56,9 +19,9 @@
     </section>
 
     <section id="quemador" class="hidden">
-        <img draggable="false" id="gatilloIzq" src="./assets/img/leftTrigger.png" onmousedown="clickQuemador(this)"
+        <img draggable="false" id="gatilloIzq" src="../../assets/img/leftTrigger.png" onmousedown="clickQuemador(this)"
             onmouseup="unClickQuemador(this)" onmouseleave="unClickQuemador(this)">
-        <img draggable="false" id="gatilloDch" src="./assets/img/rightTrigger.png" onmousedown="clickQuemador(this)"
+        <img draggable="false" id="gatilloDch" src="../../assets/img/rightTrigger.png" onmousedown="clickQuemador(this)"
             onmouseup="unClickQuemador(this)" onmouseleave="unClickQuemador(this)">
     </section>
 
@@ -70,8 +33,8 @@
             <label id="altAltura">6000 feet</label>
             <label id="altPresion">Pressure<br>932.1 hPa</label>
             <label id="altTime">Flight Time: 02:21:49</label>
-            <img id="altRegla" src="./assets/img/regla.png"></img>
-            <img id="altReglaInv" src="./assets/img/reglainv.png"></img>
+            <img id="altRegla" src="../../assets/img/regla.png">
+            <img id="altReglaInv" src="../../assets/img/reglainv.png">
             <div id="altDiffContainer">
                 <div id="altDiffUp"></div>
                 <div id="altDiffDown"></div>
@@ -97,7 +60,5 @@
         </div>
         <p id="loadMessage"></p>
     </section>
-
-</body>
-
-</html>
+    
+</div>
