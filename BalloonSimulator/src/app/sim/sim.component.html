@@ -1,6 +1,6 @@
 <div id="sim">
 
-    <section id="tablet" class="hidden" onclick="toggleTablet()">
+    <section id="tablet" onclick="toggleTablet()">
         <div id="tabletContent">
             <p id="positionX"></p>
             <p id="positionZ"></p>
@@ -8,24 +8,24 @@
         </div>
     </section>
 
-    <section id="optionsBar" class="hidden">
+    <section id="optionsBar">
         <div id="eyeBtn" onclick="toggleVisibility(this)">
             <div class="shut">
                 <span></span>
             </div>
             <div class="ball"></div>
         </div>
-        <a href="javascript:void(0);" class="close" onclick="endSim()"></a>
+        <a (click)="endGame()" class="close"></a>
     </section>
 
-    <section id="quemador" class="hidden">
+    <section id="quemador">
         <img draggable="false" id="gatilloIzq" src="../../assets/img/leftTrigger.png" onmousedown="clickQuemador(this)"
             onmouseup="unClickQuemador(this)" onmouseleave="unClickQuemador(this)">
         <img draggable="false" id="gatilloDch" src="../../assets/img/rightTrigger.png" onmousedown="clickQuemador(this)"
             onmouseup="unClickQuemador(this)" onmouseleave="unClickQuemador(this)">
     </section>
 
-    <section id="altimetro" class="hidden" onclick="toggleAltimetro()">
+    <section id="altimetro" onclick="toggleAltimetro()">
         <div id="altimetroContent">
             <label id="altTemperatura">T 23.3°C</label>
             <label id="altSpeed">Wind: 63° <br>23.3 m/s</label>
@@ -42,23 +42,17 @@
         </div>
     </section>
 
-    <section id="game" class="hidden">
+    <section id="game">
 
     </section>
 
-    <section id="loading" class="hidden">
-        <!-- Icono de carga de https://loading.io/css/-->
-        <div class="lds-roller">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+    <section id="loading">
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+        <div class="loading-box">
+            <p class="loading-count"></p>
+            <div class="loader"></div>
         </div>
-        <p id="loadMessage"></p>
     </section>
     
 </div>

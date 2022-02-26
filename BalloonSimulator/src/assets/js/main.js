@@ -27,14 +27,14 @@ function queryHTML() {
 
 function startGame() {
   started = false;
-  showLoader();
   createScene();
   scene.executeWhenReady(() => {
+    console.timeEnd("load-game");
+
     game.appendChild(canvas);
     engine.resize();
     timer();
     setGasListener();
-    showGame();
 
     balloon = new Balloon(pointer, balloonModel);
     //InitPos
@@ -71,28 +71,6 @@ function moveSkybox() {
   skybox.position.z = balloon.pointer.position.z;
 }
 
-function showGame() {
-  loading.classList.add("hidden");
-  game.classList.remove("hidden");
-  tablet.classList.remove("hidden");
-  quemador.classList.remove("hidden");
-  altimetro.classList.remove("hidden");
-  optionsBar.classList.remove("hidden");
-  console.timeEnd("load-game");
-}
-
-function hideGame() {
-  game.classList.add("hidden");
-  tablet.classList.add("hidden");
-  quemador.classList.add("hidden");
-  altimetro.classList.add("hidden");
-  optionsBar.classList.add("hidden");
-}
-
-function showLoader() {
-  loading.classList.remove("hidden");
-}
-
 function endSim() {
   engine.stopRenderLoop();
   clearInterval(clockInterval);
@@ -100,11 +78,9 @@ function endSim() {
   clearInterval(balloon.intervalX);
   clearInterval(balloon.intervalY);
   clearInterval(balloon.intervalZ);
-  hideGame();
   scene.dispose();
   engine.dispose();
   canvas.remove();
   canvas = null;
   game.innerHML = "";
-  location.reload();
 }
