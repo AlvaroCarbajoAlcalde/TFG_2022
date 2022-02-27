@@ -44,14 +44,9 @@ TFG-2022 DAW, IES Comercio.
 Requirements
 
 ```
-Xampp
-php v7.4
-apache v8.0.13
-MySQL database
+
 ```
 
 ```
-download the zip
-extract it
-copy
+
 ```
