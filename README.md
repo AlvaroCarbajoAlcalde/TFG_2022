@@ -24,11 +24,13 @@ TFG-2021/22 DAW, IES Comercio.
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/js.png"> JavaScript</code>
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/typescript.png"> TipeScript</code>
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/php.png"> PHP</code>
+<code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/mysql.jpg"> MySQL</code>
 
 ### Frameworks
 
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/angular.png"> Angular</code>
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/babylonjs.png"> BabylonJS</code>
+<code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/laravel.png"> Laravel</code>
 
 ### Platforms
 
@@ -47,6 +49,7 @@ TFG-2021/22 DAW, IES Comercio.
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/gimp.png"> Gimp 2</code>
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/photoshop.png"> Photoshop</code>
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/visor3d.png"> Visor3D</code>
+<code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/postman.png"> Postman</code>
 
 ### Browsers
 
