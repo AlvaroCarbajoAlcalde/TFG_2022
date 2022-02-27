@@ -52,6 +52,7 @@ TFG-2021/22 DAW, IES Comercio.
 
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/chrome.png"> Chrome</code>
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/edge.jpg"> Edge</code>
+<code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/firefox.png"> Firefox</code>
 
 ## Screenshots
 
