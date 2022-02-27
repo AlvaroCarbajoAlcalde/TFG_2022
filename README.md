@@ -10,7 +10,7 @@ TFG-2022 Desarrollo de Aplicaciones Web.
 
 ## Technologies
 
-<code><img height="20" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/angular.png"></code>
+<code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/angular.png"></code>
 
 <img width="60px" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/angular.png" />Angular
 <img width="60px" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/css.png" /><img width="60px" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/html.png" /><img width="60px" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/js.png" /><img width="60px" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/typescript.png" /><img width="60px" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/vscode.png" /><img width="60px" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/gimp.png" /><img width="60px" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/github.png" /><img width="60px" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/babylonjs.png" />
