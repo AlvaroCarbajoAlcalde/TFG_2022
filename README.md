@@ -3,6 +3,11 @@
 Proyecto realizado por Álvaro Carbajo Alcalde en el año 2022.<br>
 TFG-2022 Desarrollo de Aplicaciones Web.
 
+## Menu
+
+- [Screenshots](#Screenshots)
+- [Getting Started](#Getting-Started)
+
 ## Screenshots
 
 ![cap1](https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/screenshots/sc1.PNG)
@@ -12,8 +17,9 @@ TFG-2022 Desarrollo de Aplicaciones Web.
 ## Getting Started
 
 Requirements
+
 ```
-Xampp 
+Xampp
 php v7.4
 apache v8.0.13
 MySQL database
@@ -22,5 +28,5 @@ MySQL database
 ```
 download the zip
 extract it
-copy 
+copy
 ```
