@@ -1,4 +1,4 @@
-# Balloon Simulator
+# <img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/balloon.ico"> Balloon Simulator <img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/html.png">
 
 Project carried out by Álvaro Carbajo Alcalde in 2022.<br>
 TFG-2022 DAW, IES Comercio.
