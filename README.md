@@ -7,6 +7,8 @@ TFG-2022 Desarrollo de Aplicaciones Web.
 
 - [Screenshots](#Screenshots)
 - [Getting Started](#Getting-Started)
+- [Technologies](#Technologies)
+-- [Languages](#Languages)
 
 ## Technologies
 
