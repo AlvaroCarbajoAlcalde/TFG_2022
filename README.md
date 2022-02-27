@@ -1,4 +1,4 @@
-# BalloonSimulator
+# Balloon Simulator
 
 Project carried out by Álvaro Carbajo Alcalde in 2022.<br>
 TFG-2022 DAW, IES Comercio.
