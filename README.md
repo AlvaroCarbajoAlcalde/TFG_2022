@@ -11,7 +11,6 @@ TFG-2022 Desarrollo de Aplicaciones Web.
 ## Technologies
 
 <img width="60px" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/babylonjs.png" />
-<br>
 
 ## Screenshots
 
