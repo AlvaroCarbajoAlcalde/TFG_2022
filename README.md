@@ -1,7 +1,7 @@
 # BalloonSimulator
 
-Proyecto realizado por Álvaro Carbajo Alcalde en el año 2022.<br>
-TFG-2022 Desarrollo de Aplicaciones Web.
+Project carried out by Álvaro Carbajo Alcalde in the year 2022.<br>
+TFG-2022 DAW, IES Comercio.
 
 ## Menu
 
