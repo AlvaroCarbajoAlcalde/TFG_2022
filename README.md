@@ -33,6 +33,7 @@ TFG-2021/22 DAW, IES Comercio.
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/vscode.png"> VSCode</code>
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/gimp.png"> Gimp 2</code>
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/photoshop.png"> Photoshop</code>
+<code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/visor3d.png"> Visor3D</code>
 
 ## Screenshots
 
