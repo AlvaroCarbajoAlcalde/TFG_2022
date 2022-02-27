@@ -10,11 +10,11 @@ TFG-2022 Desarrollo de Aplicaciones Web.
 
 ## Technologies
 
-Languages:
+Languages:<br>
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/html.png"> Angular</code>
-Frameworks:
+Frameworks:<br>
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/angular.png"> Angular</code>
-Others:
+Others:<br>
 
 
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/angular.png"> Angular</code>
