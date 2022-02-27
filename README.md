@@ -8,8 +8,10 @@ TFG-2021/22 DAW, IES Comercio.
 - [Technologies](#Technologies)
     - [Languages](#Languages)
     - [Frameworks](#Frameworks)
+    - [Platforms](#Platforms)
     - [APIs](#APIs)
     - [Others](#Others)
+    - [Browsers](#Browsers)
 - [Screenshots](#Screenshots)
 - [Getting Started](#Getting-Started)
 
@@ -28,6 +30,11 @@ TFG-2021/22 DAW, IES Comercio.
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/angular.png"> Angular</code>
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/babylonjs.png"> BabylonJS</code>
 
+### Platforms
+
+<code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/node.png"> Node JS</code>
+<code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/xampp.png"> Xampp</code>
+
 ### APIs
 
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/ot.png"> OpenTopography</code>
@@ -40,6 +47,11 @@ TFG-2021/22 DAW, IES Comercio.
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/gimp.png"> Gimp 2</code>
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/photoshop.png"> Photoshop</code>
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/visor3d.png"> Visor3D</code>
+
+### Browsers
+
+<code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/chrome.png"> Chrome</code>
+<code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/edge.jpg"> Edge</code>
 
 ## Screenshots
 
