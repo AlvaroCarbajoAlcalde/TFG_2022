@@ -68,9 +68,30 @@ TFG-2021/22 DAW, IES Comercio.
 Requirements
 
 ```
-
+php v7.4
+composer v2.2.7
+node v16.14.0
+phpmyadmin
+MySQL
 ```
 
+Step 1
+```
+Download and unzip project
 ```
 
+Angular Frontend
+```
+Go to BalloonSimulator open in terminal
+Install node_modules: npm install
+Run: ng serve --open
+```
+
+Larabel Backend
+```
+Open phpmyadmin localhost/phpmyadmin
+Import database
+Edit BalloonSimAPI .env file and change database configuration
+Go to BalloonSimAPI open in terminal
+Run: php artisan serve
 ```
