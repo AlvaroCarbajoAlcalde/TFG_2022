@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        section {
+            display: grid;
+            grid-template-columns: repeat(15, 0fr);
+            gap: 0;
+        }
+
+        img {
+            margin: 0;
+            padding: 0;
+            width: 1920px;
+            height: auto;
+        }
+
+        body,
+        html {
+            margin: 0 auto;
+        }
+    </style>
+
+    <script>
+        window.onload = () => {
+            const rows = 15;
+            const cols = 15;
+
+            const section = document.getElementsByTagName("section")[0];
+            for (let i = 0; i < rows; i++) {
+                for (let j = 0; j < cols; j++) {
+                    const img = document.createElement("img");
+                    img.src = "./sat/m_" + i + "_" + j + ".jpg";
+                    section.appendChild(img);
+                }
+            }
+        }
+    </script>
+
+    <section></section>
+
+</body>
+
+</html>

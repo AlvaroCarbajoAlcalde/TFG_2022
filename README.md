@@ -8,6 +8,7 @@ TFG-2021/22 DAW, IES Comercio.
 - [Technologies](#Technologies)
     - [Languages](#Languages)
     - [Frameworks](#Frameworks)
+    - [APIs](#APIs)
     - [Others](#Others)
 - [Screenshots](#Screenshots)
 - [Getting Started](#Getting-Started)
@@ -26,6 +27,10 @@ TFG-2021/22 DAW, IES Comercio.
 
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/angular.png"> Angular</code>
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/babylonjs.png"> BabylonJS</code>
+
+### APIs
+
+<code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/ot.png"> OpenTopography</code>
 
 ### Others
 
