@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TakeoffPointController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+$takeoffs = (new TakeoffPointController())->index();
+
+Route::view('/', 'home')->name('home');
+Route::view('/takeoffs', 'takeoffs', compact('takeoffs'))->name('takeoffs');

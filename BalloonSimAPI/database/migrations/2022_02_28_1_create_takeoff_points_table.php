@@ -23,6 +23,9 @@ return new class extends Migration
             $table->double('lat')->nullable();
             $table->double('lon')->nullable();
             $table->timestamps();
+
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_unicode_ci';
         });
     }
 
