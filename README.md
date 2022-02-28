@@ -83,13 +83,6 @@ Step 1
 Download and unzip project
 ```
 
-Angular Frontend
-```
-Go to BalloonSimulator open in terminal
-Install node_modules: npm install
-Run: ng serve --open
-```
-
 Larabel Backend
 ```
 Open phpmyadmin localhost/phpmyadmin
@@ -97,4 +90,15 @@ Import database
 Edit BalloonSimAPI .env file and change database configuration
 Go to BalloonSimAPI open in terminal
 Run: php artisan serve
+```
+
+Angular Frontend
+Go to BalloonSimFront, open in terminal and run:
+```
+npm install
+npm install angular
+```
+To run projec:
+```
+npm run ng serve --open
 ```
