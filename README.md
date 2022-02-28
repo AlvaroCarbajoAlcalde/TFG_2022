@@ -68,28 +68,36 @@ TFG-2021/22 DAW, IES Comercio.
 
 ## Getting Started
 
-Requirements
-
+Requirements:
 ```
-php v7.4
+php v8.0.2
 composer v2.2.7
 node v16.14.0
-phpmyadmin
-MySQL
+xampp (MySQL, phpMyAdmin, php)
 ```
 
-Step 1
+Database:
+Import database (database.sql) in phpMyAdmin.
+Edit:
 ```
-Download and unzip project
+BalloonSimBack/.env
+```
+Configure your database variables:
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=balloonsim
+DB_USERNAME=root
+DB_PASSWORD=
 ```
 
-Larabel Backend
+Laravel Backend
+Go to BalloonSimBack, open in terminal and run:
 ```
-Open phpmyadmin localhost/phpmyadmin
-Import database
-Edit BalloonSimAPI .env file and change database configuration
-Go to BalloonSimAPI open in terminal
-Run: php artisan serve
+npm install
+composer install
+php artisan serve
 ```
 
 Angular Frontend
