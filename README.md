@@ -97,8 +97,5 @@ Go to BalloonSimFront, open in terminal and run:
 ```
 npm install
 npm install angular
-```
-To run projec:
-```
 npm run ng serve --open
 ```
