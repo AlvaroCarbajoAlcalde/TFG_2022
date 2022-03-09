@@ -82,7 +82,8 @@ Edit:
 ```
 BalloonSimBack/.env
 ```
-Configure your database variables:
+Configure your database variables: 
+In the backEnd copy .env.example to .env and configure database variables.
 ```
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
