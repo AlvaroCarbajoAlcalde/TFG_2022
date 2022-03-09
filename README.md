@@ -78,10 +78,6 @@ xampp (MySQL, phpMyAdmin, php)
 
 ### Database
 Import database (database.sql) in phpMyAdmin.
-Edit:
-```
-BalloonSimBack/.env
-```
 Configure your database variables: 
 In the backEnd copy .env.example to .env and configure database variables.
 ```
