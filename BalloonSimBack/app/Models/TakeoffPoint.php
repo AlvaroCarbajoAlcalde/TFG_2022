@@ -4,14 +4,42 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class TakeoffPoint
+ *
+ * @property $id
+ * @property $name
+ * @property $description
+ * @property $x
+ * @property $z
+ * @property $y
+ * @property $lat
+ * @property $lon
+ * @property $created_at
+ * @property $updated_at
+ *
+ * @package App
+ * @mixin \Illuminate\Database\Eloquent\Builder
+ */
 class TakeoffPoint extends Model
 {
-    protected $id;
-    protected $name = "undefined";
-    protected $description = "undefined";
-    protected $x = 0;
-    protected $z = 0;
-    protected $y = 0;
-    protected $lat = 0;
-    protected $lon = 0;
+    
+    static $rules = [
+		'name' => 'required',
+		'x' => 'required',
+		'z' => 'required',
+		'y' => 'required',
+    ];
+
+    protected $perPage = 20;
+
+    /**
+     * Attributes that should be mass-assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['name','description','x','z','y','lat','lon'];
+
+
+
 }

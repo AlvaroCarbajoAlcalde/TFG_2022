@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-$takeoffs = (new TakeoffPointController())->index();
+Route::get('/', function(){
+    return view('home');
+});
 
-Route::view('/', 'home')->name('home');
-Route::view('/takeoffs', 'takeoffs', compact('takeoffs'))->name('takeoffs');
+Route::resource('takeoff-points', TakeoffPointController::class);
