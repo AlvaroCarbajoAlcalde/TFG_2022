@@ -15,8 +15,8 @@ TFG-2021/22 DAW, IES Comercio.
 - [Screenshots](#Screenshots)
 - [Getting Started](#Getting-Started)
     - [Database](#Database)
-    - [BackEnd](#Laravel_Backend)
-    - [FrontEnd](Angular_Frontend)
+    - [BackEnd](#Backend)
+    - [FrontEnd](#Frontend)
 
 ## Technologies
 
@@ -92,7 +92,7 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
-### Laravel Backend
+### Backend
 Go to BalloonSimBack, open in terminal and run:
 ```
 npm install
@@ -100,7 +100,7 @@ composer install
 php artisan serve
 ```
 
-### Angular Frontend
+### Frontend
 Go to BalloonSimFront, open in terminal and run:
 ```
 npm install
