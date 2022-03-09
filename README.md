@@ -76,7 +76,7 @@ node v16.14.0
 xampp (MySQL, phpMyAdmin, php)
 ```
 
-Database:
+### Database
 Import database (database.sql) in phpMyAdmin.
 Edit:
 ```
@@ -92,7 +92,7 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
-Laravel Backend
+### Laravel Backend
 Go to BalloonSimBack, open in terminal and run:
 ```
 npm install
@@ -100,7 +100,7 @@ composer install
 php artisan serve
 ```
 
-Angular Frontend
+### Angular Frontend
 Go to BalloonSimFront, open in terminal and run:
 ```
 npm install
