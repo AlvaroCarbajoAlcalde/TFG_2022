@@ -15,8 +15,8 @@ TFG-2021/22 DAW, IES Comercio.
 - [Screenshots](#Screenshots)
 - [Getting Started](#Getting-Started)
     - [Database](#Database)
-    - [BackEnd](#Laravel Backend)
-    - [FrontEnd](#Angular Frontend)
+    - [BackEnd](#Laravel)
+    - [FrontEnd](#Angular)
 
 ## Technologies
 
