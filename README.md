@@ -80,9 +80,8 @@ xampp (MySQL, phpMyAdmin, php)
 ```
 
 ### Database
-Import database (database.sql) in phpMyAdmin.
-Configure your database variables: 
-In the backEnd copy .env.example to .env and configure database variables.
+Import database (database.sql) in phpMyAdmin.<br>
+In the backEnd configure database variables .env file.
 ```
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
