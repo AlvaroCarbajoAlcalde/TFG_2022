@@ -25,6 +25,6 @@ export class SimComponent implements OnInit {
 
   endGame() {
     endSim();
-    this.router.navigate(["home"]);
+    this.router.navigate([""]);
   }
 }

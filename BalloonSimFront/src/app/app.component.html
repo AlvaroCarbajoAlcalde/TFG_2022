@@ -1,2 +1,15 @@
-<a routerLink="/sim">Cargar Juego</a>
-<router-outlet></router-outlet>
+<header>
+    <div class="logo">
+        <a routerLink=""><img src="../assets/img/icon.ico" alt=""></a>
+        <a routerLink="">Balloon Simulator</a>
+    </div>
+
+    <nav>
+        <a routerLink="/params">Parámetros</a>
+        <a routerLink="/sim">Cargar Simulador</a>
+    </nav>
+</header>
+
+<section id="content">
+    <router-outlet></router-outlet>
+</section>
