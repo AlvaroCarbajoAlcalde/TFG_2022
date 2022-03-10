@@ -35,6 +35,7 @@ TFG-2021/22 DAW, IES Comercio.
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/angular.png"> Angular</code>
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/babylonjs.png"> BabylonJS</code>
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/laravel.png"> Laravel</code>
+<code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/icons/bootstrap.png"> Bootstrap</code>
 
 ### Platforms
 

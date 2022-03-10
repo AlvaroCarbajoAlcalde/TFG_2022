@@ -28,12 +28,12 @@
         </div>
         <div class="form-group">
             {{ Form::label('lat') }}
-            {{ Form::text('lat', $takeoffPoint->lat, ['class' => 'form-control' . ($errors->has('lat') ? ' is-invalid' : ''), 'placeholder' => 'Lat']) }}
+            {{ Form::text('lat', $takeoffPoint->lat, ['class' => 'form-control' . ($errors->has('lat') ? ' is-invalid' : ''), 'placeholder' => 'Latitude']) }}
             {!! $errors->first('lat', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('lon') }}
-            {{ Form::text('lon', $takeoffPoint->lon, ['class' => 'form-control' . ($errors->has('lon') ? ' is-invalid' : ''), 'placeholder' => 'Lon']) }}
+            {{ Form::text('lon', $takeoffPoint->lon, ['class' => 'form-control' . ($errors->has('lon') ? ' is-invalid' : ''), 'placeholder' => 'Longitude']) }}
             {!! $errors->first('lon', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 

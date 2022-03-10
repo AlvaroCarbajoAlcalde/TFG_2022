@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'home')
+@section('template_title', 'Backend')
 
 @section('content')
-    <h1>Home</h1>
+
 @endsection
