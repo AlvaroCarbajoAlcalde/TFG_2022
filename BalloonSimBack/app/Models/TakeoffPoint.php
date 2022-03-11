@@ -23,23 +23,23 @@ use Illuminate\Database\Eloquent\Model;
  */
 class TakeoffPoint extends Model
 {
-    
-    static $rules = [
-		'name' => 'required',
-		'x' => 'required',
-		'z' => 'required',
-		'y' => 'required',
-    ];
 
-    protected $perPage = 20;
+  static $rules = [
+    'name' => 'required|max:255',
+    'description' => 'max:255',
+    'x' => 'required|numeric',
+    'z' => 'required|numeric',
+    'y' => 'required|numeric',
+    'lat' => 'numeric',
+    'lon' => 'numeric'
+  ];
 
-    /**
-     * Attributes that should be mass-assignable.
-     *
-     * @var array
-     */
-    protected $fillable = ['name','description','x','z','y','lat','lon'];
+  protected $perPage = 20;
 
-
-
+  /**
+   * Attributes that should be mass-assignable.
+   *
+   * @var array
+   */
+  protected $fillable = ['name', 'description', 'x', 'z', 'y', 'lat', 'lon'];
 }

@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API_TakeoffPointController;
+use App\Http\Controllers\API_UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::resource('takeoffs', API_TakeoffPointController::class);
+Route::resource('users', API_UserController::class);

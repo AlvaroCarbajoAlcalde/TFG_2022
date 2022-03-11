@@ -28,6 +28,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/takeoff-points') }}">Takeoffs</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/users') }}">Users</a>
+                </li>
             </ul>
         </nav>
         <main class="py-4">
