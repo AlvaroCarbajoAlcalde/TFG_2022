@@ -17,12 +17,12 @@
                     </div>
 
                     <!-- Login Form -->
-                    {{ Form::open(['url' => './', 'method' => 'get']) }}
+                    {{ Form::open(['method' => 'get', 'url' => 'login']) }}
                     <input type="text" id="user" class="fadeIn second" name="user" placeholder="Username" required>
-                    <input type="text" id="pass" class="fadeIn third" name="pass" placeholder="Password" required>
+                    <input type="text" id="pass" class="fadeIn third pass" name="pass" placeholder="Password" required>
 
                     @if (isset($message))
-                        <p class="login-message">{{ $message }}</p>
+                        <p class="login-message fadeIn third">{{ $message }}</p>
                     @endif
 
                     <input type="submit" class="fadeIn fourth" value="Log In">

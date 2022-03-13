@@ -9,10 +9,7 @@
         @yield('template_title')
     </title>
 
-    <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css">
 </head>
 
@@ -38,7 +35,9 @@
             </ul>
 
             @if (session('user') === true)
-                <a class="nav-link" href="{{ url('/endsession') }}">Log out</a>
+                <div class="logout">
+                    <a class="nav-link" href="{{ url('/logout') }}">Log out</a>
+                </div>
             @endif
 
         </nav>

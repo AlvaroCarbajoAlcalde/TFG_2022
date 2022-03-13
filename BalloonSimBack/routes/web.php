@@ -2,8 +2,8 @@
 
 use App\Http\Controllers\TakeoffPointController;
 use App\Http\Controllers\UserController;
-use App\Models\Admin;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Redirect;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,29 +17,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    if (isset($_GET['user'])) {
-        $sha1user = sha1($_GET['user']);
-        $sha1pass = sha1($_GET['pass']);
-
-        $admins = Admin::all();
-        foreach ($admins as $admin) {
-            if (
-                $admin->name == $sha1user &&
-                $admin->password == $sha1pass
-            ) {
-                session()->put('user', true);
-                return view('home');
-            }
-        }
-        return view('home', ['message' => 'Username or password incorrect.']);
-    }
     return view('home');
+})->name('home');
+
+Route::get('/login-failed', function () {
+    return view('home', ['message' => 'Invalid username or password']);
 });
 
-Route::get('/endsession', function () {
-    session()->put('user', false);
-    return view('home');
-});
+Route::get('logout', 'App\Http\Controllers\AdminController@logout');
+Route::get('login', 'App\Http\Controllers\AdminController@login');
 
 Route::resource('takeoff-points', TakeoffPointController::class);
 Route::resource('users', UserController::class);

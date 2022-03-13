@@ -16,6 +16,22 @@ body {
     margin-left: 12px;
 }
 
-.form-group.password input{
+.form-group.password input, input.pass{
     -webkit-text-security: disc;
+}
+
+div.logout{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    text-align: end;
+}
+
+div.logout a{
+    color: #939d97;
+}
+
+nav a:hover{
+    color: whitesmoke !important;
 }

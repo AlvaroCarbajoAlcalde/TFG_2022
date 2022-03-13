@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 /**
  * Class AdminController
@@ -12,68 +13,37 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Login.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function login(Request $request)
     {
-        $admins = Admin::paginate();
+        $sha1user = sha1($request['user']);
+        $sha1pass = sha1($request['pass']);
 
-        return view('admin.index', compact('admins'))
-            ->with('i', (request()->input('page', 1) - 1) * $admins->perPage());
+        $admins = Admin::all();
+        foreach ($admins as $admin) {
+            if (
+                $admin->name == $sha1user &&
+                $admin->password == $sha1pass
+            ) {
+                session()->put('user', true);
+                return redirect('');
+            }
+        }
+
+        return redirect('/login-failed');
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Logout.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function logout()
     {
-        $admin = new Admin();
-        return view('admin.create', compact('admin'));
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        request()->validate(Admin::$rules);
-
-        $admin = Admin::create($request->all());
-
-        return redirect()->route('admins.index')
-            ->with('success', 'Admin created successfully.');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $admin = Admin::find($id);
-
-        return view('admin.show', compact('admin'));
-    }
-
-    /**
-     * @param int $id
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
-     */
-    public function destroy($id)
-    {
-        $admin = Admin::find($id)->delete();
-
-        return redirect()->route('admins.index')
-            ->with('success', 'Admin deleted successfully');
+        session()->put('user', false);
+        return redirect('');
     }
 }
