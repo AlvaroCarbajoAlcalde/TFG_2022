@@ -9,14 +9,16 @@ var balloonModel;
 var pointer;
 var skybox;
 
+let selectedSkybox;
+
 //Values
-const balloonScaling = 10; //Escala del modelo del globo
-const skyboxSize = 10500; //Tamagno del skybox
-const mapTotalSize = 7500; //Medida de lado del mapa
-const mapSizeMeters = 50330; //Lado del mapa en metros
-const mapSize = 500; //Tamaño de cada parte del mapa
-const convAltura = 6.44; //Conversion de la altura
-const fG = 9.81; //Fuerza de gravedad
+const balloonScaling = 10;
+const skyboxSize = 10500;
+const mapTotalSize = 7500;
+const mapSizeMeters = 50330;
+const mapSize = 500;
+const convAltura = 6.44;
+const fG = 9.81;
 
 //Obj
 var balloon;
@@ -63,3 +65,7 @@ var started;
 
 //Testing
 var testing = true;
+
+function setSelectedSkybox(value) {
+  selectedSkybox = value;
+}

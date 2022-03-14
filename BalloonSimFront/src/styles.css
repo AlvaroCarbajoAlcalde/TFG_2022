@@ -13,17 +13,14 @@ body {
   margin: 0px auto;
   padding: 0px;
   font-family: Arial, Helvetica, sans-serif;
-  background: var(--darker);
-  background: linear-gradient(
-    0deg,
-    var(--primary) 0%,
-    var(--dark) 40%,
-    var(--darker) 100%
-  );
   height: 100%;
+  background: #111411;
+  background-position: center;
+  background-size: cover;
+  transition: 0.5s;
 }
 
-#content{
+#content {
   margin-top: 84px;
 }
 
@@ -37,12 +34,18 @@ header {
   color: white;
   padding: 10px;
   width: calc(100vw - 20px);
-  height: 64px;
+  height: 46px;
+  background-color: var(--primary);
+  box-shadow: 0px 0px 10px 1px black;
 }
 
-header a{
+header a {
   text-decoration: none;
   color: inherit;
+}
+
+header a:hover {
+  color: white;
 }
 
 header .logo {
@@ -52,7 +55,7 @@ header .logo {
   font-size: 1.2em;
 }
 
-header .logo img{
+header .logo img {
   height: 25px;
   width: auto;
 }
@@ -64,10 +67,6 @@ nav {
   gap: 10px;
   text-decoration: underline;
   color: whitesmoke;
-}
-
-header a:hover {
-  color: white;
 }
 
 #sim {

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
+import BackgroundController from './class/backgroundController';
 
 @Component({
   selector: 'app-root',
@@ -6,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'BalloonSimulator';
+
+  constructor(private renderer: Renderer2) {
+    BackgroundController.startInterval(renderer);
+  }
 }

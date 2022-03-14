@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import SkyboxController from '../class/skyboxController';
 
 declare const resizeCanvas: any;
 declare const queryHTML: any;
 declare const startGame: any;
 declare const endSim: any;
+declare const setSelectedSkybox: any;
 
 @Component({
   selector: 'app-sim',
@@ -14,6 +16,8 @@ export class SimComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit(): void {
+    setSelectedSkybox(SkyboxController.currentSelected);
+
     console.time('load-game');
     queryHTML();
     startGame();
@@ -25,6 +29,6 @@ export class SimComponent implements OnInit {
 
   endGame() {
     endSim();
-    this.router.navigate([""]);
+    this.router.navigate(['']);
   }
 }

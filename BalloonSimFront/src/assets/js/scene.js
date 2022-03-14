@@ -1,13 +1,9 @@
-/**
- * Crea los elementos de la escena
- */
 function createScene() {
   canvas = document.createElement("canvas");
   game.innerHTML = "";
   engine = new BABYLON.Engine(canvas, true);
   scene = new BABYLON.Scene(engine);
 
-  //Set elementos
   setLight();
   setCamera();
   setPointer();
@@ -18,9 +14,6 @@ function createScene() {
   if (testing) setMovement();
 }
 
-/**
- * Luz de la escena
- */
 function setLight() {
   new BABYLON.HemisphericLight(
     "light",
@@ -29,9 +22,6 @@ function setLight() {
   );
 }
 
-/**
- * Camara
- */
 function setCamera() {
   camera = new BABYLON.ArcRotateCamera(
     "Camera",
@@ -47,9 +37,6 @@ function setCamera() {
   camera.attachControl(canvas, true);
 }
 
-/**
- * Pointer (Lugar donde se controla el globo)
- */
 function setPointer() {
   pointer = BABYLON.MeshBuilder.CreateSphere("sphere", {
     diameterX: 0.1,
@@ -63,9 +50,6 @@ function setPointer() {
   pointer.material = material;
 }
 
-/**
- * Globo
- */
 function setBalloon() {
   BABYLON.SceneLoader.ImportMesh(
     null,
@@ -90,15 +74,12 @@ function setBalloon() {
   );
 }
 
-/**
- * Skybox
- */
 function setSkybox() {
   skybox = BABYLON.Mesh.CreateBox("skyBox", skyboxSize, scene);
   const skyboxMaterial = new BABYLON.StandardMaterial("skyBox", scene);
   skyboxMaterial.backFaceCulling = false;
   skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture(
-    `../assets/textures/skybox/${getRandomSkybox()}`,
+    `../assets/textures/skybox/${selectedSkybox}`,
     scene
   );
   skyboxMaterial.reflectionTexture.coordinatesMode =
@@ -107,21 +88,7 @@ function setSkybox() {
   skybox.material = skyboxMaterial;
 }
 
-/**
- * Escoje un cielo aleatorio
- * @return {*} Skybox random
- */
-function getRandomSkybox() {
-  const ranValues = ["bluecloud", "browncloud", "graycloud", "yellowcloud"];
-  const ranNum = Math.floor(Math.random() * ranValues.length);
-  return ranValues[ranNum];
-}
-
-/**
- * Terreno
- */
 function setGround() {
-  //Map
   let k = 1;
 
   for (let i = 0; i < 15; i++) {
@@ -130,8 +97,6 @@ function setGround() {
       const positionX = mapSize * j + mapSize / 2;
 
       //Base Material
-      //Usado para evitar en la medida de lo posible efectos
-      //de luz bajo juntas de los trozos del mapa
       const materialBack = new BABYLON.StandardMaterial("material", scene);
       materialBack.diffuseTexture = new BABYLON.Texture(
         "../assets/textures/backMap.png",
@@ -163,8 +128,6 @@ function setGround() {
       materialGMap.alpha = 1.0;
 
       //Elevation
-      //Permite calcular la elevacion del terreno a
-      //partir de mapas topograficos
       const ground = BABYLON.MeshBuilder.CreateGroundFromHeightMap(
         `ground_${k}`,
         `../assets/maps/topo/topo_${k}.gif`,
