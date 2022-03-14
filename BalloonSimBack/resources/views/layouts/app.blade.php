@@ -25,10 +25,7 @@
 
                 @if (session('user') === true)
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/takeoff-points') }}">Takeoffs</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/users') }}">Users</a>
+                        <a class="nav-link" href="http://localhost/phpmyadmin">PhpMyAdmin</a>
                     </li>
                 @endif
 

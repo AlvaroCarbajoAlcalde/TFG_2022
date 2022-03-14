@@ -16,11 +16,12 @@
                                 {{ __('Takeoff Point') }}
                             </span>
 
-                             <div class="float-right">
-                                <a href="{{ route('takeoff-points.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                            <div class="float-right">
+                                <a href="{{ route('takeoff-points.create') }}" class="btn btn-primary btn-sm float-right"
+                                    data-placement="left">
+                                    {{ __('Create New') }}
                                 </a>
-                              </div>
+                            </div>
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
@@ -34,13 +35,13 @@
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
-										<th>Name</th>
-										<th>Description</th>
-										<th>X</th>
-										<th>Z</th>
-										<th>Y</th>
-										<th>Lat</th>
-										<th>Lon</th>
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                        <th>X</th>
+                                        <th>Z</th>
+                                        <th>Y</th>
+                                        <th>Lat</th>
+                                        <th>Lon</th>
 
                                         <th></th>
                                     </tr>
@@ -48,18 +49,21 @@
                                 <tbody>
                                     @foreach ($takeoffPoints as $takeoffPoint)
                                         <tr>
-											<td>{{ $takeoffPoint->name }}</td>
-											<td>{{ $takeoffPoint->description }}</td>
-											<td>{{ $takeoffPoint->x }}</td>
-											<td>{{ $takeoffPoint->z }}</td>
-											<td>{{ $takeoffPoint->y }}</td>
-											<td>{{ $takeoffPoint->lat }}</td>
-											<td>{{ $takeoffPoint->lon }}</td>
+                                            <td>{{ $takeoffPoint->name }}</td>
+                                            <td>{{ $takeoffPoint->description }}</td>
+                                            <td>{{ $takeoffPoint->x }}</td>
+                                            <td>{{ $takeoffPoint->z }}</td>
+                                            <td>{{ $takeoffPoint->y }}</td>
+                                            <td>{{ $takeoffPoint->lat }}</td>
+                                            <td>{{ $takeoffPoint->lon }}</td>
 
                                             <td>
-                                                <form action="{{ route('takeoff-points.destroy',$takeoffPoint->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('takeoff-points.show',$takeoffPoint->id) }}">Show</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('takeoff-points.edit',$takeoffPoint->id) }}">Edit</a>
+                                                <form action="{{ route('takeoff-points.destroy', $takeoffPoint->id) }}"
+                                                    method="POST">
+                                                    <a class="btn btn-sm btn-primary "
+                                                        href="{{ route('takeoff-points.show', $takeoffPoint->id) }}">Show</a>
+                                                    <a class="btn btn-sm btn-success"
+                                                        href="{{ route('takeoff-points.edit', $takeoffPoint->id) }}">Edit</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>

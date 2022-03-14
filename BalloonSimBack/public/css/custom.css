@@ -1,4 +1,5 @@
-td form .btn {
+td form .btn,
+.buttons-td a{
     width: 100%;
     margin: 2px;
 }
@@ -16,11 +17,12 @@ body {
     margin-left: 12px;
 }
 
-.form-group.password input, input.pass{
+.form-group.password input,
+input.pass {
     -webkit-text-security: disc;
 }
 
-div.logout{
+div.logout {
     width: 100%;
     display: flex;
     align-items: center;
@@ -28,10 +30,10 @@ div.logout{
     text-align: end;
 }
 
-div.logout a{
+div.logout a {
     color: #939d97;
 }
 
-nav a:hover{
+nav a:hover {
     color: whitesmoke !important;
 }

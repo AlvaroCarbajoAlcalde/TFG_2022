@@ -3,7 +3,6 @@
 use App\Http\Controllers\TakeoffPointController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Redirect;
 
 /*
 |--------------------------------------------------------------------------
