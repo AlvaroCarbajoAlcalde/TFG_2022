@@ -8,7 +8,7 @@ import BackgroundController from './class/backgroundController';
 export class AppComponent {
   title = 'BalloonSimulator';
 
-  constructor(private renderer: Renderer2) {
-    BackgroundController.startInterval(renderer);
+  constructor() {
+    BackgroundController.startInterval();
   }
 }

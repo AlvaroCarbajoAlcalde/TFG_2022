@@ -3,10 +3,7 @@ import { Renderer2 } from '@angular/core';
 class BackgroundController {
   private static instance: BackgroundController;
 
-  private readonly secondsGap = 7.5;
-  private readonly maxImages = 5;
-  private readonly screenshotsRoute = 'assets/screenshots';
-  private n!: number;
+  private readonly secondsGap = 10;
   private interval!: any;
 
   public static getInstance() {
@@ -18,25 +15,22 @@ class BackgroundController {
 
   private constructor() {}
 
-  public startInterval(renderer: Renderer2) {
-    this.n = 0;
-    console.count('Create');
+  public startInterval() {
+    const sliders = document.getElementsByClassName('slide-img');
+    let n = 0;
 
-    renderer.setStyle(
-      document.body,
-      'backgroundImage',
-      `url('${this.screenshotsRoute}/0.png')`
-    );
+    console.count('Create');
+    console.log(sliders);
 
     this.interval = setInterval(() => {
-      this.n++;
-      if (this.n > this.maxImages - 1) this.n = 0;
-      renderer.setStyle(
-        document.body,
-        'backgroundImage',
-        `url('${this.screenshotsRoute}/${this.n}.png')`
-      );
-      console.count('Change');
+      n++;
+      if (n >= sliders.length) n = 0;
+
+      Array.from(sliders).forEach((slider) => {
+        slider.classList.remove('active');
+      });
+      sliders[n].classList.add('active');
+
     }, this.secondsGap * 1000);
   }
 
