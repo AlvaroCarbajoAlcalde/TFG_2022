@@ -1,5 +1,3 @@
-import { Renderer2 } from '@angular/core';
-
 class BackgroundController {
   private static instance: BackgroundController;
 
@@ -19,9 +17,6 @@ class BackgroundController {
     const sliders = document.getElementsByClassName('slide-img');
     let n = 0;
 
-    console.count('Create');
-    console.log(sliders);
-
     this.interval = setInterval(() => {
       n++;
       if (n >= sliders.length) n = 0;
@@ -30,7 +25,6 @@ class BackgroundController {
         slider.classList.remove('active');
       });
       sliders[n].classList.add('active');
-
     }, this.secondsGap * 1000);
   }
 

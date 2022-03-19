@@ -65,7 +65,15 @@ var started;
 
 //Testing
 var testing = true;
+var showCollisions = false;
+var freeCamera = false;
 
 function setSelectedSkybox(value) {
   selectedSkybox = value;
 }
+
+var startPoint = {
+  x: 3830,
+  y: 30.7,
+  z: 3945,
+};

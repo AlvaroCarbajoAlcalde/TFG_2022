@@ -34,13 +34,13 @@ function startGame() {
     game.appendChild(canvas);
     engine.resize();
     timer();
-    setGasListener();
+    if (!testing) setGasListener();
 
     balloon = new Balloon(pointer, balloonModel);
     //InitPos
-    balloon.pointer.position.x = 3830;
-    balloon.pointer.position.z = 3945;
-    balloon.pointer.position.y = 30.7;
+    balloon.pointer.position.x = startPoint.x;
+    balloon.pointer.position.z = startPoint.z;
+    balloon.pointer.position.y = startPoint.y;
 
     balloon.setMetersFromPosition();
     balloon.setMovementInterval();
@@ -60,7 +60,7 @@ function loop() {
     showPositionInTablet();
     showDataInAltimeter();
 
-    if (started) {
+    if (started && !testing) {
       balloon.setSpeeds(windDir, windSpeed);
     }
   });

@@ -76,45 +76,46 @@ function setGasListener() {
 }
 
 function setMovement() {
+  console.warn("Testing movement");
   scene.onKeyboardObservable.add((kbInfo) => {
     switch (kbInfo.type) {
       case BABYLON.KeyboardEventTypes.KEYDOWN:
         switch (kbInfo.event.key) {
           case "A":
-            mX -= 100;
+            balloon.pointer.position.x -= 100;
             break;
           case "D":
-            mX += 100;
+            balloon.pointer.position.x += 100;
             break;
           case "W":
-            mZ += 100;
+            balloon.pointer.position.z += 100;
             break;
           case "S":
-            mZ -= 100;
+            balloon.pointer.position.z -= 100;
             break;
           case " ":
-            altura += 10;
+            balloon.pointer.position.y += 10;
             break;
           case "B":
-            altura -= 10;
+            balloon.pointer.position.y -= 10;
             break;
           case "a":
-            mX -= 5;
+            balloon.pointer.position.x -= 5;
             break;
           case "d":
-            mX += 5;
+            balloon.pointer.position.x += 5;
             break;
           case "w":
-            mZ += 5;
+            balloon.pointer.position.z += 5;
             break;
           case "s":
-            mZ -= 5;
+            balloon.pointer.position.z -= 5;
             break;
           case "u":
-            altura += 1;
+            balloon.pointer.position.y += 1;
             break;
           case "b":
-            altura -= 1;
+            balloon.pointer.position.y -= 1;
             break;
           case "h":
             started = true;

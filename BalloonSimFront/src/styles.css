@@ -83,6 +83,37 @@ canvas {
   margin: 0 auto;
 }
 
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+/*Content-card*/
+.content-card {
+  background-color: var(--primary);
+  color: white;
+  padding: 20px;
+  border-radius: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  flex-direction: column;
+  box-shadow: 0px 0px 10px 1px black;
+}
+
+.content-card h1{
+  margin: 0;
+  padding: 0;
+}
+
+.content-card hr{
+  width: 100%;
+  margin-top: 0;
+}
+
 /*Ocultar interfaz*/
 .visibleOff {
   opacity: 0;

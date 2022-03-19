@@ -1,7 +1,7 @@
 class SkyboxController {
   private static instance: SkyboxController;
   public currentSelected: string;
-  private readonly values = [
+  public static readonly values = [
     'bluecloud',
     'browncloud',
     'graycloud',
@@ -20,7 +20,9 @@ class SkyboxController {
   }
 
   public getRandomSkybox(): string {
-    return this.values[Math.floor(Math.random() * this.values.length)];
+    return SkyboxController.values[
+      Math.floor(Math.random() * SkyboxController.values.length)
+    ];
   }
 }
 

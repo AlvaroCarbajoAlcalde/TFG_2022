@@ -6,6 +6,9 @@ function showPositionInTablet() {
   positionX.innerHTML = `LON: ${balloon.calcDegreesLon()}`;
   positionZ.innerHTML = `LAT: ${balloon.calcDegreesLat()}`;
   positionY.innerHTML = `T: ${balloon.temp.toFixed(2)}`;
+  if(testing){
+    positionY.innerHTML = `X: ${balloon.pointer.position.x}<br>Z: ${balloon.pointer.position.z}<br>Y: ${balloon.pointer.position.y}<br>`;
+  }
 }
 
 /**
