@@ -25,7 +25,7 @@ TFG-2021/22 DAW, IES Comercio.
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/icons/html.png"> HTML 5</code>
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/icons/css.png"> CSS 3</code>
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/icons/js.png"> JavaScript</code>
-<code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/icons/json.png"> JSON</code><br>
+<code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/icons/json.png"> JSON</code><br><br>
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/icons/typescript.png"> TypeScript</code>
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/icons/php.png"> PHP</code>
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/icons/blade.png"> Blade</code>
@@ -55,7 +55,7 @@ TFG-2021/22 DAW, IES Comercio.
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/icons/github.png"> Github</code>
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/icons/leaflet.png"> Leaflet JS</code>
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/icons/vscode.png"> VSCode</code>
-<code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/icons/gimp.png"> Gimp 2</code><br>
+<code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/icons/gimp.png"> Gimp 2</code><br><br>
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/icons/photoshop.png"> Photoshop</code>
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/icons/visor3d.png"> Visor3D</code>
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/icons/postman.png"> Postman</code>
