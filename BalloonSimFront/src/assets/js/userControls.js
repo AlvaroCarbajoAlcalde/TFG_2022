@@ -70,7 +70,7 @@ function setGasListener() {
     ) {
       balloon.temp += 0.83;
     } else {
-      if(started) balloon.temp -= 0.16;
+      if (started) balloon.temp -= 0.16;
     }
   }, 300);
 }
@@ -116,6 +116,17 @@ function setMovement() {
             break;
           case "b":
             balloon.pointer.position.y -= 1;
+            break;
+          case "N":
+            balloon.pointer.position.y += 0.1;
+            break;
+          case "I":
+            balloon.pointer.position.y -= -0.1;
+          case "n":
+            balloon.pointer.position.y += 0.01;
+            break;
+          case "i":
+            balloon.pointer.position.y -= -0.01;
             break;
           case "h":
             started = true;
