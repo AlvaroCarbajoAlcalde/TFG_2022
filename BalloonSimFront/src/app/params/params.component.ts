@@ -20,7 +20,12 @@ export class ParamsComponent implements OnInit {
     const takeoffsDiv = document.getElementById('takeoffs-container');
     if (takeoffsDiv) {
       takeoffs.forEach((takeoff) => {
-        takeoffsDiv.innerHTML = takeoff.name;
+        const button = document.createElement('button');
+        button.innerHTML += takeoff.name;
+        button.onclick = () => {
+          takeoffController.selectTakeoff(takeoff);
+        };
+        takeoffsDiv.appendChild(button);
       });
     }
   }
