@@ -118,15 +118,15 @@ function setMovement() {
             balloon.pointer.position.y -= 1;
             break;
           case "N":
-            balloon.pointer.position.y += 0.1;
+            balloon.pointer.position.y -= 0.1;
             break;
           case "I":
-            balloon.pointer.position.y -= -0.1;
+            balloon.pointer.position.y += 0.1;
           case "n":
-            balloon.pointer.position.y += 0.01;
+            balloon.pointer.position.y -= 0.01;
             break;
           case "i":
-            balloon.pointer.position.y -= -0.01;
+            balloon.pointer.position.y += 0.01;
             break;
           case "h":
             started = true;

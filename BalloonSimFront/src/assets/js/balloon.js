@@ -45,7 +45,8 @@ class Balloon {
    */
   calcDegreesLat() {
     const latDeg =
-      leftDeg - (this.pointer.position.z / mapTotalSize) * diffDegX;
+      upDeg +
+      ((this.pointer.position.z - mapTotalSize) / mapTotalSize) * diffDegY;
     return latDeg.toFixed(5);
   }
 
@@ -56,7 +57,8 @@ class Balloon {
    * @memberof Balloon
    */
   calcDegreesLon() {
-    const lonDeg = upDeg - (this.pointer.position.x / mapTotalSize) * diffDegY;
+    const lonDeg =
+      leftDeg - (this.pointer.position.x / mapTotalSize) * diffDegX;
     return lonDeg.toFixed(5);
   }
 

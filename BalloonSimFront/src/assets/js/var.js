@@ -51,9 +51,9 @@ var mZ;
 var altura;
 
 //Degreees Conversion
-const upDeg = 42.769508;
+const upDeg = 42.77319072255673;
 const diffDegY = upDeg - 42.317161;
-const leftDeg = -3.287866;
+const leftDeg = -3.2879013674696;
 const diffDegX = leftDeg + 2.670898;
 
 //Movement & temp
