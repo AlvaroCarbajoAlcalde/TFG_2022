@@ -13,4 +13,26 @@ export default class RequestController {
       });
     return toReturn;
   }
+
+  public static async startFlight(user: string = 'anon'): Promise<number> {
+    let toReturn: number = 0;
+    await fetch(`${environment.apiRoute}newflight/${user}`)
+      .then((response) => response.json())
+      .then((id) => {
+        toReturn = id;
+      });
+    return toReturn;
+  }
+
+  public static savePoint(
+    flight: number,
+    s: number,
+    lat: number,
+    lon: number,
+    alt: number
+  ) {
+    fetch(
+      `${environment.apiRoute}newpoint/${flight}/${s}/${lat}/${lon}/${alt}`
+    );
+  }
 }

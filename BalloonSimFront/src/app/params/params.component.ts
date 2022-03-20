@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import RequestController from '../class/requestController';
 import takeoffController from '../class/takeoffController';
 import * as L from 'leaflet';
-import Takeoff from '../model/takeoff';
 
 @Component({
   selector: 'app-params',

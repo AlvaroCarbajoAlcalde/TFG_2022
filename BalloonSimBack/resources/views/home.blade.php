@@ -8,8 +8,10 @@
 
         @php
             $no = 1;
-            $users = App\Models\User::all();
-            $takeoffs = App\Models\TakeoffPoint::all();
+            $users = count(App\Models\User::all());
+            $takeoffs = count(App\Models\TakeoffPoint::all());
+            $flights = count(App\Models\Flight::all());
+            $routes = count(App\Models\Route::all());
             $dbName = DB::connection()->getDatabaseName();
             
             function getTableSize($tableName)
@@ -59,7 +61,7 @@
                                             <td>{{ $no++ }}</td>
                                             <td>takeoff_points</td>
                                             <td>List of takeoff places.</td>
-                                            <td>{{ count($takeoffs) }}</td>
+                                            <td>{{ $takeoffs }}</td>
                                             <td>{{ getTableSize('takeoff_points') }}</td>
                                             <td class="buttons-td">
                                                 <a class="btn btn-sm btn-primary"
@@ -70,10 +72,30 @@
                                             <td>{{ $no++ }}</td>
                                             <td>users</td>
                                             <td>List of frontend users.</td>
-                                            <td>{{ count($users) }}</td>
+                                            <td>{{ $users }}</td>
                                             <td>{{ getTableSize('users') }}</td>
                                             <td class="buttons-td">
                                                 <a class="btn btn-sm btn-primary" href="{{ url('/users') }}">Show</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{ $no++ }}</td>
+                                            <td>flights</td>
+                                            <td>List of flights.</td>
+                                            <td>{{ $flights }}</td>
+                                            <td>{{ getTableSize('flights') }}</td>
+                                            <td class="buttons-td">
+                                                <a class="btn btn-sm btn-primary" href="{{ url('/flights') }}">Show</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{ $no++ }}</td>
+                                            <td>routes</td>
+                                            <td>List of route points for each flight.</td>
+                                            <td>{{ $routes }}</td>
+                                            <td>{{ getTableSize('routes') }}</td>
+                                            <td class="buttons-td">
+                                                <a class="btn btn-sm btn-primary" href="{{ url('/routes') }}">Show</a>
                                             </td>
                                         </tr>
                                     </tbody>

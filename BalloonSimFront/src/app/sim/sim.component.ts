@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import * as L from 'leaflet';
 import { catchError, reduce } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import RequestController from '../class/requestController';
 import SkyboxController from '../class/skyboxController';
 import takeoffController from '../class/takeoffController';
 
@@ -25,12 +26,14 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
   private map!: L.Map;
   private mapUpdateInterval!: any;
   private pointsSaveInterval!: any;
-  private pointList!: number[][];
+  private flightID!: number;
+  private readonly secondsBetweenSaves = 3;
+  private seconds!: number;
 
   constructor(private router: Router) {}
 
-  ngOnInit(): void {
-    this.pointList = [];
+  async ngOnInit(): Promise<void> {
+    this.seconds = 0;
     document.body.classList.add('no-overflow');
     testing = environment.testing;
     showCollisions = environment.showCollisions;
@@ -51,6 +54,9 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
     window.onresize = () => {
       resizeCanvas();
     };
+
+    this.flightID = await RequestController.startFlight();
+    console.info('Flight_ID', this.flightID);
   }
 
   ngAfterViewInit(): void {
@@ -94,22 +100,24 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
       }
     }, 250);
 
-    this.mapUpdateInterval = setInterval(() => {
+    this.pointsSaveInterval = setInterval(() => {
       if (balloon) {
-        this.pointList.push([
+        RequestController.savePoint(
+          this.flightID,
+          this.seconds,
           balloon.calcDegreesLat(),
           balloon.calcDegreesLon(),
-        ]);
+          Math.round(balloon.altura * 3.28)
+        );
+        this.seconds += this.secondsBetweenSaves;
       }
-    }, 3000);
+    }, this.secondsBetweenSaves * 1000);
   }
 
   ngOnDestroy(): void {
     document.body.classList.remove('no-overflow');
     clearInterval(this.mapUpdateInterval);
-    console.groupCollapsed('Ruta');
-    console.table(this.pointList);
-    console.groupEnd();
+    clearInterval(this.pointsSaveInterval);
   }
 
   endGame() {
