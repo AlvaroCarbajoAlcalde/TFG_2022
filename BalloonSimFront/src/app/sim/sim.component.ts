@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import SkyboxController from '../class/skyboxController';
@@ -18,10 +18,11 @@ declare let startPoint: any;
   selector: 'app-sim',
   templateUrl: './sim.component.html',
 })
-export class SimComponent implements OnInit {
+export class SimComponent implements OnInit, OnDestroy {
   constructor(private router: Router) {}
 
   ngOnInit(): void {
+    document.body.classList.add('no-overflow');
     testing = environment.testing;
     showCollisions = environment.showCollisions;
     freeCamera = false;
@@ -41,6 +42,10 @@ export class SimComponent implements OnInit {
     window.onresize = () => {
       resizeCanvas();
     };
+  }
+
+  ngOnDestroy(): void {
+    document.body.classList.remove('no-overflow');
   }
 
   endGame() {

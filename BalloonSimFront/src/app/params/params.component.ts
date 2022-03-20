@@ -17,20 +17,29 @@ export class ParamsComponent implements OnInit, AfterViewInit {
   ngOnInit() {}
 
   async ngAfterViewInit(): Promise<void> {
-    //#region MarkerShadow
-    const iconRetinaUrl = 'assets/marker-icon-2x.png';
-    const iconUrl = 'assets/marker-icon.png';
-    const shadowUrl = 'assets/marker-shadow.png';
+    //#region MarkerIcons
     const iconDefault = L.icon({
-      iconRetinaUrl,
-      iconUrl,
-      shadowUrl,
+      iconRetinaUrl: 'assets/img/marker-blue.png',
+      iconUrl: 'assets/img/marker-blue.png',
+      shadowUrl: 'assets/marker-shadow.png',
       iconSize: [25, 41],
       iconAnchor: [12, 41],
       popupAnchor: [1, -34],
       tooltipAnchor: [16, -28],
       shadowSize: [41, 41],
     });
+
+    const iconRed = L.icon({
+      iconRetinaUrl: 'assets/img/marker-red.png',
+      iconUrl: 'assets/img/marker-red.png',
+      shadowUrl: 'assets/marker-shadow.png',
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      tooltipAnchor: [16, -28],
+      shadowSize: [41, 41],
+    });
+
     L.Marker.prototype.options.icon = iconDefault;
     //#endregion
 
@@ -53,27 +62,25 @@ export class ParamsComponent implements OnInit, AfterViewInit {
 
     //#region Markers
     const takeoffs = await RequestController.getTakeOffs();
-    const takeoffsDiv = document.getElementById('takeoffs-container');
-    if (takeoffsDiv) {
-      takeoffs.forEach((takeoff) => {
-        const marker = L.marker([takeoff.lat, takeoff.lon], {
-          title: takeoff.name,
-          riseOnHover: true,
-        });
-        marker
-          .addTo(this.map)
-          .on('click', () => {
-            takeoffController.selectedTakeoff = takeoff;
-          })
-          .bindPopup(this.setMarkerPopup(takeoff))
-          .openPopup();
-      });
-      //#endregion
-    }
-  }
+    const markers: L.Marker[] = [];
 
-  private setMarkerPopup(takeoff: Takeoff): string {
-    let toReturn = `${takeoff.name}<br>${takeoff.description}`;
-    return toReturn;
+    takeoffs.forEach((takeoff) => {
+      const marker = L.marker([takeoff.lat, takeoff.lon], {
+        title: takeoff.name,
+        riseOnHover: true,
+      });
+      marker
+        .addTo(this.map)
+        .on('click', () => {
+          takeoffController.selectedTakeoff = takeoff;
+          markers.forEach((element: L.Marker) => {
+            element.setIcon(iconDefault);
+          });
+          marker.setIcon(iconRed);
+        })
+        .bindPopup(`<b>${takeoff.name}</b><br>${takeoff.description}`);
+      markers.push(marker);
+    });
+    //#endregion
   }
 }
