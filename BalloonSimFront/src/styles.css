@@ -307,6 +307,20 @@ h2 {
   top: 0;
 }
 
+.mapCentering {
+  position: absolute;
+  width: 35px;
+  height: auto;
+  top: 0;
+  right: 0;
+  z-index: 4;
+  background-image: url("./assets/img/mapcenter-active.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/*Quemador*/
 :root {
   --quemadorW: 420px;
   --quemadorH: 114px;
