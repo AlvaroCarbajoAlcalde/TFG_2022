@@ -325,17 +325,23 @@ h2 {
   top: 0;
 }
 
-.mapCentering {
+#mapCentering {
   position: absolute;
-  width: 35px;
-  height: auto;
-  top: 0;
-  right: 0;
+  width: 30px;
+  height: 30px;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
   z-index: 4;
-  background-image: url("./assets/img/mapcenter-active.png");
+  background-image: url("./assets/img/mapcenter.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  transition: 1s;
+}
+
+#mapCentering.center {
+  background-image: url("./assets/img/mapcenter-active.png");
 }
 
 /*Quemador*/

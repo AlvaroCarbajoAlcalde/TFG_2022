@@ -29,11 +29,13 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
   private flightID!: number;
   private readonly secondsBetweenSaves = 3;
   private seconds!: number;
+  private isMapCentered!: boolean;
 
   constructor(private router: Router) {}
 
   async ngOnInit(): Promise<void> {
     this.seconds = 0;
+    this.isMapCentered = true;
     document.body.classList.add('no-overflow');
     testing = environment.testing;
     showCollisions = environment.showCollisions;
@@ -95,7 +97,7 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
           balloon.calcDegreesLon()
         );
         marker.setLatLng(latLng);
-        this.map.panTo(latLng);
+        if (this.isMapCentered) this.map.panTo(latLng);
         route.addLatLng(latLng);
       }
     }, 250);
@@ -123,5 +125,12 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
   endGame() {
     endSim();
     this.router.navigate(['']);
+  }
+
+  toggleMapCentering() {
+    this.isMapCentered = !this.isMapCentered;
+    if (this.isMapCentered)
+      document.getElementById('mapCentering')?.classList.add('center');
+    else document.getElementById('mapCentering')?.classList.remove('center');
   }
 }
