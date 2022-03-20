@@ -1,7 +1,40 @@
 td form .btn,
-.buttons-td a{
+.buttons-td a {
     width: 100%;
     margin: 2px;
+}
+
+/* .container-fluid nav div.hidden {
+    display: none;
+} */
+.container-fluid nav {
+    display: flex;
+}
+
+.container-fluid nav .hidden div p {
+    display: none;
+}
+.container-fluid nav svg {
+    width: 30px;
+    height: 30px;
+}
+
+.container-fluid nav span span{
+    color: blue;
+    font-weight: bolder;
+}
+
+.container-fluid nav a {
+    color: black;
+    text-decoration: none;
+}
+
+.container-fluid nav a:hover{
+    color: blue !important;
+}
+
+.container-fluid nav .flex {
+    display: none;
 }
 
 .form-group input {
