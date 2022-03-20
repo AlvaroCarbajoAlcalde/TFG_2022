@@ -267,8 +267,8 @@ h2 {
 
 /*Tablet*/
 :root {
-  --tabletW: 863px;
-  --tabletH: 622px;
+  --tabletW: calc(863px * 1.1);
+  --tabletH: calc(622px * 1.1);
 }
 
 #tablet {
@@ -283,7 +283,7 @@ h2 {
   right: 15px;
   box-shadow: 10px 5px 50px black;
   border-radius: 19px;
-  transition:opacity 1.2s;
+  transition: opacity 1.2s;
 }
 
 #tablet .tablet-show-contents {
@@ -295,9 +295,9 @@ h2 {
 #tabletContent {
   position: relative;
   background-color: whitesmoke;
-  width: 398px;
-  height: 251px;
-  margin-top: 31px;
+  width: 442px;
+  height: 286px;
+  margin-top: 28px;
   margin-left: 18px;
 }
 
@@ -320,7 +320,7 @@ h2 {
   background-image: url("./assets/img/quemadorSin.png");
   top: -5px;
   left: calc(50vw - var(--quemadorW) / 2);
-  transition:opacity 1.2s;
+  transition: opacity 1.2s;
 }
 
 #gatilloIzq {
@@ -481,7 +481,7 @@ h2 {
   left: 15px;
   border-radius: 40px;
   font-family: "digital";
-  transition:opacity 1.2s;
+  transition: opacity 1.2s;
 }
 
 #altimetroContent {
