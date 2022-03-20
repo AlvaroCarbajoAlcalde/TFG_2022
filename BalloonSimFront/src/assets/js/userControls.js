@@ -1,28 +1,4 @@
 /**
- * toggleTablet
- * muestra u oculta la tablet
- */
-function toggleTablet() {
-  if (tablet.classList.contains("out")) {
-    tablet.classList.remove("out");
-  } else {
-    tablet.classList.add("out");
-  }
-}
-
-/**
- * toggleAltimetro
- * muestra u oculta el altimetro
- */
-function toggleAltimetro() {
-  if (altimetro.classList.contains("out")) {
-    altimetro.classList.remove("out");
-  } else {
-    altimetro.classList.add("out");
-  }
-}
-
-/**
  * clickQuemador
  * quemador presionado
  */

@@ -16,7 +16,7 @@ body {
   overflow-x: hidden;
 }
 
-body.no-overflow{
+body.no-overflow {
   overflow: hidden;
 }
 
@@ -114,21 +114,32 @@ canvas {
   z-index: 1;
 }
 
-.content-card h1, h2{
+.content-card h1,
+h2 {
   margin: 0;
   padding: 0;
 }
 
-.content-card hr{
+.content-card hr {
   width: 100%;
   margin-top: 0;
 }
 
 /*Map*/
-.map-container {
+.params-map {
   width: 100%;
   height: 600px;
+}
+
+.map-container {
+  width: 100%;
+  height: 100%;
   z-index: 1;
+}
+
+.map-container.tablet {
+  position: absolute;
+  top: 0;
 }
 
 .map-frame {
@@ -142,7 +153,13 @@ canvas {
   width: 100%;
 }
 
-#map a{
+#tablet #map {
+  border-radius: 0px;
+  z-index: 1;
+}
+
+#map a,
+.leaflet-control-container {
   display: none;
 }
 
@@ -266,22 +283,13 @@ canvas {
   right: 15px;
   box-shadow: 10px 5px 50px black;
   border-radius: 19px;
-  transition: 1.4s ease-out;
-  cursor: pointer;
+  transition:opacity 1.2s;
 }
 
-#tablet * {
-  cursor: pointer;
-}
-
-#tablet p,
-h3 {
+#tablet .tablet-show-contents {
+  background: rgba(255, 255, 255, 0.76);
   padding: 0;
   margin: 0;
-}
-
-#tablet.out {
-  right: calc(15px - var(--tabletW) / 2.1);
 }
 
 #tabletContent {
@@ -291,6 +299,12 @@ h3 {
   height: 251px;
   margin-top: 31px;
   margin-left: 18px;
+}
+
+.tablet-show-contents {
+  z-index: 3;
+  position: absolute;
+  top: 0;
 }
 
 :root {
@@ -306,7 +320,7 @@ h3 {
   background-image: url("./assets/img/quemadorSin.png");
   top: -5px;
   left: calc(50vw - var(--quemadorW) / 2);
-  transition: 1s ease-out;
+  transition:opacity 1.2s;
 }
 
 #gatilloIzq {
@@ -466,17 +480,8 @@ h3 {
   top: 15px;
   left: 15px;
   border-radius: 40px;
-  transition: 1.1s ease-out;
   font-family: "digital";
-  cursor: pointer;
-}
-
-#altimetro * {
-  cursor: pointer;
-}
-
-#altimetro.out {
-  left: calc(15px - var(--altimetroW) / 1.6);
+  transition:opacity 1.2s;
 }
 
 #altimetroContent {

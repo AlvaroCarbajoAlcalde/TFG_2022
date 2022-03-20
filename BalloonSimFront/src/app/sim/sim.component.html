@@ -1,10 +1,17 @@
 <div id="sim">
 
-    <section id="tablet" onclick="toggleTablet()">
+    <section id="tablet">
         <div id="tabletContent">
-            <p id="positionX"></p>
-            <p id="positionZ"></p>
-            <p id="positionY"></p>
+            <div class="map-container tablet">
+                <div class="map-frame">
+                    <div class="tablet-show-contents">
+                        <p id="positionX"></p>
+                        <p id="positionZ"></p>
+                        <p id="positionY"></p>
+                    </div>
+                    <div id="map"></div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -25,7 +32,7 @@
             onmouseup="unClickQuemador(this)" onmouseleave="unClickQuemador(this)">
     </section>
 
-    <section id="altimetro" onclick="toggleAltimetro()">
+    <section id="altimetro">
         <div id="altimetroContent">
             <label id="altTemperatura">T 23.3°C</label>
             <label id="altSpeed">Wind: 63° <br>23.3 m/s</label>
@@ -54,5 +61,5 @@
             <div class="loader"></div>
         </div>
     </section>
-    
+
 </div>
