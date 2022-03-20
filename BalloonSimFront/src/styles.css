@@ -24,6 +24,24 @@ body.no-overflow {
   margin-top: 84px;
 }
 
+/*scrollbar*/
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--lighter);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--light);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
 /*Header*/
 header {
   position: fixed;
