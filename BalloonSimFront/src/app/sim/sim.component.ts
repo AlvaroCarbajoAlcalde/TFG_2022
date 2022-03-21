@@ -14,7 +14,6 @@ declare const endSim: any;
 declare const setSelectedSkybox: any;
 declare let testing: any;
 declare let showCollisions: any;
-declare let freeCamera: any;
 declare let startPoint: any;
 declare let balloon: any;
 
@@ -39,7 +38,6 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
     document.body.classList.add('no-overflow');
     testing = environment.testing;
     showCollisions = environment.showCollisions;
-    freeCamera = false;
 
     if (takeoffController.selectedTakeoff) {
       startPoint.x = takeoffController.selectedTakeoff.x;

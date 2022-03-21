@@ -66,7 +66,6 @@ var started;
 //Testing
 var testing = true;
 var showCollisions = false;
-var freeCamera = false;
 
 function setSelectedSkybox(value) {
   selectedSkybox = value;

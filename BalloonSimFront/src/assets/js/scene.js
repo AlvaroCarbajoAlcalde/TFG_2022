@@ -23,33 +23,18 @@ function setLight() {
 }
 
 function setCamera() {
-  if (freeCamera) {
-    camera = new BABYLON.freeCamera(
-      "Camera",
-      36.15,
-      30.7,
-      300,
-      BABYLON.Vector3.Zero(),
-      scene
-    );
-    //Prevent going under map
-    camera.upperBetaLimit = (Math.PI / 2) * 0.9;
-    //User controls
-    camera.attachControl(canvas, true);
-  } else {
-    camera = new BABYLON.ArcRotateCamera(
-      "Camera",
-      36.15,
-      1,
-      300,
-      BABYLON.Vector3.Zero(),
-      scene
-    );
-    //Prevent going under map
-    camera.upperBetaLimit = (Math.PI / 2) * 0.9;
-    //User controls
-    camera.attachControl(canvas, true);
-  }
+  camera = new BABYLON.ArcRotateCamera(
+    "Camera",
+    36.15,
+    1,
+    300,
+    BABYLON.Vector3.Zero(),
+    scene
+  );
+  //Prevent going under map
+  camera.upperBetaLimit = (Math.PI / 2) * 0.9;
+  //User controls
+  camera.attachControl(canvas, true);
 }
 
 function setPointer() {
