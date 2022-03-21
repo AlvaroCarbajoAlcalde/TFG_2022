@@ -21,13 +21,13 @@ TFG-2021/22 DAW, IES Comercio.
 
 ## Objectives
 
-Create a balloon simulator with Babylon, a map of La Rioja and simulate a real balloon movement.<br>
-Create the frontend app in Angular with views and parameters to configure the simulator for the users.<br>
-Create a database for the project.<br>
-Save the routes of the flights thanks to OpenStreetMap api and Leaflet in a database.<br>
-Create a backend app with laravel to control the tables of the databse.<br>
-Add an API to the backend to allow comunication between front and back.<br>
-Comunicate applications and connect frontend with the simmulator.<br>
+- Create a balloon simulator with Babylon, a map of La Rioja and simulate a real balloon movement.<br>
+- Create the frontend app in Angular with views and parameters to configure the simulator for the users.<br>
+- Create a database for the project.<br>
+- Save the routes of the flights thanks to OpenStreetMap api and Leaflet in a database.<br>
+- Create a backend app with laravel to control the tables of the databse.<br>
+- Add an API to the backend to allow comunication between front and back.<br>
+- Comunicate applications and connect frontend with the simmulator.<br>
 
 ## Technologies
 
