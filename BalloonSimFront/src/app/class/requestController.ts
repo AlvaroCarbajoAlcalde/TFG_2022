@@ -1,4 +1,5 @@
 import { environment } from 'src/environments/environment';
+import Flight from '../model/flight';
 import Takeoff from '../model/takeoff';
 
 export default class RequestController {
@@ -34,5 +35,22 @@ export default class RequestController {
     fetch(
       `${environment.apiRoute}newpoint/${flight}/${s}/${lat}/${lon}/${alt}`
     );
+  }
+
+  public static async getFlights(user: string | null): Promise<Flight[]> {
+    const toReturn: Flight[] = [];
+    let no = 0;
+    let url: string;
+    if (user != 'anon') url = `${environment.apiRoute}flights\\${user}`;
+    else url = `${environment.apiRoute}flights`;
+    await fetch(url)
+      .then((response) => response.json())
+      .then((flights) => {
+        flights.forEach((element: any) => {
+          element.no = no++;
+          toReturn.push(new Flight(element));
+        });
+      });
+    return toReturn;
   }
 }

@@ -1,0 +1,23 @@
+<section class="content-card">
+    <h1>Historial</h1>
+    <hr>
+    <h2>Vuelos:</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Fecha</th>
+                <th>Usuario</th>
+                <th>Duración</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let flight of flightList">
+                <td>{{flight.no}}</td>
+                <td>{{flight.date}}</td>
+                <td>{{flight.user}}</td>
+                <td>{{flight.duration}}</td>
+            </tr>
+        </tbody>
+    </table>
+</section>

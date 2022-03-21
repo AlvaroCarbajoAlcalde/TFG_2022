@@ -21,7 +21,6 @@ Route::get('newflight/{user}', function ($user) {
     $flight->date = date('Y-m-d H:i:s');
     $flight->user = $user;
     $flight->save();
-
     return DB::table('flights')->latest('updated_at')->first()->id;
 });
 
@@ -50,9 +49,25 @@ Route::get('users', function () {
 });
 
 Route::get('flights/{user}', function ($user) {
-    return Flight::all()->where('user', $user);
+    return response()->json(getFlights($user));
+});
+
+Route::get('flights', function () {
+    return response()->json(getFlights());
 });
 
 Route::get('routes/{flight}', function ($flight) {
     return App\Models\Route::all()->where('flight', $flight);
 });
+
+function getFlights($user = null)
+{
+    $flightList = [];
+    if (!isset($user)) $flights = Flight::all();
+    else  $flights = Flight::all()->where('user', $user);
+    foreach ($flights as $flight) {
+        $s = DB::table('routes')->where('flight', $flight->id)->orderByDesc('seconds')->first()->seconds;
+        $flightList[] = ['date' => $flight->date, 'user' => $flight->user, 'duration' => $s];
+    }
+    return $flightList;
+}

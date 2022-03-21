@@ -4,11 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SimComponent } from './sim/sim.component';
+import { HistoryComponent } from './history/history.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SimComponent
+    SimComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserModule,
