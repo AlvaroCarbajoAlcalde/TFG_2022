@@ -41,3 +41,18 @@ Route::get('newpoint/{flight}/{s}/{lat}/{lon}/{alt}', function ($flight, $s, $la
     $route->save();
     return DB::table('routes')->latest('updated_at')->first()->id;
 });
+
+Route::get('users', function () {
+    $nameList = [];
+    $user = User::all();
+    foreach ($user as $user) $nameList[] = $user->name;
+    return response()->json($nameList);
+});
+
+Route::get('flights/{user}', function ($user) {
+    return Flight::all()->where('user', $user);
+});
+
+Route::get('routes/{flight}', function ($flight) {
+    return App\Models\Route::all()->where('flight', $flight);
+});
