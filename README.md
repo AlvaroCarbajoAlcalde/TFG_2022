@@ -21,10 +21,10 @@ TFG-2021/22 DAW, IES Comercio.
 
 ## Objectives
 
-Create the laravel backend, database and crud app.
-Create the frontend app in Angular.
-Create the balloon simulator.
-Comunicate both applications.
+Create the laravel backend, database and crud app.<br>
+Create the frontend app in Angular.<br>
+Create the balloon simulator.<br>
+Comunicate both applications.<br>
 
 ## Technologies
 
