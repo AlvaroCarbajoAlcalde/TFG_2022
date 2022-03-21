@@ -4,9 +4,12 @@ td form .btn,
     margin: 2px;
 }
 
-/* .container-fluid nav div.hidden {
-    display: none;
-} */
+.col-md-12 .card-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .container-fluid nav {
     display: flex;
 }
