@@ -656,12 +656,12 @@ h2 {
   opacity: 1;
 }
 
-table.flights tbody td{
+table.flights tbody td {
   text-align: center;
   padding: 3px;
 }
 
-table.flights thead th{
+table.flights thead th {
   background-color: var(--primary);
   padding: 10px;
 }
@@ -672,4 +672,14 @@ table.flights tbody tr:nth-child(odd) {
 
 table.flights tr:nth-child(even) {
   background-color: var(--lighter);
+}
+
+table.flights a {
+  text-decoration: none;
+  color: white;
+  transition: 0.5s;
+}
+
+table.flights a:hover {
+  color: var(--primary);
 }
