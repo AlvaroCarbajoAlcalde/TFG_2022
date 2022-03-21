@@ -2,13 +2,14 @@
     <h1>Historial</h1>
     <hr>
     <h2>Vuelos:</h2>
-    <table>
+    <table class="flights">
         <thead>
             <tr>
                 <th>No</th>
                 <th>Fecha</th>
                 <th>Usuario</th>
                 <th>Duración</th>
+                <th>Ver</th>
             </tr>
         </thead>
         <tbody>
@@ -17,6 +18,7 @@
                 <td>{{flight.date}}</td>
                 <td>{{flight.user}}</td>
                 <td>{{flight.duration}}</td>
+                <td> <a routerLink="/history">Ver vuelo</a></td>
             </tr>
         </tbody>
     </table>

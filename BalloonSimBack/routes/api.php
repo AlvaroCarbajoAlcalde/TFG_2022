@@ -67,7 +67,7 @@ function getFlights($user = null)
     else  $flights = Flight::all()->where('user', $user);
     foreach ($flights as $flight) {
         $s = DB::table('routes')->where('flight', $flight->id)->orderByDesc('seconds')->first()->seconds;
-        $flightList[] = ['date' => $flight->date, 'user' => $flight->user, 'duration' => $s];
+        $flightList[] = ['id' => $flight->id, 'date' => $flight->date, 'user' => $flight->user, 'duration' => $s];
     }
     return $flightList;
 }

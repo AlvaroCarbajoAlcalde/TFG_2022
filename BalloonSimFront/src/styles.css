@@ -655,3 +655,21 @@ h2 {
 #slider div.active {
   opacity: 1;
 }
+
+table.flights tbody td{
+  text-align: center;
+  padding: 3px;
+}
+
+table.flights thead th{
+  background-color: var(--primary);
+  padding: 10px;
+}
+
+table.flights tbody tr:nth-child(odd) {
+  background-color: var(--light);
+}
+
+table.flights tr:nth-child(even) {
+  background-color: var(--lighter);
+}

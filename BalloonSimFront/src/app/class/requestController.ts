@@ -39,7 +39,7 @@ export default class RequestController {
 
   public static async getFlights(user: string | null): Promise<Flight[]> {
     const toReturn: Flight[] = [];
-    let no = 0;
+    let no = 1;
     let url: string;
     if (user != 'anon') url = `${environment.apiRoute}flights\\${user}`;
     else url = `${environment.apiRoute}flights`;
