@@ -342,6 +342,7 @@ h2 {
 
 #mapCentering.center {
   background-image: url("./assets/img/mapcenter-active.png");
+  transition: 1s;
 }
 
 /*Quemador*/
