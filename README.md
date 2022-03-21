@@ -5,6 +5,7 @@ TFG-2021/22 DAW, IES Comercio.
 
 ## Menu
 
+- [Objectives](#Objectives)
 - [Technologies](#Technologies)
     - [Languages](#Languages)
     - [Frameworks](#Frameworks)
@@ -17,6 +18,13 @@ TFG-2021/22 DAW, IES Comercio.
     - [Database](#Database)
     - [BackEnd](#Backend)
     - [FrontEnd](#Frontend)
+
+## Objectives
+
+Create the laravel backend, database and crud app.
+Create the frontend app in Angular.
+Create the balloon simulator.
+Comunicate both applications.
 
 ## Technologies
 
