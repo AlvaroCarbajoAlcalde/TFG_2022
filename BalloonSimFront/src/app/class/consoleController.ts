@@ -12,8 +12,8 @@ export default class ConsoleController {
   private static showHelp() {
     console.group('Help');
     console.info('help() ==> Shows help');
-    console.info('sahowTakeoffs() ==> Shows the list of Takeoffs');
-    console.info('sahowFlights() ==> Shows the list of Flights');
+    console.info('showTakeoffs() ==> Shows the list of Takeoffs');
+    console.info('showFlights() ==> Shows the list of Flights');
     console.groupEnd();
   }
 
@@ -25,7 +25,7 @@ export default class ConsoleController {
   }
 
   private static async showFlights() {
-    const flights = await RequestController.getFlights('anon');
+    const flights = await RequestController.getFlights();
     console.groupCollapsed('Flights');
     console.table(flights);
     console.groupEnd();

@@ -12,6 +12,6 @@ export class HistoryComponent implements OnInit {
   constructor() {}
 
   async ngOnInit(): Promise<void> {
-    this.flightList = await RequestController.getFlights('anon');
+    this.flightList = await RequestController.getFlights();
   }
 }

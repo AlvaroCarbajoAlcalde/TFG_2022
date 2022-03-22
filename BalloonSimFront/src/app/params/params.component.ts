@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import RequestController from '../class/requestController';
 import takeoffController from '../class/takeoffController';
 import * as L from 'leaflet';
+import skyboxController from '../class/skyboxController';
+import flightNameController from '../class/flightNameController';
 
 @Component({
   selector: 'app-params',
@@ -16,6 +18,11 @@ export class ParamsComponent implements OnInit, AfterViewInit {
   ngOnInit() {}
 
   async ngAfterViewInit(): Promise<void> {
+    const inputName = <HTMLInputElement>document.getElementsByName('name')[0];
+    inputName.onblur = () => {
+      this.setFlightName();
+    };
+
     //#region MarkerIcons
     const iconDefault = L.icon({
       iconRetinaUrl: 'assets/img/marker-blue.png',
@@ -81,5 +88,20 @@ export class ParamsComponent implements OnInit, AfterViewInit {
       markers.push(marker);
     });
     //#endregion
+  }
+
+  public selectSkybox(value: string) {
+    const imgs = Array.from(document.getElementsByClassName('skyboximg'));
+    imgs.forEach((img) => {
+      img.classList.remove('selected');
+    });
+    document.getElementsByClassName(value)[0].classList.add('selected');
+    skyboxController.currentSelected = value;
+  }
+
+  public setFlightName() {
+    const name = (<HTMLInputElement>document.getElementsByName('name')[0])
+      .value;
+    flightNameController.setCurrentName(name);
   }
 }

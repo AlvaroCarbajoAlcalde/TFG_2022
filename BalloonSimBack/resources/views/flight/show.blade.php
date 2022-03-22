@@ -22,15 +22,19 @@
                         
                         <div class="form-group">
                             <strong>Flightid:</strong>
-                            {{ $flight->flightid }}
+                            {{ $flight->id }}
                         </div>
                         <div class="form-group">
                             <strong>Date:</strong>
                             {{ $flight->date }}
                         </div>
                         <div class="form-group">
-                            <strong>User:</strong>
-                            {{ $flight->user }}
+                            <strong>Name:</strong>
+                            {{ $flight->name }}
+                        </div>
+                        <div class="form-group">
+                            <strong>Takeoff:</strong>
+                            {{ $flight->takeoff }}
                         </div>
 
                     </div>

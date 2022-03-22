@@ -5,8 +5,8 @@
         <thead>
             <tr>
                 <th>No</th>
+                <th>Nombre</th>
                 <th>Fecha</th>
-                <th>Usuario</th>
                 <th>Duración</th>
                 <th>Ver</th>
             </tr>
@@ -14,8 +14,8 @@
         <tbody>
             <tr *ngFor="let flight of flightList">
                 <td>{{flight.no}}</td>
+                <td>{{flight.name}}</td>
                 <td>{{flight.date}}</td>
-                <td>{{flight.user}}</td>
                 <td>{{flight.duration}}</td>
                 <td> <a routerLink="/history">Ver vuelo</a></td>
             </tr>

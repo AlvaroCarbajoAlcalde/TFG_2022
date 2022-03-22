@@ -15,9 +15,9 @@ export default class RequestController {
     return toReturn;
   }
 
-  public static async startFlight(user: string = 'anon'): Promise<number> {
+  public static async startFlight(takeoff: string, name: string = 'undefined'): Promise<number> {
     let toReturn: number = 0;
-    await fetch(`${environment.apiRoute}newflight/${user}`)
+    await fetch(`${environment.apiRoute}newflight/${name}/${takeoff}`)
       .then((response) => response.json())
       .then((id) => {
         toReturn = id;
@@ -37,13 +37,10 @@ export default class RequestController {
     );
   }
 
-  public static async getFlights(user: string | null): Promise<Flight[]> {
+  public static async getFlights(): Promise<Flight[]> {
     const toReturn: Flight[] = [];
     let no = 1;
-    let url: string;
-    if (user != 'anon') url = `${environment.apiRoute}flights\\${user}`;
-    else url = `${environment.apiRoute}flights`;
-    await fetch(url)
+    await fetch(`${environment.apiRoute}flights`)
       .then((response) => response.json())
       .then((flights) => {
         flights.forEach((element: any) => {

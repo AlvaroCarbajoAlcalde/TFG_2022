@@ -9,7 +9,8 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property $id
  * @property $date
- * @property $user
+ * @property $name
+ * @property $takeoff
  * @property $created_at
  * @property $updated_at
  *
@@ -21,7 +22,8 @@ class Flight extends Model
 
   static $rules = [
     'date' => 'required',
-    'user' => 'required',
+    'name' => 'required',
+    'takeoff' => 'required',
   ];
 
   protected $perPage = 20;
@@ -31,5 +33,5 @@ class Flight extends Model
    *
    * @var array
    */
-  protected $fillable = ['date', 'user'];
+  protected $fillable = ['date', 'name', 'takeoff'];
 }
