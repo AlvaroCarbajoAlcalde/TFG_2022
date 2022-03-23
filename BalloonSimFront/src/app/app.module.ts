@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SimComponent } from './sim/sim.component';
 import { HistoryComponent } from './history/history.component';
+import { FlightviewComponent } from './flightview/flightview.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SimComponent,
-    HistoryComponent
+    HistoryComponent,
+    FlightviewComponent
   ],
   imports: [
     BrowserModule,

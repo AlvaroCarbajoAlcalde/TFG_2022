@@ -37,7 +37,11 @@ Route::get('newpoint/{flight}/{s}/{lat}/{lon}/{alt}', function ($flight, $s, $la
 });
 
 Route::get('flights', function () {
-    return response()->json(getFlights());
+    return getFlights();
+});
+
+Route::get('flight/{id}', function ($id) {
+    return Flight::all()->where('id', $id)->firstOrFail();
 });
 
 Route::get('routes/{flight}', function ($flight) {
@@ -48,9 +52,13 @@ function getFlights()
 {
     $flightList = [];
     $flights = Flight::all();
+    $limit = 10;
     foreach ($flights as $flight) {
-        $s = DB::table('routes')->where('flight', $flight->id)->orderByDesc('seconds')->first()->seconds;
-        $flightList[] = ['id' => $flight->id, 'date' => $flight->date, 'name' => $flight->name, 'duration' => $s];
+        $s = App\Models\Route::where('flight', $flight->id)->max('seconds');
+        $flightList[] = ['id' => $flight->id, 'date' => $flight->date, 'name' => $flight->name, 'takeoff' => $flight->takeoff, 'duration' => $s];
+        if (--$limit == 0) {
+            break;
+        }
     }
     return $flightList;
 }
