@@ -51,8 +51,8 @@ export class ParamsComponent implements OnInit, AfterViewInit {
 
     //#region Map
     this.map = L.map('map', {
-      center: [42.55878426869105, -2.8633044423426677],
-      zoom: 11,
+      center: [42.61878426869105, -2.9633044423426677],
+      zoom: 10,
     });
 
     const tiles = L.tileLayer(

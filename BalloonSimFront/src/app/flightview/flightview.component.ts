@@ -50,13 +50,13 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
     //#region Map
     this.map = L.map('map', {
       center: [42.55878426869105, -2.8633044423426677],
-      zoom: 11,
+      zoom: 12,
     });
 
     const tiles = L.tileLayer(
       'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       {
-        maxZoom: 15,
+        maxZoom: 16,
         minZoom: 10,
       }
     );
@@ -68,12 +68,16 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
       color: 'red',
       weight: 3,
       opacity: 0.7,
-      smoothFactor: 1,
+      smoothFactor: 0,
+      interactive: true,
     });
     track.addTo(this.map);
 
+    const takeoffMarker = L.circleMarker([0, 0], { radius: 2 });
+    takeoffMarker.addTo(this.map);
+
     const routes = await RequestController.getRoute(this.flightid);
-    console.table(routes)
+    this.map.panTo(new L.LatLng(routes[0].lat, routes[0].lon));
     routes.forEach((point) => {
       track.addLatLng(new L.LatLng(point.lat, point.lon));
     });

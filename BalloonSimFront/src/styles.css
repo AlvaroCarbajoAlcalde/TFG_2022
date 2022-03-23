@@ -678,6 +678,7 @@ table.flights a {
   text-decoration: none;
   color: white;
   transition: 0.5s;
+  cursor: pointer;
 }
 
 table.flights a:hover {

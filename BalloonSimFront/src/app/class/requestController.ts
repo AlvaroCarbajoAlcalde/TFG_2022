@@ -9,6 +9,7 @@ export default class RequestController {
     await fetch(`${environment.apiRoute}takeoffs`)
       .then((response) => response.json())
       .then((takeoffs) => {
+        takeoffs = Object.values(takeoffs);
         takeoffs.forEach((element: any) => {
           toReturn.push(new Takeoff(element));
         });
@@ -47,6 +48,7 @@ export default class RequestController {
     await fetch(`${environment.apiRoute}flights`)
       .then((response) => response.json())
       .then((flights) => {
+        flights = Object.values(flights);
         flights.forEach((element: any) => {
           element.no = no++;
           toReturn.push(new Flight(element));
@@ -60,6 +62,7 @@ export default class RequestController {
     await fetch(`${environment.apiRoute}flight/${id}`)
       .then((response) => response.json())
       .then((element) => {
+        element = Object.values(element);
         toReturn = new Flight(element);
       });
     return toReturn;
@@ -67,12 +70,12 @@ export default class RequestController {
 
   public static async getRoute(flightId: number): Promise<Track[]> {
     const toReturn: Track[] = [];
-    let no = 1;
     await fetch(`${environment.apiRoute}routes/${flightId}`)
       .then((response) => response.json())
       .then((tracks) => {
+        tracks = Object.values(tracks);
+        console.log(tracks);
         tracks.forEach((element: any) => {
-          element.no = no++;
           toReturn.push(new Track(element));
         });
       });

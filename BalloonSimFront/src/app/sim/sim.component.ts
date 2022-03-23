@@ -87,7 +87,7 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
     const tiles = L.tileLayer(
       'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       {
-        maxZoom: 15,
+        maxZoom: 17,
         minZoom: 10,
       }
     );
@@ -99,7 +99,7 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
       color: 'red',
       weight: 3,
       opacity: 0.7,
-      smoothFactor: 1,
+      smoothFactor: 0,
     });
     route.addTo(this.map);
 
