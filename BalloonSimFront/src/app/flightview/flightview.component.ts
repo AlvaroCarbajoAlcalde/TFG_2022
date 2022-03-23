@@ -73,10 +73,14 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
     });
     track.addTo(this.map);
 
-    const takeoffMarker = L.circleMarker([0, 0], { radius: 2 });
+    const routes = await RequestController.getRoute(this.flightid);
+
+    const takeoffMarker = L.circleMarker(
+      new L.LatLng(routes[0].lat, routes[0].lon),
+      { radius: 5, color: 'red', fillColor: 'white', fill: true, fillOpacity: 1 }
+    );
     takeoffMarker.addTo(this.map);
 
-    const routes = await RequestController.getRoute(this.flightid);
     this.map.panTo(new L.LatLng(routes[0].lat, routes[0].lon));
     routes.forEach((point) => {
       track.addLatLng(new L.LatLng(point.lat, point.lon));

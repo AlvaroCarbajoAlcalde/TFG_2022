@@ -74,7 +74,6 @@ export default class RequestController {
       .then((response) => response.json())
       .then((tracks) => {
         tracks = Object.values(tracks);
-        console.log(tracks);
         tracks.forEach((element: any) => {
           toReturn.push(new Track(element));
         });
