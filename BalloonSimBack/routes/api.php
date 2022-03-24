@@ -36,29 +36,28 @@ Route::get('newpoint/{flight}/{s}/{lat}/{lon}/{alt}', function ($flight, $s, $la
     return DB::table('routes')->latest('updated_at')->first()->id;
 });
 
-Route::get('flights', function () {
-    return getFlights();
-});
-
-Route::get('flight/{id}', function ($id) {
-    return Flight::all()->where('id', $id)->firstOrFail();
-});
-
-Route::get('routes/{flight}', function ($flight) {
-    return App\Models\Route::all()->where('flight', $flight);
-});
-
-function getFlights()
-{
+Route::get('flights/{searchfor}', function ($searchfor) {
     $flightList = [];
-    $flights = Flight::all();
+    if ($searchfor != '*') $flights = Flight::where('name', 'like', '%' . $searchfor . '%')->get();
+    else $flights = Flight::all();
+
     $limit = 10;
     foreach ($flights as $flight) {
-        $s = App\Models\Route::where('flight', $flight->id)->max('seconds');
+        $s = DB::table('routes')->where('flight', $flight->id)->max('seconds');
         $flightList[] = ['id' => $flight->id, 'date' => $flight->date, 'name' => $flight->name, 'takeoff' => $flight->takeoff, 'duration' => $s];
         if (--$limit == 0) {
             break;
         }
     }
     return $flightList;
-}
+});
+
+Route::get('flight/{id}', function ($id) {
+    $flight = Flight::all()->where('id', $id)->firstOrFail();
+    $s = DB::table('routes')->where('flight', $flight->id)->max('seconds');
+    return ['id' => $flight->id, 'date' => $flight->date, 'name' => $flight->name, 'takeoff' => $flight->takeoff, 'duration' => $s];
+});
+
+Route::get('routes/{flight}', function ($flight) {
+    return App\Models\Route::all()->where('flight', $flight);
+});

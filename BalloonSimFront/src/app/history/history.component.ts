@@ -14,9 +14,16 @@ export class HistoryComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.flightList = await RequestController.getFlights();
+
+    const search = <HTMLInputElement>document.getElementById('search-input');
+    search.onkeyup = async () => {
+      if (search.value)
+        this.flightList = await RequestController.getFlights(search.value);
+      else this.flightList = await RequestController.getFlights();
+    };
   }
 
-  public seeFlightDetails(flightId: number){
+  public seeFlightDetails(flightId: number) {
     this.router.navigate([`flight-details/${flightId}`]);
   }
 }

@@ -138,11 +138,6 @@ h2 {
   padding: 0;
 }
 
-.content-card hr {
-  width: 100%;
-  margin-top: 0;
-}
-
 /*Map*/
 .params-map {
   width: 100%;
@@ -727,13 +722,33 @@ p{
 }
 
 hr{
-  color: whitesmoke;
-  border-bottom: 2px solid whitesmoke;
+  width: 100%;
+  margin-top: 0;
+  border-bottom: 1px solid white;
   box-shadow: none;
-  border-radius: 5px;
   margin-bottom: 20px;
 }
 
 #flightname{
   text-align: center;
+}
+
+#search{
+  display: flex;
+  gap: 20px;
+  justify-content: left;
+  align-items: center;
+}
+
+#search label{
+  font-weight: bold;
+}
+
+#search input{
+  border: none;
+  background: none;
+  border-bottom: 1px solid white;
+  outline: none;
+  color: white;
+  font-size: large;
 }

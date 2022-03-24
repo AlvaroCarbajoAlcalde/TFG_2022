@@ -42,10 +42,10 @@ export default class RequestController {
     );
   }
 
-  public static async getFlights(): Promise<Flight[]> {
+  public static async getFlights(searchFor = '*'): Promise<Flight[]> {
     const toReturn: Flight[] = [];
     let no = 1;
-    await fetch(`${environment.apiRoute}flights`)
+    await fetch(`${environment.apiRoute}flights/${searchFor}`)
       .then((response) => response.json())
       .then((flights) => {
         flights = Object.values(flights);
@@ -62,7 +62,6 @@ export default class RequestController {
     await fetch(`${environment.apiRoute}flight/${id}`)
       .then((response) => response.json())
       .then((element) => {
-        element = Object.values(element);
         toReturn = new Flight(element);
       });
     return toReturn;
