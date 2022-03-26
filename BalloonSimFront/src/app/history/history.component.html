@@ -10,6 +10,7 @@
             <tr>
                 <th>No</th>
                 <th>Nombre</th>
+                <th>Despegue</th>
                 <th>Fecha</th>
                 <th>Duración</th>
                 <th>Ver</th>
@@ -19,6 +20,7 @@
             <tr *ngFor="let flight of flightList">
                 <td>{{flight.no}}</td>
                 <td>{{flight.name}}</td>
+                <td>{{flight.takeoff}}</td>
                 <td>{{flight.date}}</td>
                 <td>{{flight.duration}}</td>
                 <td> <a (click)="seeFlightDetails(flight.id)">Ver vuelo</a></td>
