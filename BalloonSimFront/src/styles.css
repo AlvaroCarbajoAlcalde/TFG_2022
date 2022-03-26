@@ -132,6 +132,12 @@ canvas {
   z-index: 1;
 }
 
+.content-card p {
+  text-align: justify;
+  font-size: large;
+  line-height: 30px;
+}
+
 .content-card h1,
 h2 {
   margin: 0;
@@ -680,35 +686,35 @@ table.flights a:hover {
   color: var(--primary);
 }
 
-.skybox-selector{
+.skybox-selector {
   display: flex;
   flex-wrap: wrap;
 }
 
-.skybox-selector .row{
+.skybox-selector .row {
   width: 100%;
   display: flex;
 }
 
-.skybox-selector img{
+.skybox-selector img {
   width: 25%;
   height: auto;
   box-sizing: border-box;
   cursor: pointer;
   border-radius: 20px;
   border: 5px solid transparent;
-  transition:border 0.5s;
+  transition: border 0.5s;
 }
 
-.skybox-selector img.selected{
+.skybox-selector img.selected {
   border: 5px solid red;
 }
 
-p{
+p {
   margin: 0;
 }
 
-.inp-text{
+.inp-text {
   border: none;
   background: whitesmoke;
   outline: none;
@@ -721,7 +727,7 @@ p{
   padding-left: 10px;
 }
 
-hr{
+hr {
   width: 100%;
   margin-top: 0;
   border-bottom: 1px solid white;
@@ -729,22 +735,22 @@ hr{
   margin-bottom: 20px;
 }
 
-#flightname{
+#flightname {
   text-align: center;
 }
 
-#search{
+#search {
   display: flex;
   gap: 20px;
   justify-content: left;
   align-items: center;
 }
 
-#search label{
+#search label {
   font-weight: bold;
 }
 
-#search input{
+#search input {
   border: none;
   background: none;
   border-bottom: 1px solid white;
