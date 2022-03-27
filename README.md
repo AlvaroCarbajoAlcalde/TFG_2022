@@ -54,7 +54,7 @@ TFG-2021/22 DAW, IES Comercio.
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/icons/node.png"> Node JS</code>
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/icons/xampp.png"> Xampp</code>
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/icons/phpmyadmin.png"> PHP MyAdmin</code>
-<code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/icons/mysql.jpg"> MySQL</code>
+<code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/icons/mariadb.png"> MariaDB</code>
 
 ### APIs
 
