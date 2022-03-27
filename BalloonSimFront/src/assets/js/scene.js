@@ -32,9 +32,10 @@ function setCamera() {
     scene
   );
   //Prevent going under map
-  camera.upperBetaLimit = (Math.PI / 2) * 0.9;
+  camera.upperBetaLimit = (Math.PI / 2) * 0.95;
   //User controls
   camera.attachControl(canvas, true);
+  camera.lowerRadiusLimit = 2;
 }
 
 function setPointer() {

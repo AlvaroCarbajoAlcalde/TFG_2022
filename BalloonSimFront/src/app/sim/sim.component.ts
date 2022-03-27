@@ -78,6 +78,8 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    document.getElementById('mapCentering')?.classList.add('center');
+    
     //#region map
     this.map = L.map('map', {
       center: [42.55878426869105, -2.8633044423426677],
