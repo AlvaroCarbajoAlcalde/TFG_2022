@@ -12,6 +12,7 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
   private flightid!: number;
   private map!: L.Map;
   public flight!: Flight;
+  public distance!: number;
 
   constructor(
     private _Activatedroute: ActivatedRoute,
@@ -49,7 +50,7 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
 
     //#region Map
     this.map = L.map('map', {
-      center: [42.55878426869105, -2.8633044423426677],
+      center: [42.53, -2.85],
       zoom: 12,
     });
 
@@ -77,13 +78,26 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
 
     const takeoffMarker = L.circleMarker(
       new L.LatLng(routes[0].lat, routes[0].lon),
-      { radius: 5, color: 'red', fillColor: 'white', fill: true, fillOpacity: 1 }
+      {
+        radius: 5,
+        color: 'red',
+        fillColor: 'white',
+        fill: true,
+        fillOpacity: 1,
+      }
     );
     takeoffMarker.addTo(this.map);
 
     this.map.panTo(new L.LatLng(routes[0].lat, routes[0].lon));
+
+    this.distance = 0.0;
+    let previousLatlng = new L.LatLng(routes[0].lat, routes[0].lon);
     routes.forEach((point) => {
-      track.addLatLng(new L.LatLng(point.lat, point.lon));
-    });
+      const latlng = new L.LatLng(point.lat, point.lon);
+      this.distance += latlng.distanceTo(previousLatlng);
+      track.addLatLng(latlng);
+      previousLatlng = latlng;
+    }); 
+    this.distance = parseFloat(this.distance.toFixed(2));
   }
 }

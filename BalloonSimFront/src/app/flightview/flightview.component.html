@@ -11,5 +11,10 @@
             </div>
         </div>
     </div>
+    <hr>
 
+    <h2>Datos del vuelo:</h2>
+    <p *ngIf="flight">Despegue en: {{flight.takeoff}}.</p>
+    <p *ngIf="flight">Duración del vuelo: {{flight.duration}}</p>
+    <p *ngIf="distance">Distancia recorrida: {{distance}} metros.</p>
 </section>
