@@ -89,6 +89,10 @@
                                         </tr>
                                     </tbody>
                                 </table>
+                                <!-- Export database -->
+                                <form action="{{ route('backup_database') }}" method="get">
+                                    <button style="submit" class="btn btn-success"> Export database</button>
+                                </form>
                             </div>
                         </div>
                     </div>
