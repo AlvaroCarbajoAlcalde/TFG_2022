@@ -22,7 +22,7 @@ CREATE TABLE `flights` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 
@@ -90,7 +90,7 @@ CREATE TABLE `routes` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=202 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1192 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 
@@ -107,7 +107,7 @@ CREATE TABLE `takeoff_points` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `takeoff_points_name_unique` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 INSERT INTO takeoff_points (id, name, description, x, z, y, lat, lon, created_at, updated_at) VALUES ('1','Instalaciones de Globos Arcoiris','Finca de despegue de Globos Arcoirirs, Km 459, N-232, Cuzcurrita de Río Tirón.','3830','3945','30.7','42.556537','-2.97265','2022-02-28 09:41:47','2022-03-10 14:24:51');
@@ -121,3 +121,31 @@ INSERT INTO takeoff_points (id, name, description, x, z, y, lat, lon, created_at
 INSERT INTO takeoff_points (id, name, description, x, z, y, lat, lon, created_at, updated_at) VALUES ('6','Parking Poligono Industrial Miranda.','Punto de despegue en polígono industrial de Miranda de Ebro, junto a los Montes Obarenes.','4430','5625','24.76','42.65918','-2.92346','2022-03-27 10:10:09','2022-03-27 10:10:09');
 
 INSERT INTO takeoff_points (id, name, description, x, z, y, lat, lon, created_at, updated_at) VALUES ('7','Ocio','Despegue en Ocio, entre los montes, junto al castillo de la localidad.','5760','5540','32.95','42.65401','-2.81404','2022-03-27 10:11:00','2022-03-27 10:11:00');
+
+INSERT INTO takeoff_points (id, name, description, x, z, y, lat, lon, created_at, updated_at) VALUES ('8','Santo Domingo Oeste','Punto de despegue en Santo Domingo de la calzada.','3955','1945','51.79','42.43542','-2.96253','2022-03-27 13:50:33','2022-03-27 13:50:33');
+
+INSERT INTO takeoff_points (id, name, description, x, z, y, lat, lon, created_at, updated_at) VALUES ('9','Santo Domingo Este','Finca de despegue en Santo Domingo de la Calzada','4220','1945','50.59','42.43542','-2.94073','2022-03-27 13:52:09','2022-03-27 13:52:09');
+
+INSERT INTO takeoff_points (id, name, description, x, z, y, lat, lon, created_at, updated_at) VALUES ('10','Ezcaray','Punto de despegue en la localidad de Ezcaray.','3310','205','77.66','42.32963','-3.0156','2022-03-27 13:55:38','2022-03-27 13:55:38');
+
+INSERT INTO takeoff_points (id, name, description, x, z, y, lat, lon, created_at, updated_at) VALUES ('11','Badarán','Finca de despegue en el municipio de Badarán.','5895','835','43.52','42.36793','-2.80294','2022-03-27 13:59:34','2022-03-27 13:59:34');
+
+INSERT INTO takeoff_points (id, name, description, x, z, y, lat, lon, created_at, updated_at) VALUES ('12','Campo de Golf de Cirueña.','Finca de despegue junto al campo de golf en Cirueña.','4840','1555','63.53','42.41171','-2.88973','2022-03-27 14:02:07','2022-03-27 14:02:07');
+
+INSERT INTO takeoff_points (id, name, description, x, z, y, lat, lon, created_at, updated_at) VALUES ('13','Cidamón','Punto de despegue junto al municipio de Cidamón.','4995','2915','42.35','42.4944','-2.87698','2022-03-27 14:05:55','2022-03-27 14:05:55');
+
+INSERT INTO takeoff_points (id, name, description, x, z, y, lat, lon, created_at, updated_at) VALUES ('14','Haro, Barrio de las bodegas','Despegue en Haro, junto al barrio de las bodegas y las piscinas municipales.','5340','4325','20.01','42.58014','-2.84859','2022-03-27 14:08:25','2022-03-27 14:08:25');
+
+INSERT INTO takeoff_points (id, name, description, x, z, y, lat, lon, created_at, updated_at) VALUES ('15','Haro, el Mazo','Finca de despegue en el Mazo, junto al campo de futbol.','5400','4110','23.52','42.56707','-2.84366','2022-03-27 14:10:49','2022-03-27 14:10:49');
+
+INSERT INTO takeoff_points (id, name, description, x, z, y, lat, lon, created_at, updated_at) VALUES ('16','Hermita de la Esclavitud, Cihuri.','Finca de despegue junto a la Hermita de la Esclavitud, en Cihuri.','4480','4540','30.58','42.59321','-2.91934','2022-03-27 14:13:36','2022-03-27 14:13:36');
+
+INSERT INTO takeoff_points (id, name, description, x, z, y, lat, lon, created_at, updated_at) VALUES ('17','Pancorbo','Punto de despegue en Pancorbo, Burgos.','2000','5070','49.41','42.62544','-3.12337','2022-03-27 14:15:48','2022-03-27 14:15:48');
+
+INSERT INTO takeoff_points (id, name, description, x, z, y, lat, lon, created_at, updated_at) VALUES ('18','Parquing restaurante, Santa María Ribarredonda','Punto de despegue en Santa María Ribarredonda, Burgos.','1385','5290','58.79','42.63881','-3.17396','2022-03-27 14:23:05','2022-03-27 14:23:05');
+
+INSERT INTO takeoff_points (id, name, description, x, z, y, lat, lon, created_at, updated_at) VALUES ('19','Leiva','Finca de despegue en la localidad de Leiva, junto al pantano del río Tirón.','2815','3020','43.53','42.50079','-3.05632','2022-03-27 14:30:44','2022-03-27 14:31:35');
+
+INSERT INTO takeoff_points (id, name, description, x, z, y, lat, lon, created_at, updated_at) VALUES ('20','Cerezo de Río Tirón','Fincas de despegue en Cerezo de Río Tirón junto a las minas de Glauberita.','1710','2610','56.46','42.47586','-3.14722','2022-03-27 14:36:06','2022-03-27 14:36:06');
+
+INSERT INTO takeoff_points (id, name, description, x, z, y, lat, lon, created_at, updated_at) VALUES ('21','Campo de Fútbol de Fresno','Campo de despegue en Fresno de Río Tirón, Burgos.','1435','2332','60','42.45914','-3.16985','2022-03-27 14:41:06','2022-03-27 14:41:06');
