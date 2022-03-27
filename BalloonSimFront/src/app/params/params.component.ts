@@ -51,7 +51,7 @@ export class ParamsComponent implements OnInit, AfterViewInit {
 
     //#region Map
     this.map = L.map('map', {
-      center: [42.61878426869105, -2.9633044423426677],
+      center: [42.54, -2.96],
       zoom: 10,
     });
 
@@ -81,10 +81,13 @@ export class ParamsComponent implements OnInit, AfterViewInit {
           takeoffController.selectedTakeoff = takeoff;
           markers.forEach((element: L.Marker) => {
             element.setIcon(iconDefault);
+            element.setZIndexOffset(0);
           });
           marker.setIcon(iconRed);
+          marker.setZIndexOffset(100);
         })
-        .bindPopup(`<b>${takeoff.name}</b><br>${takeoff.description}`);
+        .bindPopup(`<b>${takeoff.name}</b><br>${takeoff.description}`)
+        .setZIndexOffset(0);
       markers.push(marker);
     });
     //#endregion
