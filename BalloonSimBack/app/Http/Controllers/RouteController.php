@@ -35,17 +35,4 @@ class RouteController extends Controller
 
         return view('route.show', compact('route'));
     }
-
-    /**
-     * @param int $id
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
-     */
-    public function destroy($id)
-    {
-        $route = Route::find($id)->delete();
-
-        return redirect()->route('routes.index')
-            ->with('success', 'Route deleted successfully');
-    }
 }

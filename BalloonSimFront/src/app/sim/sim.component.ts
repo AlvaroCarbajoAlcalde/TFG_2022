@@ -1,11 +1,12 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as L from 'leaflet';
-import { catchError, reduce } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import flightNameController from '../class/flightNameController';
 import RequestController from '../class/requestController';
 import SkyboxController from '../class/skyboxController';
 import takeoffController from '../class/takeoffController';
+import Takeoff from '../model/takeoff';
 
 declare const resizeCanvas: any;
 declare const queryHTML: any;
@@ -43,6 +44,13 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
       startPoint.x = takeoffController.selectedTakeoff.x;
       startPoint.y = takeoffController.selectedTakeoff.y;
       startPoint.z = takeoffController.selectedTakeoff.z;
+    } else {
+      takeoffController.selectedTakeoff = new Takeoff({
+        name: 'Instalaciones de Globos Arcoiris',
+        lat: 42.55703,
+        lon: -2.97282,
+        y: 30.7,
+      });
     }
 
     setSelectedSkybox(SkyboxController.currentSelected);
@@ -55,11 +63,23 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
       resizeCanvas();
     };
 
-    this.flightID = await RequestController.startFlight();
-    console.info('Flight_ID', this.flightID);
+    this.flightID = await RequestController.startFlight(
+      takeoffController.selectedTakeoff.name,
+      flightNameController.getCurrentName()
+    );
+    RequestController.savePoint(
+      this.flightID,
+      0,
+      takeoffController.selectedTakeoff.lat,
+      takeoffController.selectedTakeoff.lon,
+      Math.round(takeoffController.selectedTakeoff.y * 3.28)
+    );
+    console.info('Flight_ID:', this.flightID);
   }
 
   ngAfterViewInit(): void {
+    document.getElementById('mapCentering')?.classList.add('center');
+    
     //#region map
     this.map = L.map('map', {
       center: [42.55878426869105, -2.8633044423426677],
@@ -69,7 +89,7 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
     const tiles = L.tileLayer(
       'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       {
-        maxZoom: 15,
+        maxZoom: 17,
         minZoom: 10,
       }
     );
@@ -81,7 +101,7 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
       color: 'red',
       weight: 3,
       opacity: 0.7,
-      smoothFactor: 1,
+      smoothFactor: 0,
     });
     route.addTo(this.map);
 
@@ -89,7 +109,7 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
     marker.addTo(this.map);
 
     this.mapUpdateInterval = setInterval(() => {
-      if (balloon) {
+      if (balloon && this.flightID) {
         const latLng = new L.LatLng(
           balloon.calcDegreesLat(),
           balloon.calcDegreesLon()
@@ -101,7 +121,7 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
     }, 250);
 
     this.pointsSaveInterval = setInterval(() => {
-      if (balloon) {
+      if (balloon && this.flightID) {
         RequestController.savePoint(
           this.flightID,
           this.seconds,

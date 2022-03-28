@@ -4,7 +4,7 @@ td form .btn,
     margin: 2px;
 }
 
-.col-md-12 .card-header{
+.col-md-12 .card-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -23,7 +23,7 @@ td form .btn,
     height: 30px;
 }
 
-.container-fluid nav span span{
+.container-fluid nav span span {
     color: blue;
     font-weight: bolder;
 }
@@ -33,7 +33,7 @@ td form .btn,
     text-decoration: none;
 }
 
-.container-fluid nav a:hover{
+.container-fluid nav a:hover {
     color: blue !important;
 }
 
@@ -73,4 +73,9 @@ div.logout a {
 
 nav a:hover {
     color: whitesmoke !important;
+}
+
+/*scrollbar*/
+::-webkit-scrollbar {
+    display: none;
 }

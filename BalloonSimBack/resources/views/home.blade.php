@@ -8,7 +8,6 @@
 
         @php
             $no = 1;
-            $users = count(App\Models\User::all());
             $takeoffs = count(App\Models\TakeoffPoint::all());
             $flights = count(App\Models\Flight::all());
             $routes = count(App\Models\Route::all());
@@ -70,16 +69,6 @@
                                         </tr>
                                         <tr>
                                             <td>{{ $no++ }}</td>
-                                            <td>users</td>
-                                            <td>List of frontend users.</td>
-                                            <td>{{ $users }}</td>
-                                            <td>{{ getTableSize('users') }}</td>
-                                            <td class="buttons-td">
-                                                <a class="btn btn-sm btn-primary" href="{{ url('/users') }}">Show</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>{{ $no++ }}</td>
                                             <td>flights</td>
                                             <td>List of flights.</td>
                                             <td>{{ $flights }}</td>
@@ -100,6 +89,10 @@
                                         </tr>
                                     </tbody>
                                 </table>
+                                <!-- Export database -->
+                                <form action="{{ route('backup_database') }}" method="get">
+                                    <button style="submit" class="btn btn-success"> Export database</button>
+                                </form>
                             </div>
                         </div>
                     </div>

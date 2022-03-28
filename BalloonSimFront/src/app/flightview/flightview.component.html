@@ -1,0 +1,20 @@
+<section class="content-card">
+
+    <h2 id="flightname"></h2>
+    <hr>
+
+    <h2>Tracking:</h2>
+    <div class="params-map">
+        <div class="map-container">
+            <div class="map-frame">
+                <div id="map"></div>
+            </div>
+        </div>
+    </div>
+    <hr>
+
+    <h2>Datos del vuelo:</h2>
+    <p *ngIf="flight">Despegue en: {{flight.takeoff}}.</p>
+    <p *ngIf="flight">Duración del vuelo: {{flight.duration}}</p>
+    <p *ngIf="distance">Distancia recorrida: {{distance}} metros.</p>
+</section>

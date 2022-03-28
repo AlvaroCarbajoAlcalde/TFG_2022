@@ -38,7 +38,8 @@
                                         <th>No</th>
 
                                         <th>Date</th>
-                                        <th>User</th>
+                                        <th>Name</th>
+                                        <th>Takeoff</th>
 
                                         <th></th>
                                     </tr>
@@ -49,7 +50,8 @@
                                             <td>{{ ++$i }}</td>
 
                                             <td>{{ $flight->date }}</td>
-                                            <td>{{ $flight->user }}</td>
+                                            <td>{{ $flight->name }}</td>
+                                            <td>{{ $flight->takeoff }}</td>
 
                                             <td>
                                                 <form action="{{ route('flights.destroy', $flight->id) }}"

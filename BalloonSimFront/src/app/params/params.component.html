@@ -1,7 +1,13 @@
 <section class="content-card">
     <h1>Parámetros</h1>
     <hr>
-    <h2>Puntos de despegue:</h2>
+
+    <h2>Tracking:</h2>
+    <p>Introduce un nombre para guardar el tracking del vuelo:</p>
+    <input class="inp-text" type="text" name="name" placeholder="Nombre">
+    <hr>
+
+    <h2>Punto de despegue:</h2>
     <div class="params-map">
         <div class="map-container">
             <div class="map-frame">
@@ -9,5 +15,20 @@
             </div>
         </div>
     </div>
+    <hr>
 
+    <h2>Color del cielo:</h2>
+    <div class="skybox-selector">
+        <div class="row">
+            <img class="skyboximg browncloud" src="../../assets/textures/skybox/browncloud_nx.jpg" alt="browncloud"
+                (click)="selectSkybox('browncloud')">
+            <img class="skyboximg yellowcloud" src="../../assets/textures/skybox/yellowcloud_nx.jpg" alt="yellowcloud"
+                (click)="selectSkybox('yellowcloud')">
+            <img class="skyboximg bluecloud" src="../../assets/textures/skybox/bluecloud_nx.jpg" alt="bluecloud"
+                (click)="selectSkybox('bluecloud')">
+            <img class="skyboximg graycloud" src="../../assets/textures/skybox/graycloud_nx.jpg" alt="graycloud"
+                (click)="selectSkybox('graycloud')">
+        </div>
+    </div>
+    
 </section>
