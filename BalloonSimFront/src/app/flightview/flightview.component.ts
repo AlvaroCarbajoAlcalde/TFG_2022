@@ -97,7 +97,19 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
       this.distance += latlng.distanceTo(previousLatlng);
       track.addLatLng(latlng);
       previousLatlng = latlng;
-    }); 
+    });
     this.distance = parseFloat(this.distance.toFixed(2));
+  }
+
+  public distanceToString(distance: number): string {
+    let toReturn = '';
+    if (distance / 1000 > 0) {
+      const km = Math.floor(distance / 1000);
+      const m = Math.floor(distance % 1000);
+      toReturn = `${km} Km y ${m} metros.`;
+    } else {
+      toReturn = `${distance} metros.`;
+    }
+    return toReturn;
   }
 }
