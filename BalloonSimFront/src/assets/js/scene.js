@@ -135,8 +135,9 @@ function setGround() {
         {
           width: mapSize,
           height: mapSize,
-          subdivisions: 150,
-          maxHeight: 300,
+          subdivisions: 140,
+          maxHeight: 420,
+          
           minHeight: 0,
         }
       );
