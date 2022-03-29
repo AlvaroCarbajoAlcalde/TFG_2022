@@ -142,7 +142,7 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
 
   endGame() {
     endSim();
-    this.router.navigate(['']);
+    this.router.navigate([`flight-details/${this.flightID}`]);
   }
 
   toggleMapCentering() {
