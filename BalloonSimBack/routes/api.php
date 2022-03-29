@@ -41,7 +41,7 @@ Route::get('flights/{searchfor}', function ($searchfor) {
     if ($searchfor != '*') $flights = Flight::where('name', 'like', '%' . $searchfor . '%')->get();
     else $flights = Flight::all();
 
-    $limit = 10;
+    $limit = 20;
     foreach ($flights as $flight) {
         $s = DB::table('routes')->where('flight', $flight->id)->max('seconds');
         $flightList[] = ['id' => $flight->id, 'date' => $flight->date, 'name' => $flight->name, 'takeoff' => $flight->takeoff, 'duration' => $s];
