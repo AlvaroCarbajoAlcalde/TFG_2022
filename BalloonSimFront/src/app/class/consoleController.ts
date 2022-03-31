@@ -5,6 +5,7 @@ export default class ConsoleController {
     (<any>window).help = this.showHelp;
     (<any>window).showTakeoffs = this.showTakeoffs;
     (<any>window).showFlights = this.showFlights;
+    (<any>window).showWinds = this.showWinds;
 
     this.showHelp();
   }
@@ -14,6 +15,7 @@ export default class ConsoleController {
     console.info('help() ==> Shows help');
     console.info('showTakeoffs() ==> Shows the list of Takeoffs');
     console.info('showFlights() ==> Shows the list of Flights');
+    console.info('showWinds() ==> Shows the Winds response');
     console.groupEnd();
   }
 
@@ -28,6 +30,13 @@ export default class ConsoleController {
     const flights = await RequestController.getFlights();
     console.groupCollapsed('Flights');
     console.table(flights);
+    console.groupEnd();
+  }
+
+  private static async showWinds() {
+    const winds = await RequestController.getWinds();
+    console.groupCollapsed('Winds');
+    console.log(winds);
     console.groupEnd();
   }
 }

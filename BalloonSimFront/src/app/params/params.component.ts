@@ -1,5 +1,4 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { Router } from '@angular/router';
 import RequestController from '../class/requestController';
 import takeoffController from '../class/takeoffController';
 import * as L from 'leaflet';
@@ -11,17 +10,17 @@ import flightNameController from '../class/flightNameController';
   templateUrl: './params.component.html',
 })
 export class ParamsComponent implements OnInit, AfterViewInit {
+
   private map!: L.Map;
+  private winds: any;
 
-  constructor(private router: Router) {}
+  constructor() { }
 
-  ngOnInit() {}
+  async ngOnInit() {
+    this.winds = await RequestController.getWinds();
+  }
 
   async ngAfterViewInit(): Promise<void> {
-    const inputName = <HTMLInputElement>document.getElementsByName('name')[0];
-    inputName.onblur = () => {
-      this.setFlightName();
-    };
 
     //#region MarkerIcons
     const iconDefault = L.icon({
@@ -95,16 +94,13 @@ export class ParamsComponent implements OnInit, AfterViewInit {
 
   public selectSkybox(value: string) {
     const imgs = Array.from(document.getElementsByClassName('skyboximg'));
-    imgs.forEach((img) => {
-      img.classList.remove('selected');
-    });
+    imgs.forEach((img) => { img.classList.remove('selected'); });
     document.getElementsByClassName(value)[0].classList.add('selected');
     skyboxController.currentSelected = value;
   }
 
   public setFlightName() {
-    const name = (<HTMLInputElement>document.getElementsByName('name')[0])
-      .value;
+    const name = (<HTMLInputElement>document.getElementsByName('name')[0]).value;
     flightNameController.setCurrentName(name);
   }
 }

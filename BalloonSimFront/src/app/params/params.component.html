@@ -4,7 +4,7 @@
 
     <h2>Tracking:</h2>
     <p>Introduce un nombre para guardar el tracking del vuelo:</p>
-    <input class="inp-text" type="text" name="name" placeholder="Nombre">
+    <input (blur)="setFlightName()" class="inp-text" type="text" name="name" placeholder="Nombre">
     <hr>
 
     <h2>Punto de despegue:</h2>
@@ -30,5 +30,5 @@
                 (click)="selectSkybox('graycloud')">
         </div>
     </div>
-    
+
 </section>

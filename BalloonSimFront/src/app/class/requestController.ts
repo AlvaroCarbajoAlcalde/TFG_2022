@@ -4,6 +4,7 @@ import Takeoff from '../model/takeoff';
 import Track from '../model/track';
 
 export default class RequestController {
+
   public static async getTakeOffs(): Promise<Takeoff[]> {
     const toReturn: Takeoff[] = [];
     await fetch(`${environment.apiRoute}takeoffs`)
@@ -77,6 +78,50 @@ export default class RequestController {
           toReturn.push(new Track(element));
         });
       });
+    return toReturn;
+  }
+
+  public static async getWinds() {
+    let toReturn = null;
+
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const raw = JSON.stringify({
+      "lat": 42.54,
+      "lon": -2.96,
+      "model": "gfs",
+      "parameters": [
+        "wind"
+      ],
+      "levels": [
+        "surface",
+        "1000h",
+        "950h",
+        "925h",
+        "900h",
+        "850h",
+        "800h",
+        "700h",
+        "600h",
+        "500h",
+        "400h",
+        "300h",
+        "200h",
+        "150h"
+      ],
+      "key": environment.windyKey
+    });
+
+    const requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw
+    };
+
+    await fetch("https://api.windy.com/api/point-forecast/v2", requestOptions as any)
+      .then(response => response.json())
+      .then((result) => { toReturn = result; });
     return toReturn;
   }
 }
