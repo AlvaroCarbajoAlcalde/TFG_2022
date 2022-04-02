@@ -67,6 +67,7 @@ export class ParamsComponent implements AfterViewInit {
         riseOnHover: true,
       });
 
+      //Image
       const img = document.createElement('img');
       img.src = `../../assets/takeoffs/${takeoff.img}`;
       img.style.width = '100%';
@@ -74,19 +75,19 @@ export class ParamsComponent implements AfterViewInit {
       img.style.borderRadius = '10px';
       img.style.marginTop = '3px';
 
-      marker
-        .addTo(this.map)
-        .on('click', () => {
-          GLOBAL.SelectedTakeoff = takeoff;
-          markers.forEach((element: L.Marker) => {
-            element.setIcon(iconDefault);
-            element.setZIndexOffset(0);
-          });
-          marker.setIcon(iconRed);
-          marker.setZIndexOffset(100);
-        })
-        .bindPopup(`<b>${takeoff.name}</b><br>${takeoff.description}<br>${img.outerHTML}`)
-        .setZIndexOffset(0);
+      //Marker
+      marker.addTo(this.map);
+      marker.on('click', () => {
+        GLOBAL.SelectedTakeoff = takeoff;
+        markers.forEach((element: L.Marker) => {
+          element.setIcon(iconDefault);
+          element.setZIndexOffset(0);
+        });
+        marker.setIcon(iconRed);
+        marker.setZIndexOffset(100);
+      });
+      marker.bindPopup(`<b>${takeoff.name}</b><br>${takeoff.description}<br>${img.outerHTML}<br>Lat: ${takeoff.lat}  Lon: ${takeoff.lon}`);
+      marker.setZIndexOffset(0);
       if (GLOBAL.SelectedTakeoff == takeoff) {
         marker.setIcon(iconRed);
         marker.setZIndexOffset(100);
@@ -97,10 +98,6 @@ export class ParamsComponent implements AfterViewInit {
 
     //Selected skyboxColor
     document.getElementsByClassName(GLOBAL.SkyboxColor)[0].classList.add('selected');
-  }
-
-  public click() {
-    console.log('click');
   }
 
   public selectSkybox(value: string) {

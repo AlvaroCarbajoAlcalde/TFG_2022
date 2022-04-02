@@ -850,3 +850,7 @@ hr {
     opacity: 1;
   }
 }
+
+.leaflet-popup-content-wrapper {
+  background-color: whitesmoke !important;
+}
