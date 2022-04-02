@@ -851,6 +851,6 @@ hr {
   }
 }
 
-.leaflet-popup-content-wrapper {
+.leaflet-popup-content-wrapper, .leaflet-popup-content-wrapper, .leaflet-popup-tip {
   background-color: whitesmoke !important;
 }
