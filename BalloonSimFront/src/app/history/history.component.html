@@ -3,7 +3,7 @@
     <hr>
     <div id="search">
         <label for="">Buscar</label>
-        <input name="search" type="text" id="search-input">
+        <input #search (keyup)="searchFlights(search.value)" name="search" type="text" id="search-input">
     </div>
     <table class="flights">
         <thead>

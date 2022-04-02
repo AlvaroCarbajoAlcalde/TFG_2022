@@ -44,9 +44,10 @@ export default class RequestController {
     );
   }
 
-  public static async getFlights(searchFor = '*'): Promise<Flight[]> {
+  public static async getFlights(searchFor: string = "*"): Promise<Flight[]> {
     const toReturn: Flight[] = [];
     let no = 1;
+    if (searchFor == '') searchFor = '*';
     await fetch(`${environment.apiRoute}flights/${searchFor}`)
       .then((response) => response.json())
       .then((flights) => {

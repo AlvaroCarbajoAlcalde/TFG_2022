@@ -45,9 +45,7 @@ Route::get('flights/{searchfor}', function ($searchfor) {
     foreach ($flights as $flight) {
         $s = DB::table('routes')->where('flight', $flight->id)->max('seconds');
         $flightList[] = ['id' => $flight->id, 'date' => $flight->date, 'name' => $flight->name, 'takeoff' => $flight->takeoff, 'duration' => $s];
-        if (--$limit == 0) {
-            break;
-        }
+        if (--$limit == 0) break;
     }
     return $flightList;
 });
