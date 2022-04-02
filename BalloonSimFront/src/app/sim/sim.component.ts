@@ -2,11 +2,9 @@ import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as L from 'leaflet';
 import { environment } from 'src/environments/environment';
-import flightNameController from '../class/flightNameController';
+import backgroundController from '../class/backgroundController';
+import { GLOBAL } from '../class/global';
 import RequestController from '../class/requestController';
-import SkyboxController from '../class/skyboxController';
-import takeoffController from '../class/takeoffController';
-import Takeoff from '../model/takeoff';
 
 declare const resizeCanvas: any;
 declare const queryHTML: any;
@@ -27,62 +25,63 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
   private mapUpdateInterval!: any;
   private pointsSaveInterval!: any;
   private flightID!: number;
-  private readonly secondsBetweenSaves = 3;
   private seconds!: number;
   private isMapCentered!: boolean;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   async ngOnInit(): Promise<void> {
+    await GLOBAL.initGLOBAL();
+    backgroundController.stopInterval();
     this.seconds = 0;
     this.isMapCentered = true;
     document.body.classList.add('no-overflow');
+
+    //#region region JS variables 
+
+    //Position balloon
+    startPoint.x = GLOBAL.SelectedTakeoff.x;
+    startPoint.y = GLOBAL.SelectedTakeoff.y;
+    startPoint.z = GLOBAL.SelectedTakeoff.z;
+
     testing = environment.testing;
     showCollisions = environment.showCollisions;
 
-    if (takeoffController.selectedTakeoff) {
-      startPoint.x = takeoffController.selectedTakeoff.x;
-      startPoint.y = takeoffController.selectedTakeoff.y;
-      startPoint.z = takeoffController.selectedTakeoff.z;
-    } else {
-      takeoffController.selectedTakeoff = new Takeoff({
-        name: 'Instalaciones de Globos Arcoiris',
-        lat: 42.55703,
-        lon: -2.97282,
-        y: 30.7,
-      });
-    }
+    setSelectedSkybox(GLOBAL.SkyboxColor);
 
-    setSelectedSkybox(SkyboxController.currentSelected);
-
-    console.time('load-game');
     queryHTML();
     startGame();
 
-    window.onresize = () => {
-      resizeCanvas();
-    };
+    window.onresize = () => { resizeCanvas(); };
+    //#endregion
 
+    console.time('load-game');
+
+    //Flight id
     this.flightID = await RequestController.startFlight(
-      takeoffController.selectedTakeoff.name,
-      flightNameController.getCurrentName()
-    );
-    RequestController.savePoint(
-      this.flightID,
-      0,
-      takeoffController.selectedTakeoff.lat,
-      takeoffController.selectedTakeoff.lon,
-      Math.round(takeoffController.selectedTakeoff.y * 3.28)
+      GLOBAL.SelectedTakeoff.name,
+      GLOBAL.FlightName
     );
     console.info('Flight_ID:', this.flightID);
+
+    //FirstPoint
+    // RequestController.savePoint(
+    //   this.flightID,
+    //   0,
+    //   GLOBAL.SelectedTakeoff.lat,
+    //   GLOBAL.SelectedTakeoff.lon,
+    //   Math.round(GLOBAL.SelectedTakeoff.y * 3.28)
+    // );
   }
 
-  ngAfterViewInit(): void {
+  async ngAfterViewInit(): Promise<void> {
+    await GLOBAL.initGLOBAL();
+
     document.getElementById('mapCentering')?.classList.add('center');
-    
+
     //#region map
     this.map = L.map('map', {
-      center: [42.55878426869105, -2.8633044423426677],
+      center: [GLOBAL.SelectedTakeoff.lat, GLOBAL.SelectedTakeoff.lon],
       zoom: 14,
     });
 
@@ -108,8 +107,9 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
     const marker = L.circleMarker([0, 0], { radius: 2 });
     marker.addTo(this.map);
 
+    //Map update interval
     this.mapUpdateInterval = setInterval(() => {
-      if (balloon && this.flightID) {
+      if (balloon && this.flightID && this.seconds > environment.secondsBetweenRouteSaves) {
         const latLng = new L.LatLng(
           balloon.calcDegreesLat(),
           balloon.calcDegreesLon()
@@ -118,8 +118,9 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
         if (this.isMapCentered) this.map.panTo(latLng);
         route.addLatLng(latLng);
       }
-    }, 250);
+    }, 300);
 
+    //Save points interval
     this.pointsSaveInterval = setInterval(() => {
       if (balloon && this.flightID) {
         RequestController.savePoint(
@@ -129,13 +130,14 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
           balloon.calcDegreesLon(),
           Math.round(balloon.altura * 3.28)
         );
-        this.seconds += this.secondsBetweenSaves;
+        this.seconds += environment.secondsBetweenRouteSaves;
       }
-    }, this.secondsBetweenSaves * 1000);
+    }, environment.secondsBetweenRouteSaves * 1000);
   }
 
   ngOnDestroy(): void {
     document.body.classList.remove('no-overflow');
+    backgroundController.startInterval();
     clearInterval(this.mapUpdateInterval);
     clearInterval(this.pointsSaveInterval);
   }

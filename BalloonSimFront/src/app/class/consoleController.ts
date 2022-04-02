@@ -1,3 +1,4 @@
+import { GLOBAL } from './global';
 import RequestController from './requestController';
 
 export default class ConsoleController {
@@ -6,6 +7,7 @@ export default class ConsoleController {
     (<any>window).showTakeoffs = this.showTakeoffs;
     (<any>window).showFlights = this.showFlights;
     (<any>window).showWinds = this.showWinds;
+    (<any>window).showGlobal = this.showGlobal;
 
     this.showHelp();
   }
@@ -16,6 +18,7 @@ export default class ConsoleController {
     console.info('showTakeoffs() ==> Shows the list of Takeoffs');
     console.info('showFlights() ==> Shows the list of Flights');
     console.info('showWinds() ==> Shows the Winds response');
+    console.info('showGlobal() ==> Shows the Global variables');
     console.groupEnd();
   }
 
@@ -37,6 +40,12 @@ export default class ConsoleController {
     const winds = await RequestController.getWinds();
     console.groupCollapsed('Winds');
     console.log(winds);
+    console.groupEnd();
+  }
+
+  private static async showGlobal() {
+    console.groupCollapsed('GLOBAL');
+    GLOBAL.toString();
     console.groupEnd();
   }
 }

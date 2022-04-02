@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as L from 'leaflet';
+import { GLOBAL } from '../class/global';
 import RequestController from '../class/requestController';
 import Flight from '../model/flight';
 
@@ -17,7 +18,9 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
   constructor(
     private _Activatedroute: ActivatedRoute,
     private router: Router
-  ) {}
+  ) {
+    GLOBAL.initGLOBAL();
+  }
 
   ngOnInit(): void {
     if (this._Activatedroute.snapshot.paramMap.get('id') == null)

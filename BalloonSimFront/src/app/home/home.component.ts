@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GLOBAL } from '../class/global';
 
 @Component({
   selector: 'app-home',
@@ -8,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   private slideIndex = 1;
 
-  constructor() {}
+  constructor() {
+    GLOBAL.initGLOBAL();
+  }
 
-  // Next/previous controls
+  //Next/previous controls
   public plusSlides(n: number) {
     this.showSlides((this.slideIndex += n));
   }

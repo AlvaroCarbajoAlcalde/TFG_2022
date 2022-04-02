@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { GLOBAL } from '../class/global';
 import RequestController from '../class/requestController';
 import Flight from '../model/flight';
 
@@ -10,7 +11,9 @@ import Flight from '../model/flight';
 export class HistoryComponent implements OnInit {
   public flightList!: Flight[];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    GLOBAL.initGLOBAL();
+  }
 
   async ngOnInit(): Promise<void> {
     this.flightList = await RequestController.getFlights();

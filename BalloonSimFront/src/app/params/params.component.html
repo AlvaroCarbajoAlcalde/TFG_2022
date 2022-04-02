@@ -4,7 +4,8 @@
 
     <h2>Tracking:</h2>
     <p>Introduce un nombre para guardar el tracking del vuelo:</p>
-    <input (blur)="setFlightName()" class="inp-text" type="text" name="name" placeholder="Nombre">
+    <input #flightname (keyup)="setFlightName(flightname.value)" class="inp-text" type="text" name="name"
+        placeholder="Nombre">
     <hr>
 
     <h2>Punto de despegue:</h2>

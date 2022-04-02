@@ -11,7 +11,7 @@ class BackgroundController {
     return BackgroundController.instance;
   }
 
-  private constructor() {}
+  private constructor() { }
 
   public startInterval() {
     const sliders = document.getElementsByClassName('slide-img');
@@ -28,7 +28,7 @@ class BackgroundController {
     }, this.secondsGap * 1000);
   }
 
-  private destroy() {
+  public stopInterval() {
     clearInterval(this.interval);
   }
 }

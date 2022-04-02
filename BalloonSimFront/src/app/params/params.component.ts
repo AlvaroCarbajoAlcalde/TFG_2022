@@ -1,26 +1,19 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
-import RequestController from '../class/requestController';
-import takeoffController from '../class/takeoffController';
+import { Component, AfterViewInit } from '@angular/core';
 import * as L from 'leaflet';
-import skyboxController from '../class/skyboxController';
-import flightNameController from '../class/flightNameController';
+import { GLOBAL } from '../class/global';
 
 @Component({
   selector: 'app-params',
   templateUrl: './params.component.html',
 })
-export class ParamsComponent implements OnInit, AfterViewInit {
+export class ParamsComponent implements AfterViewInit {
 
   private map!: L.Map;
-  private winds: any;
 
   constructor() { }
 
-  async ngOnInit() {
-    this.winds = await RequestController.getWinds();
-  }
-
   async ngAfterViewInit(): Promise<void> {
+    await GLOBAL.initGLOBAL();
 
     //#region MarkerIcons
     const iconDefault = L.icon({
@@ -50,7 +43,7 @@ export class ParamsComponent implements OnInit, AfterViewInit {
 
     //#region Map
     this.map = L.map('map', {
-      center: [42.54, -2.96],
+      center: GLOBAL.MAP_CENTER,
       zoom: 10,
     });
 
@@ -66,10 +59,9 @@ export class ParamsComponent implements OnInit, AfterViewInit {
     //#endregion
 
     //#region Markers
-    const takeoffs = await RequestController.getTakeOffs();
     const markers: L.Marker[] = [];
 
-    takeoffs.forEach((takeoff) => {
+    GLOBAL.TakeoffPointsList.forEach((takeoff) => {
       const marker = L.marker([takeoff.lat, takeoff.lon], {
         title: takeoff.name,
         riseOnHover: true,
@@ -77,7 +69,7 @@ export class ParamsComponent implements OnInit, AfterViewInit {
       marker
         .addTo(this.map)
         .on('click', () => {
-          takeoffController.selectedTakeoff = takeoff;
+          GLOBAL.SelectedTakeoff = takeoff;
           markers.forEach((element: L.Marker) => {
             element.setIcon(iconDefault);
             element.setZIndexOffset(0);
@@ -96,11 +88,10 @@ export class ParamsComponent implements OnInit, AfterViewInit {
     const imgs = Array.from(document.getElementsByClassName('skyboximg'));
     imgs.forEach((img) => { img.classList.remove('selected'); });
     document.getElementsByClassName(value)[0].classList.add('selected');
-    skyboxController.currentSelected = value;
+    GLOBAL.SkyboxColor = value;
   }
 
-  public setFlightName() {
-    const name = (<HTMLInputElement>document.getElementsByName('name')[0]).value;
-    flightNameController.setCurrentName(name);
+  public setFlightName(value: string) {
+    GLOBAL.FlightName = value;
   }
 }
