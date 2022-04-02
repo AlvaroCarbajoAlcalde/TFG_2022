@@ -42,6 +42,7 @@
                                         <th>Y</th>
                                         <th>Lat</th>
                                         <th>Lon</th>
+                                        <th>Image</th>
 
                                         <th></th>
                                     </tr>
@@ -56,6 +57,7 @@
                                             <td>{{ $takeoffPoint->y }}</td>
                                             <td>{{ $takeoffPoint->lat }}</td>
                                             <td>{{ $takeoffPoint->lon }}</td>
+                                            <td>{{ $takeoffPoint->image }}</td>
 
                                             <td>
                                                 <form action="{{ route('takeoff-points.destroy', $takeoffPoint->id) }}"

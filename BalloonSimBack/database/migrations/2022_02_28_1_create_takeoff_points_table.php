@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 128)->unique();
             $table->text('description')->nullable();
+            $table->text('image')->nullable();
             $table->double('x')->default(0);
             $table->double('z')->default(0);
             $table->double('y')->default(0);

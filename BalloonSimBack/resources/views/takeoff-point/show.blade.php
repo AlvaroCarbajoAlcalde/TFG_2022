@@ -19,7 +19,7 @@
                     </div>
 
                     <div class="card-body">
-                        
+
                         <div class="form-group">
                             <strong>Name:</strong>
                             {{ $takeoffPoint->name }}
@@ -47,6 +47,10 @@
                         <div class="form-group">
                             <strong>Lon:</strong>
                             {{ $takeoffPoint->lon }}
+                        </div>
+                        <div class="form-group">
+                            <strong>Image:</strong>
+                            {{ $takeoffPoint->image }}
                         </div>
 
                     </div>

@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property $y
  * @property $lat
  * @property $lon
+ * @property $image
  * @property $created_at
  * @property $updated_at
  *
@@ -31,7 +32,8 @@ class TakeoffPoint extends Model
     'z' => 'required|numeric',
     'y' => 'required|numeric',
     'lat' => 'numeric',
-    'lon' => 'numeric'
+    'lon' => 'numeric',
+    'image' => 'max:255'
   ];
 
   protected $perPage = 20;
@@ -41,5 +43,5 @@ class TakeoffPoint extends Model
    *
    * @var array
    */
-  protected $fillable = ['name', 'description', 'x', 'z', 'y', 'lat', 'lon'];
+  protected $fillable = ['name', 'description', 'x', 'z', 'y', 'lat', 'lon', 'image'];
 }

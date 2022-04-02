@@ -7,6 +7,7 @@ export default class Takeoff {
   public y: number;
   public lat: number;
   public lon: number;
+  public img: string;
 
   constructor(params: any) {
     this.id = params.id;
@@ -17,5 +18,6 @@ export default class Takeoff {
     this.y = params.y;
     this.lat = params.lat;
     this.lon = params.lon;
+    this.img = params.image;
   }
 }
