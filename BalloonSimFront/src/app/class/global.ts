@@ -35,7 +35,7 @@ export class GLOBAL {
     }
 
     private static getRandomSkybox(): string {
-        const values = ['bluecloud', 'browncloud', 'graycloud', 'yellowcloud',];
+        const values = ['bluecloud', 'browncloud', 'graycloud', 'yellowcloud'];
         return values[Math.floor(Math.random() * values.length)];
     }
 }

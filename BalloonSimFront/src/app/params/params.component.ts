@@ -79,9 +79,16 @@ export class ParamsComponent implements AfterViewInit {
         })
         .bindPopup(`<b>${takeoff.name}</b><br>${takeoff.description}`)
         .setZIndexOffset(0);
+      if (GLOBAL.SelectedTakeoff == takeoff) {
+        marker.setIcon(iconRed);
+        marker.setZIndexOffset(100);
+      }
       markers.push(marker);
     });
     //#endregion
+
+    //Selected skyboxColor
+    document.getElementsByClassName(GLOBAL.SkyboxColor)[0].classList.add('selected');
   }
 
   public selectSkybox(value: string) {

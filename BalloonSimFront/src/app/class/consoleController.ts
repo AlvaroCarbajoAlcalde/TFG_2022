@@ -2,6 +2,7 @@ import { GLOBAL } from './global';
 import RequestController from './requestController';
 
 export default class ConsoleController {
+
   static setConsoleMethods() {
     (<any>window).help = this.showHelp;
     (<any>window).showTakeoffs = this.showTakeoffs;

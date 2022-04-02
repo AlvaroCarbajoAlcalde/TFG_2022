@@ -2,6 +2,7 @@ import { environment } from 'src/environments/environment';
 import Flight from '../model/flight';
 import Takeoff from '../model/takeoff';
 import Track from '../model/track';
+import { GLOBAL } from './global';
 
 export default class RequestController {
 
@@ -88,8 +89,8 @@ export default class RequestController {
     myHeaders.append("Content-Type", "application/json");
 
     const raw = JSON.stringify({
-      "lat": 42.54,
-      "lon": -2.96,
+      "lat": (<number[]>GLOBAL.MAP_CENTER)[0],
+      "lon": (<number[]>GLOBAL.MAP_CENTER)[1],
       "model": "gfs",
       "parameters": [
         "wind"
