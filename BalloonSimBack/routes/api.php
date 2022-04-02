@@ -39,7 +39,7 @@ Route::get('newpoint/{flight}/{s}/{lat}/{lon}/{alt}', function ($flight, $s, $la
 Route::get('flights/{searchfor}', function ($searchfor) {
     $flightList = [];
     if ($searchfor != '*') $flights = Flight::where('name', 'like', '%' . $searchfor . '%')->get();
-    else $flights = Flight::all();
+    else $flights = Flight::all()->sortByDesc('updated_at');
 
     $limit = 20;
     foreach ($flights as $flight) {
