@@ -60,7 +60,7 @@ TFG-2021/22 DAW, IES Comercio.
 
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/icons/ot.png"> OpenTopography</code>
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/icons/mapquest.png"> MapQuest StaticMapsAPI</code>
-<code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/icons/openstreetmap.png"> OpenStreetMap</code><br>
+<code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/icons/openstreetmap.png"> OpenStreetMap</code><br><br>
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/icons/windy.png"> Windy</code>
 
 ### Others
