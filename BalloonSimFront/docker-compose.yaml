@@ -1,0 +1,18 @@
+version: "3.9"
+
+volumes:
+  app_node_modules:
+
+services:
+  app:
+    container_name: angular
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "4200:4200"
+    working_dir: /var/www
+    volumes:
+      - .:/var/www
+      - app_node_modules:/var/www/node_modules
+    entrypoint: node ./node_modules/@angular/cli/bin/ng serve --host 0.0.0.0

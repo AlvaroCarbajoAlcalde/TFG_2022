@@ -24,6 +24,7 @@ const fG = 9.81;
 var balloon;
 var clockInterval;
 var gasListener;
+var particleSistem;
 
 //Html
 var game;

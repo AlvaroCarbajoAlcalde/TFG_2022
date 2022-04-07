@@ -3,5 +3,6 @@ export const environment = {
   apiRoute: 'http://127.0.0.1:8000/api/',
   testing: false,
   showCollisions: false,
-  windyKey: ''
+  windyKey: '5bZScC8EM0JNhluLEQVBKWeNZs9eK3dW',
+  secondsBetweenRouteSaves: 3,
 };
