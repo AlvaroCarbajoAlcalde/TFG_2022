@@ -18,6 +18,7 @@ TFG-2021/22 DAW, IES Comercio.
   - [Database](#Database)
   - [BackEnd](#Backend)
   - [FrontEnd](#Frontend)
+  - [Docker](#Docker)
 
 ## Objectives
 
@@ -131,19 +132,17 @@ npm install angular
 npm run ng serve --open
 ```
 
-##Docker
+## Docker
 
 You can also deploy the project with Docker
 Run in back and front folders:
 ```
 docker-compose up
 ```
-then import the database.sql into phpmyadmin
-
-containers:
+Then import the database.sql into phpmyadmin
+Project routes:
 ```
 angular: localhost:4200
-mariadb: port:3306
 phpmyadmin: localhost/phpmyadmin
 laravel: localhost:8000
 ```
