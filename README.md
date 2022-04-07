@@ -118,7 +118,7 @@ Go to BalloonSimBack, open in terminal and run:
 ```
 npm install
 composer install
-php artisan serve
+php artisan serve --env=local
 ```
 
 ### Frontend
@@ -129,4 +129,21 @@ Go to BalloonSimFront, open in terminal and run:
 npm install
 npm install angular
 npm run ng serve --open
+```
+
+##Docker
+
+You can also deploy the project with Docker
+Run in back and front folders:
+```
+docker-compose up
+```
+then import the database.sql into phpmyadmin
+
+containers:
+```
+angular: localhost:4200
+mariadb: port:3306
+phpmyadmin: localhost/phpmyadmin
+laravel: localhost:8000
 ```
