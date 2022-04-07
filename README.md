@@ -7,17 +7,17 @@ TFG-2021/22 DAW, IES Comercio.
 
 - [Objectives](#Objectives)
 - [Technologies](#Technologies)
-    - [Languages](#Languages)
-    - [Frameworks](#Frameworks)
-    - [Platforms](#Platforms)
-    - [APIs](#APIs)
-    - [Others](#Others)
-    - [Browsers](#Browsers)
+  - [Languages](#Languages)
+  - [Frameworks](#Frameworks)
+  - [Platforms](#Platforms)
+  - [APIs](#APIs)
+  - [Others](#Others)
+  - [Browsers](#Browsers)
 - [Screenshots](#Screenshots)
 - [Getting Started](#Getting-Started)
-    - [Database](#Database)
-    - [BackEnd](#Backend)
-    - [FrontEnd](#Frontend)
+  - [Database](#Database)
+  - [BackEnd](#Backend)
+  - [FrontEnd](#Frontend)
 
 ## Objectives
 
@@ -53,8 +53,9 @@ TFG-2021/22 DAW, IES Comercio.
 
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/icons/node.png"> Node JS</code>
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/icons/xampp.png"> Xampp</code>
-<code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/icons/phpmyadmin.png"> PHP MyAdmin</code>
+<code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/icons/phpmyadmin.png"> PHP MyAdmin</code><br><br>
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/icons/mariadb.png"> MariaDB</code>
+<code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/icons/docker.png"> Docker</code>
 
 ### APIs
 
@@ -88,6 +89,7 @@ TFG-2021/22 DAW, IES Comercio.
 ## Getting Started
 
 Requirements:
+
 ```
 php v8.0.2
 composer v2.2.7
@@ -96,8 +98,10 @@ xampp (MySQL, phpMyAdmin, php)
 ```
 
 ### Database
+
 Import database (database.sql) in phpMyAdmin.<br>
 In the backEnd configure database variables .env file.
+
 ```
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
@@ -108,7 +112,9 @@ DB_PASSWORD=
 ```
 
 ### Backend
+
 Go to BalloonSimBack, open in terminal and run:
+
 ```
 npm install
 composer install
@@ -116,7 +122,9 @@ php artisan serve
 ```
 
 ### Frontend
+
 Go to BalloonSimFront, open in terminal and run:
+
 ```
 npm install
 npm install angular
