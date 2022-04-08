@@ -134,7 +134,7 @@ npm run ng serve --open
 
 ## Docker
 
-You can also deploy the project with Docker
+You can also deploy the project with Docker<br>
 Run in back and front folders:
 ```
 docker-compose up
