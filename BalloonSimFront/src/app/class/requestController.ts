@@ -123,4 +123,13 @@ export default class RequestController {
     return new Winds(toReturn);
     return toReturn;
   }
+
+  public static async saveWeather(flightid: number, temperature: number, pressure: number, winds: Winds) {
+    //Save weather
+    fetch(`${environment.apiRoute}newweather/${flightid}/${temperature}/${pressure}`);
+    //save winds
+    winds.windsList.forEach(wind => {
+      fetch(`${environment.apiRoute}addwind/${flightid}/${wind.altitude}/${wind.windDir}/${wind.windSpeed}`);
+    });
+  }
 }

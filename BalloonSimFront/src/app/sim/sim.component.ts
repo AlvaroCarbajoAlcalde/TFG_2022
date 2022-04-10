@@ -66,6 +66,9 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
       GLOBAL.FlightName
     );
     console.info('Flight_ID:', this.flightID);
+
+    //Save weather
+    RequestController.saveWeather(this.flightID, 20, 1221, GLOBAL.Winds);
   }
 
   async ngAfterViewInit(): Promise<void> {

@@ -1,8 +1,8 @@
 export default class Winds {
-    public winds: Wind[];
+    public windsList: Wind[];
 
     constructor(params: any) {
-        this.winds = [
+        this.windsList = [
             new Wind(0, 13, 3),
             new Wind(600, 341, 4),
             new Wind(700, 24, 5),
@@ -13,20 +13,20 @@ export default class Winds {
             new Wind(1600, 345, 6),
             new Wind(2000, 20, 2),
         ];
-        this.winds.sort((a, b) => a.altitude - b.altitude);
+        this.windsList.sort((a, b) => a.altitude - b.altitude);
     }
 
     public addWind(altitude: number, speed: number, direction: number) {
-        this.winds.push(new Wind(altitude, speed, direction));
-        this.winds.sort((a, b) => a.altitude - b.altitude);
+        this.windsList.push(new Wind(altitude, speed, direction));
+        this.windsList.sort((a, b) => a.altitude - b.altitude);
     }
 
     public getWind(altitude: number): Wind {
-        for (let i = 0; i < this.winds.length; i++) {
-            const minAlt = this.winds[i].altitude;
-            const maxAlt = this.winds[i + 1] ? this.winds[i + 1].altitude : altitude;
+        for (let i = 0; i < this.windsList.length; i++) {
+            const minAlt = this.windsList[i].altitude;
+            const maxAlt = this.windsList[i + 1] ? this.windsList[i + 1].altitude : altitude;
             if (altitude >= minAlt && altitude <= maxAlt) {
-                return this.winds[i];
+                return this.windsList[i];
             }
         }
         console.error("No wind found for altitude: ", altitude);

@@ -11,6 +11,9 @@
             $takeoffs = count(App\Models\TakeoffPoint::all());
             $flights = count(App\Models\Flight::all());
             $routes = count(App\Models\Route::all());
+            $weathers = count(App\Models\Weather::all());
+            $winds = count(App\Models\Wind::all());
+            $admins = count(App\Models\Admin::all());
             $dbName = DB::connection()->getDatabaseName();
             
             function getTableSize($tableName)
@@ -86,6 +89,34 @@
                                             <td class="buttons-td">
                                                 <a class="btn btn-sm btn-primary" href="{{ url('/routes') }}">Show</a>
                                             </td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{ $no++ }}</td>
+                                            <td>weather</td>
+                                            <td>List of weathers for each flight.</td>
+                                            <td>{{ $weathers }}</td>
+                                            <td>{{ getTableSize('weather') }}</td>
+                                            <td class="buttons-td">
+                                                <a class="btn btn-sm btn-primary" href="{{ url('/weather') }}">Show</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{ $no++ }}</td>
+                                            <td>winds</td>
+                                            <td>List of winds for each weather.</td>
+                                            <td>{{ $winds }}</td>
+                                            <td>{{ getTableSize('winds') }}</td>
+                                            <td class="buttons-td">
+                                                <a class="btn btn-sm btn-primary" href="{{ url('/winds') }}">Show</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{ $no++ }}</td>
+                                            <td>admins</td>
+                                            <td>List of admin users.</td>
+                                            <td>{{ $admins }}</td>
+                                            <td>{{ getTableSize('admins') }}</td>
+                                            <td class="buttons-td"></td>
                                         </tr>
                                     </tbody>
                                 </table>

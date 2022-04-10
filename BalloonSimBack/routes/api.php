@@ -36,6 +36,23 @@ Route::get('newpoint/{flight}/{s}/{lat}/{lon}/{alt}', function ($flight, $s, $la
     return DB::table('routes')->latest('updated_at')->first()->id;
 });
 
+Route::get('addwind/{weather}/{altitude}/{winddir}/{windspeed}', function ($weather, $altitude, $winddir, $windspeed) {
+    $wind = new App\Models\Wind();
+    $wind->weather = $weather;
+    $wind->altitude = $altitude;
+    $wind->wind_direction = $winddir;
+    $wind->wind_speed = $windspeed;
+    $wind->save();
+});
+
+Route::get('newweather/{id}/{t}/{pressure}', function ($id, $t, $pressure) {
+    $weather = new App\Models\Weather();
+    $weather->flight = $id;
+    $weather->temperature = $t;
+    $weather->pressure = $pressure;
+    $weather->save();
+});
+
 Route::get('flights/{searchfor}', function ($searchfor) {
     $flightList = [];
     if ($searchfor != '*') $flights = Flight::where('name', 'like', '%' . $searchfor . '%')->get();

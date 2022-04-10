@@ -5,6 +5,8 @@ use App\Http\Controllers\RouteController;
 use App\Http\Controllers\TakeoffPointController;
 use App\Http\Controllers\BackupController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WeatherController;
+use App\Http\Controllers\WindController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +28,8 @@ Route::get('login', 'App\Http\Controllers\AdminController@login');
 
 Route::resource('takeoff-points', TakeoffPointController::class);
 Route::resource('users', UserController::class);
+Route::resource('winds', WindController::class);
+Route::resource('weather', WeatherController::class);
 Route::resource('flights', FlightController::class);
 Route::get('/deleteAllFlights', function () {
     foreach (\App\Models\Route::all() as $route) $route->delete();

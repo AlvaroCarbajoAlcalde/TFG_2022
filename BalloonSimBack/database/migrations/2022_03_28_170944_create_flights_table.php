@@ -13,16 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('flights', function (Blueprint $table) {
-            $table->id();
-            $table->date('date');
-            $table->string('name', 255);
-            $table->string('takeoff', 255);
-            $table->timestamps();
+        // Schema::create('flights', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->date('date');
+        //     $table->string('name', 255);
+        //     $table->string('takeoff', 255);
+        //     $table->timestamps();
 
-            $table->charset = 'utf8mb4';
-            $table->collation = 'utf8mb4_unicode_ci';
-        });
+        //     $table->charset = 'utf8mb4';
+        //     $table->collation = 'utf8mb4_unicode_ci';
+        // });
     }
 
     /**
