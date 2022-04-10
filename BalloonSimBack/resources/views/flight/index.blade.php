@@ -17,6 +17,10 @@
                             </span>
 
                             <div class="float-right">
+
+                                <a class="btn btn-danger btn-sm float-right" href="{{ url('deleteAllFlights') }}">
+                                    Delete all
+                                </a>
                                 <a href="{{ url('/routes') }}" class="btn btn-primary btn-sm float-right"
                                     data-placement="left">
                                     {{ __('See routes') }}
@@ -54,8 +58,7 @@
                                             <td>{{ $flight->takeoff }}</td>
 
                                             <td>
-                                                <form action="{{ route('flights.destroy', $flight->id) }}"
-                                                    method="POST">
+                                                <form action="{{ route('flights.destroy', $flight->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary "
                                                         href="{{ route('flights.show', $flight->id) }}">Show</a>
                                                     @csrf

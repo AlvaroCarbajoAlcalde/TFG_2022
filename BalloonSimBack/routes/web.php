@@ -27,6 +27,11 @@ Route::get('login', 'App\Http\Controllers\AdminController@login');
 Route::resource('takeoff-points', TakeoffPointController::class);
 Route::resource('users', UserController::class);
 Route::resource('flights', FlightController::class);
+Route::get('/deleteAllFlights', function () {
+    foreach (\App\Models\Route::all() as $route) $route->delete();
+    foreach (\App\Models\Flight::all() as $flight)  $flight->delete();
+    return redirect()->route('flights.index')->with('success', 'All flights deleted successfully');
+});
 Route::resource('routes', RouteController::class);
 
 Route::get('/backup_database', function () {
