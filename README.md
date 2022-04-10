@@ -83,9 +83,9 @@ TFG-2021/22 DAW, IES Comercio.
 
 ## Screenshots
 
-![cap1](https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/screenshots/sc1.png)
-![cap2](https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/screenshots/sc3.png)
-![cap3](https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/screenshots/sc2.png)
+![cap1](https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/screenshots/sc1.PNG)
+![cap2](https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/screenshots/sc3.PNG)
+![cap3](https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/screenshots/sc2.PNG)
 
 ## Getting Started
 
