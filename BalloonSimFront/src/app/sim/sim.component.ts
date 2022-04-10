@@ -4,6 +4,7 @@ import * as L from 'leaflet';
 import { environment } from 'src/environments/environment';
 import backgroundController from '../class/backgroundController';
 import { GLOBAL } from '../class/global';
+import Winds from '../model/winds';
 import RequestController from '../class/requestController';
 
 declare const resizeCanvas: any;
@@ -14,6 +15,8 @@ declare const setSelectedSkybox: any;
 declare let testing: any;
 declare let showCollisions: any;
 declare let startPoint: any;
+declare let windDir: any;
+declare let windSpeed: any;
 declare let balloon: any;
 
 @Component({
@@ -63,21 +66,10 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
       GLOBAL.FlightName
     );
     console.info('Flight_ID:', this.flightID);
-
-    //FirstPoint
-    // RequestController.savePoint(
-    //   this.flightID,
-    //   0,
-    //   GLOBAL.SelectedTakeoff.lat,
-    //   GLOBAL.SelectedTakeoff.lon,
-    //   Math.round(GLOBAL.SelectedTakeoff.y * 3.28)
-    // );
   }
 
   async ngAfterViewInit(): Promise<void> {
     await GLOBAL.initGLOBAL();
-
-    document.getElementById('mapCentering')?.classList.add('center');
 
     //#region map
     this.map = L.map('map', {
@@ -96,6 +88,7 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
     tiles.addTo(this.map);
     //#endregion
 
+    //#region Routing
     const route = new L.Polyline([], {
       color: 'red',
       weight: 3,
@@ -106,6 +99,7 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
 
     const marker = L.circleMarker([0, 0], { radius: 2 });
     marker.addTo(this.map);
+    //#endregion
 
     //Map update interval
     this.mapUpdateInterval = setInterval(() => {
@@ -118,6 +112,7 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
         if (this.isMapCentered) this.map.panTo(latLng);
         route.addLatLng(latLng);
       }
+      this.changeBalloonDirection();
     }, 300);
 
     //Save points interval
@@ -128,7 +123,7 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
           this.seconds,
           balloon.calcDegreesLat(),
           balloon.calcDegreesLon(),
-          Math.round(balloon.altura * 3.28)
+          Math.round(balloon.altura)
         );
         this.seconds += environment.secondsBetweenRouteSaves;
       }
@@ -152,5 +147,13 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
     if (this.isMapCentered)
       document.getElementById('mapCentering')?.classList.add('center');
     else document.getElementById('mapCentering')?.classList.remove('center');
+  }
+
+  changeBalloonDirection() {
+    if (balloon) {
+      const actWind = GLOBAL.Winds.getWind(balloon.altura);
+      windDir = actWind.windDir;
+      windSpeed = actWind.windSpeed;
+    }
   }
 }

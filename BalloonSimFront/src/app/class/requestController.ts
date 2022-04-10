@@ -2,6 +2,7 @@ import { environment } from 'src/environments/environment';
 import Flight from '../model/flight';
 import Takeoff from '../model/takeoff';
 import Track from '../model/track';
+import Winds from '../model/winds';
 import { GLOBAL } from './global';
 
 export default class RequestController {
@@ -83,7 +84,7 @@ export default class RequestController {
     return toReturn;
   }
 
-  public static async getWinds() {
+  public static async getWinds(): Promise<Winds> {
     let toReturn = null;
 
     const myHeaders = new Headers();
@@ -105,12 +106,6 @@ export default class RequestController {
         "850h",
         "800h",
         "700h",
-        "600h",
-        "500h",
-        "400h",
-        "300h",
-        "200h",
-        "150h"
       ],
       "key": environment.windyKey
     });
@@ -124,6 +119,8 @@ export default class RequestController {
     await fetch("https://api.windy.com/api/point-forecast/v2", requestOptions as any)
       .then(response => response.json())
       .then((result) => { toReturn = result; });
+
+    return new Winds(toReturn);
     return toReturn;
   }
 }

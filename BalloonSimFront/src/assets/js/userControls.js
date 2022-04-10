@@ -44,9 +44,9 @@ function setGasListener() {
       triggerL.classList.contains("pressed") ||
       triggerR.classList.contains("pressed")
     ) {
-      balloon.temp += 0.83;
+      balloon.temp += 1.23;
     } else {
-      if (started) balloon.temp -= 0.16;
+      if (started) balloon.temp -= 0.42;
     }
   }, 300);
 }

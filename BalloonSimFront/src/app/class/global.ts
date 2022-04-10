@@ -1,5 +1,6 @@
 import { LatLngExpression } from "leaflet";
 import Takeoff from "../model/takeoff";
+import Winds from "../model/winds";
 import RequestController from "./requestController";
 
 export class GLOBAL {
@@ -9,6 +10,7 @@ export class GLOBAL {
     public static FlightName: string;
     public static SkyboxColor: string;
     public static TakeoffPointsList: Takeoff[];
+    public static Winds: Winds;
     public static WindyResponse: any;
     public static readonly MAP_CENTER: LatLngExpression = [42.54, -2.96];
 
@@ -17,6 +19,7 @@ export class GLOBAL {
 
         GLOBAL.TakeoffPointsList = await RequestController.getTakeOffs();
         GLOBAL.WindyResponse = await RequestController.getWinds();
+        GLOBAL.Winds = await RequestController.getWinds();
         GLOBAL.SelectedTakeoff = GLOBAL.TakeoffPointsList[0];
         GLOBAL.SkyboxColor = this.getRandomSkybox();
         GLOBAL.FlightName = 'Sin nombre';

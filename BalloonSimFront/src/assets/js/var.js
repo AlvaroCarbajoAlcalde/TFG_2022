@@ -17,7 +17,8 @@ const skyboxSize = 10500;
 const mapTotalSize = 7500;
 const mapSizeMeters = 50330;
 const mapSize = 500;
-const convAltura = 6.44;
+const convAltura = 4.498;
+const sumAltura = 332;
 const fG = 9.81;
 
 //Obj
@@ -58,8 +59,8 @@ const leftDeg = -3.2879013674696;
 const diffDegX = leftDeg + 2.670898;
 
 //Movement & temp
-var windDir = 193;
-var windSpeed = 43;
+var windDir = 0;
+var windSpeed = 0;
 var actTemp = 20;
 var actPressure;
 var started;

@@ -16,18 +16,11 @@ function createScene() {
 }
 
 function setFireEffect() {
-  particleSystem = new BABYLON.ParticleSystem("particles", 200);
-  particleSystem.particleTexture = new BABYLON.Texture("../assets/img/fire.png", scene);
-  particleSystem.emitter = pointer;
-  particleSystem.maxSize = 0.01;
-  particleSystem.start();
-
-
-  // particleSistem = await BABYLON.ParticleHelper.CreateAsync("fire", scene).then((set) => {
-  //   set.emitterNode = pointer;
-  //   console.log(set.emitterNode);
-  //   set.start();
-  // });
+  // particleSystem = new BABYLON.ParticleSystem("particles", 200);
+  // particleSystem.particleTexture = new BABYLON.Texture("../assets/img/fire.png", scene);
+  // particleSystem.emitter = pointer;
+  // particleSystem.maxSize = 0.01;
+  // particleSystem.start();
 }
 
 function setLight() {

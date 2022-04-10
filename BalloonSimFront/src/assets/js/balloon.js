@@ -28,8 +28,8 @@ class Balloon {
    * X = Sin(a * PI / 180)
    * Y = Cos(a * PI / 180)
    *
-   * @param {*} deg grados del viento
-   * @param {*} speed velocidad del viento en m/s
+   * @param {number} deg grados del viento
+   * @param {number} speed velocidad del viento en m/s
    * @memberof Balloon
    */
   setSpeeds(deg, speed) {
@@ -70,7 +70,7 @@ class Balloon {
   setMetersFromPosition() {
     this.mX = (this.pointer.position.x / mapTotalSize) * mapSizeMeters;
     this.mZ = (this.pointer.position.z / mapTotalSize) * mapSizeMeters;
-    this.altura = convAltura * (pointer.position.y - 14) + 417;
+    this.altura = pointer.position.y * convAltura + sumAltura;
     this.moveBalloonToPointer();
   }
 
@@ -84,7 +84,7 @@ class Balloon {
     if (started) {
       this.pointer.position.x = (this.mX / mapSizeMeters) * mapTotalSize;
       this.pointer.position.z = (this.mZ / mapSizeMeters) * mapTotalSize;
-      this.pointer.position.y = (this.altura - 417) / convAltura + 14;
+      this.pointer.position.y = (this.altura - sumAltura) / convAltura;
     }
     this.model.position.x = -this.pointer.position.x * 100;
     this.model.position.y = this.pointer.position.y * 100;
