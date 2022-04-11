@@ -183,7 +183,7 @@ h2 {
 }
 
 #tablet #map {
-    border-radius: 0px;
+    border-radius: 14px;
 }
 
 #map a,
@@ -526,10 +526,9 @@ h2 {
 /*Rope*/
 
 #rope {
-    width: 30px;
-    height: 100%;
+    width: 64px;
+    height: 80%;
     background-image: url("./assets/img/rope.png");
-    background-size: cover;
     background-repeat: repeat-y;
     position: absolute;
     z-index: 2;
