@@ -1,6 +1,8 @@
 import { GLOBAL } from './global';
 import RequestController from './requestController';
 
+declare let balloon: any;
+
 export default class ConsoleController {
 
   static setConsoleMethods() {
@@ -9,6 +11,7 @@ export default class ConsoleController {
     (<any>window).showFlights = this.showFlights;
     (<any>window).showWinds = this.showWinds;
     (<any>window).showGlobal = this.showGlobal;
+    (<any>window).showInGmaePosition = this.showInGamePosition;
 
     this.showHelp();
   }
@@ -20,6 +23,7 @@ export default class ConsoleController {
     console.info('showFlights() ==> Shows the list of Flights');
     console.info('showWinds() ==> Shows the Winds response');
     console.info('showGlobal() ==> Shows the Global variables');
+    console.info('showInGamePosition() ==> Shows the actual position variables');
     console.groupEnd();
   }
 
@@ -49,4 +53,20 @@ export default class ConsoleController {
     GLOBAL.toString();
     console.groupEnd();
   }
+
+  private static showInGamePosition() {
+    if (balloon) {
+      console.groupCollapsed('InGamePosition');
+      const toShow = {
+        lat: balloon.calcDegreesLat(),
+        lon: balloon.calcDegreesLon(),
+        x: balloon.pointer.position.x,
+        y: balloon.pointer.position.y,
+        z: balloon.pointer.position.z,
+      };
+      console.table(toShow);
+      console.groupEnd();
+    }
+  }
+
 }

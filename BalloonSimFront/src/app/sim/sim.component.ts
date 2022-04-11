@@ -71,6 +71,14 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
 
     //Save weather
     RequestController.saveWeather(this.flightID, 20, 1221, GLOBAL.Winds);
+    //Save first point
+    RequestController.savePoint(
+      this.flightID,
+      0,
+      GLOBAL.SelectedTakeoff.lat,
+      GLOBAL.SelectedTakeoff.lon,
+      Math.round(GLOBAL.SelectedTakeoff.y * 4.498 + 332)
+    );
   }
 
   async ngAfterViewInit(): Promise<void> {
@@ -104,18 +112,18 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
 
     const marker = L.circleMarker([0, 0], { radius: 2 });
     marker.addTo(this.map);
+    marker.setLatLng(new L.LatLng(GLOBAL.SelectedTakeoff.lat, GLOBAL.SelectedTakeoff.lon));
     //#endregion
 
     //Map update interval
     this.mapUpdateInterval = setInterval(() => {
       if (started && balloon && this.flightID && this.seconds > environment.secondsBetweenRouteSaves) {
-        const latLng = new L.LatLng(
-          balloon.calcDegreesLat(),
-          balloon.calcDegreesLon()
-        );
+        const latLng = new L.LatLng(balloon.calcDegreesLat(), balloon.calcDegreesLon());
         marker.setLatLng(latLng);
         if (this.isMapCentered) this.map.panTo(latLng);
         route.addLatLng(latLng);
+      } else {
+        if (this.isMapCentered) this.map.panTo(marker.getLatLng());
       }
       this.changeBalloonDirection();
     }, 300);
