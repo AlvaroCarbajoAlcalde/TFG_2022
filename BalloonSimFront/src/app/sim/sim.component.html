@@ -1,74 +1,63 @@
 <div id="sim">
-  <section id="tablet">
-    <div id="tabletContent">
-      <div class="map-container tablet">
-        <div class="map-frame">
-          <div id="mapCentering center" (click)="toggleMapCentering()"></div>
-          <div class="tablet-show-contents">
-            <p id="positionX"></p>
-            <p id="positionZ"></p>
-            <p id="positionY"></p>
-          </div>
-          <div id="map"></div>
+    <section id="tablet">
+        <div id="tabletContent">
+            <div class="map-container tablet">
+                <div class="map-frame">
+                    <div id="mapCenteringBack" (click)="toggleMapCentering()"></div>
+                    <div id="mapCentering" class="center" (click)="toggleMapCentering()"></div>
+                    <div class="tablet-show-contents">
+                        <p id="positionX"></p>
+                        <p id="positionZ"></p>
+                        <p id="positionY"></p>
+                    </div>
+                    <div id="map"></div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="optionsBar">
-    <div id="eyeBtn" onclick="toggleVisibility(this)">
-      <div class="shut">
-        <span></span>
-      </div>
-      <div class="ball"></div>
-    </div>
-    <a (click)="endGame()" class="close"></a>
-  </section>
+    <section id="optionsBar">
+        <div id="eyeBtn" onclick="toggleVisibility(this)">
+            <div class="shut">
+                <span></span>
+            </div>
+            <div class="ball"></div>
+        </div>
+        <a (click)="endGame()" class="close"></a>
+    </section>
 
-  <section id="quemador">
-    <img
-      draggable="false"
-      id="gatilloIzq"
-      src="../../assets/img/leftTrigger.png"
-      onmousedown="clickQuemador(this)"
-      onmouseup="unClickQuemador(this)"
-      onmouseleave="unClickQuemador(this)"
-    />
-    <img
-      draggable="false"
-      id="gatilloDch"
-      src="../../assets/img/rightTrigger.png"
-      onmousedown="clickQuemador(this)"
-      onmouseup="unClickQuemador(this)"
-      onmouseleave="unClickQuemador(this)"
-    />
-  </section>
+    <section id="quemador">
+        <img draggable="false" id="gatilloIzq" src="../../assets/img/leftTrigger.png" onmousedown="clickQuemador(this)" onmouseup="unClickQuemador(this)" onmouseleave="unClickQuemador(this)" />
+        <img draggable="false" id="gatilloDch" src="../../assets/img/rightTrigger.png" onmousedown="clickQuemador(this)" onmouseup="unClickQuemador(this)" onmouseleave="unClickQuemador(this)" />
+    </section>
 
-  <section id="altimetro">
-    <div id="altimetroContent">
-      <label id="altTemperatura">T 23.3°C</label>
-      <label id="altSpeed">Wind: 63° <br />23.3 m/s</label>
-      <label id="altSpeedAlt">6 m/s</label>
-      <label id="altAltura">6000 feet</label>
-      <label id="altPresion">Pressure<br />932.1 hPa</label>
-      <label id="altTime">Flight Time: 02:21:49</label>
-      <img id="altRegla" src="../../assets/img/regla.png" />
-      <img id="altReglaInv" src="../../assets/img/reglainv.png" />
-      <div id="altDiffContainer">
-        <div id="altDiffUp"></div>
-        <div id="altDiffDown"></div>
-      </div>
-    </div>
-  </section>
+    <section id="altimetro">
+        <div id="altimetroContent">
+            <label id="altTemperatura">T 23.3°C</label>
+            <label id="altSpeed">Wind: 63° <br />23.3 m/s</label>
+            <label id="altSpeedAlt">6 m/s</label>
+            <label id="altAltura">6000 feet</label>
+            <label id="altPresion">Pressure<br />932.1 hPa</label>
+            <label id="altTime">Flight Time: 02:21:49</label>
+            <img id="altRegla" src="../../assets/img/regla.png" />
+            <img id="altReglaInv" src="../../assets/img/reglainv.png" />
+            <div id="altDiffContainer">
+                <div id="altDiffUp"></div>
+                <div id="altDiffDown"></div>
+            </div>
+        </div>
+    </section>
 
-  <section id="game"></section>
+    <section id="rope"></section>
 
-  <section id="loading">
-    <div class="loader-section section-left"></div>
-    <div class="loader-section section-right"></div>
-    <div class="loading-box">
-      <p class="loading-count"></p>
-      <div class="loader"></div>
-    </div>
-  </section>
+    <section id="game"></section>
+
+    <section id="loading">
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+        <div class="loading-box">
+            <p class="loading-count"></p>
+            <div class="loader"></div>
+        </div>
+    </section>
 </div>

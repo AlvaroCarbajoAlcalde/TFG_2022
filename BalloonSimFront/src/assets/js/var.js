@@ -29,6 +29,7 @@ var particleSistem;
 
 //Html
 var game;
+var rope;
 var tablet;
 var altimetro;
 var quemador;

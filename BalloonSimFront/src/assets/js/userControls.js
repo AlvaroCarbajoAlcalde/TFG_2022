@@ -21,10 +21,12 @@ function unClickQuemador(trigger) {
 function toggleVisibility(eye) {
   if (eye.classList.contains("closed")) {
     tablet.classList.remove("visibleOff");
+    rope.classList.remove("visibleOff");
     altimetro.classList.remove("visibleOff");
     quemador.classList.remove("visibleOff");
     eye.classList.remove("closed");
   } else {
+    rope.classList.add("visibleOff");
     tablet.classList.add("visibleOff");
     altimetro.classList.add("visibleOff");
     quemador.classList.add("visibleOff");

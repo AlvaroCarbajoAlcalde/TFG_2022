@@ -17,6 +17,7 @@ declare let showCollisions: any;
 declare let startPoint: any;
 declare let windDir: any;
 declare let windSpeed: any;
+declare let started: any;
 declare let balloon: any;
 
 @Component({
@@ -49,6 +50,7 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
 
     testing = environment.testing;
     showCollisions = environment.showCollisions;
+    started = false;
 
     setSelectedSkybox(GLOBAL.SkyboxColor);
 
@@ -106,7 +108,7 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
 
     //Map update interval
     this.mapUpdateInterval = setInterval(() => {
-      if (balloon && this.flightID && this.seconds > environment.secondsBetweenRouteSaves) {
+      if (started && balloon && this.flightID && this.seconds > environment.secondsBetweenRouteSaves) {
         const latLng = new L.LatLng(
           balloon.calcDegreesLat(),
           balloon.calcDegreesLon()
@@ -120,7 +122,7 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
 
     //Save points interval
     this.pointsSaveInterval = setInterval(() => {
-      if (balloon && this.flightID) {
+      if (started && balloon && this.flightID) {
         RequestController.savePoint(
           this.flightID,
           this.seconds,
@@ -142,6 +144,7 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
 
   endGame() {
     endSim();
+    started = false;
     this.router.navigate([`flight-details/${this.flightID}`]);
   }
 

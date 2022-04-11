@@ -6,6 +6,7 @@ function resizeCanvas() {
 function queryHTML() {
   game = $("#game")[0];
   tablet = $("#tablet")[0];
+  rope = $("#rope")[0];
   quemador = $("#quemador")[0];
   optionsBar = $("#optionsBar")[0];
   altimetro = $("#altimetro")[0];
