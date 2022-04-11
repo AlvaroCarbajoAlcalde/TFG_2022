@@ -31,12 +31,15 @@ Route::resource('users', UserController::class);
 Route::resource('winds', WindController::class);
 Route::resource('weather', WeatherController::class);
 Route::resource('flights', FlightController::class);
+Route::resource('routes', RouteController::class);
+
 Route::get('/deleteAllFlights', function () {
+    foreach (\App\Models\Weather::all() as $weather) $weather->delete();
+    foreach (\App\Models\Wind::all() as $wind) $wind->delete();
     foreach (\App\Models\Route::all() as $route) $route->delete();
     foreach (\App\Models\Flight::all() as $flight)  $flight->delete();
     return redirect()->route('flights.index')->with('success', 'All flights deleted successfully');
 });
-Route::resource('routes', RouteController::class);
 
 Route::get('/backup_database', function () {
     $mysqlHostName      = env('DB_HOST');

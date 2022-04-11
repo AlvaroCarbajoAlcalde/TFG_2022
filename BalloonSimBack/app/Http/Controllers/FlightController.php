@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Flight;
+use App\Models\Weather;
+use App\Models\Wind;
 use App\Models\Route;
 
 /**
@@ -44,8 +46,9 @@ class FlightController extends Controller
      */
     public function destroy($id)
     {
-        $routes = Route::all()->where('flight', $id);
-        foreach ($routes as $route) $route->delete();
+        foreach (Wind::all()->where('weather', $id) as $wind) $wind->delete();
+        foreach (Route::all()->where('flight', $id) as $route) $route->delete();
+        Weather::all()->where('flight', $id)->first()->delete();
         Flight::find($id)->delete();
 
         return redirect()->route('flights.index')
