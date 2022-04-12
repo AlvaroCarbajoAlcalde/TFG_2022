@@ -77,7 +77,7 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
       0,
       GLOBAL.SelectedTakeoff.lat,
       GLOBAL.SelectedTakeoff.lon,
-      Math.round(GLOBAL.SelectedTakeoff.y * 4.498 + 332)
+      GLOBAL.SelectedTakeoff.alt
     );
   }
 
