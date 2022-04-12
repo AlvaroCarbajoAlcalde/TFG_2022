@@ -16,10 +16,21 @@ export class HistoryComponent implements OnInit {
     await this.searchFlights('*');
   }
 
+  /**
+   * Search flights
+   *
+   * @param {string} value search value
+   * @memberof HistoryComponent
+   */
   public async searchFlights(value: string) {
     this.flightList = await RequestController.getFlights(value);
   }
 
+  /**
+   * Navigate to flight view
+   * 
+   * @param {number} flightId id of the flight
+   */
   public seeFlightDetails(flightId: number) {
     this.router.navigate([`flight-details/${flightId}`]);
   }

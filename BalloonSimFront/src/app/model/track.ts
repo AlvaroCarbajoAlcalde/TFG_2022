@@ -4,6 +4,10 @@ export default class Track {
   public altitude: number;
   public seconds: number;
 
+  /**
+   * 
+   * @param params 
+   */
   constructor(params: any) {
     this.altitude = params.altitude;
     this.lat = params.lat;

@@ -14,6 +14,11 @@ export class GLOBAL {
     public static WindyResponse: any;
     public static readonly MAP_CENTER: LatLngExpression = [42.54, -2.96];
 
+    /**
+     * Initializes the global variables
+     * 
+     * @returns Promise<void>
+     */
     public static async initGLOBAL(): Promise<void> {
         if (this.isInitialized) return;
 
@@ -26,6 +31,9 @@ export class GLOBAL {
         this.isInitialized = true;
     }
 
+    /**
+     * Prints the global variables
+     */
     public static toString(): void {
         console.log("Is initialized: ", this.isInitialized);
         console.log("SelectedTakeoff: " + this.SelectedTakeoff.name);
@@ -37,6 +45,11 @@ export class GLOBAL {
         console.table(this.WindyResponse);
     }
 
+    /**
+     * Gets a random skybox color
+     * 
+     * @returns string
+     */
     private static getRandomSkybox(): string {
         const values = ['bluecloud', 'browncloud', 'graycloud', 'yellowcloud'];
         return values[Math.floor(Math.random() * values.length)];

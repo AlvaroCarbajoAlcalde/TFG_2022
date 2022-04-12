@@ -10,6 +10,10 @@ export default class Takeoff {
   public alt: number;
   public img: string;
 
+  /**
+   * 
+   * @param params 
+   */
   constructor(params: any) {
     this.id = params.id;
     this.name = params.name;

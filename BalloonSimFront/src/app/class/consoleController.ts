@@ -5,6 +5,9 @@ declare let balloon: any;
 
 export default class ConsoleController {
 
+  /**
+   * Sets the console commands
+   */
   static setConsoleMethods() {
     (<any>window).help = this.showHelp;
     (<any>window).showTakeoffs = this.showTakeoffs;
@@ -16,6 +19,9 @@ export default class ConsoleController {
     this.showHelp();
   }
 
+  /**
+   * Shows the help
+   */
   private static showHelp() {
     console.group('Help');
     console.info('help() ==> Shows help');
@@ -27,6 +33,9 @@ export default class ConsoleController {
     console.groupEnd();
   }
 
+  /**
+   * Shows the list of takeoffs
+   */
   private static async showTakeoffs() {
     const takeoffs = await RequestController.getTakeOffs();
     console.groupCollapsed('Takeoffs');
@@ -34,6 +43,9 @@ export default class ConsoleController {
     console.groupEnd();
   }
 
+  /**
+   * Shows the list of flights
+   */
   private static async showFlights() {
     const flights = await RequestController.getFlights();
     console.groupCollapsed('Flights');
@@ -41,6 +53,9 @@ export default class ConsoleController {
     console.groupEnd();
   }
 
+  /**
+   * Shows the Winds response
+   */
   private static async showWinds() {
     const winds = await RequestController.getWinds();
     console.groupCollapsed('Winds');
@@ -48,12 +63,18 @@ export default class ConsoleController {
     console.groupEnd();
   }
 
+  /**
+   * Shows the Global variables
+   */
   private static async showGlobal() {
     console.groupCollapsed('GLOBAL');
     GLOBAL.toString();
     console.groupEnd();
   }
 
+  /**
+   * Shows the actual position variables of the balloon
+   */
   private static showInGamePosition() {
     if (balloon) {
       console.groupCollapsed('InGamePosition');

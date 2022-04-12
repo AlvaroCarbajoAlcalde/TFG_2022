@@ -26,19 +26,22 @@ export class HomeComponent implements OnInit {
     "En vuelo": "../../assets/slider-images/Vuelo.png",
   };
 
-  constructor() {
-    GLOBAL.initGLOBAL();
-  }
+  constructor() { }
 
-  //Next/previous controls
+  /**
+   * Method to navigate to the next slide
+   * 
+   * @param {number} n number of the slide 
+   */
   public plusSlides(n: number) {
     this.showSlides((this.slideIndex += n));
   }
 
-  currentSlide(n: number) {
-    this.showSlides((this.slideIndex = n));
-  }
-
+  /**
+   * Show the slide with the index
+   * 
+   * @param {number} n number of the slide
+   */
   showSlides(n: number) {
     let i;
     let slides = document.getElementsByClassName('mySlides');
@@ -59,6 +62,9 @@ export class HomeComponent implements OnInit {
     this.showSlides(this.slideIndex);
   }
 
+  /**
+   * Prints the slides
+   */
   private printSlides() {
     const slideContainer = document.getElementsByClassName('slides-here')[0];
     const lenght = Object.keys(this.SLIDES).length + 1;
@@ -69,6 +75,15 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  /**
+   * Creates a slide
+   * 
+   * @param {string} key name of the slide
+   * @param {string} value image of the slide
+   * @param {number} i counter of the slide
+   * @param {number} lenght lenght of the slides
+   * @returns 
+   */
   private createMySlide(key: string, value: string, i: number, lenght: number) {
     const div = document.createElement('div');
     div.className = 'mySlides fade';

@@ -6,6 +6,10 @@ export default class Flight {
   public takeoff: string;
   public duration: string;
 
+  /**
+   * 
+   * @param params 
+   */
   constructor(params: any) {
     this.id = params.id;
     if (params.no) this.no = params.no;
@@ -15,6 +19,14 @@ export default class Flight {
     this.duration = this.setDuration(params.duration);
   }
 
+  /**
+   * Formats the duration of the flight in format hh:mm:ss
+   *
+   * @private
+   * @param {number} duration in seconds
+   * @return {string} duration in hh:mm:ss
+   * @memberof Flight
+   */
   private setDuration(duration: number): string {
     const hours = Math.floor(duration / 3600);
     const minutes = Math.floor((duration - hours * 3600) / 60);

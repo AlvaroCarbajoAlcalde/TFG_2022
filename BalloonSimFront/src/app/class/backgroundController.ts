@@ -4,6 +4,11 @@ class BackgroundController {
   private readonly secondsGap = 10;
   private interval!: any;
 
+  /**
+   * Gets the instance of the class
+   * 
+   * @returns {BackgroundController}
+   */
   public static getInstance() {
     if (BackgroundController.instance == null) {
       BackgroundController.instance = new BackgroundController();
@@ -13,6 +18,9 @@ class BackgroundController {
 
   private constructor() { }
 
+  /**
+   * Starts the interval to update the background
+   */
   public startInterval() {
     const sliders = document.getElementsByClassName('slide-img');
     let n = 0;
@@ -28,6 +36,9 @@ class BackgroundController {
     }, this.secondsGap * 1000);
   }
 
+  /**
+   * Stops the interval to update the background
+   */
   public stopInterval() {
     clearInterval(this.interval);
   }

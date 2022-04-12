@@ -103,6 +103,9 @@ export class ParamsComponent implements AfterViewInit {
     document.getElementsByClassName(GLOBAL.SkyboxColor)[0].classList.add('selected');
   }
 
+  /**
+   * Change skybox color
+   */
   public selectSkybox(value: string) {
     const imgs = Array.from(document.getElementsByClassName('skyboximg'));
     imgs.forEach((img) => { img.classList.remove('selected'); });
@@ -110,25 +113,48 @@ export class ParamsComponent implements AfterViewInit {
     GLOBAL.SkyboxColor = value;
   }
 
+  /**
+   * Sets flight name
+   * 
+   * @param {string} value name of flight
+   */
   public setFlightName(value: string) {
     GLOBAL.FlightName = value;
   }
 
+  /**
+   * Delete wind with altitude equal to value
+   * 
+   * @param {number} altitude altitude of wind
+   */
   public deleteWind(altitude: number) {
     GLOBAL.Winds.removeWind(altitude);
   }
 
+  /**
+   * Adds a new wind to the list
+   * 
+   * @param {number} altitude altitude of wind
+   * @param {number} direction direction of wind
+   * @param {number} speed speed of wind
+   */
   public addWind(altitude: any, direction: any, speed: any) {
     GLOBAL.Winds.addWind(altitude, direction, speed / 3.6);
     this.showPopupWinds();
   }
 
+  /**
+   * Shows popup of add wind
+   */
   public showPopupWinds() {
     Array.from(document.getElementsByClassName("popup_input")).forEach((element: any) => { element.value = "0"; });
     document.getElementById('divAddWind')?.classList.toggle('show');
     document.getElementsByClassName("popup_background")[0]?.classList.toggle('show');
   }
 
+  /**
+   * Hide popup of add wind
+   */
   public addWindCancel() {
     this.showPopupWinds();
   }

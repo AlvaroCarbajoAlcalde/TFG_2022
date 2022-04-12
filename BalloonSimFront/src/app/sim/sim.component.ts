@@ -150,12 +150,18 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
     clearInterval(this.pointsSaveInterval);
   }
 
+  /**
+   * Ends the simulation
+   */
   endGame() {
     endSim();
     started = false;
     this.router.navigate([`flight-details/${this.flightID}`]);
   }
 
+  /**
+   * Toggle map centering
+   */
   toggleMapCentering() {
     this.isMapCentered = !this.isMapCentered;
     if (this.isMapCentered)
@@ -163,6 +169,9 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
     else document.getElementById('mapCentering')?.classList.remove('center');
   }
 
+  /**
+   * Changes the balloon direction based on the wind
+   */
   changeBalloonDirection() {
     if (balloon) {
       const actWind = GLOBAL.Winds.getWind(balloon.altura);

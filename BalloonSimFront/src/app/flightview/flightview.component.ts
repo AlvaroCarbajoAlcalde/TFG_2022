@@ -15,26 +15,16 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
   public flight!: Flight;
   public distance!: number;
 
-  constructor(
-    private _Activatedroute: ActivatedRoute,
-    private router: Router
-  ) {
-    GLOBAL.initGLOBAL();
-  }
+  constructor(private _Activatedroute: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-    if (this._Activatedroute.snapshot.paramMap.get('id') == null)
-      this.router.navigate(['history']);
-    else
-      this.flightid = parseInt(
-        <string>this._Activatedroute.snapshot.paramMap.get('id')
-      );
+    if (this._Activatedroute.snapshot.paramMap.get('id') == null) this.router.navigate(['history']);
+    else this.flightid = parseInt(<string>this._Activatedroute.snapshot.paramMap.get('id'));
   }
 
   async ngAfterViewInit(): Promise<void> {
     this.flight = await RequestController.getFlight(this.flightid);
-    (<HTMLElement>document.getElementById('flightname')).innerHTML =
-      this.flight.name;
+    (<HTMLElement>document.getElementById('flightname')).innerHTML = this.flight.name;
 
     //#region MarkerIcons
     const iconDefault = L.icon({
@@ -52,19 +42,8 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
     //#endregion
 
     //#region Map
-    this.map = L.map('map', {
-      center: [42.53, -2.85],
-      zoom: 12,
-    });
-
-    const tiles = L.tileLayer(
-      'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-      {
-        maxZoom: 16,
-        minZoom: 10,
-      }
-    );
-
+    this.map = L.map('map', { center: [42.53, -2.85], zoom: 12 });
+    const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 16, minZoom: 10 });
     tiles.addTo(this.map);
     //#endregion
 
@@ -104,6 +83,12 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
     this.distance = parseFloat(this.distance.toFixed(2));
   }
 
+  /**
+   * Converts a number to a string with the correct units
+   * 
+   * @param {number} distance distance in meters
+   * @returns {string} distance in km and m
+   */
   public distanceToString(distance: number): string {
     let toReturn = '';
     if (distance / 1000 > 0) {

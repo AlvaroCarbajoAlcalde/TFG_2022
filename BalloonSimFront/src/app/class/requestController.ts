@@ -7,6 +7,11 @@ import { GLOBAL } from './global';
 
 export default class RequestController {
 
+  /**
+   * Get the takeoff list
+   * 
+   * @returns {Promise<Takeoff[]>}
+   */
   public static async getTakeOffs(): Promise<Takeoff[]> {
     const toReturn: Takeoff[] = [];
     await fetch(`${environment.apiRoute}takeoffs`)
@@ -20,10 +25,14 @@ export default class RequestController {
     return toReturn;
   }
 
-  public static async startFlight(
-    takeoff: string,
-    name: string = 'undefined'
-  ): Promise<number> {
+  /**
+   * Start a new flight and return the id
+   *  
+   * @param {string} takeoff the takeoff name 
+   * @param {string} name name of the flight
+   * @returns {Promise<Flight>} id of the flight
+   */
+  public static async startFlight(takeoff: string, name: string): Promise<number> {
     let toReturn: number = 0;
     await fetch(`${environment.apiRoute}newflight/${name}/${takeoff}`)
       .then((response) => response.json())
@@ -33,18 +42,25 @@ export default class RequestController {
     return toReturn;
   }
 
-  public static savePoint(
-    flight: number,
-    s: number,
-    lat: number,
-    lon: number,
-    alt: number
-  ) {
-    fetch(
-      `${environment.apiRoute}newpoint/${flight}/${s}/${lat}/${lon}/${alt}`
-    );
+  /**
+   * Saves a point of the route
+   * 
+   * @param {number} flight id of the flight
+   * @param {number} s seconds since the start of the flight
+   * @param {number} lat latitude
+   * @param {number} lon longitude
+   * @param {number} alt altitude
+   */
+  public static savePoint(flight: number, s: number, lat: number, lon: number, alt: number) {
+    fetch(`${environment.apiRoute}newpoint/${flight}/${s}/${lat}/${lon}/${alt}`);
   }
 
+  /**
+   * Gets the flight list
+   * 
+   * @param {string} searchFor parameter to search for, default is all
+   * @returns {Promise<Flight[]>} List of flights
+   */
   public static async getFlights(searchFor: string = "*"): Promise<Flight[]> {
     const toReturn: Flight[] = [];
     let no = 1;
@@ -61,6 +77,12 @@ export default class RequestController {
     return toReturn;
   }
 
+  /**
+   * Get the flight with the given id
+   * 
+   * @param {number} id id of the flight
+   * @returns {Promise<Flight>} flight
+   */
   public static async getFlight(id: number): Promise<Flight> {
     let toReturn!: Flight;
     await fetch(`${environment.apiRoute}flight/${id}`)
@@ -71,6 +93,12 @@ export default class RequestController {
     return toReturn;
   }
 
+  /**
+   * Gets the track of the flight
+   * 
+   * @param {number} flightId id of the flight 
+   * @returns {Promise<Track[]>} list of points of the flight
+   */
   public static async getRoute(flightId: number): Promise<Track[]> {
     const toReturn: Track[] = [];
     await fetch(`${environment.apiRoute}routes/${flightId}`)
@@ -84,6 +112,11 @@ export default class RequestController {
     return toReturn;
   }
 
+  /**
+   * Gets the wind data of the flight
+   * 
+   * @returns {Promise<Winds[]>} list of all the winds
+   */
   public static async getWinds(): Promise<Winds> {
     let toReturn = null;
 
@@ -94,19 +127,8 @@ export default class RequestController {
       "lat": (<number[]>GLOBAL.MAP_CENTER)[0],
       "lon": (<number[]>GLOBAL.MAP_CENTER)[1],
       "model": "gfs",
-      "parameters": [
-        "wind"
-      ],
-      "levels": [
-        "surface",
-        "1000h",
-        "950h",
-        "925h",
-        "900h",
-        "850h",
-        "800h",
-        "700h",
-      ],
+      "parameters": ["wind"],
+      "levels": ["surface", "1000h", "950h", "925h", "900h", "850h", "800h", "700h",],
       "key": environment.windyKey
     });
 
@@ -124,10 +146,18 @@ export default class RequestController {
     return toReturn;
   }
 
+  /**
+   * Saves the wind data of the flight
+   * 
+   * @param {number} flightid id of the flight
+   * @param {number} temperature temperature in celsius
+   * @param {number} pressure pressure in hPa
+   * @param {Winds} winds wind speed in m/s
+   */
   public static async saveWeather(flightid: number, temperature: number, pressure: number, winds: Winds) {
     //Save weather
     fetch(`${environment.apiRoute}newweather/${flightid}/${temperature}/${pressure}`);
-    //save winds
+    //Save winds
     winds.windsList.forEach(wind => {
       fetch(`${environment.apiRoute}addwind/${flightid}/${wind.altitude}/${wind.windDir}/${wind.windSpeed}`);
     });
