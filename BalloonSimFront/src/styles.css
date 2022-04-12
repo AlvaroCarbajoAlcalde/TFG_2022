@@ -863,6 +863,10 @@ hr {
     gap: 20px;
     justify-content: left;
     align-items: center;
+    background-color: var(--lighter);
+    padding: 8px;
+    border-radius: 8px;
+    max-width: 322px;
 }
 
 #search label {
