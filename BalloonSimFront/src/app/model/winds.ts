@@ -32,16 +32,25 @@ export default class Winds {
         console.error("No wind found for altitude: ", altitude);
         return new Wind(0, 0, 0);
     }
+
+    public removeWind(altitude: number) {
+        this.windsList.splice(this.windsList.findIndex(wind => wind.altitude === altitude), 1);
+        if (this.windsList.length === 0) this.windsList.push(new Wind(0, 0, 0));
+    }
 }
 
 export class Wind {
     public altitude: number;
+    public altitudeFeet: number;
     public windDir: number;
     public windSpeed: number;
+    public windSpeedKMH: number;
 
     constructor(altitude: number, windDir: number, windSpeed: number) {
         this.altitude = altitude;
         this.windDir = windDir;
         this.windSpeed = windSpeed;
+        this.windSpeedKMH = Number.parseFloat((windSpeed * 3.60).toFixed(2));
+        this.altitudeFeet = Math.round(altitude * 3.28084);
     }
 }

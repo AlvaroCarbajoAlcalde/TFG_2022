@@ -1,6 +1,7 @@
 import { Component, AfterViewInit } from '@angular/core';
 import * as L from 'leaflet';
 import { GLOBAL } from '../class/global';
+import { Wind } from '../model/winds';
 
 @Component({
   selector: 'app-params',
@@ -9,11 +10,13 @@ import { GLOBAL } from '../class/global';
 export class ParamsComponent implements AfterViewInit {
 
   private map!: L.Map;
+  public windList!: Wind[];
 
   constructor() { }
 
   async ngAfterViewInit(): Promise<void> {
     await GLOBAL.initGLOBAL();
+    this.windList = GLOBAL.Winds.windsList;
 
     //#region MarkerIcons
     const iconDefault = L.icon({
@@ -109,5 +112,9 @@ export class ParamsComponent implements AfterViewInit {
 
   public setFlightName(value: string) {
     GLOBAL.FlightName = value;
+  }
+
+  public deleteWind(altitude: number){
+    GLOBAL.Winds.removeWind(altitude);
   }
 }

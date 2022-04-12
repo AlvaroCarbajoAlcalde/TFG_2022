@@ -7,10 +7,12 @@ import { SimComponent } from './sim/sim.component';
 import { HistoryComponent } from './history/history.component';
 import { FlightviewComponent } from './flightview/flightview.component';
 import { HomeComponent } from './home/home.component';
+import { ParamsComponent } from './params/params.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ParamsComponent,
     SimComponent,
     HistoryComponent,
     FlightviewComponent,

@@ -706,32 +706,34 @@ h2 {
     opacity: 1;
 }
 
-table.flights tbody td {
+table.contents_table tbody td {
     text-align: center;
-    padding: 3px;
+    padding: 4px;
+    border-radius: 5px;
 }
 
-table.flights thead th {
+table.contents_table thead th {
     background-color: var(--primary);
     padding: 10px;
+    border-radius: 5px;
 }
 
-table.flights tbody tr:nth-child(odd) {
+table.contents_table tbody tr:nth-child(odd) {
     background-color: var(--light);
 }
 
-table.flights tr:nth-child(even) {
+table.contents_table tr:nth-child(even) {
     background-color: var(--lighter);
 }
 
-table.flights a {
+table.contents_table a {
     text-decoration: none;
     color: white;
     transition: 0.5s;
     cursor: pointer;
 }
 
-table.flights a:hover {
+table.contents_table a:hover {
     color: var(--primary);
 }
 
