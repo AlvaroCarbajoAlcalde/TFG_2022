@@ -17,7 +17,7 @@ export default class Takeoff {
     this.x = params.x;
     this.z = params.z;
     this.y = params.y;
-    this.alt = Math.round(this.y * 4.498 + 332);
+    this.alt = Math.round(params.y * 4.498 + 332);
     this.lat = params.lat;
     this.lon = params.lon;
     this.img = params.image;

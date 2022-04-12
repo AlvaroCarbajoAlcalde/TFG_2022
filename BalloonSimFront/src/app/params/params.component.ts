@@ -86,7 +86,7 @@ export class ParamsComponent implements AfterViewInit {
         marker.setIcon(iconRed);
         marker.setZIndexOffset(100);
       });
-      marker.bindPopup(`<b>${takeoff.name}</b><br>${takeoff.description}<br>${img.outerHTML}<br>Lat: ${takeoff.lat}  Lon: ${takeoff.lon} Alt: ${GLOBAL.SelectedTakeoff.alt} m.`);
+      marker.bindPopup(`<b>${takeoff.name}</b><br>${takeoff.description}<br>${img.outerHTML}<br>Lat: ${takeoff.lat},  Lon: ${takeoff.lon}, Alt: ${takeoff.alt}m.`);
       marker.setZIndexOffset(0);
       if (GLOBAL.SelectedTakeoff == takeoff) {
         marker.setIcon(iconRed);
