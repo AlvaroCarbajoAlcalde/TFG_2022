@@ -118,6 +118,72 @@ canvas {
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+    transition: opacity 0.5s;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 99;
+}
+
+.popup.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup-content {
+    padding: 20px;
+    border-radius: 20px;
+    background-color: var(--lighter);
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.popup_background {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 98;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    background-color: black;
+    visibility: visible;
+}
+
+.popup_background.show {
+    display: block;
+}
+
+.popup_buttons {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.popup_buttons button {
+    width: 47%;
+    transition: opacity 0.5s;
+}
+
+.popup input {
+    padding: 4px;
+    border-radius: 10px;
+    border: none;
+    padding-left: 6px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
 }
 
 
@@ -925,4 +991,23 @@ hr {
 .leaflet-popup-content-wrapper,
 .leaflet-popup-tip {
     background-color: whitesmoke !important;
+}
+
+
+/*Buttons*/
+
+button {
+    cursor: pointer;
+    padding: 10px;
+    font-size: large;
+    font-weight: bold;
+    color: whitesmoke;
+    background-color: var(--primary);
+    border-radius: 10px;
+    border: none;
+    transition: 0.5s;
+}
+
+button:hover {
+    background-color: var(--light);
 }

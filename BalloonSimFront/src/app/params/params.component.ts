@@ -114,7 +114,22 @@ export class ParamsComponent implements AfterViewInit {
     GLOBAL.FlightName = value;
   }
 
-  public deleteWind(altitude: number){
+  public deleteWind(altitude: number) {
     GLOBAL.Winds.removeWind(altitude);
+  }
+
+  public addWind(altitude: any, direction: any, speed: any) {
+    GLOBAL.Winds.addWind(altitude, direction, speed / 3.6);
+    this.showPopupWinds();
+  }
+
+  public showPopupWinds() {
+    Array.from(document.getElementsByClassName("popup_input")).forEach((element: any) => { element.value = "0"; });
+    document.getElementById('divAddWind')?.classList.toggle('show');
+    document.getElementsByClassName("popup_background")[0]?.classList.toggle('show');
+  }
+
+  public addWindCancel() {
+    this.showPopupWinds();
   }
 }

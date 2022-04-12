@@ -16,8 +16,9 @@ export default class Winds {
         this.windsList.sort((a, b) => a.altitude - b.altitude);
     }
 
-    public addWind(altitude: number, speed: number, direction: number) {
-        this.windsList.push(new Wind(altitude, speed, direction));
+    public addWind(altitude: number, direction: number, speed: number) {
+        this.windsList.splice(this.windsList.findIndex(wind => wind.altitude == altitude), 1);
+        this.windsList.push(new Wind(altitude, direction, speed));
         this.windsList.sort((a, b) => a.altitude - b.altitude);
     }
 

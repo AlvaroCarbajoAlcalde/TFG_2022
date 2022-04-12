@@ -24,7 +24,7 @@
                 <th>Altitud (m s. n. m.)</th>
                 <th>Dirección</th>
                 <th>Velocidad (km/h)</th>
-                <th></th>
+                <th> </th>
             </tr>
         </thead>
         <tbody>
@@ -36,6 +36,25 @@
             </tr>
         </tbody>
     </table>
+    <button type="button" (click)="showPopupWinds()">Añadir viento</button>
+    <div class="popup_background"></div>
+    <div class="popup" id="divAddWind">
+        <div class="popup-content">
+            <h2>Añadir viento</h2>
+            <hr>
+            <p>Introduce la altitud en metros:</p>
+            <input class="popup_input" #altitude type="number" min="0" max="5000" name="altitude" placeholder="Altitud" value="0">
+            <p>Introduce la dirección en grados:</p>
+            <input class="popup_input" #windDir type="number" min="0" max="360" name="windDir" placeholder="Dirección" value="0">
+            <p>Introduce la velocidad en km/h:</p>
+            <input class="popup_input" #windSpeed type="number" min="0" max="300" name="windSpeedKMH" placeholder="Velocidad" value="0">
+            <hr>
+            <div class="popup_buttons">
+                <button type="button" (click)="addWindCancel()">Cancelar</button>
+                <button type="button" (click)="addWind(altitude.value, windDir.value, windSpeed.value)">Añadir</button>
+            </div>
+        </div>
+    </div>
     <hr>
 
     <h2>Color del cielo:</h2>
