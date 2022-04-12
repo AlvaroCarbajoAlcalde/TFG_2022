@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: 'history', component: HistoryComponent },
   { path: 'flight-details/:id', component: FlightviewComponent },
   { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
 ];
 
 @NgModule({
