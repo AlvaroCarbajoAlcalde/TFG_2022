@@ -399,25 +399,27 @@ h2 {
     position: absolute;
     transition: 0.4s;
     left: 119px;
-    top: 37px;
+    top: -24px;
     cursor: pointer;
 }
 
 #gatilloIzq.pressed {
-    top: 50px;
+    top: -11px;
     transform: rotate(20deg);
+    left: 130px;
 }
 
 #gatilloDch {
     position: absolute;
     transition: 0.4s;
     left: 235px;
-    top: 37px;
+    top: -22px;
     cursor: pointer;
 }
 
 #gatilloDch.pressed {
-    top: 50px;
+    left: 224px;
+    top: -8px;
     transform: rotate(-20deg);
 }
 
