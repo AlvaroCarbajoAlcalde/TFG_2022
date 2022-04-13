@@ -1,3 +1,6 @@
+/**
+ * Creates the scene
+ */
 function createScene() {
     canvas = document.createElement("canvas");
     game.innerHTML = "";
@@ -15,6 +18,7 @@ function createScene() {
     if (testing) setMovement();
 }
 
+//TODO - Add fire effect
 function setFireEffect() {
     // particleSystem = new BABYLON.ParticleSystem("particles", 200);
     // particleSystem.particleTexture = new BABYLON.Texture("../assets/img/fire.png", scene);
@@ -23,6 +27,9 @@ function setFireEffect() {
     // particleSystem.start();
 }
 
+/**
+ * Sets the light
+ */
 function setLight() {
     new BABYLON.HemisphericLight(
         "light",
@@ -31,6 +38,9 @@ function setLight() {
     );
 }
 
+/**
+ * Sets the camera
+ */
 function setCamera() {
     camera = new BABYLON.ArcRotateCamera(
         "Camera",
@@ -47,6 +57,9 @@ function setCamera() {
     camera.lowerRadiusLimit = 2;
 }
 
+/**
+ * Sets the pointer
+ */
 function setPointer() {
     pointer = BABYLON.MeshBuilder.CreateSphere("sphere", {
         diameterX: 0.1,
@@ -60,6 +73,9 @@ function setPointer() {
     pointer.material = material;
 }
 
+/**
+ * Sets the balloon
+ */
 function setBalloon() {
     BABYLON.SceneLoader.ImportMesh(null, "../assets/models/", "balloon.glb", scene, () => {
         balloonModel = scene.getMeshByName("hot_air_balloon.1");
@@ -78,6 +94,9 @@ function setBalloon() {
     });
 }
 
+/**
+ * Sets the skybox
+ */
 function setSkybox() {
     skybox = BABYLON.Mesh.CreateBox("skyBox", skyboxSize, scene);
     const skyboxMaterial = new BABYLON.StandardMaterial("skyBox", scene);
@@ -88,6 +107,9 @@ function setSkybox() {
     skybox.material = skyboxMaterial;
 }
 
+/**
+ * Creates the ground map
+ */
 function setGround() {
     let k = 1;
 
@@ -136,6 +158,7 @@ function setGround() {
             ground.position.x = positionX;
             ground.position.z = positionZ;
 
+            //Shows the coliision box of the ground
             if (showCollisions) ground.showBoundingBox = true;
 
             k++;

@@ -467,6 +467,10 @@ h2 {
     left: 119px;
     top: -24px;
     cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 #gatilloIzq.pressed {
@@ -481,6 +485,10 @@ h2 {
     left: 235px;
     top: -22px;
     cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 #gatilloDch.pressed {
@@ -594,15 +602,21 @@ h2 {
 /*Rope*/
 
 #rope {
-    width: 64px;
-    height: 80%;
+    width: 20px;
+    height: 97%;
     background-image: url("./assets/img/rope.png");
     background-repeat: repeat-y;
     position: absolute;
     z-index: 2;
-    transition: opacity 1.2s;
-    top: 0px;
+    transition: 1.2s;
+    top: -180px;
     left: 15px;
+    cursor: pointer;
+    border-radius: 15px;
+}
+
+#rope.pressed {
+    top: -20px;
 }
 
 
@@ -636,6 +650,10 @@ h2 {
     border-radius: 40px;
     font-family: "digital";
     transition: opacity 1.2s;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 #altimetroContent {

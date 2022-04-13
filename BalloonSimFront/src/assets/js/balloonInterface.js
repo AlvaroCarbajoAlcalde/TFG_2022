@@ -1,7 +1,7 @@
 /**
- * showPositionInTablet
- * muestra los datos de la tablet
+ * Shows the data in the tablet
  */
+//TODO change interface
 function showPositionInTablet() {
     if (testing) {
         positionX.innerHTML = `LAT: ${balloon.calcDegreesLat()}`;
@@ -11,8 +11,7 @@ function showPositionInTablet() {
 }
 
 /**
- * showDataInAltimeter
- * muestra los datos del altimetro
+ * Shows the data in the altimeter
  */
 function showDataInAltimeter() {
     altTemp.innerHTML = `T ${actTemp} °C`;
@@ -29,10 +28,9 @@ function showDataInAltimeter() {
 }
 
 /**
- * setAltBar
- * Los altimetros tienen una barra que muestra la velocidad de subida
- * esta funcion la pinta
+ * Paints altimeter bar
  */
+//TODO max and min values
 function setAltBar() {
     const pixels = parseInt((Math.abs(balloon.actSpeedY) / 8) * 69);
     if (balloon.actSpeedY >= 0) {
@@ -45,8 +43,7 @@ function setAltBar() {
 }
 
 /**
- * timer
- * Reloj que se muestra en el altimetro
+ * Shows the time in the clock
  */
 function timer() {
     let s = 0;
@@ -68,10 +65,8 @@ function timer() {
 }
 
 /**
- * getNum2Dig
- *
- * @param {*} n numero
- * @return {*} mismo numero pero con 2 digitos
+ * @param {number} n number
+ * @return {number} Gets a number with 2 digits
  */
 function getNum2Dig(n) {
     if (n < 10) return `0${n}`;

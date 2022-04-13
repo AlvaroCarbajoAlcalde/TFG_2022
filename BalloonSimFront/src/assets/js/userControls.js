@@ -1,22 +1,33 @@
 /**
- * clickQuemador
- * quemador presionado
+ * On click burner
  */
 function clickQuemador(trigger) {
     trigger.classList.add("pressed");
 }
 
 /**
- * unClickQuemador
- * quemador ya no esta presionado
+ * UnClick burner
  */
 function unClickQuemador(trigger) {
     trigger.classList.remove("pressed");
 }
 
 /**
- * toggleVisibility
- * oculta o muestra la interfaz
+ * Click rope
+ */
+function clickRope() {
+    rope.classList.add("pressed");
+}
+
+/**
+ * Unclick rope
+ */
+function unClickRope() {
+    rope.classList.remove("pressed");
+}
+
+/**
+ * Toggles the visibility of the interface
  */
 function toggleVisibility(eye) {
     if (eye.classList.contains("closed")) {
@@ -35,24 +46,25 @@ function toggleVisibility(eye) {
 }
 
 /**
- * setGasListener
- * Timer que controla la temperatura del globo
+ * Listener for the action of the user
  */
 function setGasListener() {
     const triggerR = document.getElementById("gatilloDch");
     const triggerL = document.getElementById("gatilloIzq");
     gasListener = setInterval(() => {
-        if (
-            triggerL.classList.contains("pressed") ||
-            triggerR.classList.contains("pressed")
-        ) {
+        if (triggerL.classList.contains("pressed") || triggerR.classList.contains("pressed")) {
             balloon.temp += 1.23;
+        } else if (rope.classList.contains("pressed")) {
+            balloon.temp -= 2.73;
         } else {
             if (started) balloon.temp -= 0.42;
         }
     }, 300);
 }
 
+/**
+ * Sets the listener for the action of the user while testing
+ */
 function setMovement() {
     console.warn("Testing movement");
     scene.onKeyboardObservable.add((kbInfo) => {

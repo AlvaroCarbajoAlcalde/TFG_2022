@@ -62,7 +62,7 @@ const diffDegX = leftDeg + 2.670898;
 //Movement & temp
 var windDir = 0;
 var windSpeed = 0;
-var actTemp = 20;
+var actTemp = 20; //TODO create a base temperature and change actTemp depending on altitude
 var actPressure;
 var started;
 
@@ -70,12 +70,18 @@ var started;
 var testing = true;
 var showCollisions = false;
 
+/**
+ * Sets the selected skybox
+ * 
+ * @param {string} value value of the skybox
+ */
 function setSelectedSkybox(value) {
-  selectedSkybox = value;
+    selectedSkybox = value;
 }
 
+//Default starting position
 var startPoint = {
-  x: 3830,
-  y: 30.7,
-  z: 3945,
+    x: 3830,
+    y: 30.7,
+    z: 3945,
 };

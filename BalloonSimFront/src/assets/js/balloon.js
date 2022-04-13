@@ -1,12 +1,8 @@
-/*
- * Clase Balloon contiene una estancia de un
- * globo y sus metodos.
- */
 class Balloon {
     /**
      * Creates an instance of Balloon.
-     * @param {*} pointer puntero (modelo esferico) representa la posicion del globo
-     * @param {*} model modelo del globo
+     * @param {*} pointer represents balloon position
+     * @param {*} model balloon model
      * @memberof Balloon
      */
     constructor(pointer, model) {
@@ -19,17 +15,13 @@ class Balloon {
     }
 
     /**
-     * setSpeeds
-     * Establece las velocidades en m/s a la que se
-     * mueve el globo en las coordenadas X y Z a
-     * partir de unos grados dados.
+     * Method to set the speeds in m/s to move the balloon
+     * Depending on the degrees given.
+     * X = Sin(angle * PI / 180)
+     * Y = Cos(angle * PI / 180)
      *
-     * Mediante la formula
-     * X = Sin(a * PI / 180)
-     * Y = Cos(a * PI / 180)
-     *
-     * @param {number} deg grados del viento
-     * @param {number} speed velocidad del viento en m/s
+     * @param {number} deg wind direction in degrees
+     * @param {number} speed wind speed in m/s
      * @memberof Balloon
      */
     setSpeeds(deg, speed) {
@@ -38,9 +30,9 @@ class Balloon {
     }
 
     /**
-     * calcDegreesLat
+     * Method to calculate latitude degrees
      *
-     * @return {*} latitud en grados a la que se ecuentra el globo
+     * @return {number} latitude degrees of the balloon
      * @memberof Balloon
      */
     calcDegreesLat() {
@@ -49,9 +41,9 @@ class Balloon {
     }
 
     /**
-     * calcDegreesLon
+     * Method to calculate longitude degrees
      *
-     * @return {*} longitud en grados a la que se ecuentra el globo
+     * @return {number} longitude degrees of the balloon
      * @memberof Balloon
      */
     calcDegreesLon() {
@@ -60,8 +52,7 @@ class Balloon {
     }
 
     /**
-     * setMetersFromPosition
-     * Funcion que establece la posicion en m a partir de coordenadas X Y Z
+     * Sets the meters from position transforming x, y and z to real meters
      * @memberof Balloon
      */
     setMetersFromPosition() {
@@ -72,9 +63,7 @@ class Balloon {
     }
 
     /**
-     * moveBalloonToPointer
-     * Mueve el puntero a su posicion despues
-     * mueve el modelo a la posicion del puntero
+     * Moves the balloon to the pointer position
      * @memberof Balloon
      */
     moveBalloonToPointer() {
@@ -89,8 +78,7 @@ class Balloon {
     }
 
     /**
-     * setMovementInterval
-     * Timers que mueven el globo
+     * Sets the movement interval of the balloon
      * @memberof Balloon
      */
     setMovementInterval() {
@@ -109,8 +97,7 @@ class Balloon {
     }
 
     /**
-     * calculateAscentRatio
-     * Calcula la velocidad de ascenso
+     * Calculates the ascent ratio
      * @memberof Balloon
      */
     calculateAscentRatio() {

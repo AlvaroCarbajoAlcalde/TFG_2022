@@ -3,6 +3,9 @@ function resizeCanvas() {
     if (engine) engine.resize();
 }
 
+/**
+ * Query the dom for the elements
+ */
 function queryHTML() {
     game = document.getElementById("game");
     tablet = document.getElementById("tablet");
@@ -26,6 +29,9 @@ function queryHTML() {
     altAltitude = document.getElementById("altAltura");
 }
 
+/**
+ * Starts the game
+ */
 function startGame() {
     started = false;
     createScene();
@@ -49,6 +55,9 @@ function startGame() {
     });
 }
 
+/**
+ * Loop for the game
+ */
 function loop() {
     engine.runRenderLoop(() => {
         scene.render();
@@ -67,11 +76,17 @@ function loop() {
     });
 }
 
+/**
+ * Moves the skybox to prevent bugs with the camera
+ */
 function moveSkybox() {
     skybox.position.x = balloon.pointer.position.x;
     skybox.position.z = balloon.pointer.position.z;
 }
 
+/**
+ * Ends the game
+ */
 function endSim() {
     engine.stopRenderLoop();
     clearInterval(clockInterval);
