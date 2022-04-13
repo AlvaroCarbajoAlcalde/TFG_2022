@@ -602,7 +602,7 @@ h2 {
 /*Rope*/
 
 #rope {
-    width: 20px;
+    width: 16px;
     height: 97%;
     background-image: url("./assets/img/rope.png");
     background-repeat: repeat-y;
@@ -613,6 +613,7 @@ h2 {
     left: 15px;
     cursor: pointer;
     border-radius: 15px;
+    box-shadow: 0px 0px 20px black;
 }
 
 #rope.pressed {
