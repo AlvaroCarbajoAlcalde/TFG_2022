@@ -48,7 +48,8 @@ class FlightController extends Controller
     {
         foreach (Wind::all()->where('weather', $id) as $wind) $wind->delete();
         foreach (Route::all()->where('flight', $id) as $route) $route->delete();
-        Weather::all()->where('flight', $id)->first()->delete();
+        $weather = Weather::all()->where('flight', $id)->first();
+        if($weather) $weather->delete();
         Flight::find($id)->delete();
 
         return redirect()->route('flights.index')
