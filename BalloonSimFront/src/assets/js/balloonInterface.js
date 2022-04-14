@@ -30,9 +30,9 @@ function showDataInAltimeter() {
 /**
  * Paints altimeter bar
  */
-//TODO max and min values
 function setAltBar() {
-    const pixels = parseInt((Math.abs(balloon.actSpeedY) / 8) * 69);
+    let pixels = parseInt((Math.abs(balloon.actSpeedY) / 8) * 69);
+    if (pixels > 69) pixels = 69;
     if (balloon.actSpeedY >= 0) {
         altMedUp.style.height = `${pixels}px`;
         altMedDown.style.height = "0px";

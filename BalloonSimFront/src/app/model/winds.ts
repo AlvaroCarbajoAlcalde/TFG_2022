@@ -40,6 +40,7 @@ export default class Winds {
      * @returns {Wind} first wind with altitude >= altitude
      */
     public getWind(altitude: number): Wind {
+        if (altitude < 0) altitude = 0;
         for (let i = 0; i < this.windsList.length; i++) {
             const minAlt = this.windsList[i].altitude;
             const maxAlt = this.windsList[i + 1] ? this.windsList[i + 1].altitude : altitude;
