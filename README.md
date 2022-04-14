@@ -73,7 +73,7 @@ TFG-2021/22 DAW, IES Comercio.
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/icons/gimp.png"> Gimp 2</code><br><br>
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/icons/photoshop.png"> Photoshop</code>
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/icons/visor3d.png"> Visor3D</code>
-<code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/icons/postman.png"> Postman</code><br><br>
+<code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/icons/postman.png"> Postman</code>
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/icons/chart.png"> Chart.js</code>
 
 ### Browsers
@@ -85,7 +85,9 @@ TFG-2021/22 DAW, IES Comercio.
 ## Screenshots
 
 ![cap1](https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/screenshots/sc1.PNG)
+<br><br>
 ![cap2](https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/screenshots/sc3.PNG)
+<br><br>
 ![cap3](https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/screenshots/sc2.PNG)
 
 ## Getting Started
