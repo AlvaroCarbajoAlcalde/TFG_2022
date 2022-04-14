@@ -461,6 +461,17 @@ h2 {
     transition: opacity 1.2s;
 }
 
+#burnerbar {
+    position: absolute;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    top: 69px;
+    left: 117px;
+}
+
 #gatilloIzq {
     position: absolute;
     transition: 0.4s;

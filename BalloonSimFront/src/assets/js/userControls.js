@@ -27,6 +27,22 @@ function unClickRope() {
 }
 
 /**
+ * Clicks both triggers
+ */
+function clickBurner2() {
+    document.getElementsByClassName("trigger")[0].classList.add("pressed");
+    document.getElementsByClassName("trigger")[1].classList.add("pressed");
+}
+
+/**
+ * Unclicks both triggers
+ */
+function unClickBurner2() {
+    document.getElementsByClassName("trigger")[0].classList.remove("pressed");
+    document.getElementsByClassName("trigger")[1].classList.remove("pressed");
+}
+
+/**
  * Toggles the visibility of the interface
  */
 function toggleVisibility(eye) {
@@ -52,7 +68,9 @@ function setGasListener() {
     const triggerR = document.getElementById("gatilloDch");
     const triggerL = document.getElementById("gatilloIzq");
     gasListener = setInterval(() => {
-        if (triggerL.classList.contains("pressed") || triggerR.classList.contains("pressed")) {
+        if (triggerL.classList.contains("pressed") && triggerR.classList.contains("pressed")) {
+            balloon.temp += 1.23 * 2;
+        } else if (triggerL.classList.contains("pressed") || triggerR.classList.contains("pressed")) {
             balloon.temp += 1.23;
         } else if (rope.classList.contains("pressed")) {
             balloon.temp -= 2.73;
