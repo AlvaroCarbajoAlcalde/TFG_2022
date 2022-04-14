@@ -28,6 +28,10 @@ class Route extends Model
     'lat' => 'required|numeric',
     'lon' => 'required|numeric',
     'altitude' => 'required|numeric',
+    'speed' => 'required|numeric',
+    'speedy' => 'required|numeric',
+    'fuel' => 'required|numeric',
+    'direction' => 'required|numeric',
   ];
 
   protected $perPage = 20;
@@ -37,5 +41,5 @@ class Route extends Model
    *
    * @var array
    */
-  protected $fillable = ['flight', 'seconds', 'lat', 'lon', 'altitude'];
+  protected $fillable = ['flight', 'seconds', 'lat', 'lon', 'altitude', 'speed', 'speedy', 'fuel', 'direction'];
 }

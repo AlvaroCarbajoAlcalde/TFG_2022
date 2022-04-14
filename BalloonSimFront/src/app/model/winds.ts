@@ -2,8 +2,8 @@ export default class Winds {
     public windsList: Wind[];
 
     /**
-     * 
-     * @param params 
+     * Create a new Winds object
+     * @param params the parameters
      */
     constructor(params: any) {
         this.windsList = [
@@ -71,6 +71,7 @@ export class Wind {
     public windSpeedKMH: number;
 
     /**
+     * Create a new wind
      * 
      * @param altitude altitude in meters
      * @param windDir direction in degrees

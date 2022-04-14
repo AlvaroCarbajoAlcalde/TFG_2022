@@ -66,6 +66,7 @@ var initTemp = 0;
 var actTemp = 0;
 var actPressure = 1013.25;
 var started;
+var fuel = 100;
 
 //Testing
 var testing = true;

@@ -50,9 +50,13 @@ export default class RequestController {
    * @param {number} lat latitude
    * @param {number} lon longitude
    * @param {number} alt altitude
+   * @param {number} sp speed in m/s
+   * @param {number} spy speed in y direction in m/s
+   * @param {number} dir direction in degrees
+   * @param {number} fuel fuel in %
    */
-  public static savePoint(flight: number, s: number, lat: number, lon: number, alt: number) {
-    fetch(`${environment.apiRoute}newpoint/${flight}/${s}/${lat}/${lon}/${alt}`);
+  public static savePoint(flight: number, s: number, lat: number, lon: number, alt: number, sp: number, spy: number, dir: number, fuel: number) {
+    fetch(`${environment.apiRoute}newpoint/${flight}/${s}/${lat}/${lon}/${alt}/${sp}/${spy}/${dir}/${fuel}`);
   }
 
   /**

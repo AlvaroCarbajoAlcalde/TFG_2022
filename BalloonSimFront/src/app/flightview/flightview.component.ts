@@ -80,16 +80,24 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
     let previousLatlng = new L.LatLng(routes[0].lat, routes[0].lon);
     const labelSeconds: string[] = [];
     const dataAltitude: number[] = [];
+    const dataFuel: number[] = [];
+    const dataSpeed: number[] = [];
+    const dataDirection: number[] = [];
+    const dataSpeedY: number[] = [];
     routes.forEach((point) => {
       labelSeconds.push(timeInSecondsToString(point.seconds, true));
       dataAltitude.push(point.altitude);
+      dataFuel.push(point.fuel);
+      dataSpeed.push(point.speed * 3.6);
+      dataDirection.push(point.direction);
+      dataSpeedY.push(point.speedy);
       const latlng = new L.LatLng(point.lat, point.lon);
       this.distance += latlng.distanceTo(previousLatlng);
       track.addLatLng(latlng);
       previousLatlng = latlng;
     });
     this.distance = parseFloat(this.distance.toFixed(2));
-    this.createGraphicAltitude(labelSeconds, dataAltitude);
+    this.createGraphicAltitude(labelSeconds, dataAltitude, dataFuel, dataSpeed, dataDirection, dataSpeedY);
   }
 
   /**
@@ -113,25 +121,56 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
   /**
    * Creates a graphic with the altitude of the flight
    * 
-   * @param {string} labels labels for the chart
-   * @param {number} data data for the chart
+   * @param {string} labels labels for the chart, seconds
+   * @param {number} dataAltitude altitude of the flight
+   * @param {number} dataFuel fuel remaining
+   * @param {number} dataSpeed speed of the balloon
+   * @param {number} dataDirection direction of the balloon
+   * @param {number} dataSpeedY speed in Y, ascension speed
+   * @returns {void}
    */
-  public createGraphicAltitude(labels: string[], data: number[]) {
+  public createGraphicAltitude(labels: string[], dataAltitude: number[], dataFuel: number[], dataSpeed: number[], dataDirection: number[], dataSpeedY: number[]): void {
     new Chart(document.getElementById('graphicAltitude') as HTMLCanvasElement, {
       type: 'line',
       data: {
         labels: labels,
-        datasets: [{
-          capBezierPoints: true,
-          fill: false,
-          label: 'Altitud (m s.n.m)',
-          data: data,
-          backgroundColor: 'red',
-          borderColor: 'red',
-          borderWidth: 1,
-          pointBorderWidth: 0,
-          pointStyle: 'line',
-        }]
+        datasets: [
+          {
+            label: 'Altitud (m s.n.m)',
+            data: dataAltitude,
+            borderColor: 'red',
+            pointBorderWidth: 0,
+            pointStyle: 'line',
+          },
+          {
+            label: 'Combustible (%)',
+            data: dataFuel,
+            borderColor: 'blue',
+            pointBorderWidth: 0,
+            pointStyle: 'line',
+          },
+          {
+            label: 'Velocidad (km/h)',
+            data: dataSpeed,
+            borderColor: 'green',
+            pointBorderWidth: 0,
+            pointStyle: 'line',
+          },
+          {
+            label: 'Dirección (grados)',
+            data: dataDirection,
+            borderColor: 'purple',
+            pointBorderWidth: 0,
+            pointStyle: 'line',
+          },
+          {
+            label: 'Velocidad de ascenso (m/s)',
+            data: dataSpeedY,
+            borderColor: 'orange',
+            pointBorderWidth: 0,
+            pointStyle: 'line',
+          }
+        ]
       },
       options: {
         scales: { y: { beginAtZero: true } }

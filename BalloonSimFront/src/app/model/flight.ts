@@ -9,8 +9,8 @@ export default class Flight {
   public duration: string;
 
   /**
-   * 
-   * @param params 
+   * Creates an instance of Flight.
+   * @param params the parameters
    */
   constructor(params: any) {
     this.id = params.id;

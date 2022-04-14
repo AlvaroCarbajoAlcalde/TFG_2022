@@ -20,6 +20,10 @@ return new class extends Migration
             $table->double('lat');
             $table->double('lon');
             $table->double('altitude');
+            $table->double('speed');
+            $table->double('speedy');
+            $table->double('direction');
+            $table->double('fuel');
             $table->timestamps();
 
             $table->charset = 'utf8mb4';

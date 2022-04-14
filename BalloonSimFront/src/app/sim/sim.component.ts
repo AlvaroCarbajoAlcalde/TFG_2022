@@ -20,6 +20,7 @@ declare let windSpeed: any;
 declare let started: any;
 declare let balloon: any;
 declare let initTemp: any;
+declare let fuel: any;
 
 @Component({
   selector: 'app-sim',
@@ -70,7 +71,7 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
     //Save weather
     RequestController.saveWeather(this.flightID, 20, 1221, GLOBAL.Winds);
     //Save first point
-    RequestController.savePoint(this.flightID, 0, GLOBAL.SelectedTakeoff.lat, GLOBAL.SelectedTakeoff.lon, GLOBAL.SelectedTakeoff.alt);
+    RequestController.savePoint(this.flightID, 0, GLOBAL.SelectedTakeoff.lat, GLOBAL.SelectedTakeoff.lon, GLOBAL.SelectedTakeoff.alt, 0, 0, 0, 100);
   }
 
   async ngAfterViewInit(): Promise<void> {
@@ -105,8 +106,8 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
     //Save points interval
     this.pointsSaveInterval = setInterval(() => {
       if (started && balloon && this.flightID) {
-        RequestController.savePoint(this.flightID, this.seconds, balloon.calcDegreesLat(), balloon.calcDegreesLon(), Math.round(balloon.altitude));
         this.seconds += environment.secondsBetweenRouteSaves;
+        RequestController.savePoint(this.flightID, this.seconds, balloon.calcDegreesLat(), balloon.calcDegreesLon(), Math.round(balloon.altitude), windSpeed, balloon.actSpeedY, windDir, fuel);
       }
     }, environment.secondsBetweenRouteSaves * 1000);
   }

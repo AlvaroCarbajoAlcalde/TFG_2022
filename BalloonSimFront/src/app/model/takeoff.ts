@@ -11,8 +11,8 @@ export default class Takeoff {
   public img: string;
 
   /**
-   * 
-   * @param params 
+   * Creates an instance of Takeoff.
+   * @param params the parameters
    */
   constructor(params: any) {
     this.id = params.id;

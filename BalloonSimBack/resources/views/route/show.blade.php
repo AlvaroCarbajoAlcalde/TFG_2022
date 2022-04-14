@@ -19,7 +19,7 @@
                     </div>
 
                     <div class="card-body">
-                        
+
                         <div class="form-group">
                             <strong>Flight:</strong>
                             {{ $route->flight }}
@@ -39,6 +39,22 @@
                         <div class="form-group">
                             <strong>Altitude:</strong>
                             {{ $route->altitude }}
+                        </div>
+                        <div class="form-group">
+                            <strong>Speed:</strong>
+                            {{ $route->speed }}
+                        </div>
+                        <div class="form-group">
+                            <strong>Y Speed:</strong>
+                            {{ $route->speedy }}
+                        </div>
+                        <div class="form-group">
+                            <strong>Direction:</strong>
+                            {{ $route->direction }}
+                        </div>
+                        <div class="form-group">
+                            <strong>Fuel:</strong>
+                            {{ $route->fuel }}
                         </div>
 
                     </div>
