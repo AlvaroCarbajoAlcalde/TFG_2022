@@ -107,11 +107,26 @@ function setGround() {
             materialBack.specularColor = new BABYLON.Color4(0, 0, 0, 0);
 
             //Base
-            const baseGround = BABYLON.MeshBuilder.CreateGround(`baseground_${k}`, { height: mapSize, width: mapSize });
+            // const baseGround = BABYLON.MeshBuilder.CreateGround(`baseground_${k}`, { height: mapSize, width: mapSize });
+            // baseGround.material = materialBack;
+            // baseGround.position.x = positionX;
+            // baseGround.position.z = positionZ;
+            // baseGround.position.y = 14;
+
+            const baseGround = BABYLON.MeshBuilder.CreateGroundFromHeightMap(
+                `base_ground_${k}`,
+                `../assets/maps/topo/topo_${k}.gif`, {
+                    width: mapSize,
+                    height: mapSize,
+                    subdivisions: 100,
+                    maxHeight: 420,
+                    minHeight: 0,
+                }
+            );
             baseGround.material = materialBack;
             baseGround.position.x = positionX;
             baseGround.position.z = positionZ;
-            baseGround.position.y = 14;
+            baseGround.position.y = -5;
 
             //Material
             const materialGMap = new BABYLON.StandardMaterial("material", scene);
