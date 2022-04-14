@@ -62,8 +62,9 @@ const diffDegX = leftDeg + 2.670898;
 //Movement & temp
 var windDir = 0;
 var windSpeed = 0;
-var actTemp = 20; //TODO create a base temperature and change actTemp depending on altitude
-var actPressure;
+var initTemp = 0;
+var actTemp = 0;
+var actPressure = 1013.25;
 var started;
 
 //Testing

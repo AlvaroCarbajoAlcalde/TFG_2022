@@ -56,6 +56,11 @@
     </div>
     <hr>
 
+    <h2>Temperatura:</h2>
+    <p>Introduce la temperatura en grados centígrados:</p>
+    <input #temp (keyup)="setTemperature(temp.value)" class="inp-text" type="number" name="temperature" value="12">
+    <hr>
+
     <h2>Color del cielo:</h2>
     <div class="skybox-selector">
         <div class="row">

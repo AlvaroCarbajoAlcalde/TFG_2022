@@ -19,6 +19,7 @@ declare let windDir: any;
 declare let windSpeed: any;
 declare let started: any;
 declare let balloon: any;
+declare let initTemp: any;
 
 @Component({
   selector: 'app-sim',
@@ -45,6 +46,8 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
     startPoint.x = GLOBAL.SelectedTakeoff.x;
     startPoint.y = GLOBAL.SelectedTakeoff.y;
     startPoint.z = GLOBAL.SelectedTakeoff.z;
+
+    initTemp = GLOBAL.Temperature;
 
     //Enviroment
     testing = environment.testing;

@@ -62,6 +62,9 @@ function loop() {
     engine.runRenderLoop(() => {
         scene.render();
 
+        //Temp
+        actTemp = (initTemp - (balloon.altitude - 400) / 154).toFixed(1);
+
         //Balloon actual.
         balloon.moveBalloonToPointer();
         balloon.calculateAscentRatio();

@@ -158,4 +158,12 @@ export class ParamsComponent implements AfterViewInit {
   public addWindCancel() {
     this.showPopupWinds();
   }
+
+  /**
+   * Sets the temperature on ground
+   * @param {number} value temperature value
+   */
+  public setTemperature(value: any){
+    GLOBAL.Temperature = value;
+  }
 }

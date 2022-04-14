@@ -22,8 +22,8 @@ function showDataInAltimeter() {
         altSpeedUp.innerHTML = "0 m/s";
         altWind.innerHTML = "Wind: 0°<br>0 km/h";
     }
-    altPressure.innerHTML = "Pressure<br>9321.1 hPa";
-    altAltitude.innerHTML = `${parseInt(balloon.altura * 3.28)} feet`;
+    altPressure.innerHTML = `Pressure<br>${(actPressure - balloon.altitude * 0.112).toFixed(1)} hPa`;
+    altAltitude.innerHTML = `${parseInt(balloon.altitude * 3.28)} feet`;
     if (started) setAltBar();
 }
 

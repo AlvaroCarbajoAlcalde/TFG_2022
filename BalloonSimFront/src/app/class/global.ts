@@ -11,6 +11,7 @@ export class GLOBAL {
     public static SkyboxColor: string;
     public static TakeoffPointsList: Takeoff[];
     public static Winds: Winds;
+    public static Temperature: number;
     public static WindyResponse: any;
     public static readonly MAP_CENTER: LatLngExpression = [42.54, -2.96];
 
@@ -26,6 +27,7 @@ export class GLOBAL {
         GLOBAL.WindyResponse = await RequestController.getWinds();
         GLOBAL.Winds = await RequestController.getWinds();
         GLOBAL.SelectedTakeoff = GLOBAL.TakeoffPointsList[0];
+        GLOBAL.Temperature = 12;
         GLOBAL.SkyboxColor = this.getRandomSkybox();
         GLOBAL.FlightName = 'Sin nombre';
         this.isInitialized = true;
@@ -38,6 +40,7 @@ export class GLOBAL {
         console.log("Is initialized: ", this.isInitialized);
         console.log("SelectedTakeoff: " + this.SelectedTakeoff.name);
         console.log("FlightName: " + this.FlightName);
+        console.log("Temperature: " + this.Temperature);
         console.log("SkyboxColor: " + this.SkyboxColor);
         console.log("TakeoffPointsList: " + this.TakeoffPointsList.length);
         console.table(this.TakeoffPointsList);
