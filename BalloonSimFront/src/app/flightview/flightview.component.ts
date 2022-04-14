@@ -4,6 +4,9 @@ import * as L from 'leaflet';
 import { GLOBAL } from '../class/global';
 import RequestController from '../class/requestController';
 import Flight from '../model/flight';
+import { NgChartsModule } from 'ng2-charts';
+import { Chart, ChartOptions, ChartType } from 'chart.js';
+import { timeInSecondsToString } from '../class/methods';
 
 @Component({
   selector: 'app-flightview',
@@ -72,15 +75,21 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
 
     this.map.panTo(new L.LatLng(routes[0].lat, routes[0].lon));
 
+    //Foreach route
     this.distance = 0.0;
     let previousLatlng = new L.LatLng(routes[0].lat, routes[0].lon);
+    const labelSeconds: string[] = [];
+    const dataAltitude: number[] = [];
     routes.forEach((point) => {
+      labelSeconds.push(timeInSecondsToString(point.seconds, true));
+      dataAltitude.push(point.altitude);
       const latlng = new L.LatLng(point.lat, point.lon);
       this.distance += latlng.distanceTo(previousLatlng);
       track.addLatLng(latlng);
       previousLatlng = latlng;
     });
     this.distance = parseFloat(this.distance.toFixed(2));
+    this.createGraphicAltitude(labelSeconds, dataAltitude);
   }
 
   /**
@@ -99,5 +108,34 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
       toReturn = `${distance} metros.`;
     }
     return toReturn;
+  }
+
+  /**
+   * Creates a graphic with the altitude of the flight
+   * 
+   * @param {string} labels labels for the chart
+   * @param {number} data data for the chart
+   */
+  public createGraphicAltitude(labels: string[], data: number[]) {
+    new Chart(document.getElementById('graphicAltitude') as HTMLCanvasElement, {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [{
+          capBezierPoints: true,
+          fill: false,
+          label: 'Altitud (m s.n.m)',
+          data: data,
+          backgroundColor: 'red',
+          borderColor: 'red',
+          borderWidth: 1,
+          pointBorderWidth: 0,
+          pointStyle: 'line',
+        }]
+      },
+      options: {
+        scales: { y: { beginAtZero: true } }
+      }
+    });
   }
 }

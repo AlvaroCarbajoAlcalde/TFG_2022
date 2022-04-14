@@ -17,4 +17,8 @@
     <p *ngIf="flight">Despegue en: {{flight.takeoff}}.</p>
     <p *ngIf="flight">Duración del vuelo: {{flight.duration}}</p>
     <p *ngIf="distance">Distancia recorrida: {{distanceToString(distance)}}</p>
+    <hr>
+
+    <h2>Gráfico del vuelo:</h2>
+    <canvas id="graphicAltitude"></canvas>
 </section>

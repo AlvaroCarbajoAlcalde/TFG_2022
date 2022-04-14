@@ -8,6 +8,7 @@ import { HistoryComponent } from './history/history.component';
 import { FlightviewComponent } from './flightview/flightview.component';
 import { HomeComponent } from './home/home.component';
 import { ParamsComponent } from './params/params.component';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ParamsComponent } from './params/params.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

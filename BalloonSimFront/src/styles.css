@@ -112,6 +112,14 @@ canvas {
     margin: 0 auto;
 }
 
+#graphicAltitude {
+    background-color: whitesmoke;
+    border-radius: 20px;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 2 !important;
+}
+
 .popup {
     position: fixed;
     top: 50%;
