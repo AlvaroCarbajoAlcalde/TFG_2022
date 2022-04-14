@@ -70,10 +70,10 @@ function setGasListener() {
     gasListener = setInterval(() => {
         if (triggerL.classList.contains("pressed") && triggerR.classList.contains("pressed")) {
             balloon.temp += 2.1;
-            fuel -= 0.2;
+            fuel -= 0.02;
         } else if (triggerL.classList.contains("pressed") || triggerR.classList.contains("pressed")) {
             balloon.temp += 1.23;
-            fuel -= 0.1;
+            fuel -= 0.01;
         } else if (rope.classList.contains("pressed")) {
             balloon.temp -= 2.73;
         } else {

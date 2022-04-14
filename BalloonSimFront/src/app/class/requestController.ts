@@ -2,7 +2,8 @@ import { environment } from 'src/environments/environment';
 import Flight from '../model/flight';
 import Takeoff from '../model/takeoff';
 import Track from '../model/track';
-import Winds from '../model/winds';
+import Weather from '../model/weather';
+import Winds, { Wind } from '../model/winds';
 import { GLOBAL } from './global';
 
 export default class RequestController {
@@ -111,6 +112,44 @@ export default class RequestController {
         tracks = Object.values(tracks);
         tracks.forEach((element: any) => {
           toReturn.push(new Track(element));
+        });
+      });
+    return toReturn;
+  }
+
+  /**
+   * Gets the winds of the flight
+   * 
+   * @param {number} flightId id of the flight 
+   * @returns {Promise<Wind[]>} list of winds of the flight
+   */
+  public static async getFlightWinds(flightId: number): Promise<Wind[]> {
+    const toReturn: Wind[] = [];
+    await fetch(`${environment.apiRoute}winds/${flightId}`)
+      .then((response) => response.json())
+      .then((winds) => {
+        winds = Object.values(winds);
+        winds.forEach((element: any) => {
+          toReturn.push(new Wind(element.altitude, element.wind_direction, element.wind_speed));
+        });
+      });
+    return toReturn;
+  }
+
+  /**
+   * Gets the weather of the flight
+   * 
+   * @param {number} flightId id of the flight 
+   * @returns {Promise<Weather>} 2eather of the flight
+   */
+  public static async getFlightWeather(flightId: number): Promise<Weather | undefined> {
+    let toReturn: Weather | undefined;
+    await fetch(`${environment.apiRoute}weather/${flightId}`)
+      .then((response) => response.json())
+      .then((weather) => {
+        weather = Object.values(weather);
+        weather.forEach((element: any) => {
+          toReturn = new Weather(element);
         });
       });
     return toReturn;

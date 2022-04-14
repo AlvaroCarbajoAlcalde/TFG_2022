@@ -47,7 +47,7 @@ Route::get('/backup_database', function () {
     $mysqlPassword      = env('DB_PASSWORD');
     $DbName             = env('DB_DATABASE');
     $backup_name        = "mybackup.sql";
-    $tables             = array("admins", "flights", "migrations", "personal_access_tokens", "routes", "takeoff_points"); //here your tables...
+    $tables             = array("admins", "flights", "migrations", "personal_access_tokens", "routes", "takeoff_points", "weather", "winds"); //Tables to backup
 
     $connect = new \PDO("mysql:host=$mysqlHostName;dbname=$DbName;charset=utf8", "$mysqlUserName", "$mysqlPassword", array(\PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));
     $get_all_table_query = "SHOW TABLES";

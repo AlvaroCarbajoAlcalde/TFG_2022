@@ -843,6 +843,15 @@ table.contents_table a:hover {
     color: var(--primary);
 }
 
+table.contents_table {
+    width: 100%;
+}
+
+#flight-datatables td,
+#flight-datatables th {
+    width: 25%;
+}
+
 .skybox-selector {
     display: flex;
     flex-wrap: wrap;

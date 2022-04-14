@@ -14,11 +14,101 @@
     <hr>
 
     <h2>Datos del vuelo:</h2>
-    <p *ngIf="flight">Despegue en: {{flight.takeoff}}.</p>
-    <p *ngIf="flight">Duración del vuelo: {{flight.duration}}</p>
-    <p *ngIf="distance">Distancia recorrida: {{distanceToString(distance)}}</p>
+    <div id="flight-datatables">
+        <table class="contents_table">
+            <thead>
+                <tr>
+                    <th>Despegue en:</th>
+                    <th>Fecha del vuelo:</th>
+                    <th>Duración del vuelo:</th>
+                    <th>Distancia recorrida:</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngIf="flight && distance">
+                    <td>{{flight.takeoff}}.</td>
+                    <td>{{flight.date}}</td>
+                    <td>{{flight.duration}}</td>
+                    <td>{{distanceToString(distance)}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="contents_table">
+            <thead>
+                <tr>
+                    <th>Velocidad máxima:</th>
+                    <th>Velocidad media:</th>
+                    <th>V. ascensión máxima:</th>
+                    <th>V. ascensión mínima:</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngIf="flight && distance">
+                    <td>{{(maxSpeed * 3.6).toFixed(2)}} km/h</td>
+                    <td>{{(distance / flight.seconds * 3.6).toFixed(2)}} km/h</td>
+                    <td>{{maxSpeedY.toFixed(2)}} m/s</td>
+                    <td>{{minSpeedY.toFixed(2)}} m/s</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="contents_table">
+            <thead>
+                <tr>
+                    <th>Altitud máxima:</th>
+                    <th>Altitud mínima:</th>
+                    <th>Altitud media:</th>
+                    <th>Altitud despegue:</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngIf="flight && distance">
+                    <td>{{maxAltitude.toFixed(2)}} m / {{(maxAltitude * 3.28084).toFixed(0)}} feet</td>
+                    <td>{{minAltitude.toFixed(2)}} m / {{(minAltitude * 3.28084).toFixed(0)}} feet</td>
+                    <td>{{avgAltitude.toFixed(2)}} m / {{(avgAltitude * 3.28084).toFixed(0)}} feet</td>
+                    <td>{{takeoffAltitude.toFixed(2)}} m / {{(takeoffAltitude * 3.28084).toFixed(0)}} feet</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="contents_table">
+            <thead>
+                <tr>
+                    <th>Desplazamiento en línea recta:</th>
+                    <th>Combustible restante:</th>
+                    <th>Temperatura en tierra:</th>
+                    <th>Presión s.n.m.</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngIf="flight && distance">
+                    <td>{{distanceToString(straightLineDistance)}}</td>
+                    <td>{{remainingFuel.toFixed(2)}} %</td>
+                    <td *ngIf="weather">{{weather.temperature.toFixed(2)}} °C</td>
+                    <td *ngIf="weather">{{weather.pressure.toFixed(0)}} hPa</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     <hr>
 
     <h2>Gráfico del vuelo:</h2>
     <canvas id="graphicAltitude"></canvas>
+    <hr>
+
+    <h2>Vientos:</h2>
+    <table class="contents_table ">
+        <thead>
+            <tr>
+                <th>Altitud (m s. n. m.)</th>
+                <th>Dirección</th>
+                <th>Velocidad (km/h)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let wind of windList ">
+                <td>{{wind.altitude}} m / {{wind.altitudeFeet}} feet</td>
+                <td>{{wind.windDir}}°</td>
+                <td>{{wind.windSpeedKMH}} km/h</td>
+            </tr>
+        </tbody>
+    </table>
 </section>

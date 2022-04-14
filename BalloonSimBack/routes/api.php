@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use App\Models\Flight;
+use App\Models\Wind;
+use App\Models\Weather;
 use App\Models\TakeoffPoint;
 use Illuminate\Support\Facades\DB;
 
@@ -79,4 +81,12 @@ Route::get('flight/{id}', function ($id) {
 
 Route::get('routes/{flight}', function ($flight) {
     return App\Models\Route::all()->where('flight', $flight);
+});
+
+Route::get('winds/{flight}', function ($flight) {
+    return Wind::all()->where('weather', $flight);
+});
+
+Route::get('weather/{flight}', function ($flight) {
+    return Weather::all()->where('flight', $flight);
 });

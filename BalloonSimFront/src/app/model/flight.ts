@@ -7,6 +7,7 @@ export default class Flight {
   public name: string;
   public takeoff: string;
   public duration: string;
+  public seconds: number;
 
   /**
    * Creates an instance of Flight.
@@ -18,6 +19,7 @@ export default class Flight {
     this.date = params.date;
     this.name = params.name;
     this.takeoff = params.takeoff;
+    this.seconds = params.duration;
     this.duration = timeInSecondsToString(params.duration);
   }
 }

@@ -1,12 +1,12 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as L from 'leaflet';
-import { GLOBAL } from '../class/global';
 import RequestController from '../class/requestController';
 import Flight from '../model/flight';
-import { NgChartsModule } from 'ng2-charts';
-import { Chart, ChartOptions, ChartType } from 'chart.js';
+import { Chart } from 'chart.js';
 import { timeInSecondsToString } from '../class/methods';
+import { Wind } from '../model/winds';
+import Weather from '../model/weather';
 
 @Component({
   selector: 'app-flightview',
@@ -17,6 +17,17 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
   private map!: L.Map;
   public flight!: Flight;
   public distance!: number;
+  public maxSpeed!: number;
+  public maxSpeedY!: number;
+  public minSpeedY!: number;
+  public maxAltitude!: number;
+  public minAltitude!: number;
+  public avgAltitude!: number;
+  public takeoffAltitude!: number;
+  public windList!: Wind[];
+  public remainingFuel!: number;
+  public straightLineDistance!: number;
+  public weather!: Weather;
 
   constructor(private _Activatedroute: ActivatedRoute, private router: Router) { }
 
@@ -26,7 +37,13 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
   }
 
   async ngAfterViewInit(): Promise<void> {
-    this.flight = await RequestController.getFlight(this.flightid);
+    try {
+      this.flight = await RequestController.getFlight(this.flightid);
+    } catch (error) {
+      //if the flight doesn't exist, redirect to the history page
+      this.router.navigate(['history']);
+      return;
+    }
     (<HTMLElement>document.getElementById('flightname')).innerHTML = this.flight.name;
 
     //#region MarkerIcons
@@ -76,15 +93,32 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
     this.map.panTo(new L.LatLng(routes[0].lat, routes[0].lon));
 
     //Foreach route
-    this.distance = 0.0;
+    this.maxSpeed = 0;
+    this.maxSpeedY = 0;
+    this.minSpeedY = 0;
+    this.maxAltitude = 0;
+    this.minAltitude = routes[0].altitude;
+    this.takeoffAltitude = routes[0].altitude;
+    this.distance = 0;
+    this.remainingFuel = routes[routes.length - 1].fuel;
+    const firstLatLng = new L.LatLng(routes[0].lat, routes[0].lon);
+    const lastLatLng = new L.LatLng(routes[routes.length - 1].lat, routes[routes.length - 1].lon);
+    this.straightLineDistance = firstLatLng.distanceTo(lastLatLng);
     let previousLatlng = new L.LatLng(routes[0].lat, routes[0].lon);
+    let sumAltitude = 0;
     const labelSeconds: string[] = [];
     const dataAltitude: number[] = [];
     const dataFuel: number[] = [];
     const dataSpeed: number[] = [];
     const dataDirection: number[] = [];
     const dataSpeedY: number[] = [];
+
     routes.forEach((point) => {
+      if (point.altitude > this.maxAltitude) this.maxAltitude = point.altitude;
+      if (point.altitude < this.minAltitude) this.minAltitude = point.altitude;
+      if (point.speed > this.maxSpeed) this.maxSpeed = point.speed;
+      if (point.speedy > this.maxSpeedY) this.maxSpeedY = point.speedy;
+      if (point.speedy < this.minSpeedY) this.minSpeedY = point.speedy;
       labelSeconds.push(timeInSecondsToString(point.seconds, true));
       dataAltitude.push(point.altitude);
       dataFuel.push(point.fuel);
@@ -95,9 +129,15 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
       this.distance += latlng.distanceTo(previousLatlng);
       track.addLatLng(latlng);
       previousLatlng = latlng;
+      sumAltitude += point.altitude;
     });
+
+    this.avgAltitude = sumAltitude / routes.length;
     this.distance = parseFloat(this.distance.toFixed(2));
     this.createGraphicAltitude(labelSeconds, dataAltitude, dataFuel, dataSpeed, dataDirection, dataSpeedY);
+
+    this.windList = await RequestController.getFlightWinds(this.flightid);
+    this.weather = await RequestController.getFlightWeather(this.flightid) as Weather;
   }
 
   /**
@@ -111,7 +151,7 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
     if (distance / 1000 > 0) {
       const km = Math.floor(distance / 1000);
       const m = Math.floor(distance % 1000);
-      toReturn = `${km} Km y ${m} metros.`;
+      toReturn = `${km} km, ${m} metros.`;
     } else {
       toReturn = `${distance} metros.`;
     }
