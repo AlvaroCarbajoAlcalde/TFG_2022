@@ -41,13 +41,12 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
     this.isMapCentered = true;
     document.body.classList.add('no-overflow');
 
-    //#region region JS variables 
-
-    //Position balloon
+    //Position of balloon
     startPoint.x = GLOBAL.SelectedTakeoff.x;
     startPoint.y = GLOBAL.SelectedTakeoff.y;
     startPoint.z = GLOBAL.SelectedTakeoff.z;
 
+    //Enviroment
     testing = environment.testing;
     showCollisions = environment.showCollisions;
     started = false;
@@ -58,62 +57,34 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
     startGame();
 
     window.onresize = () => { resizeCanvas(); };
-    //#endregion
 
     console.time('load-game');
 
     //Flight id
-    this.flightID = await RequestController.startFlight(
-      GLOBAL.SelectedTakeoff.name,
-      GLOBAL.FlightName
-    );
+    this.flightID = await RequestController.startFlight(GLOBAL.SelectedTakeoff.name, GLOBAL.FlightName);
     console.info('Flight_ID:', this.flightID);
 
     //Save weather
     RequestController.saveWeather(this.flightID, 20, 1221, GLOBAL.Winds);
     //Save first point
-    RequestController.savePoint(
-      this.flightID,
-      0,
-      GLOBAL.SelectedTakeoff.lat,
-      GLOBAL.SelectedTakeoff.lon,
-      GLOBAL.SelectedTakeoff.alt
-    );
+    RequestController.savePoint(this.flightID, 0, GLOBAL.SelectedTakeoff.lat, GLOBAL.SelectedTakeoff.lon, GLOBAL.SelectedTakeoff.alt);
   }
 
   async ngAfterViewInit(): Promise<void> {
     await GLOBAL.initGLOBAL();
 
-    //#region map
-    this.map = L.map('map', {
-      center: [GLOBAL.SelectedTakeoff.lat, GLOBAL.SelectedTakeoff.lon],
-      zoom: 14,
-    });
-
-    const tiles = L.tileLayer(
-      'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-      {
-        maxZoom: 17,
-        minZoom: 10,
-      }
-    );
-
+    //Map
+    this.map = L.map('map', { center: [GLOBAL.SelectedTakeoff.lat, GLOBAL.SelectedTakeoff.lon], zoom: 14 });
+    const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 17, minZoom: 10 });
     tiles.addTo(this.map);
-    //#endregion
 
-    //#region Routing
-    const route = new L.Polyline([], {
-      color: 'red',
-      weight: 3,
-      opacity: 0.7,
-      smoothFactor: 0,
-    });
+    //Track
+    const route = new L.Polyline([], { color: 'red', weight: 3, opacity: 0.7, smoothFactor: 0 });
     route.addTo(this.map);
 
     const marker = L.circleMarker([0, 0], { radius: 2 });
     marker.addTo(this.map);
     marker.setLatLng(new L.LatLng(GLOBAL.SelectedTakeoff.lat, GLOBAL.SelectedTakeoff.lon));
-    //#endregion
 
     //Map update interval
     this.mapUpdateInterval = setInterval(() => {
@@ -131,13 +102,7 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
     //Save points interval
     this.pointsSaveInterval = setInterval(() => {
       if (started && balloon && this.flightID) {
-        RequestController.savePoint(
-          this.flightID,
-          this.seconds,
-          balloon.calcDegreesLat(),
-          balloon.calcDegreesLon(),
-          Math.round(balloon.altura)
-        );
+        RequestController.savePoint(this.flightID, this.seconds, balloon.calcDegreesLat(), balloon.calcDegreesLon(), Math.round(balloon.altitude));
         this.seconds += environment.secondsBetweenRouteSaves;
       }
     }, environment.secondsBetweenRouteSaves * 1000);
@@ -164,8 +129,7 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
    */
   toggleMapCentering() {
     this.isMapCentered = !this.isMapCentered;
-    if (this.isMapCentered)
-      document.getElementById('mapCentering')?.classList.add('center');
+    if (this.isMapCentered) document.getElementById('mapCentering')?.classList.add('center');
     else document.getElementById('mapCentering')?.classList.remove('center');
   }
 
@@ -174,7 +138,7 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
    */
   changeBalloonDirection() {
     if (balloon) {
-      const actWind = GLOBAL.Winds.getWind(balloon.altura);
+      const actWind = GLOBAL.Winds.getWind(balloon.altitude);
       windDir = actWind.windDir;
       windSpeed = actWind.windSpeed;
     }

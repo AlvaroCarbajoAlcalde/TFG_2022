@@ -10,23 +10,23 @@ function queryHTML() {
     game = document.getElementById("game");
     tablet = document.getElementById("tablet");
     rope = document.getElementById("rope");
-    quemador = document.getElementById("quemador");
+    burner = document.getElementById("burner");
     optionsBar = document.getElementById("optionsBar");
-    altimetro = document.getElementById("altimetro");
+    altimeter = document.getElementById("altimeter");
     loading = document.getElementById("loading");
     positionX = document.getElementById("positionX");
     positionZ = document.getElementById("positionZ");
     positionY = document.getElementById("positionY");
 
-    //Altimetro
-    altTemp = document.getElementById("altTemperatura");
+    //Altimeter
+    altTemp = document.getElementById("altTemp");
     altSpeedUp = document.getElementById("altSpeedAlt");
     altTime = document.getElementById("altTime");
     altWind = document.getElementById("altSpeed");
-    altPressure = document.getElementById("altPresion");
+    altPressure = document.getElementById("altPressure");
     altMedUp = document.getElementById("altDiffUp");
     altMedDown = document.getElementById("altDiffDown");
-    altAltitude = document.getElementById("altAltura");
+    altAltitude = document.getElementById("altAltitude");
 }
 
 /**
@@ -70,9 +70,7 @@ function loop() {
         showPositionInTablet();
         showDataInAltimeter();
 
-        if (started && !testing) {
-            balloon.setSpeeds(windDir, windSpeed);
-        }
+        if (started && !testing) balloon.setSpeeds(windDir, windSpeed);
     });
 }
 

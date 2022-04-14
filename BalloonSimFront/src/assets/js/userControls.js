@@ -1,14 +1,14 @@
 /**
  * On click burner
  */
-function clickQuemador(trigger) {
+function clickBurner(trigger) {
     trigger.classList.add("pressed");
 }
 
 /**
  * UnClick burner
  */
-function unClickQuemador(trigger) {
+function unClickBurner(trigger) {
     trigger.classList.remove("pressed");
 }
 
@@ -49,14 +49,14 @@ function toggleVisibility(eye) {
     if (eye.classList.contains("closed")) {
         tablet.classList.remove("visibleOff");
         rope.classList.remove("visibleOff");
-        altimetro.classList.remove("visibleOff");
-        quemador.classList.remove("visibleOff");
+        altimeter.classList.remove("visibleOff");
+        burner.classList.remove("visibleOff");
         eye.classList.remove("closed");
     } else {
         rope.classList.add("visibleOff");
         tablet.classList.add("visibleOff");
-        altimetro.classList.add("visibleOff");
-        quemador.classList.add("visibleOff");
+        altimeter.classList.add("visibleOff");
+        burner.classList.add("visibleOff");
         eye.classList.add("closed");
     }
 }
@@ -65,11 +65,11 @@ function toggleVisibility(eye) {
  * Listener for the action of the user
  */
 function setGasListener() {
-    const triggerR = document.getElementById("gatilloDch");
-    const triggerL = document.getElementById("gatilloIzq");
+    const triggerR = document.getElementById("triggerRight");
+    const triggerL = document.getElementById("triggerLeft");
     gasListener = setInterval(() => {
         if (triggerL.classList.contains("pressed") && triggerR.classList.contains("pressed")) {
-            balloon.temp += 1.23 * 2;
+            balloon.temp += 2.1;
         } else if (triggerL.classList.contains("pressed") || triggerR.classList.contains("pressed")) {
             balloon.temp += 1.23;
         } else if (rope.classList.contains("pressed")) {

@@ -58,7 +58,7 @@ class Balloon {
     setMetersFromPosition() {
         this.mX = (this.pointer.position.x / mapTotalSize) * mapSizeMeters;
         this.mZ = (this.pointer.position.z / mapTotalSize) * mapSizeMeters;
-        this.altura = pointer.position.y * convAltura + sumAltura;
+        this.altitude = pointer.position.y * convAltitude + altitudeAddition;
         this.moveBalloonToPointer();
     }
 
@@ -70,7 +70,7 @@ class Balloon {
         if (started) {
             this.pointer.position.x = (this.mX / mapSizeMeters) * mapTotalSize;
             this.pointer.position.z = (this.mZ / mapSizeMeters) * mapTotalSize;
-            this.pointer.position.y = (this.altura - sumAltura) / convAltura;
+            this.pointer.position.y = (this.altitude - altitudeAddition) / convAltitude;
         }
         this.model.position.x = -this.pointer.position.x * 100;
         this.model.position.y = this.pointer.position.y * 100;
@@ -90,9 +90,9 @@ class Balloon {
         this.intervalZ = setInterval(() => {
             if (started) this.mZ += this.actSpeedZ / 200;
         }, 5);
-        //Altura
+        //Altitude
         this.intervalY = setInterval(() => {
-            if (started) this.altura += this.actSpeedY / 200;
+            if (started) this.altitude += this.actSpeedY / 200;
         }, 5);
     }
 

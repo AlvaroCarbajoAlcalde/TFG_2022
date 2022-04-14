@@ -26,22 +26,22 @@
         <a (click)="endGame()" class="close"></a>
     </section>
 
-    <section id="quemador">
-        <img draggable="false" class="trigger" alt="gatilloIzq" id="gatilloIzq" src="../../assets/img/leftTrigger.png" onmousedown="clickQuemador(this)" onmouseup="unClickQuemador(this)" onmouseleave="unClickQuemador(this)" />
-        <img draggable="false" class="trigger" alt="gatilloDch" id="gatilloDch" src="../../assets/img/rightTrigger.png" onmousedown="clickQuemador(this)" onmouseup="unClickQuemador(this)" onmouseleave="unClickQuemador(this)" />
+    <section id="burner">
+        <img draggable="false" class="trigger" alt="triggerLeft" id="triggerLeft" src="../../assets/img/leftTrigger.png" onmousedown="clickBurner(this)" onmouseup="unClickBurner(this)" onmouseleave="unClickBurner(this)" />
+        <img draggable="false" class="trigger" alt="triggerRight" id="triggerRight" src="../../assets/img/rightTrigger.png" onmousedown="clickBurner(this)" onmouseup="unClickBurner(this)" onmouseleave="unClickBurner(this)" />
         <img draggable="false" id="burnerbar" alt="burnerbar" src="../../assets/img/burnerbar.png" onmousedown="clickBurner2(this)" onmouseup="unClickBurner2(this)" onmouseleave="unClickBurner2(this)">
     </section>
 
-    <section id="altimetro">
-        <div id="altimetroContent">
-            <label id="altTemperatura">T 23.3°C</label>
+    <section id="altimeter">
+        <div id="altimeterContent">
+            <label id="altTemp">T 23.3°C</label>
             <label id="altSpeed">Wind: 63° <br />23.3 m/s</label>
             <label id="altSpeedAlt">6 m/s</label>
-            <label id="altAltura">6000 feet</label>
-            <label id="altPresion">Pressure<br />932.1 hPa</label>
+            <label id="altAltitude">6000 feet</label>
+            <label id="altPressure">Pressure<br />932.1 hPa</label>
             <label id="altTime">Flight Time: 02:21:49</label>
-            <img id="altRegla" src="../../assets/img/regla.png" />
-            <img id="altReglaInv" src="../../assets/img/reglainv.png" />
+            <img id="altRuler" src="../../assets/img/ruler.png" />
+            <img id="altRulerInv" src="../../assets/img/rulerinv.png" />
             <div id="altDiffContainer">
                 <div id="altDiffUp"></div>
                 <div id="altDiffDown"></div>

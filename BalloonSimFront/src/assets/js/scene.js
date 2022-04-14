@@ -31,25 +31,14 @@ function setFireEffect() {
  * Sets the light
  */
 function setLight() {
-    new BABYLON.HemisphericLight(
-        "light",
-        new BABYLON.Vector3(3000, 300, 100),
-        scene
-    );
+    new BABYLON.HemisphericLight("light", new BABYLON.Vector3(3000, 300, 100), scene);
 }
 
 /**
  * Sets the camera
  */
 function setCamera() {
-    camera = new BABYLON.ArcRotateCamera(
-        "Camera",
-        36.15,
-        1,
-        300,
-        BABYLON.Vector3.Zero(),
-        scene
-    );
+    camera = new BABYLON.ArcRotateCamera("Camera", 36.15, 1, 300, BABYLON.Vector3.Zero(), scene);
     //Prevent going under map
     camera.upperBetaLimit = (Math.PI / 2) * 0.95;
     //User controls
@@ -61,11 +50,7 @@ function setCamera() {
  * Sets the pointer
  */
 function setPointer() {
-    pointer = BABYLON.MeshBuilder.CreateSphere("sphere", {
-        diameterX: 0.1,
-        diameterY: 0.1,
-        diameterZ: 0.1,
-    });
+    pointer = BABYLON.MeshBuilder.CreateSphere("sphere", { diameterX: 0.1, diameterY: 0.1, diameterZ: 0.1 });
     pointer.position.y = 3.45;
 
     const material = new BABYLON.StandardMaterial("pointerMaterial", scene);
@@ -81,11 +66,7 @@ function setBalloon() {
         balloonModel = scene.getMeshByName("hot_air_balloon.1");
 
         //Scaling
-        balloonModel.scaling = new BABYLON.Vector3(
-            balloonScaling,
-            balloonScaling,
-            balloonScaling
-        );
+        balloonModel.scaling = new BABYLON.Vector3(balloonScaling, balloonScaling, balloonScaling);
 
         //Camera target
         camera.setTarget(balloonModel);
@@ -115,7 +96,7 @@ function setGround() {
 
     for (let i = 0; i < 15; i++) {
         for (let j = 0; j < 15; j++) {
-            const positionZ = mapSize * -i - mapSize / 2 + 7500;
+            const positionZ = mapSize * -i - mapSize / 2 + mapTotalSize;
             const positionX = mapSize * j + mapSize / 2;
 
             //Base Material
@@ -126,10 +107,7 @@ function setGround() {
             materialBack.specularColor = new BABYLON.Color4(0, 0, 0, 0);
 
             //Base
-            const baseGround = BABYLON.MeshBuilder.CreateGround(`baseground_${k}`, {
-                height: mapSize,
-                width: mapSize,
-            });
+            const baseGround = BABYLON.MeshBuilder.CreateGround(`baseground_${k}`, { height: mapSize, width: mapSize });
             baseGround.material = materialBack;
             baseGround.position.x = positionX;
             baseGround.position.z = positionZ;

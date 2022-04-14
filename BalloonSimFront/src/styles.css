@@ -443,21 +443,21 @@ h2 {
 }
 
 
-/*Quemador*/
+/*burner*/
 
 :root {
-    --quemadorW: 420px;
-    --quemadorH: 114px;
+    --burnerW: 420px;
+    --burnerH: 114px;
 }
 
-#quemador {
-    width: calc(var(--quemadorW));
-    height: calc(var(--quemadorH));
+#burner {
+    width: calc(var(--burnerW));
+    height: calc(var(--burnerH));
     z-index: 4;
     position: absolute;
-    background-image: url("./assets/img/quemadorSin.png");
+    background-image: url("./assets/img/burner.png");
     top: -5px;
-    left: calc(50vw - var(--quemadorW) / 2);
+    left: calc(50vw - var(--burnerW) / 2);
     transition: opacity 1.2s;
 }
 
@@ -468,11 +468,11 @@ h2 {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    top: 69px;
+    top: 76px;
     left: 117px;
 }
 
-#gatilloIzq {
+#triggerLeft {
     position: absolute;
     transition: 0.4s;
     left: 119px;
@@ -484,13 +484,13 @@ h2 {
     user-select: none;
 }
 
-#gatilloIzq.pressed {
+#triggerLeft.pressed {
     top: -11px;
     transform: rotate(20deg);
     left: 130px;
 }
 
-#gatilloDch {
+#triggerRight {
     position: absolute;
     transition: 0.4s;
     left: 235px;
@@ -502,7 +502,7 @@ h2 {
     user-select: none;
 }
 
-#gatilloDch.pressed {
+#triggerRight.pressed {
     left: 224px;
     top: -8px;
     transform: rotate(-20deg);
@@ -632,11 +632,11 @@ h2 {
 }
 
 
-/*Altimetro*/
+/*Altimeter*/
 
 :root {
-    --altimetroW: 290px;
-    --altimetroH: 503px;
+    --altimeterW: 290px;
+    --altimeterH: 503px;
     --altimContentColor: #6e816f;
     --altimAltContentColor: #bccfbd;
 }
@@ -649,12 +649,12 @@ h2 {
     src: url("./assets/fonts/DS-DIGII.TTF");
 }
 
-#altimetro {
-    width: calc(var(--altimetroW) / 1.5);
-    height: calc(var(--altimetroH) / 1.5);
+#altimeter {
+    width: calc(var(--altimeterW) / 1.5);
+    height: calc(var(--altimeterH) / 1.5);
     z-index: 4;
     position: absolute;
-    background-image: url("./assets/img/altimetro.png");
+    background-image: url("./assets/img/altimeter.png");
     background-repeat: no-repeat;
     background-size: cover;
     top: 15px;
@@ -668,7 +668,7 @@ h2 {
     user-select: none;
 }
 
-#altimetroContent {
+#altimeterContent {
     position: relative;
     background-color: var(--altimContentColor);
     width: 136px;
@@ -681,7 +681,7 @@ h2 {
     color: #111411;
 }
 
-#altTemperatura {
+#altTemp {
     position: absolute;
     top: 0px;
     left: 25px;
@@ -706,7 +706,7 @@ h2 {
     left: 36px;
 }
 
-#altPresion {
+#altPressure {
     position: absolute;
     top: 127px;
     font-size: 0.8em;
@@ -726,7 +726,7 @@ h2 {
     text-align: center;
 }
 
-#altAltura {
+#altAltitude {
     position: absolute;
     font-size: 0.68em;
     top: 106px;
@@ -766,7 +766,7 @@ h2 {
     border-bottom-right-radius: 5px;
 }
 
-#altRegla {
+#altRuler {
     position: absolute;
     width: 7px;
     height: 69px;
@@ -774,7 +774,7 @@ h2 {
     top: 94px;
 }
 
-#altReglaInv {
+#altRulerInv {
     position: absolute;
     width: 7px;
     height: 69px;

@@ -17,8 +17,8 @@ const skyboxSize = 10500;
 const mapTotalSize = 7500;
 const mapSizeMeters = 50330;
 const mapSize = 500;
-const convAltura = 4.498;
-const sumAltura = 332;
+const convAltitude = 4.498;
+const altitudeAddition = 332;
 const fG = 9.81;
 
 //Obj
@@ -31,8 +31,8 @@ var particleSistem;
 var game;
 var rope;
 var tablet;
-var altimetro;
-var quemador;
+var altimeter;
+var burner;
 var optionsBar;
 var loading;
 var positionX;
