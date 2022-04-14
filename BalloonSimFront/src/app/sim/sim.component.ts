@@ -69,7 +69,7 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
     console.info('Flight_ID:', this.flightID);
 
     //Save weather
-    RequestController.saveWeather(this.flightID, 20, 1221, GLOBAL.Winds);
+    RequestController.saveWeather(this.flightID, GLOBAL.Temperature, 1013.25, GLOBAL.Winds);
     //Save first point
     RequestController.savePoint(this.flightID, 0, GLOBAL.SelectedTakeoff.lat, GLOBAL.SelectedTakeoff.lon, GLOBAL.SelectedTakeoff.alt, 0, 0, 0, 100);
   }

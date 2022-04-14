@@ -45,18 +45,18 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($weather as $weather)
+                                    @foreach ($weather as $auxWeather)
                                         <tr>
                                             <td>{{ ++$i }}</td>
 
-                                            <td>{{ $weather->flight }}</td>
-                                            <td>{{ $weather->temperature }}</td>
-                                            <td>{{ $weather->pressure }}</td>
+                                            <td>{{ $auxWeather->flight }}</td>
+                                            <td>{{ $auxWeather->temperature }}</td>
+                                            <td>{{ $auxWeather->pressure }}</td>
 
                                             <td>
                                                 <form>
                                                     <a class="btn btn-sm btn-primary "
-                                                        href="{{ route('weather.show', $weather->id) }}"><i
+                                                        href="{{ route('weather.show', $auxWeather->id) }}"><i
                                                             class="fa fa-fw fa-eye"></i> Show</a>
                                                 </form>
                                             </td>
