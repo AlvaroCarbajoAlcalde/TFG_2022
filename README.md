@@ -11,7 +11,7 @@ TFG-2021/22 DAW, IES Comercio.
   - [Frameworks](#Frameworks)
   - [Platforms](#Platforms)
   - [APIs](#APIs)
-  - [Others](#Others)
+  - [Other Technologies](#Other-Technologies)
   - [Browsers](#Browsers)
 - [Screenshots](#Screenshots)
 - [Getting Started](#Getting-Started)
@@ -65,7 +65,7 @@ TFG-2021/22 DAW, IES Comercio.
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/icons/openstreetmap.png"> OpenStreetMap</code><br><br>
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/icons/windy.png"> Windy</code>
 
-### Others
+### Other Technologies
 
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/icons/github.png"> Github</code>
 <code><img height="50" src="https://github.com/AlvaroCarbajoAlcalde/TFG_2022/blob/main/readmeAssets/icons/leaflet.png"> Leaflet JS</code>
