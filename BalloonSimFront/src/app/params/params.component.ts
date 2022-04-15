@@ -3,7 +3,7 @@ import * as L from 'leaflet';
 import { GLOBAL } from '../class/global';
 import { kmPerHourToKnots, kmPerHourToMetersPerSecond, metersToFeet } from '../class/methods';
 import { Wind } from '../model/winds';
-import { faEye, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faTrash, faPlus} from '@fortawesome/free-solid-svg-icons';
 import { WindsMap } from '../class/windsMap';
 
 @Component({
@@ -17,6 +17,7 @@ export class ParamsComponent implements AfterViewInit {
   public toKnots = kmPerHourToKnots;
   public eyeIcon = faEye;
   public trashIcon = faTrash;
+  public plusIcon = faPlus;
   public windsMap!: WindsMap;
 
   constructor() { }

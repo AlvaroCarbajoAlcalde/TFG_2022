@@ -112,8 +112,8 @@
                 <td>
                     <div class="actions">
                         <input #colorPicker title="Cambia el color del viento" *ngIf="wind.color" type="color" class="colorpicker" value={{wind.color}} (change)="windsMap.changeWindColor(wind, colorPicker.value)">
-                        <a #aEye (click)="windsMap.changeWindVisibility(wind, aEye.firstElementChild)">
-                            <fa-icon [class.pressed]="!wind.seeOnMap" [icon]="eyeIcon" title="Mostrar/ocultar viento en el mapa"></fa-icon>
+                        <a #aEye (click)="windsMap.changeWindVisibility(wind, aEye.firstElementChild)" title="Mostrar/ocultar viento en el mapa">
+                            <fa-icon [class.pressed]="!wind.seeOnMap" [icon]="eyeIcon"></fa-icon>
                         </a>
                     </div>
                 </td>

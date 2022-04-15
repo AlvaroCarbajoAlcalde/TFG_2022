@@ -35,18 +35,20 @@
                 <td>
                     <div class="actions">
                         <input #colorPicker title="Cambia el color del viento" *ngIf="wind.color" type="color" class="colorpicker" value={{wind.color}} (change)="windsMap.changeWindColor(wind, colorPicker.value)">
-                        <a #aEye (click)="windsMap.changeWindVisibility(wind, aEye.firstElementChild)">
-                            <fa-icon [class.pressed]="!wind.seeOnMap" [icon]="eyeIcon" title="Mostrar/ocultar viento en el mapa"></fa-icon>
+                        <a #aEye (click)="windsMap.changeWindVisibility(wind, aEye.firstElementChild)" title="Mostrar/ocultar viento en el mapa">
+                            <fa-icon [class.pressed]="!wind.seeOnMap" [icon]="eyeIcon"></fa-icon>
                         </a>
-                        <a (click)="deleteWind(wind.altitude)">
-                            <fa-icon [icon]="trashIcon" title="Borrar viento de la lista"></fa-icon>
+                        <a (click)="deleteWind(wind.altitude)" title="Borrar viento de la lista">
+                            <fa-icon [icon]="trashIcon"></fa-icon>
                         </a>
                     </div>
                 </td>
             </tr>
         </tbody>
     </table>
-    <button type="button" (click)="showPopupWinds()">Añadir viento</button>
+    <div class="right-content">
+        <button type="button" title="Añadir un viento" class="addWind" (click)="showPopupWinds()"><fa-icon [icon]="plusIcon"></fa-icon> Añadir un viento</button>
+    </div>
     <div class="params-map">
         <div class="map-container">
             <div class="map-frame">
@@ -75,17 +77,17 @@
     <div class="popup" id="divAddWind">
         <div class="popup-content">
             <h2>Añadir viento</h2>
-            <hr>
+            <br>
             <p>Introduce la altitud en metros:</p>
             <input class="popup_input" #altitude type="number" min="0" max="5000" name="altitude" placeholder="Altitud" value="0">
             <p>Introduce la dirección en grados:</p>
             <input class="popup_input" #windDir type="number" min="0" max="360" name="windDir" placeholder="Dirección" value="0">
             <p>Introduce la velocidad en km/h:</p>
             <input class="popup_input" #windSpeed type="number" min="0" max="300" name="windSpeedKMH" placeholder="Velocidad" value="0">
-            <hr>
+            <br>
             <div class="popup_buttons">
                 <button type="button" (click)="addWindCancel()">Cancelar</button>
-                <button type="button" (click)="addWind(altitude.value, windDir.value, windSpeed.value)">Añadir</button>
+                <button type="button" class="green" (click)="addWind(altitude.value, windDir.value, windSpeed.value)">Añadir</button>
             </div>
         </div>
     </div>

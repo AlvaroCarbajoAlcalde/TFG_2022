@@ -6,6 +6,7 @@
     --light: #4b688b;
     --dark: #143153;
     --darker: #051c38;
+    --green: #28a745;
 }
 
 html,
@@ -140,7 +141,7 @@ canvas {
 .popup-content {
     padding: 20px;
     border-radius: 20px;
-    background-color: var(--lighter);
+    background-color: var(--primary);
     display: flex;
     gap: 10px;
     flex-direction: column;
@@ -174,7 +175,23 @@ canvas {
 
 .popup_buttons button {
     width: 47%;
-    transition: opacity 0.5s;
+    cursor: pointer;
+    padding: 10px;
+    font-size: large;
+    font-weight: bold;
+    color: whitesmoke;
+    background-color: var(--light);
+    border-radius: 10px;
+    border: none;
+    transition: 0.5s;
+}
+
+.popup_buttons button.green {
+    background-color: var(--green);
+}
+
+.popup_buttons button:hover {
+    filter: brightness(1.2);
 }
 
 .popup input {
@@ -1054,25 +1071,6 @@ hr {
     background-color: whitesmoke !important;
 }
 
-
-/*Buttons*/
-
-button {
-    cursor: pointer;
-    padding: 10px;
-    font-size: large;
-    font-weight: bold;
-    color: whitesmoke;
-    background-color: var(--primary);
-    border-radius: 10px;
-    border: none;
-    transition: 0.5s;
-}
-
-button:hover {
-    background-color: var(--light);
-}
-
 fa-icon {
     font-size: 20px;
 }
@@ -1097,4 +1095,32 @@ input[type="color"]::-webkit-color-swatch {
     border-radius: 50px;
     border: 3px solid white;
     padding: 0;
+}
+
+
+/*Buttons*/
+
+button.addWind {
+    cursor: pointer;
+    padding: 10px;
+    font-size: large;
+    font-weight: bold;
+    color: whitesmoke;
+    background-color: var(--green);
+    border-radius: 10px;
+    border: none;
+    transition: 0.5s;
+    width: fit-content;
+}
+
+button.addWind:hover {
+    filter: brightness(1.2);
+}
+
+.right-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: right;
+    align-items: center;
+    margin-right: 2px;
 }
