@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { GLOBAL } from '../class/global';
 
 @Component({
   selector: 'app-home',

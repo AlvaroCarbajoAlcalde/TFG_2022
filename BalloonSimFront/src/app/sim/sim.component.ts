@@ -4,7 +4,6 @@ import * as L from 'leaflet';
 import { environment } from 'src/environments/environment';
 import backgroundController from '../class/backgroundController';
 import { GLOBAL } from '../class/global';
-import Winds from '../model/winds';
 import RequestController from '../class/requestController';
 
 declare const resizeCanvas: any;
