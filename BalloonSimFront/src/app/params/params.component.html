@@ -23,14 +23,14 @@
             <tr>
                 <th>Altitud (s. n. m.)</th>
                 <th>Dirección</th>
-                <th>Velocidad (km/h)</th>
+                <th>Velocidad</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let wind of windList">
                 <td>{{wind.altitude}} m / {{wind.altitudeFeet}} feet</td>
                 <td>{{wind.windDir}}°</td>
-                <td>{{wind.windSpeedKMH}} km/h</td>
+                <td>{{wind.windSpeedKMH}} km/h / {{toKnots(wind.windSpeed).toFixed(1)}} nudos.</td>
                 <td><a (click)="deleteWind(wind.altitude)">Borrar</a></td>
             </tr>
         </tbody>

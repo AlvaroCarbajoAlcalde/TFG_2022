@@ -6,6 +6,8 @@ export default class Winds {
      * @param params the parameters
      */
     constructor(params: any) {
+        console.log(params)
+
         this.windsList = [
             new Wind(0, 13, 3),
             new Wind(600, 341, 4),

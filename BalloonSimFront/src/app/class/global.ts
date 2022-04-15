@@ -12,7 +12,6 @@ export class GLOBAL {
     public static TakeoffPointsList: Takeoff[];
     public static Winds: Winds;
     public static Temperature: number;
-    public static WindyResponse: any;
     public static readonly MAP_CENTER: LatLngExpression = [42.54, -2.96];
 
     /**
@@ -24,7 +23,6 @@ export class GLOBAL {
         if (this.isInitialized) return;
 
         GLOBAL.TakeoffPointsList = await RequestController.getTakeOffs();
-        GLOBAL.WindyResponse = await RequestController.getWinds();
         GLOBAL.Winds = await RequestController.getWinds();
         GLOBAL.SelectedTakeoff = GLOBAL.TakeoffPointsList[0];
         GLOBAL.Temperature = 12;
@@ -44,8 +42,6 @@ export class GLOBAL {
         console.log("SkyboxColor: " + this.SkyboxColor);
         console.log("TakeoffPointsList: " + this.TakeoffPointsList.length);
         console.table(this.TakeoffPointsList);
-        console.log("WindyResponse: ");
-        console.table(this.WindyResponse);
     }
 
     /**

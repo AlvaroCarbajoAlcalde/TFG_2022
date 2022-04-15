@@ -186,7 +186,6 @@ export default class RequestController {
       .then((result) => { toReturn = result; });
 
     return new Winds(toReturn);
-    return toReturn;
   }
 
   /**

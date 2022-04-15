@@ -18,6 +18,74 @@ export function timeInSecondsToString(seconds: number, trim: boolean = false): s
     if (minutes < 10) s_minutes = `0${minutes}`;
     if (seconds < 10) s_seconds = `0${seconds}`;
 
-    if(trim && hours == 0) return `${s_minutes}:${s_seconds}`;
+    if (trim && hours == 0) return `${s_minutes}:${s_seconds}`;
     return `${s_hours}:${s_minutes}:${s_seconds}`;
+}
+
+/**
+ * Converts meters to feet
+ * 
+ * @param {number} meters meters to convert
+ * @returns {number} altitude in feet
+ */
+export function metersToFeet(meters: number): number {
+    return meters * 3.28084;
+}
+
+/**
+ * Converts feet to meters
+ * 
+ * @param {number} feet feet to convert
+ * @returns {number} altitude in meters
+ */
+export function feetToMeters(feet: number): number {
+    return feet / 3.28084;
+}
+
+/**
+ * Converts meters per second to km/h
+ * 
+ * @param metersPerSecond speed in meters per second
+ * @returns {number} speed in km/h
+ */
+export function metersPerSecondToKmPerHour(metersPerSecond: number): number {
+    return metersPerSecond * 3.6;
+}
+
+/**
+ * Converts km/h to meters per second
+ * 
+ * @param {number} kmPerHour speed in km/h
+ * @returns {numnber} speed in meters per second
+ */
+export function kmPerHourToMetersPerSecond(kmPerHour: number): number {
+    return kmPerHour / 3.6;
+}
+
+/**
+ * Converts km/h to knots
+ * 
+ * @param {number} kmPerHour speed in km/h 
+ * @returns {number} speed in knots
+ */
+export function kmPerHourToKnots(kmPerHour: number): number {
+    return kmPerHour * 0.539957;
+}
+
+/**
+ * Converts a number to a string with the correct units
+ * 
+ * @param {number} distance distance in meters
+ * @returns {string} distance in km and m
+ */
+export function distanceToString(distance: number): string {
+    let toReturn = '';
+    if (distance / 1000 > 0) {
+        const km = Math.floor(distance / 1000);
+        const m = Math.floor(distance % 1000);
+        toReturn = `${km} km, ${m} metros.`;
+    } else {
+        toReturn = `${distance} metros.`;
+    }
+    return toReturn;
 }

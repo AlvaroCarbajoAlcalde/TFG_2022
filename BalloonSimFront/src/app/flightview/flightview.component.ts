@@ -4,7 +4,7 @@ import * as L from 'leaflet';
 import RequestController from '../class/requestController';
 import Flight from '../model/flight';
 import { Chart } from 'chart.js';
-import { timeInSecondsToString } from '../class/methods';
+import { distanceToString, kmPerHourToKnots, timeInSecondsToString } from '../class/methods';
 import { Wind } from '../model/winds';
 import Weather from '../model/weather';
 
@@ -28,6 +28,8 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
   public remainingFuel!: number;
   public straightLineDistance!: number;
   public weather!: Weather;
+  public toKnots = kmPerHourToKnots;
+  public distanceToString = distanceToString;
 
   constructor(private _Activatedroute: ActivatedRoute, private router: Router) { }
 
@@ -44,10 +46,11 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
       this.router.navigate(['history']);
       return;
     }
+
     (<HTMLElement>document.getElementById('flightname')).innerHTML = this.flight.name;
 
-    //#region MarkerIcons
-    const iconDefault = L.icon({
+    //Marker Icon
+    L.Marker.prototype.options.icon = L.icon({
       iconRetinaUrl: 'assets/img/marker-blue.png',
       iconUrl: 'assets/img/marker-blue.png',
       shadowUrl: 'assets/marker-shadow.png',
@@ -58,15 +61,12 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
       shadowSize: [41, 41],
     });
 
-    L.Marker.prototype.options.icon = iconDefault;
-    //#endregion
-
-    //#region Map
+    //Map
     this.map = L.map('map', { center: [42.53, -2.85], zoom: 12 });
     const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 16, minZoom: 10 });
     tiles.addTo(this.map);
-    //#endregion
 
+    //Tracking
     const track = new L.Polyline([], {
       color: 'red',
       weight: 3,
@@ -78,16 +78,13 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
 
     const routes = await RequestController.getRoute(this.flightid);
 
-    const takeoffMarker = L.circleMarker(
-      new L.LatLng(routes[0].lat, routes[0].lon),
-      {
-        radius: 5,
-        color: 'red',
-        fillColor: 'white',
-        fill: true,
-        fillOpacity: 1,
-      }
-    );
+    const takeoffMarker = L.circleMarker(new L.LatLng(routes[0].lat, routes[0].lon), {
+      radius: 5,
+      color: 'red',
+      fillColor: 'white',
+      fill: true,
+      fillOpacity: 1,
+    });
     takeoffMarker.addTo(this.map);
 
     this.map.panTo(new L.LatLng(routes[0].lat, routes[0].lon));
@@ -134,28 +131,10 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
 
     this.avgAltitude = sumAltitude / routes.length;
     this.distance = parseFloat(this.distance.toFixed(2));
-    this.createGraphicAltitude(labelSeconds, dataAltitude, dataFuel, dataSpeed, dataDirection, dataSpeedY);
+    this.createGraphicData(labelSeconds, dataAltitude, dataFuel, dataSpeed, dataDirection, dataSpeedY);
 
     this.windList = await RequestController.getFlightWinds(this.flightid);
     this.weather = await RequestController.getFlightWeather(this.flightid) as Weather;
-  }
-
-  /**
-   * Converts a number to a string with the correct units
-   * 
-   * @param {number} distance distance in meters
-   * @returns {string} distance in km and m
-   */
-  public distanceToString(distance: number): string {
-    let toReturn = '';
-    if (distance / 1000 > 0) {
-      const km = Math.floor(distance / 1000);
-      const m = Math.floor(distance % 1000);
-      toReturn = `${km} km, ${m} metros.`;
-    } else {
-      toReturn = `${distance} metros.`;
-    }
-    return toReturn;
   }
 
   /**
@@ -169,7 +148,7 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
    * @param {number} dataSpeedY speed in Y, ascension speed
    * @returns {void}
    */
-  public createGraphicAltitude(labels: string[], dataAltitude: number[], dataFuel: number[], dataSpeed: number[], dataDirection: number[], dataSpeedY: number[]): void {
+  public createGraphicData(labels: string[], dataAltitude: number[], dataFuel: number[], dataSpeed: number[], dataDirection: number[], dataSpeedY: number[]): void {
     new Chart(document.getElementById('graphicAltitude') as HTMLCanvasElement, {
       type: 'line',
       data: {

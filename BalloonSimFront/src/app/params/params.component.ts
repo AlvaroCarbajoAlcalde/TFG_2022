@@ -1,6 +1,7 @@
 import { Component, AfterViewInit } from '@angular/core';
 import * as L from 'leaflet';
 import { GLOBAL } from '../class/global';
+import { kmPerHourToKnots } from '../class/methods';
 import { Wind } from '../model/winds';
 
 @Component({
@@ -11,6 +12,7 @@ export class ParamsComponent implements AfterViewInit {
 
   private map!: L.Map;
   public windList!: Wind[];
+  public toKnots = kmPerHourToKnots;
 
   constructor() { }
 
@@ -44,31 +46,16 @@ export class ParamsComponent implements AfterViewInit {
     L.Marker.prototype.options.icon = iconDefault;
     //#endregion
 
-    //#region Map
-    this.map = L.map('map', {
-      center: GLOBAL.MAP_CENTER,
-      zoom: 10,
-    });
-
-    const tiles = L.tileLayer(
-      'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-      {
-        maxZoom: 15,
-        minZoom: 10,
-      }
-    );
-
+    //Map
+    this.map = L.map('map', { center: GLOBAL.MAP_CENTER, zoom: 10 });
+    const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 15, minZoom: 10 });
     tiles.addTo(this.map);
-    //#endregion
 
     //#region Markers
     const markers: L.Marker[] = [];
 
     GLOBAL.TakeoffPointsList.forEach((takeoff) => {
-      const marker = L.marker([takeoff.lat, takeoff.lon], {
-        title: takeoff.name,
-        riseOnHover: true,
-      });
+      const marker = L.marker([takeoff.lat, takeoff.lon], { title: takeoff.name, riseOnHover: true });
 
       //Image
       const img = document.createElement('img');
@@ -108,7 +95,7 @@ export class ParamsComponent implements AfterViewInit {
    */
   public selectSkybox(value: string) {
     const imgs = Array.from(document.getElementsByClassName('skyboximg'));
-    imgs.forEach((img) => { img.classList.remove('selected'); });
+    imgs.forEach((img) => { img.classList.remove('selected') });
     document.getElementsByClassName(value)[0].classList.add('selected');
     GLOBAL.SkyboxColor = value;
   }
@@ -163,7 +150,7 @@ export class ParamsComponent implements AfterViewInit {
    * Sets the temperature on ground
    * @param {number} value temperature value
    */
-  public setTemperature(value: any){
+  public setTemperature(value: any) {
     GLOBAL.Temperature = value;
   }
 }
