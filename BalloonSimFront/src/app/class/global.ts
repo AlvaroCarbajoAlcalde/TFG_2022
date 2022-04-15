@@ -42,6 +42,8 @@ export class GLOBAL {
         console.log("SkyboxColor: " + this.SkyboxColor);
         console.log("TakeoffPointsList: " + this.TakeoffPointsList.length);
         console.table(this.TakeoffPointsList);
+        console.log("Winds: " + this.Winds.windsList.length);
+        console.table(this.Winds.windsList);
     }
 
     /**

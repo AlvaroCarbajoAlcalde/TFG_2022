@@ -181,9 +181,13 @@ export default class RequestController {
       body: raw
     };
 
-    await fetch("https://api.windy.com/api/point-forecast/v2", requestOptions as any)
-      .then(response => response.json())
-      .then((result) => { toReturn = result; });
+    try {
+      await fetch("https://api.windy.com/api/point-forecast/v2", requestOptions as any)
+        .then(response => response.json())
+        .then((result) => { toReturn = result; });
+    } catch (e: any) {
+      console.warn(`Windy not working, ${e.message}`);
+    }
 
     return new Winds(toReturn);
   }

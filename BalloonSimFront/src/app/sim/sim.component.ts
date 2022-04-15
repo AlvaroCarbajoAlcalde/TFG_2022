@@ -87,7 +87,7 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
 
     const marker = L.circleMarker([0, 0], { radius: 2 });
     marker.addTo(this.map);
-    marker.setLatLng(new L.LatLng(GLOBAL.SelectedTakeoff.lat, GLOBAL.SelectedTakeoff.lon));
+    marker.setLatLng([GLOBAL.SelectedTakeoff.lat, GLOBAL.SelectedTakeoff.lon]);
 
     //Map update interval
     this.mapUpdateInterval = setInterval(() => {

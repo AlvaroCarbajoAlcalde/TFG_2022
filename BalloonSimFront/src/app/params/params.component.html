@@ -29,13 +29,22 @@
         <tbody>
             <tr *ngFor="let wind of windList">
                 <td>{{wind.altitude}} m / {{wind.altitudeFeet}} feet</td>
-                <td>{{wind.windDir}}°</td>
+                <td>{{wind.windDir.toFixed(2)}}°</td>
                 <td>{{wind.windSpeedKMH}} km/h / {{toKnots(wind.windSpeed).toFixed(1)}} nudos.</td>
+                <td><input #colorPicker *ngIf="wind.color" type="color" class="colorpicker" value={{wind.color}} (change)="changeWindColor(wind, colorPicker.value)"></td>
+                <td><a (click)="changeWindVisibility(wind)">Ver</a></td>
                 <td><a (click)="deleteWind(wind.altitude)">Borrar</a></td>
             </tr>
         </tbody>
     </table>
     <button type="button" (click)="showPopupWinds()">Añadir viento</button>
+    <div class="params-map">
+        <div class="map-container">
+            <div class="map-frame">
+                <div id="mapWinds"></div>
+            </div>
+        </div>
+    </div>
     <hr>
 
     <h2>Temperatura:</h2>
