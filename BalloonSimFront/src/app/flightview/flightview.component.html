@@ -95,20 +95,34 @@
     <hr>
 
     <h2>Vientos:</h2>
-    <table class="contents_table ">
+    <table class="contents_table">
         <thead>
             <tr>
                 <th>Altitud (s. n. m.)</th>
                 <th>Dirección</th>
                 <th>Velocidad</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let wind of windList ">
+            <tr *ngFor="let wind of windList">
                 <td>{{wind.altitude}} m / {{wind.altitudeFeet}} feet</td>
                 <td>{{wind.windDir.toFixed(2)}}°</td>
                 <td>{{wind.windSpeedKMH}} km/h / {{toKnots(wind.windSpeed).toFixed(1)}} nudos.</td>
+                <td class="actions">
+                    <input #colorPicker title="Cambia el color del viento" *ngIf="wind.color" type="color" class="colorpicker" value={{wind.color}} (change)="windsMap.changeWindColor(wind, colorPicker.value)">
+                    <a #aEye (click)="windsMap.changeWindVisibility(wind, aEye.firstElementChild)">
+                        <fa-icon [class.pressed]="!wind.seeOnMap" [icon]="eyeIcon" title="Mostrar/ocultar viento en el mapa"></fa-icon>
+                    </a>
+                </td>
             </tr>
         </tbody>
     </table>
+    <div class="params-map">
+        <div class="map-container">
+            <div class="map-frame">
+                <div id="mapWinds"></div>
+            </div>
+        </div>
+    </div>
 </section>

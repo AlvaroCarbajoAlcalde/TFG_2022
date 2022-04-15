@@ -7,6 +7,10 @@ import { Chart } from 'chart.js';
 import { distanceToString, kmPerHourToKnots, timeInSecondsToString } from '../class/methods';
 import { Wind } from '../model/winds';
 import Weather from '../model/weather';
+import { faEye } from '@fortawesome/free-solid-svg-icons';
+import { WindsMap } from '../class/windsMap';
+import { GLOBAL } from '../class/global';
+import Takeoff from '../model/takeoff';
 
 @Component({
   selector: 'app-flightview',
@@ -30,6 +34,8 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
   public weather!: Weather;
   public toKnots = kmPerHourToKnots;
   public distanceToString = distanceToString;
+  public eyeIcon = faEye;
+  public windsMap!: WindsMap;
 
   constructor(private _Activatedroute: ActivatedRoute, private router: Router) { }
 
@@ -135,6 +141,9 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
 
     this.windList = await RequestController.getFlightWinds(this.flightid);
     this.weather = await RequestController.getFlightWeather(this.flightid) as Weather;
+
+    this.windsMap = new WindsMap("mapWinds", this.windList, [routes[0].lat, routes[0].lon]);
+    this.windsMap.updateWindsMap();
   }
 
   /**

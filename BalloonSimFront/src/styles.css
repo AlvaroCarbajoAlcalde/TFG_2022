@@ -849,6 +849,14 @@ table.contents_table {
     width: 100%;
 }
 
+td.actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 5px;
+}
+
 #flight-datatables td,
 #flight-datatables th {
     width: 25%;
@@ -1063,4 +1071,30 @@ button {
 
 button:hover {
     background-color: var(--light);
+}
+
+fa-icon {
+    font-size: 20px;
+}
+
+fa-icon.pressed {
+    color: var(--primary);
+}
+
+input[type="color"] {
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 60px;
+    height: 34px;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+}
+
+input[type="color"]::-webkit-color-swatch {
+    border-radius: 50px;
+    border: 3px solid white;
+    padding: 0;
 }

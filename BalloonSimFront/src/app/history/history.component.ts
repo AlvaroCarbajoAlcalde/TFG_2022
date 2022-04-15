@@ -2,13 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import RequestController from '../class/requestController';
 import Flight from '../model/flight';
+import { faEye } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-history',
   templateUrl: './history.component.html',
 })
 export class HistoryComponent implements OnInit {
+  
   public flightList!: Flight[];
+  public eyeIcon = faEye;
 
   constructor(private router: Router) { }
 

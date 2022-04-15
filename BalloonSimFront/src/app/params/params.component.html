@@ -4,7 +4,7 @@
 
     <h2>Tracking:</h2>
     <p>Introduce un nombre para guardar el tracking del vuelo:</p>
-    <input #flightname (keyup)="setFlightName(flightname.value)" class="inp-text" type="text" name="name" placeholder="Nombre">
+    <input #flightname (keyup)="setFlightName(flightname.value)" class="inp-text" type="text" name="name" placeholder="Nombre" title="Introduce un nombre para el vuelo">
     <hr>
 
     <h2>Punto de despegue:</h2>
@@ -24,6 +24,7 @@
                 <th>Altitud (s. n. m.)</th>
                 <th>Dirección</th>
                 <th>Velocidad</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -31,9 +32,15 @@
                 <td>{{wind.altitude}} m / {{wind.altitudeFeet}} feet</td>
                 <td>{{wind.windDir.toFixed(2)}}°</td>
                 <td>{{wind.windSpeedKMH}} km/h / {{toKnots(wind.windSpeed).toFixed(1)}} nudos.</td>
-                <td><input #colorPicker *ngIf="wind.color" type="color" class="colorpicker" value={{wind.color}} (change)="changeWindColor(wind, colorPicker.value)"></td>
-                <td><a (click)="changeWindVisibility(wind)">Ver</a></td>
-                <td><a (click)="deleteWind(wind.altitude)">Borrar</a></td>
+                <td class="actions">
+                    <input #colorPicker title="Cambia el color del viento" *ngIf="wind.color" type="color" class="colorpicker" value={{wind.color}} (change)="windsMap.changeWindColor(wind, colorPicker.value)">
+                    <a #aEye (click)="windsMap.changeWindVisibility(wind, aEye.firstElementChild)">
+                        <fa-icon [class.pressed]="!wind.seeOnMap" [icon]="eyeIcon" title="Mostrar/ocultar viento en el mapa"></fa-icon>
+                    </a>
+                    <a (click)="deleteWind(wind.altitude)">
+                        <fa-icon [icon]="trashIcon" title="Borrar viento de la lista"></fa-icon>
+                    </a>
+                </td>
             </tr>
         </tbody>
     </table>
@@ -49,7 +56,7 @@
 
     <h2>Temperatura:</h2>
     <p>Introduce la temperatura en grados centígrados:</p>
-    <input #temp (keyup)="setTemperature(temp.value)" class="inp-text" type="number" name="temperature" value="12">
+    <input #temp (keyup)="setTemperature(temp.value)" class="inp-text" type="number" name="temperature" value="12" title="Selecciona la temperatura en tierra">
     <hr>
 
     <h2>Color del cielo:</h2>

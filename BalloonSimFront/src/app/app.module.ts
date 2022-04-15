@@ -9,6 +9,7 @@ import { FlightviewComponent } from './flightview/flightview.component';
 import { HomeComponent } from './home/home.component';
 import { ParamsComponent } from './params/params.component';
 import { NgChartsModule } from 'ng2-charts';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { NgChartsModule } from 'ng2-charts';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgChartsModule
+    NgChartsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
