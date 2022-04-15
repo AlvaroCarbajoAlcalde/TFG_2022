@@ -9,6 +9,12 @@ export class HomeComponent implements OnInit {
 
   private slideIndex = 1;
 
+  /**
+   * Sliders for the home page
+   *
+   * @private
+   * @memberof HomeComponent
+   */
   private readonly SLIDES = {
     "Haro": "../../assets/slider-images/Haro.png",
     "Briones": "../../assets/slider-images/Briones.png",
@@ -28,6 +34,11 @@ export class HomeComponent implements OnInit {
 
   constructor() { }
 
+  ngOnInit(): void {
+    this.printSlides();
+    this.showSlides(this.slideIndex);
+  }
+
   /**
    * Method to navigate to the next slide
    * 
@@ -43,23 +54,11 @@ export class HomeComponent implements OnInit {
    * @param {number} n number of the slide
    */
   showSlides(n: number) {
-    let i;
     let slides = document.getElementsByClassName('mySlides');
-    if (n > slides.length) {
-      this.slideIndex = 1;
-    }
-    if (n < 1) {
-      this.slideIndex = slides.length;
-    }
-    for (i = 0; i < slides.length; i++) {
-      (<any>slides[i]).style.display = 'none';
-    }
+    if (n > slides.length) this.slideIndex = 1;
+    if (n < 1) this.slideIndex = slides.length;
+    for (let i = 0; i < slides.length; i++) (<any>slides[i]).style.display = 'none';
     (<any>slides[this.slideIndex - 1]).style.display = 'block';
-  }
-
-  ngOnInit(): void {
-    this.printSlides();
-    this.showSlides(this.slideIndex);
   }
 
   /**
@@ -82,9 +81,9 @@ export class HomeComponent implements OnInit {
    * @param {string} value image of the slide
    * @param {number} i counter of the slide
    * @param {number} lenght lenght of the slides
-   * @returns 
+   * @returns {HTMLElement} html element of the slide
    */
-  private createMySlide(key: string, value: string, i: number, lenght: number) {
+  private createMySlide(key: string, value: string, i: number, lenght: number): HTMLElement {
     const div = document.createElement('div');
     div.className = 'mySlides fade';
     const img = document.createElement('img');
