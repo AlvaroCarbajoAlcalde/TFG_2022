@@ -32,14 +32,16 @@
                 <td>{{wind.altitude}} m / {{wind.altitudeFeet}} feet</td>
                 <td>{{wind.windDir.toFixed(2)}}°</td>
                 <td>{{wind.windSpeedKMH}} km/h / {{toKnots(wind.windSpeed).toFixed(1)}} nudos.</td>
-                <td class="actions">
-                    <input #colorPicker title="Cambia el color del viento" *ngIf="wind.color" type="color" class="colorpicker" value={{wind.color}} (change)="windsMap.changeWindColor(wind, colorPicker.value)">
-                    <a #aEye (click)="windsMap.changeWindVisibility(wind, aEye.firstElementChild)">
-                        <fa-icon [class.pressed]="!wind.seeOnMap" [icon]="eyeIcon" title="Mostrar/ocultar viento en el mapa"></fa-icon>
-                    </a>
-                    <a (click)="deleteWind(wind.altitude)">
-                        <fa-icon [icon]="trashIcon" title="Borrar viento de la lista"></fa-icon>
-                    </a>
+                <td>
+                    <div class="actions">
+                        <input #colorPicker title="Cambia el color del viento" *ngIf="wind.color" type="color" class="colorpicker" value={{wind.color}} (change)="windsMap.changeWindColor(wind, colorPicker.value)">
+                        <a #aEye (click)="windsMap.changeWindVisibility(wind, aEye.firstElementChild)">
+                            <fa-icon [class.pressed]="!wind.seeOnMap" [icon]="eyeIcon" title="Mostrar/ocultar viento en el mapa"></fa-icon>
+                        </a>
+                        <a (click)="deleteWind(wind.altitude)">
+                            <fa-icon [icon]="trashIcon" title="Borrar viento de la lista"></fa-icon>
+                        </a>
+                    </div>
                 </td>
             </tr>
         </tbody>

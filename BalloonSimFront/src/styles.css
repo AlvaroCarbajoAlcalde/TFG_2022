@@ -849,7 +849,7 @@ table.contents_table {
     width: 100%;
 }
 
-td.actions {
+td div.actions {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
