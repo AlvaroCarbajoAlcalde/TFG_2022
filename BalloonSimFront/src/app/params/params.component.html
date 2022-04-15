@@ -31,11 +31,28 @@
                 <td>{{wind.altitude}} m / {{wind.altitudeFeet}} feet</td>
                 <td>{{wind.windDir}}°</td>
                 <td>{{wind.windSpeedKMH}} km/h</td>
-                <td> <a (click)="deleteWind(wind.altitude)">Borrar</a> </td>
+                <td><a (click)="deleteWind(wind.altitude)">Borrar</a></td>
             </tr>
         </tbody>
     </table>
     <button type="button" (click)="showPopupWinds()">Añadir viento</button>
+    <hr>
+
+    <h2>Temperatura:</h2>
+    <p>Introduce la temperatura en grados centígrados:</p>
+    <input #temp (keyup)="setTemperature(temp.value)" class="inp-text" type="number" name="temperature" value="12">
+    <hr>
+
+    <h2>Color del cielo:</h2>
+    <div class="skybox-selector">
+        <div class="row">
+            <img class="skyboximg browncloud" src="../../assets/textures/skybox/browncloud_nx.jpg" alt="browncloud" (click)="selectSkybox('browncloud')">
+            <img class="skyboximg yellowcloud" src="../../assets/textures/skybox/yellowcloud_nx.jpg" alt="yellowcloud" (click)="selectSkybox('yellowcloud')">
+            <img class="skyboximg bluecloud" src="../../assets/textures/skybox/bluecloud_nx.jpg" alt="bluecloud" (click)="selectSkybox('bluecloud')">
+            <img class="skyboximg graycloud" src="../../assets/textures/skybox/graycloud_nx.jpg" alt="graycloud" (click)="selectSkybox('graycloud')">
+        </div>
+    </div>
+
     <div class="popup_background"></div>
     <div class="popup" id="divAddWind">
         <div class="popup-content">
@@ -54,21 +71,4 @@
             </div>
         </div>
     </div>
-    <hr>
-
-    <h2>Temperatura:</h2>
-    <p>Introduce la temperatura en grados centígrados:</p>
-    <input #temp (keyup)="setTemperature(temp.value)" class="inp-text" type="number" name="temperature" value="12">
-    <hr>
-
-    <h2>Color del cielo:</h2>
-    <div class="skybox-selector">
-        <div class="row">
-            <img class="skyboximg browncloud" src="../../assets/textures/skybox/browncloud_nx.jpg" alt="browncloud" (click)="selectSkybox('browncloud')">
-            <img class="skyboximg yellowcloud" src="../../assets/textures/skybox/yellowcloud_nx.jpg" alt="yellowcloud" (click)="selectSkybox('yellowcloud')">
-            <img class="skyboximg bluecloud" src="../../assets/textures/skybox/bluecloud_nx.jpg" alt="bluecloud" (click)="selectSkybox('bluecloud')">
-            <img class="skyboximg graycloud" src="../../assets/textures/skybox/graycloud_nx.jpg" alt="graycloud" (click)="selectSkybox('graycloud')">
-        </div>
-    </div>
-
 </section>
