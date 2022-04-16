@@ -8,6 +8,7 @@
     <hr>
 
     <h2>Punto de despegue:</h2>
+    <p>Selecciona un lugar para el despegue pulsando sobre los marcadores.</p>
     <div class="params-map">
         <div class="map-container">
             <div class="map-frame">
@@ -59,11 +60,12 @@
     <hr>
 
     <h2>Temperatura:</h2>
-    <p>Introduce la temperatura en grados centígrados:</p>
+    <p>Introduce la temperatura a nivel del suelo en grados centígrados:</p>
     <input #temp (keyup)="setTemperature(temp.value)" class="inp-text" type="number" name="temperature" value="12" title="Selecciona la temperatura en tierra">
     <hr>
 
     <h2>Color del cielo:</h2>
+    <p>Selecciona un estilo para el cielo.</p>
     <div class="skybox-selector">
         <div class="row">
             <img class="skyboximg browncloud" src="../../assets/textures/skybox/browncloud_nx.jpg" alt="browncloud" (click)="selectSkybox('browncloud')">
