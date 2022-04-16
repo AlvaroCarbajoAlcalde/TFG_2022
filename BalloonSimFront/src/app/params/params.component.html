@@ -74,6 +74,12 @@
             <img class="skyboximg graycloud" src="../../assets/textures/skybox/graycloud_nx.jpg" alt="graycloud" (click)="selectSkybox('graycloud')">
         </div>
     </div>
+    <hr>
+
+    <section class="exports">
+        <button (click)="exportSettings()"><fa-icon [icon]="exportIcon"></fa-icon> Exportar ajustes</button>
+        <button (click)="importSettings()"><fa-icon [icon]="importIcon"></fa-icon> Importar ajustes</button>
+    </section>
 
     <div class="popup_background"></div>
     <div class="popup" id="divAddWind">

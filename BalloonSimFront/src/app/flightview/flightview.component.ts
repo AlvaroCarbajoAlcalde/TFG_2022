@@ -7,10 +7,9 @@ import { Chart } from 'chart.js';
 import { distanceToString, kmPerHourToKnots, timeInSecondsToString } from '../class/methods';
 import { Wind } from '../model/winds';
 import Weather from '../model/weather';
-import { faEye } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faFileExport } from '@fortawesome/free-solid-svg-icons';
 import { WindsMap } from '../class/windsMap';
 import { GLOBAL } from '../class/global';
-import Takeoff from '../model/takeoff';
 
 @Component({
   selector: 'app-flightview',
@@ -35,6 +34,7 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
   public toKnots = kmPerHourToKnots;
   public distanceToString = distanceToString;
   public eyeIcon = faEye;
+  public exportIcon = faFileExport;
   public windsMap!: WindsMap;
 
   constructor(private _Activatedroute: ActivatedRoute, private router: Router) { }
@@ -204,5 +204,28 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
         scales: { y: { beginAtZero: true } }
       }
     });
+  }
+
+  /**
+   * Export settings to file
+   */
+  public async exportSettings() {
+    const takeoffs = await RequestController.getTakeOffs();
+    const takeoff = takeoffs.find((t) => t.name === this.flight.takeoff);
+
+    const settings = {
+      "FlightName": this.flight.name,
+      "Temperature": this.weather.temperature,
+      "Takeoff": takeoff,
+      "Winds": this.windList,
+      "SkyboxColor": GLOBAL.getRandomSkybox()
+    }
+
+    const blob = new Blob([JSON.stringify(settings)], { type: "application/json" });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `ajustes_vuelo_${this.flight.name.replace(' ', '-')}.json`;
+    a.click();
   }
 }

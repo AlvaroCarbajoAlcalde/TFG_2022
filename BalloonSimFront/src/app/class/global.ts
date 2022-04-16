@@ -51,7 +51,7 @@ export class GLOBAL {
      * 
      * @returns string
      */
-    private static getRandomSkybox(): string {
+    public static getRandomSkybox(): string {
         const values = ['bluecloud', 'browncloud', 'graycloud', 'yellowcloud'];
         return values[Math.floor(Math.random() * values.length)];
     }

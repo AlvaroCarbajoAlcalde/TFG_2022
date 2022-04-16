@@ -1124,3 +1124,30 @@ button.addWind:hover {
     align-items: center;
     margin-right: 2px;
 }
+
+
+/*Exports section*/
+
+.exports {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.exports button {
+    cursor: pointer;
+    padding: 16px;
+    font-size: large;
+    font-weight: bold;
+    color: whitesmoke;
+    background-color: var(--lighter);
+    border-radius: 10px;
+    border: none;
+    transition: 0.5s;
+    width: fit-content;
+}
+
+.exports button:hover {
+    filter: brightness(1.2);
+}

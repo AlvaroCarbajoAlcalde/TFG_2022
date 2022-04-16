@@ -35,6 +35,7 @@ export class WindsMap {
     public changeCenter(newCenter: L.LatLngTuple) {
         this.center = newCenter;
         this.map.panTo(this.center);
+        this.updateWindsMap();
     }
 
     /**
@@ -91,6 +92,16 @@ export class WindsMap {
      */
     public changeWindColor(wind: Wind, color: string) {
         wind.color = color;
+        this.updateWindsMap();
+    }
+
+    /**
+     * Changes list of winds
+     * 
+     * @param {Wind[]} windsList winds to show
+     */
+    public changeWindsList(windsList: Wind[]) {
+        this.windsList = windsList;
         this.updateWindsMap();
     }
 }

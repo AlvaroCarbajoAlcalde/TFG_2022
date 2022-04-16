@@ -3,7 +3,7 @@ import * as L from 'leaflet';
 import { GLOBAL } from '../class/global';
 import { kmPerHourToKnots, kmPerHourToMetersPerSecond, metersToFeet } from '../class/methods';
 import { Wind } from '../model/winds';
-import { faEye, faTrash, faPlus} from '@fortawesome/free-solid-svg-icons';
+import { faEye, faTrash, faPlus, faFileImport, faFileExport } from '@fortawesome/free-solid-svg-icons';
 import { WindsMap } from '../class/windsMap';
 
 @Component({
@@ -18,7 +18,12 @@ export class ParamsComponent implements AfterViewInit {
   public eyeIcon = faEye;
   public trashIcon = faTrash;
   public plusIcon = faPlus;
+  public importIcon = faFileImport;
+  public exportIcon = faFileExport;
   public windsMap!: WindsMap;
+  private markers!: L.Marker[];
+  private defaultMapIcon!: L.Icon;
+  private redMapIcon!: L.Icon;
 
   constructor() { }
 
@@ -27,7 +32,7 @@ export class ParamsComponent implements AfterViewInit {
     this.windList = GLOBAL.Winds.windsList;
 
     //#region MarkerIcons
-    const iconDefault = L.icon({
+    this.defaultMapIcon = L.icon({
       iconRetinaUrl: 'assets/img/marker-blue.png',
       iconUrl: 'assets/img/marker-blue.png',
       shadowUrl: 'assets/marker-shadow.png',
@@ -38,7 +43,7 @@ export class ParamsComponent implements AfterViewInit {
       shadowSize: [41, 41],
     });
 
-    const iconRed = L.icon({
+    this.redMapIcon = L.icon({
       iconRetinaUrl: 'assets/img/marker-red.png',
       iconUrl: 'assets/img/marker-red.png',
       shadowUrl: 'assets/marker-shadow.png',
@@ -49,7 +54,7 @@ export class ParamsComponent implements AfterViewInit {
       shadowSize: [41, 41],
     });
 
-    L.Marker.prototype.options.icon = iconDefault;
+    L.Marker.prototype.options.icon = this.defaultMapIcon;
     //#endregion
 
     //Map
@@ -58,7 +63,7 @@ export class ParamsComponent implements AfterViewInit {
     tiles.addTo(this.map);
 
     //#region Markers
-    const markers: L.Marker[] = [];
+    this.markers = [];
 
     GLOBAL.TakeoffPointsList.forEach((takeoff) => {
       const marker = L.marker([takeoff.lat, takeoff.lon], { title: takeoff.name, riseOnHover: true });
@@ -75,11 +80,11 @@ export class ParamsComponent implements AfterViewInit {
       marker.addTo(this.map);
       marker.on('click', () => {
         GLOBAL.SelectedTakeoff = takeoff;
-        markers.forEach((element: L.Marker) => {
-          element.setIcon(iconDefault);
+        this.markers.forEach((element: L.Marker) => {
+          element.setIcon(this.defaultMapIcon);
           element.setZIndexOffset(0);
         });
-        marker.setIcon(iconRed);
+        marker.setIcon(this.redMapIcon);
         marker.setZIndexOffset(100);
         this.windsMap.changeCenter([takeoff.lat, takeoff.lon]);
         this.windsMap.updateWindsMap();
@@ -87,10 +92,10 @@ export class ParamsComponent implements AfterViewInit {
       marker.bindPopup(`<b>${takeoff.name}</b><br>${takeoff.description}<br>${img.outerHTML}<br>Lat: ${takeoff.lat},  Lon: ${takeoff.lon}, Alt: ${takeoff.alt}m.`);
       marker.setZIndexOffset(0);
       if (GLOBAL.SelectedTakeoff == takeoff) {
-        marker.setIcon(iconRed);
+        marker.setIcon(this.redMapIcon);
         marker.setZIndexOffset(100);
       }
-      markers.push(marker);
+      this.markers.push(marker);
     });
     //#endregion
 
@@ -169,5 +174,77 @@ export class ParamsComponent implements AfterViewInit {
    */
   public setTemperature(value: any) {
     GLOBAL.Temperature = value;
+  }
+
+  /**
+   * Export settings to file
+   */
+  public exportSettings() {
+    const settings = {
+      "FlightName": GLOBAL.FlightName,
+      "Temperature": GLOBAL.Temperature,
+      "Takeoff": GLOBAL.SelectedTakeoff,
+      "Winds": GLOBAL.Winds.windsList,
+      "SkyboxColor": GLOBAL.SkyboxColor
+    }
+    const blob = new Blob([JSON.stringify(settings)], { type: "application/json" });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `ajustes_vuelo_${GLOBAL.FlightName.replace(' ', '-')}.json`;
+    a.click();
+  }
+
+  /**
+   * Import settings from file
+   */
+  public importSettings() {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.json';
+
+    //On change
+    input.onchange = () => {
+
+        const reader = new FileReader();
+        const file = input.files ? input.files[0] : null;
+
+        reader.onload = () => {
+          const settings = JSON.parse(reader.result as string);
+
+          //Set global values
+          GLOBAL.FlightName = settings.FlightName;
+          GLOBAL.Temperature = settings.Temperature;
+          GLOBAL.SelectedTakeoff = settings.Takeoff;
+          GLOBAL.SkyboxColor = settings.SkyboxColor;
+          GLOBAL.Winds.windsList = settings.Winds;
+
+          //Update markers
+          this.markers.forEach((marker: L.Marker) => {
+            marker.setIcon(this.defaultMapIcon);
+            marker.setZIndexOffset(0);
+            if (marker.options.title == GLOBAL.SelectedTakeoff.name) {
+              marker.setIcon(this.redMapIcon);
+              marker.setZIndexOffset(100);
+            }
+          });
+          this.map.panTo([GLOBAL.SelectedTakeoff.lat, GLOBAL.SelectedTakeoff.lon]);
+
+          //Update selected skybox element
+          this.selectSkybox(settings.SkyboxColor);
+
+          //Update windsMap
+          this.windList = GLOBAL.Winds.windsList;
+          this.windsMap.changeWindsList(GLOBAL.Winds.windsList);
+          this.windsMap.changeCenter([GLOBAL.SelectedTakeoff.lat, GLOBAL.SelectedTakeoff.lon]);
+
+          //Update inputs
+          (<HTMLInputElement>document.getElementsByName('name')[0]).value = GLOBAL.FlightName;
+          (<HTMLInputElement>document.getElementsByName('temperature')[0]).value = `${GLOBAL.Temperature}`;
+        };
+
+        if (file) reader.readAsText(file);
+    }
+    input.click();
   }
 }
