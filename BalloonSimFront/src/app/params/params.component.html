@@ -18,7 +18,11 @@
     </div>
     <hr>
 
-    <h2>Vientos:</h2>
+    <div class="card-header">
+        <h2>Vientos:</h2>
+        <button type="button" title="Añadir un viento" class="addWind" (click)="showPopupWinds()"><fa-icon [icon]="plusIcon"></fa-icon> Añadir un viento</button>
+    </div>
+
     <table class="contents_table">
         <thead>
             <tr>
@@ -47,9 +51,6 @@
             </tr>
         </tbody>
     </table>
-    <div class="right-content">
-        <button type="button" title="Añadir un viento" class="addWind" (click)="showPopupWinds()"><fa-icon [icon]="plusIcon"></fa-icon> Añadir un viento</button>
-    </div>
     <div class="params-map">
         <div class="map-container">
             <div class="map-frame">
@@ -77,8 +78,8 @@
     <hr>
 
     <section class="exports">
-        <button (click)="exportSettings()"><fa-icon [icon]="exportIcon"></fa-icon> Exportar ajustes</button>
-        <button (click)="importSettings()"><fa-icon [icon]="importIcon"></fa-icon> Importar ajustes</button>
+        <button type="button" title="Exportar ajustes a json" (click)="exportSettings()"><fa-icon [icon]="exportIcon"></fa-icon> Exportar ajustes</button>
+        <button type="button" title="Importar ajustes desde json" (click)="importSettings()"><fa-icon [icon]="importIcon"></fa-icon> Importar ajustes</button>
     </section>
 
     <div class="popup_background"></div>

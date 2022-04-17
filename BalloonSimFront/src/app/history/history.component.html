@@ -1,10 +1,17 @@
 <section class="content-card">
-    <h1>Historial</h1>
-    <hr>
-    <div id="search">
-        <label for="search">Buscar: </label>
-        <input #search (keyup)="searchFlights(search.value)" name="search" type="text" id="search-input" title="Introduce un texto para buscar por el nombre">
+    <div class="card-header">
+        <h1>Historial</h1>
+        <div id="search">
+            <div class="search-left">
+                <input #search (keyup)="searchFlights(search.value)" name="search" type="text" id="search-input" title="Introduce un texto para buscar por el nombre">
+            </div>
+            <div class="search-right">
+                <label for="search"><fa-icon [icon]="searchIcon"></fa-icon></label>
+            </div>
+        </div>
     </div>
+    <hr>
+
     <table class="contents_table">
         <thead>
             <tr>
@@ -24,8 +31,8 @@
                 <td>{{flight.date}}</td>
                 <td>{{flight.duration}}</td>
                 <td>
-                    <a (click)="seeFlightDetails(flight.id)">
-                        <fa-icon [icon]="eyeIcon" title="Ver datos del vuelo"></fa-icon>
+                    <a (click)="seeFlightDetails(flight.id)" title="Ver datos del vuelo">
+                        <fa-icon [icon]="eyeIcon"></fa-icon>
                     </a>
                 </td>
             </tr>
