@@ -206,45 +206,93 @@ export class ParamsComponent implements AfterViewInit {
     //On change
     input.onchange = () => {
 
-        const reader = new FileReader();
-        const file = input.files ? input.files[0] : null;
+      const reader = new FileReader();
+      const file = input.files ? input.files[0] : null;
+      
+      //Verify file is json
+      if (file?.name.toLowerCase().split('.').pop() != 'json') {
+        alert('El archivo no es un archivo json');
+        return;
+      }
 
-        reader.onload = () => {
-          const settings = JSON.parse(reader.result as string);
+      reader.onload = () => {
+        let settings;
+        try {
+          settings = JSON.parse(reader.result as string);
+        } catch (e) {
+          alert('Error al leer el archivo');
+          return;
+        }
 
-          //Set global values
-          GLOBAL.FlightName = settings.FlightName;
-          GLOBAL.Temperature = settings.Temperature;
-          GLOBAL.SelectedTakeoff = settings.Takeoff;
-          GLOBAL.SkyboxColor = settings.SkyboxColor;
-          GLOBAL.Winds.windsList = settings.Winds;
+        this.verifySettings(settings);
 
-          //Update markers
-          this.markers.forEach((marker: L.Marker) => {
-            marker.setIcon(this.defaultMapIcon);
-            marker.setZIndexOffset(0);
-            if (marker.options.title == GLOBAL.SelectedTakeoff.name) {
-              marker.setIcon(this.redMapIcon);
-              marker.setZIndexOffset(100);
-            }
-          });
-          this.map.panTo([GLOBAL.SelectedTakeoff.lat, GLOBAL.SelectedTakeoff.lon]);
+        //Set global values
+        GLOBAL.FlightName = settings.FlightName;
+        GLOBAL.Temperature = settings.Temperature;
+        GLOBAL.SelectedTakeoff = settings.Takeoff;
+        GLOBAL.SkyboxColor = settings.SkyboxColor;
+        GLOBAL.Winds.windsList = settings.Winds;
 
-          //Update selected skybox element
-          this.selectSkybox(settings.SkyboxColor);
+        //Update markers
+        this.markers.forEach((marker: L.Marker) => {
+          marker.setIcon(this.defaultMapIcon);
+          marker.setZIndexOffset(0);
+          if (marker.options.title == GLOBAL.SelectedTakeoff.name) {
+            marker.setIcon(this.redMapIcon);
+            marker.setZIndexOffset(100);
+          }
+        });
+        this.map.panTo([GLOBAL.SelectedTakeoff.lat, GLOBAL.SelectedTakeoff.lon]);
 
-          //Update windsMap
-          this.windList = GLOBAL.Winds.windsList;
-          this.windsMap.changeWindsList(GLOBAL.Winds.windsList);
-          this.windsMap.changeCenter([GLOBAL.SelectedTakeoff.lat, GLOBAL.SelectedTakeoff.lon]);
+        //Update selected skybox element
+        this.selectSkybox(settings.SkyboxColor);
 
-          //Update inputs
-          (<HTMLInputElement>document.getElementsByName('name')[0]).value = GLOBAL.FlightName;
-          (<HTMLInputElement>document.getElementsByName('temperature')[0]).value = `${GLOBAL.Temperature}`;
-        };
+        //Update windsMap
+        this.windList = GLOBAL.Winds.windsList;
+        this.windsMap.changeWindsList(GLOBAL.Winds.windsList);
+        this.windsMap.changeCenter([GLOBAL.SelectedTakeoff.lat, GLOBAL.SelectedTakeoff.lon]);
 
-        if (file) reader.readAsText(file);
+        //Update inputs
+        (<HTMLInputElement>document.getElementsByName('name')[0]).value = GLOBAL.FlightName;
+        (<HTMLInputElement>document.getElementsByName('temperature')[0]).value = `${GLOBAL.Temperature}`;
+      };
+
+      if (file) reader.readAsText(file);
     }
     input.click();
+  }
+
+  /**
+   * Verify settings json file
+   * @param {any} settings settings to verify on json file
+   */
+  public verifySettings(settings: any) {
+    if (!settings.FlightName) {
+      alert('El nombre del vuelo no puede estar vacío');
+      return;
+    }
+    if (!settings.Takeoff) {
+      alert('El punto de aterrizaje no puede estar vacío');
+      return;
+    }
+    if (!settings.Winds) {
+      alert('La lista de vientos no puede estar vacía');
+      return;
+    }
+    if (!settings.SkyboxColor) {
+      alert('El color del cielo no puede estar vacío');
+      return;
+    }
+    if (!settings.Temperature) {
+      alert('La temperatura no puede estar vacía');
+      return;
+    }
+
+    settings.Winds.forEach((wind: Wind) => {
+      if (typeof wind.altitude != 'number' || typeof wind.windDir != 'number' || typeof wind.windSpeed != 'number') {
+        alert('La altitud de los vientos no puede estar vacía');
+        return;
+      }
+    });
   }
 }
