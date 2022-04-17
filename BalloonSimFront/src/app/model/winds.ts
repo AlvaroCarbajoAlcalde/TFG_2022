@@ -46,7 +46,7 @@ export default class Winds {
      */
     private addWindFromWindyValues(altitude: number, uComponent: number, vComponent: number) {
 
-        //Extract direction from u and v components //TODO mirar si esta bien 
+        //Extract direction from u and v components
         let direction = Math.atan2(vComponent, uComponent) * 180 / Math.PI;
         if (direction < 0) direction += 360;
         

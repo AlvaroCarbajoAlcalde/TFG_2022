@@ -45,8 +45,8 @@
             </thead>
             <tbody>
                 <tr *ngIf="flight && distance">
-                    <td>{{(maxSpeed * 3.6).toFixed(2)}} km/h / {{toKnots(maxSpeed * 3.6).toFixed(1)}} nudos.</td>
-                    <td>{{(distance / flight.seconds * 3.6).toFixed(2)}} km/h / {{toKnots(distance / flight.seconds * 3.6).toFixed(1)}} nudos.</td>
+                    <td>{{(toKmPerHour(maxSpeed)).toFixed(2)}} km/h / {{toKnots(toKmPerHour(maxSpeed)).toFixed(1)}} nudos.</td>
+                    <td>{{(toKmPerHour(distance / flight.seconds)).toFixed(2)}} km/h / {{toKnots(toKmPerHour(distance / flight.seconds)).toFixed(1)}} nudos.</td>
                     <td>{{maxSpeedY.toFixed(2)}} m/s</td>
                     <td>{{minSpeedY.toFixed(2)}} m/s</td>
                 </tr>
@@ -63,10 +63,10 @@
             </thead>
             <tbody>
                 <tr *ngIf="flight && distance">
-                    <td>{{maxAltitude.toFixed(2)}} m / {{(maxAltitude * 3.28084).toFixed(0)}} feet</td>
-                    <td>{{minAltitude.toFixed(2)}} m / {{(minAltitude * 3.28084).toFixed(0)}} feet</td>
-                    <td>{{avgAltitude.toFixed(2)}} m / {{(avgAltitude * 3.28084).toFixed(0)}} feet</td>
-                    <td>{{takeoffAltitude.toFixed(2)}} m / {{(takeoffAltitude * 3.28084).toFixed(0)}} feet</td>
+                    <td>{{maxAltitude.toFixed(2)}} m / {{(toFeet(maxAltitude)).toFixed(0)}} feet</td>
+                    <td>{{minAltitude.toFixed(2)}} m / {{(toFeet(minAltitude)).toFixed(0)}} feet</td>
+                    <td>{{avgAltitude.toFixed(2)}} m / {{(toFeet(avgAltitude)).toFixed(0)}} feet</td>
+                    <td>{{takeoffAltitude.toFixed(2)}} m / {{(toFeet(takeoffAltitude)).toFixed(0)}} feet</td>
                 </tr>
             </tbody>
         </table>

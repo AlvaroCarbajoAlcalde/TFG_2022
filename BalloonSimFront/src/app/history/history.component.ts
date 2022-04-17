@@ -24,7 +24,6 @@ export class HistoryComponent implements OnInit {
    * Search flights
    *
    * @param {string} value search value
-   * @memberof HistoryComponent
    */
   public async searchFlights(value: string) {
     this.flightList = await RequestController.getFlights(value);

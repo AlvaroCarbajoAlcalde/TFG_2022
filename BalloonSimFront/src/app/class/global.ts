@@ -32,24 +32,23 @@ export class GLOBAL {
     }
 
     /**
-     * Prints the global variables
+     * Prints the global variables to the console
      */
     public static toString(): void {
         console.log("Is initialized: ", this.isInitialized);
-        console.log("SelectedTakeoff: " + this.SelectedTakeoff.name);
-        console.log("FlightName: " + this.FlightName);
-        console.log("Temperature: " + this.Temperature);
-        console.log("SkyboxColor: " + this.SkyboxColor);
-        console.log("TakeoffPointsList: " + this.TakeoffPointsList.length);
+        console.log("SelectedTakeoff: ", this.SelectedTakeoff.name);
+        console.log("FlightName: ", this.FlightName);
+        console.log("Temperature: ", this.Temperature);
+        console.log("SkyboxColor: ", this.SkyboxColor);
+        console.log("TakeoffPointsList: ", this.TakeoffPointsList.length);
         console.table(this.TakeoffPointsList);
-        console.log("Winds: " + this.Winds.windsList.length);
+        console.log("Winds: ", this.Winds.windsList.length);
         console.table(this.Winds.windsList);
     }
 
     /**
      * Gets a random skybox color
-     * 
-     * @returns string
+     * @returns string random skybox color
      */
     public static getRandomSkybox(): string {
         const values = ['bluecloud', 'browncloud', 'graycloud', 'yellowcloud'];

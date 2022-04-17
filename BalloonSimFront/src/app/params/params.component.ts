@@ -89,7 +89,7 @@ export class ParamsComponent implements AfterViewInit {
         this.windsMap.changeCenter([takeoff.lat, takeoff.lon]);
         this.windsMap.updateWindsMap();
       });
-      marker.bindPopup(`<b>${takeoff.name}</b><br>${takeoff.description}<br>${img.outerHTML}<br>Lat: ${takeoff.lat},  Lon: ${takeoff.lon}, Alt: ${takeoff.alt}m.`);
+      marker.bindPopup(`<b>${takeoff.name}</b><br>${takeoff.description}<br>${img.outerHTML}<br>Lat: ${takeoff.lat},  Lon: ${takeoff.lon}<br> Alt: ${takeoff.alt}m / ${Math.round(metersToFeet(takeoff.alt))} feet.`);
       marker.setZIndexOffset(0);
       if (GLOBAL.SelectedTakeoff == takeoff) {
         marker.setIcon(this.redMapIcon);

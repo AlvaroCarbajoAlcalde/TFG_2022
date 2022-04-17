@@ -193,7 +193,7 @@ export default class RequestController {
   }
 
   /**
-   * Saves the wind data of the flight
+   * Saves the winds and weather data of the flight
    * 
    * @param {number} flightid id of the flight
    * @param {number} temperature temperature in celsius

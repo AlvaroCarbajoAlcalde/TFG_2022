@@ -4,7 +4,7 @@ import * as L from 'leaflet';
 import RequestController from '../class/requestController';
 import Flight from '../model/flight';
 import { Chart } from 'chart.js';
-import { distanceToString, kmPerHourToKnots, timeInSecondsToString } from '../class/methods';
+import { distanceToString, kmPerHourToKnots, metersPerSecondToKmPerHour, metersToFeet, timeInSecondsToString } from '../class/methods';
 import { Wind } from '../model/winds';
 import Weather from '../model/weather';
 import { faEye, faFileExport } from '@fortawesome/free-solid-svg-icons';
@@ -33,6 +33,8 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
   public weather!: Weather;
   public toKnots = kmPerHourToKnots;
   public distanceToString = distanceToString;
+  public toKmPerHour = metersPerSecondToKmPerHour;
+  public toFeet = metersToFeet;
   public eyeIcon = faEye;
   public exportIcon = faFileExport;
   public windsMap!: WindsMap;
@@ -40,6 +42,7 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
   constructor(private _Activatedroute: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
+    //Get the id from the url
     if (this._Activatedroute.snapshot.paramMap.get('id') == null) this.router.navigate(['history']);
     else this.flightid = parseInt(<string>this._Activatedroute.snapshot.paramMap.get('id'));
   }
@@ -84,6 +87,7 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
 
     const routes = await RequestController.getRoute(this.flightid);
 
+    //Takeoff marker
     const takeoffMarker = L.circleMarker(new L.LatLng(routes[0].lat, routes[0].lon), {
       radius: 5,
       color: 'red',
@@ -125,7 +129,7 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
       labelSeconds.push(timeInSecondsToString(point.seconds, true));
       dataAltitude.push(point.altitude);
       dataFuel.push(point.fuel);
-      dataSpeed.push(point.speed * 3.6);
+      dataSpeed.push( metersPerSecondToKmPerHour(point.speed));
       dataDirection.push(point.direction);
       dataSpeedY.push(point.speedy);
       const latlng = new L.LatLng(point.lat, point.lon);
@@ -207,7 +211,7 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
   }
 
   /**
-   * Export settings to file
+   * Export settings to file in JSON format
    */
   public async exportSettings() {
     const takeoffs = await RequestController.getTakeOffs();

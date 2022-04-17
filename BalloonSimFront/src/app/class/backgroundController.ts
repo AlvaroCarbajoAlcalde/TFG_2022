@@ -9,7 +9,7 @@ class BackgroundController {
    * 
    * @returns {BackgroundController}
    */
-  public static getInstance() {
+  public static getInstance(): BackgroundController {
     if (BackgroundController.instance == null) {
       BackgroundController.instance = new BackgroundController();
     }
