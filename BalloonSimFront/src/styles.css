@@ -7,6 +7,7 @@
     --dark: #143153;
     --darker: #051c38;
     --green: #28a745;
+    --red: #dc3545;
 }
 
 html,
@@ -390,6 +391,35 @@ h2 {
 
 #eyeBtn:hover div span {
     height: 42%;
+}
+
+
+/*Fuel-meter*/
+
+#fuel-meter {
+    position: absolute;
+    bottom: 8px;
+    left: 0px;
+    width: 177px;
+    z-index: 4;
+    transition: opacity 1.2s;
+}
+
+#fuel-meter fa-icon {
+    position: relative;
+    top: 58px;
+    left: 92px;
+    z-index: 2;
+    color: var(--darker);
+    transition: color 1s;
+}
+
+#fuel-meter fa-icon.low-fuel {
+    color: var(--red);
+}
+
+#fuel-svg {
+    z-index: 12;
 }
 
 
@@ -900,7 +930,7 @@ td div.actions {
 }
 
 .skybox-selector img.selected {
-    border: 5px solid red;
+    border: 5px solid var(--red);
 }
 
 p {

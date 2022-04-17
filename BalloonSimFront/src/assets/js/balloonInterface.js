@@ -14,7 +14,7 @@ function showPositionInTablet() {
  * Shows the data in the altimeter
  */
 function showDataInAltimeter() {
-    altTemp.innerHTML = `T ${actTemp} °C`;
+    altTemp.innerHTML = `T ${actTemp.toFixed(1)} °C`;
     if (started) {
         altSpeedUp.innerHTML = `${balloon.actSpeedY.toFixed(2)} m/s`;
         altWind.innerHTML = `Wind: ${Math.round(windDir)}°<br>${(windSpeed / 0.2778).toFixed(2)} km/h`;
@@ -71,4 +71,60 @@ function timer() {
 function getNum2Dig(n) {
     if (n < 10) return `0${n}`;
     else return n;
+}
+
+/*Fuel Meter*/
+
+/**
+ * Sets the fuel circle
+ * @param {number} percent percent of fuel
+ */
+function setFuelCircleTo(percent) {
+    var path = fuelSVG.querySelector('.line');
+    var pathLen = path.getTotalLength();
+    var adjustedLen = percent * pathLen / 100;
+    path.setAttribute('stroke-dasharray', adjustedLen + ' ' + pathLen);
+}
+
+/**
+ * Sets the fuel meter start position
+ * @param {number} percent percent of fuel 
+ */
+function setFuelStartTo(percent) {
+    var path = fuelSVG.querySelector('.line2');
+    var pathLen = path.getTotalLength();
+    var adjustedLen = percent * pathLen / 100;
+    path.setAttribute('stroke-dasharray', adjustedLen + ' ' + pathLen);
+}
+
+/**
+ * Sets the fuel level to a given percent
+ * @param {number} percent percent of fuel 
+ */
+function setFuelLevelTo(percent) {
+    var needle = fuelSVG.querySelector('.needle');
+    var endDot = fuelSVG.querySelector('.fuel_end');
+    var rotation = percent * 180 / 100;
+    needle.setAttribute('transform', 'rotate(' + rotation + ', 81.3, 58.1)');
+    endDot.setAttribute('transform', 'rotate(' + rotation + ', 81.3, 58.1)');
+    setFuelCircleTo(percent);
+}
+
+/**
+ * Sets the fuel start level to a given percent
+ * @param {number} percent percent of fuel
+ */
+function setFuelStartLevelTo(percent) {
+    var startDot = fuelSVG.querySelector('.fuel_start');
+    var rotation = percent * 180 / 100;
+    startDot.setAttribute('transform', 'rotate(' + rotation + ', 81.3, 58.1)');
+}
+
+/**
+ * Initializes the fuel meter
+ */
+function setFuelMeter() {
+    setFuelStartTo(20);
+    setFuelStartLevelTo(20);
+    setFuelLevelTo(100);
 }

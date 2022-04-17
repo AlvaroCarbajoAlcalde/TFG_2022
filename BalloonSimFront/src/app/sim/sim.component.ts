@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import backgroundController from '../class/backgroundController';
 import { GLOBAL } from '../class/global';
 import RequestController from '../class/requestController';
+import {faGasPump} from '@fortawesome/free-solid-svg-icons';
 
 declare const resizeCanvas: any;
 declare const queryHTML: any;
@@ -32,6 +33,7 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
   private flightID!: number;
   private seconds!: number;
   private isMapCentered!: boolean;
+  public gasIcon = faGasPump;
 
   constructor(private router: Router) { }
 

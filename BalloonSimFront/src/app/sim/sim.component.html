@@ -51,6 +51,41 @@
 
     <section id="rope" onmousedown="clickRope()" onmouseup="unClickRope()" onmouseleave="unClickRope()"></section>
 
+    <section id="fuel-meter">
+        <fa-icon [icon]="gasIcon" id="fuel-icon"></fa-icon>
+        <svg id="fuel-svg" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 145 65" enable-background="new 0 0 135 65" xml:space="preserve" data-start="89" data-end="23">
+            <g>
+                <circle fill="#ccc" cx="32.3" cy="48.3" r="1.5" />
+                <circle fill="#ccc" cx="39.7" cy="30.3" r="1.5" />
+                <circle fill="#ccc" cx="53.5" cy="16.5" r="1.5" />
+                <circle fill="#ccc" cx="71.6" cy="9" r="1.5" />
+                <circle fill="#ccc" cx="91.1" cy="9" r="1.5" />
+                <circle fill="#ccc" cx="109.1" cy="16.5" r="1.5" />
+                <circle fill="#ccc" cx="122.9" cy="30.3" r="1.5" />
+                <circle fill="#ccc" cx="130.3" cy="48.3" r="1.5" />
+                <circle fill="#aaa" cx="35.1" cy="38.9" r="2.5" />
+                <circle fill="#aaa" cx="46" cy="22.7" r="2.5" />
+                <circle fill="#aaa" cx="62.2" cy="11.9" r="2.5" />
+                <circle fill="#aaa" cx="81.5" cy="8" r="2.5" />
+                <circle fill="#aaa" cx="100.4" cy="11.9" r="2.5" />
+                <circle fill="#aaa" cx="117" cy="22.7" r="2.5" />
+                <circle fill="#aaa" cx="127.5" cy="38.9" r="2.5" />
+                <circle fill="#aaa" cx="131.3" cy="58.1" r="2.5" />
+                <g class="needle">
+                    <line fill="none" stroke="#dc3545" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" x1="81.2" y1="58" x2="58" y2="58" />
+                    <circle fill="#FFFFFF" stroke="#051c38" stroke-width="3" stroke-miterlimit="10" cx="81.3" cy="58.1" r="5" />
+                </g>
+                <path class="line2" fill="none" stroke="#bbb" stroke-width="6" stroke-linecap="round" d="M131.3,58.1 c0-27.6-22.4-50-50-50s-50,22.4-50,50" transform="scale(-1,1) translate(-162.7,0)"/>
+                <path class="line" fill="none" stroke="#051c38" stroke-width="6" stroke-linecap="round" d="M131.3,58.1 c0-27.6-22.4-50-50-50s-50,22.4-50,50" transform="scale(-1,1) translate(-162.7,0)"/>
+                <g class="fuel_end" fill="#FFFFFF" stroke-miterlimit="10" transform="rotate(80, 81.3, 58.1)">
+                    <circle stroke="#051c38" stroke-width="3" cx="31" cy="58" r="6" />
+                    <circle stroke="#231F20" cx="31" cy="58" r="2.5" />
+                </g>
+                <circle class="fuel_start" fill="#FFFFFF" stroke="#bbb" stroke-width="2" stroke-miterlimit="10" cx="31" cy="58" r="3" transform="rotate(120, 81.3, 58.1)" />
+            </g>
+        </svg>
+    </section>
+
     <section id="game"></section>
 
     <section id="loading">

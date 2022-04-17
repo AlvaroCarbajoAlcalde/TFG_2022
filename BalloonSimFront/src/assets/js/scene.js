@@ -15,7 +15,8 @@ function createScene() {
     setBalloon();
     setFireEffect();
 
-    if (testing) setMovement();
+    if (testing) setMovementTest();
+    else setMovement();
 }
 
 //TODO - Add fire effect

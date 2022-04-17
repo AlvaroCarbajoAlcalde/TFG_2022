@@ -9,6 +9,8 @@ function resizeCanvas() {
 function queryHTML() {
     game = document.getElementById("game");
     tablet = document.getElementById("tablet");
+    fuelMeter = document.getElementById("fuel-meter");
+    fuelSVG = document.getElementById('fuel-svg');
     rope = document.getElementById("rope");
     burner = document.getElementById("burner");
     optionsBar = document.getElementById("optionsBar");
@@ -27,6 +29,9 @@ function queryHTML() {
     altMedUp = document.getElementById("altDiffUp");
     altMedDown = document.getElementById("altDiffDown");
     altAltitude = document.getElementById("altAltitude");
+
+    //FuelMeter start
+    setFuelMeter();
 }
 
 /**
@@ -63,7 +68,7 @@ function loop() {
         scene.render();
 
         //Temp
-        actTemp = (initTemp - (balloon.altitude - 400) / 154).toFixed(1);
+        actTemp = (initTemp - (balloon.altitude - 400) / 154);
 
         //Balloon actual.
         balloon.moveBalloonToPointer();

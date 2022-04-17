@@ -38,6 +38,8 @@ var loading;
 var positionX;
 var positionZ;
 var positionY;
+var fuelMeter;
+var fuelSVG;
 //alt
 var altTemp;
 var altSpeedUp;

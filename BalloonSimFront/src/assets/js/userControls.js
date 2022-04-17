@@ -48,12 +48,14 @@ function unClickBurner2() {
 function toggleVisibility(eye) {
     if (eye.classList.contains("closed")) {
         tablet.classList.remove("visibleOff");
+        fuelMeter.classList.remove("visibleOff");
         rope.classList.remove("visibleOff");
         altimeter.classList.remove("visibleOff");
         burner.classList.remove("visibleOff");
         eye.classList.remove("closed");
     } else {
         rope.classList.add("visibleOff");
+        fuelMeter.classList.add("visibleOff");
         tablet.classList.add("visibleOff");
         altimeter.classList.add("visibleOff");
         burner.classList.add("visibleOff");
@@ -69,23 +71,35 @@ function setGasListener() {
     const triggerL = document.getElementById("triggerLeft");
     gasListener = setInterval(() => {
         if (triggerL.classList.contains("pressed") && triggerR.classList.contains("pressed")) {
-            balloon.temp += 2.1;
-            fuel -= 0.02;
+            if (fuel > 0) {
+                balloon.temp += 2.1;
+                fuel -= 0.025;
+            }
         } else if (triggerL.classList.contains("pressed") || triggerR.classList.contains("pressed")) {
-            balloon.temp += 1.23;
-            fuel -= 0.01;
+            if (fuel > 0) {
+                balloon.temp += 1.23;
+                //fuel -= 0.0125;
+                fuel -= 3
+            }
         } else if (rope.classList.contains("pressed")) {
             balloon.temp -= 2.73;
         } else {
             if (started) balloon.temp -= 0.42;
         }
+        if (fuel < 0) fuel = 0;
+        if (fuel < 20) document.getElementById('fuel-icon').classList.add('low-fuel');
+        setFuelLevelTo(fuel);
     }, 300);
+}
+
+function setMovement() {
+
 }
 
 /**
  * Sets the listener for the action of the user while testing
  */
-function setMovement() {
+function setMovementTest() {
     console.warn("Testing movement");
     scene.onKeyboardObservable.add((kbInfo) => {
         switch (kbInfo.type) {
