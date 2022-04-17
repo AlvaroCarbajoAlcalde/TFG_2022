@@ -17,7 +17,7 @@ function showDataInAltimeter() {
     altTemp.innerHTML = `T ${actTemp} °C`;
     if (started) {
         altSpeedUp.innerHTML = `${balloon.actSpeedY.toFixed(2)} m/s`;
-        altWind.innerHTML = `Wind: ${windDir}°<br>${(windSpeed / 0.2778).toFixed(2)} km/h`;
+        altWind.innerHTML = `Wind: ${Math.round(windDir)}°<br>${(windSpeed / 0.2778).toFixed(2)} km/h`;
     } else {
         altSpeedUp.innerHTML = "0 m/s";
         altWind.innerHTML = "Wind: 0°<br>0 km/h";

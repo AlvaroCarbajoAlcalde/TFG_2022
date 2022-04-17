@@ -7,6 +7,7 @@ use App\Models\Wind;
 use App\Models\Weather;
 use App\Models\TakeoffPoint;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\FlightController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,6 +68,12 @@ Route::get('flights/{searchfor}', function ($searchfor) {
     $limit = 20;
     foreach ($flights as $flight) {
         $s = DB::table('routes')->where('flight', $flight->id)->max('seconds');
+        if ($s == 0 || $s == null) {
+            //Delete flight with no seconds
+            $flightController = new FlightController();
+            $flightController->destroy($flight->id);
+            continue;
+        }
         $flightList[] = ['id' => $flight->id, 'date' => $flight->date, 'name' => $flight->name, 'takeoff' => $flight->takeoff, 'duration' => $s];
         if (--$limit == 0) break;
     }
