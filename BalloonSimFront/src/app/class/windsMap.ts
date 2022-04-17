@@ -1,5 +1,6 @@
 import * as L from "leaflet";
 import { Wind } from "../model/winds";
+import { COLORS } from "./colors";
 import { GLOBAL } from "./global";
 import { kmPerHourToKnots, metersToFeet } from "./methods";
 
@@ -64,7 +65,7 @@ export class WindsMap {
             }
             if (wind.seeOnMap) this.seeWindOnMap(wind);
         });
-        const marker = L.circleMarker([0, 0], { radius: 5, color: 'red', fillColor: 'black', fillOpacity: 1 });
+        const marker = L.circleMarker([0, 0], { radius: 5, color: COLORS.red, fillColor: 'black', fillOpacity: 1 });
         marker.addTo(this.map);
         marker.setLatLng(this.center);
     }

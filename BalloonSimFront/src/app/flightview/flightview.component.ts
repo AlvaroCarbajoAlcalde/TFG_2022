@@ -10,6 +10,7 @@ import Weather from '../model/weather';
 import { faEye, faFileExport } from '@fortawesome/free-solid-svg-icons';
 import { WindsMap } from '../class/windsMap';
 import { GLOBAL } from '../class/global';
+import { COLORS } from '../class/colors';
 
 @Component({
   selector: 'app-flightview',
@@ -77,9 +78,9 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
 
     //Tracking
     const track = new L.Polyline([], {
-      color: 'red',
+      color: COLORS.red,
       weight: 3,
-      opacity: 0.7,
+      opacity: 1,
       smoothFactor: 0,
       interactive: true,
     });
@@ -90,7 +91,7 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
     //Takeoff marker
     const takeoffMarker = L.circleMarker(new L.LatLng(routes[0].lat, routes[0].lon), {
       radius: 5,
-      color: 'red',
+      color: COLORS.red,
       fillColor: 'white',
       fill: true,
       fillOpacity: 1,
@@ -170,7 +171,7 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
           {
             label: 'Altitud (m s.n.m)',
             data: dataAltitude,
-            borderColor: 'red',
+            borderColor: COLORS.red,
             pointBorderWidth: 0,
             pointStyle: 'line',
           },

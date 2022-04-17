@@ -974,26 +974,24 @@ hr {
     justify-content: space-between;
     align-items: center;
     max-width: 312px;
+    background-color: var(--lighter);
+    border-radius: 10px;
 }
 
 #search .search-left {
     width: fit-content;
     height: 100%;
-    background-color: var(--lighter);
     padding: 8px;
     margin: 0;
-    border-bottom-left-radius: 10px;
-    border-top-left-radius: 10px;
 }
 
 #search .search-right {
     background-color: var(--dark);
     width: fit-content;
     height: 100%;
-    padding: 8px;
+    padding: 9px;
     margin: 0;
-    border-bottom-right-radius: 10px;
-    border-top-right-radius: 10px;
+    border-radius: 10px;
 }
 
 #search label {

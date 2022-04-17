@@ -6,6 +6,7 @@ import backgroundController from '../class/backgroundController';
 import { GLOBAL } from '../class/global';
 import RequestController from '../class/requestController';
 import {faGasPump} from '@fortawesome/free-solid-svg-icons';
+import { COLORS } from '../class/colors';
 
 declare const resizeCanvas: any;
 declare const queryHTML: any;
@@ -84,7 +85,7 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
     tiles.addTo(this.map);
 
     //Track
-    const route = new L.Polyline([], { color: 'red', weight: 3, opacity: 0.7, smoothFactor: 0 });
+    const route = new L.Polyline([], { color: COLORS.red, weight: 3, opacity: 1, smoothFactor: 0 });
     route.addTo(this.map);
 
     const marker = L.circleMarker([0, 0], { radius: 2 });
