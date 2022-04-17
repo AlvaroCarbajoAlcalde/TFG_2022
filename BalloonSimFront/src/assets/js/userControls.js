@@ -78,8 +78,7 @@ function setGasListener() {
         } else if (triggerL.classList.contains("pressed") || triggerR.classList.contains("pressed")) {
             if (fuel > 0) {
                 balloon.temp += 1.23;
-                //fuel -= 0.0125;
-                fuel -= 3
+                fuel -= 0.0125;
             }
         } else if (rope.classList.contains("pressed")) {
             balloon.temp -= 2.73;
