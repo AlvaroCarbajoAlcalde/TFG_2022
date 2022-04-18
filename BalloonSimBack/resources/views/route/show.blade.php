@@ -56,7 +56,18 @@
                             <strong>Fuel:</strong>
                             {{ $route->fuel }}
                         </div>
-
+                        <div class="form-group">
+                            <strong>X:</strong>
+                            {{ $route->x }}
+                        </div>
+                        <div class="form-group">
+                            <strong>Y:</strong>
+                            {{ $route->y }}
+                        </div>
+                        <div class="form-group">
+                            <strong>Z:</strong>
+                            {{ $route->z }}
+                        </div>
                     </div>
                 </div>
             </div>

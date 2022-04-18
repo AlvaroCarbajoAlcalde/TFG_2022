@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { ParamsComponent } from './params/params.component';
 import { NgChartsModule } from 'ng2-charts';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FlightReviewComponent } from './flightreview/flightreview.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     SimComponent,
     HistoryComponent,
     FlightviewComponent,
+    FlightReviewComponent,
     HomeComponent
   ],
   imports: [

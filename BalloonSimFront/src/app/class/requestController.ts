@@ -55,9 +55,12 @@ export default class RequestController {
    * @param {number} spy speed in y direction in m/s
    * @param {number} dir direction in degrees
    * @param {number} fuel fuel in %
+   * @param {number} x x position in simulator
+   * @param {number} y y position in simulator
+   * @param {number} z z position in simulator
    */
-  public static savePoint(flight: number, s: number, lat: number, lon: number, alt: number, sp: number, spy: number, dir: number, fuel: number) {
-    fetch(`${environment.apiRoute}newpoint/${flight}/${s}/${lat}/${lon}/${alt}/${sp}/${spy}/${dir}/${fuel}`);
+  public static savePoint(flight: number, s: number, lat: number, lon: number, alt: number, sp: number, spy: number, dir: number, fuel: number, x: number, y: number, z: number): void {
+    fetch(`${environment.apiRoute}newpoint/${flight}/${s}/${lat}/${lon}/${alt}/${sp}/${spy}/${dir}/${fuel}/${x}/${y}/${z}`);
   }
 
   /**

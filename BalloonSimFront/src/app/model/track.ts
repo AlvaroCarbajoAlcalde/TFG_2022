@@ -7,6 +7,9 @@ export default class Track {
   public speedy: number;
   public direction: number;
   public fuel: number;
+  public x: number;
+  public y: number;
+  public z: number;
 
   /**
    * Creates an instance of Track.
@@ -21,5 +24,8 @@ export default class Track {
     this.speedy = params.speedy;
     this.direction = params.direction;
     this.fuel = params.fuel;
+    this.x = params.x;
+    this.y = params.y;
+    this.z = params.z;
   }
 }

@@ -130,7 +130,7 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
       labelSeconds.push(timeInSecondsToString(point.seconds, true));
       dataAltitude.push(point.altitude);
       dataFuel.push(point.fuel);
-      dataSpeed.push( metersPerSecondToKmPerHour(point.speed));
+      dataSpeed.push(metersPerSecondToKmPerHour(point.speed));
       dataDirection.push(point.direction);
       dataSpeedY.push(point.speedy);
       const latlng = new L.LatLng(point.lat, point.lon);
@@ -232,5 +232,12 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
     a.href = url;
     a.download = `ajustes_vuelo_${this.flight.name.replace(' ', '-')}.json`;
     a.click();
+  }
+
+  /**
+   * Navigates to flight review
+   */
+  public reviewFlight() {
+    this.router.navigate([`flight-review/${this.flightid}`]);
   }
 }

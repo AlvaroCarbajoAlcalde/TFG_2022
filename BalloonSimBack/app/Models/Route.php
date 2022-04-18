@@ -13,6 +13,13 @@ use Illuminate\Database\Eloquent\Model;
  * @property $lat
  * @property $lon
  * @property $altitude
+ * @property $speed
+ * @property $speedy
+ * @property $direction
+ * @property $fuel
+ * @property $x
+ * @property $y
+ * @property $z
  * @property $created_at
  * @property $updated_at
  *
@@ -32,6 +39,9 @@ class Route extends Model
     'speedy' => 'required|numeric',
     'fuel' => 'required|numeric',
     'direction' => 'required|numeric',
+    'x' => 'required|numeric',
+    'y' => 'required|numeric',
+    'z' => 'required|numeric',
   ];
 
   protected $perPage = 20;
@@ -41,5 +51,5 @@ class Route extends Model
    *
    * @var array
    */
-  protected $fillable = ['flight', 'seconds', 'lat', 'lon', 'altitude', 'speed', 'speedy', 'fuel', 'direction'];
+  protected $fillable = ['flight', 'seconds', 'lat', 'lon', 'altitude', 'speed', 'speedy', 'fuel', 'direction', 'x', 'y', 'z'];
 }

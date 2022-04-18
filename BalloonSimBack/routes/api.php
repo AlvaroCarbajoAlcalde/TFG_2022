@@ -28,7 +28,7 @@ Route::get('newflight/{name}/{takeoff}', function ($name, $takeoff) {
     return DB::table('flights')->latest('updated_at')->first()->id;
 });
 
-Route::get('newpoint/{flight}/{s}/{lat}/{lon}/{alt}/{speed}/{speedy}/{direction}/{fuel}', function ($flight, $s, $lat, $lon, $alt, $speed, $speedy, $direction, $fuel) {
+Route::get('newpoint/{flight}/{s}/{lat}/{lon}/{alt}/{speed}/{speedy}/{direction}/{fuel}/{x}/{y}/{z}', function ($flight, $s, $lat, $lon, $alt, $speed, $speedy, $direction, $fuel, $x, $y, $z) {
     $route = new App\Models\Route();
     $route->flight = $flight;
     $route->seconds = $s;
@@ -39,6 +39,9 @@ Route::get('newpoint/{flight}/{s}/{lat}/{lon}/{alt}/{speed}/{speedy}/{direction}
     $route->speedy = $speedy;
     $route->direction = $direction;
     $route->fuel = $fuel;
+    $route->x = $x;
+    $route->y = $y;
+    $route->z = $z;
     $route->save();
     return DB::table('routes')->latest('updated_at')->first()->id;
 });

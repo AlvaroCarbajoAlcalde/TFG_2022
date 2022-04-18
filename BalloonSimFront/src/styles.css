@@ -1179,7 +1179,8 @@ button.addWind:hover {
     align-items: center;
 }
 
-.exports button {
+.exports button,
+button.normal {
     cursor: pointer;
     padding: 16px;
     font-size: large;
@@ -1192,7 +1193,8 @@ button.addWind:hover {
     width: fit-content;
 }
 
-.exports button:hover {
+.exports button:hover,
+button.normal:hover {
     filter: brightness(1.2);
 }
 
@@ -1202,4 +1204,54 @@ button.addWind:hover {
 
 .skyboximg:hover {
     filter: brightness(1.1);
+}
+
+#time-selector {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 4;
+    bottom: 10px;
+    width: 100%;
+}
+
+#time-selector input {
+    width: 90%;
+    cursor: pointer;
+    -webkit-appearance: none;
+    border-radius: 50px;
+    height: 8px;
+    background-color: var(--lighter);
+    background-size: 0% 100%;
+    background-image: linear-gradient(var(--dark), var(--dark));
+    background-repeat: no-repeat;
+}
+
+#time-selector input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 22px;
+    width: 22px;
+    border-radius: 50%;
+    background: var(--dark);
+}
+
+#time-selector input[type=range]::-webkit-slider-runnable-track {
+    -webkit-appearance: none;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+}
+
+#time-selector label {
+    color: var(--darker);
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: var(--lighter);
+    margin-bottom: -3px;
 }

@@ -5,7 +5,9 @@
  * @param {boolean} trim if true hours will be ignored if hours are 0
  * @returns {string} seconds in hh:mm:ss
 */
-export function timeInSecondsToString(seconds: number, trim: boolean = false): string {
+export function timeInSecondsToString(seconds: number | string, trim: boolean = false): string {
+    if(typeof seconds === 'string') seconds = parseInt(seconds);
+    
     const hours = Math.floor(seconds / 3600);
     const minutes = Math.floor((seconds - hours * 3600) / 60);
     seconds = seconds - hours * 3600 - minutes * 60;

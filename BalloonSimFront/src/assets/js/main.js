@@ -8,32 +8,35 @@ function resizeCanvas() {
  */
 function queryHTML() {
     game = document.getElementById("game");
-    tablet = document.getElementById("tablet");
-    fuelMeter = document.getElementById("fuel-meter");
-    fuelSVG = document.getElementById('fuel-svg');
-    rope = document.getElementById("rope");
-    burner = document.getElementById("burner");
     optionsBar = document.getElementById("optionsBar");
-    altimeter = document.getElementById("altimeter");
-    loading = document.getElementById("loading");
-    positionX = document.getElementById("positionX");
-    positionZ = document.getElementById("positionZ");
-    positionY = document.getElementById("positionY");
-    triggerL = document.getElementsByClassName("trigger")[0];
-    triggerR = document.getElementsByClassName("trigger")[1];
 
-    //Altimeter
-    altTemp = document.getElementById("altTemp");
-    altSpeedUp = document.getElementById("altSpeedAlt");
-    altTime = document.getElementById("altTime");
-    altWind = document.getElementById("altSpeed");
-    altPressure = document.getElementById("altPressure");
-    altMedUp = document.getElementById("altDiffUp");
-    altMedDown = document.getElementById("altDiffDown");
-    altAltitude = document.getElementById("altAltitude");
+    if (userControllsAvailable) {
+        tablet = document.getElementById("tablet");
+        fuelMeter = document.getElementById("fuel-meter");
+        fuelSVG = document.getElementById('fuel-svg');
+        rope = document.getElementById("rope");
+        burner = document.getElementById("burner");
+        altimeter = document.getElementById("altimeter");
+        loading = document.getElementById("loading");
+        positionX = document.getElementById("positionX");
+        positionZ = document.getElementById("positionZ");
+        positionY = document.getElementById("positionY");
+        triggerL = document.getElementsByClassName("trigger")[0];
+        triggerR = document.getElementsByClassName("trigger")[1];
 
-    //FuelMeter start
-    setFuelMeter();
+        //Altimeter
+        altTemp = document.getElementById("altTemp");
+        altSpeedUp = document.getElementById("altSpeedAlt");
+        altTime = document.getElementById("altTime");
+        altWind = document.getElementById("altSpeed");
+        altPressure = document.getElementById("altPressure");
+        altMedUp = document.getElementById("altDiffUp");
+        altMedDown = document.getElementById("altDiffDown");
+        altAltitude = document.getElementById("altAltitude");
+
+        //FuelMeter start
+        setFuelMeter();
+    }
 }
 
 /**
@@ -47,8 +50,8 @@ function startGame() {
 
         game.appendChild(canvas);
         engine.resize();
-        timer();
-        if (!testing) setGasListener();
+        if (userControllsAvailable) timer();
+        if (!testing && userControllsAvailable) setGasListener();
 
         balloon = new Balloon(pointer, balloonModel);
         //InitPos
@@ -57,7 +60,7 @@ function startGame() {
         balloon.pointer.position.y = startPoint.y;
 
         balloon.setMetersFromPosition();
-        balloon.setMovementInterval();
+        if (userControllsAvailable) balloon.setMovementInterval();
         loop();
     });
 }
@@ -70,17 +73,17 @@ function loop() {
         scene.render();
 
         //Temp
-        actTemp = (initTemp - (balloon.altitude - 400) / 154);
+        if (userControllsAvailable) {
+            actTemp = (initTemp - (balloon.altitude - 400) / 154);
+            balloon.calculateAscentRatio();
+            showPositionInTablet();
+            showDataInAltimeter();
+        }
 
-        //Balloon actual.
         balloon.moveBalloonToPointer();
-        balloon.calculateAscentRatio();
         moveSkybox();
 
-        showPositionInTablet();
-        showDataInAltimeter();
-
-        if (started && !testing) balloon.setSpeeds(windDir, windSpeed);
+        if (started && !testing && userControllsAvailable) balloon.setSpeeds(windDir, windSpeed);
     });
 }
 

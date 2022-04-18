@@ -1,0 +1,21 @@
+<div id="sim">
+    <section id="optionsBar">
+        <a (click)="endGame()" class="close"></a>
+    </section>
+
+    <section id="time-selector">
+        <label id="label-time">00:00</label>
+        <input #timeselector title="Tiempo del vuelo" type="range" min="0" value="0" (input)="changeTime(timeselector.value)">
+    </section>
+
+    <section id="game"></section>
+
+    <section id="loading">
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+        <div class="loading-box">
+            <p class="loading-count"></p>
+            <div class="loader"></div>
+        </div>
+    </section>
+</div>

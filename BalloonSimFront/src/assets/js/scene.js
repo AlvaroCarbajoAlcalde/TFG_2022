@@ -15,8 +15,10 @@ function createScene() {
     setBalloon();
     setFireEffect();
 
-    if (testing) setMovementTest();
-    else setMovement();
+    if (userControllsAvailable) {
+        if (testing) setMovementTest();
+        else setMovement();
+    }
 }
 
 //TODO - Add fire effect
@@ -55,7 +57,7 @@ function setPointer() {
     pointer.position.y = 3.45;
 
     const material = new BABYLON.StandardMaterial("pointerMaterial", scene);
-    if (!testing) material.alpha = 0;
+    material.alpha = 0;
     pointer.material = material;
 }
 

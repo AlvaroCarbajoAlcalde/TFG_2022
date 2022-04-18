@@ -8,6 +8,7 @@ var camera;
 var balloonModel;
 var pointer;
 var skybox;
+var userControllsAvailable = true;
 
 let selectedSkybox;
 
