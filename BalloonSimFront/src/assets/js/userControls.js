@@ -30,16 +30,16 @@ function unClickRope() {
  * Clicks both triggers
  */
 function clickBurner2() {
-    document.getElementsByClassName("trigger")[0].classList.add("pressed");
-    document.getElementsByClassName("trigger")[1].classList.add("pressed");
+    triggerL.classList.add("pressed");
+    triggerR.classList.add("pressed");
 }
 
 /**
  * Unclicks both triggers
  */
 function unClickBurner2() {
-    document.getElementsByClassName("trigger")[0].classList.remove("pressed");
-    document.getElementsByClassName("trigger")[1].classList.remove("pressed");
+    triggerL.classList.remove("pressed");
+    triggerR.classList.remove("pressed");
 }
 
 /**
@@ -91,8 +91,48 @@ function setGasListener() {
     }, 300);
 }
 
+/**
+ * Sets the listener fo the user's actions during the game
+ */
 function setMovement() {
-
+    scene.onKeyboardObservable.add((kbInfo) => {
+        switch (kbInfo.type) {
+            // Keydown
+            case BABYLON.KeyboardEventTypes.KEYDOWN:
+                switch (kbInfo.event.key) {
+                    case " ":
+                        triggerR.classList.add("pressed");
+                        triggerL.classList.add("pressed");
+                        break;
+                    case "w":
+                    case "W":
+                        triggerL.classList.add("pressed");
+                        break;
+                    case "s":
+                    case "S":
+                        rope.classList.add("pressed");
+                        break;
+                }
+                break;
+                // Keyup
+            case BABYLON.KeyboardEventTypes.KEYUP:
+                switch (kbInfo.event.key) {
+                    case " ":
+                        triggerL.classList.remove("pressed");
+                        triggerR.classList.remove("pressed");
+                        break;
+                    case "w":
+                    case "W":
+                        triggerL.classList.remove("pressed");
+                        break;
+                    case "s":
+                    case "S":
+                        rope.classList.remove("pressed");
+                        break;
+                }
+                break;
+        }
+    });
 }
 
 /**

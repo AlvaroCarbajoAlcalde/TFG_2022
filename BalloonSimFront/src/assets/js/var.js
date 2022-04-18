@@ -40,6 +40,8 @@ var positionZ;
 var positionY;
 var fuelMeter;
 var fuelSVG;
+var triggerL;
+var triggerR;
 //alt
 var altTemp;
 var altSpeedUp;

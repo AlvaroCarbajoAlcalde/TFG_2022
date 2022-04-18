@@ -19,6 +19,8 @@ function queryHTML() {
     positionX = document.getElementById("positionX");
     positionZ = document.getElementById("positionZ");
     positionY = document.getElementById("positionY");
+    triggerL = document.getElementsByClassName("trigger")[0];
+    triggerR = document.getElementsByClassName("trigger")[1];
 
     //Altimeter
     altTemp = document.getElementById("altTemp");
