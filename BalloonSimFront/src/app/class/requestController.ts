@@ -205,7 +205,7 @@ export default class RequestController {
     fetch(`${environment.apiRoute}newweather/${flightid}/${temperature}/${pressure}`);
     //Save winds
     winds.windsList.forEach(wind => {
-      fetch(`${environment.apiRoute}addwind/${flightid}/${wind.altitude}/${wind.windDir}/${wind.windSpeed}`);
+      fetch(`${environment.apiRoute}addwind/${flightid}/${wind.altitude}/${wind.direction}/${wind.speed}`);
     });
   }
 }

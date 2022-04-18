@@ -75,13 +75,13 @@ export class WindsMap {
      * @param {Wind} wind wind to show
      */
     private seeWindOnMap(wind: Wind) {
-        const kmx = wind.windSpeedKMH * Math.cos(wind.windDir * Math.PI / 180);
-        const kmy = wind.windSpeedKMH * Math.sin(wind.windDir * Math.PI / 180);
+        const kmx = wind.speedKMH * Math.cos(wind.direction * Math.PI / 180);
+        const kmy = wind.speedKMH * Math.sin(wind.direction * Math.PI / 180);
         const lat = this.center[0] + kmx / 111.2;
         const lon = this.center[1] + kmy / (111.2 * Math.cos(this.center[0] * Math.PI / 180));
 
         const route = L.polyline([[this.center[0], this.center[1]], [lat, lon]], { color: wind.color, weight: 3 });
-        route.bindPopup(`<b>Altitud: ${wind.altitude.toFixed(0)} m / ${metersToFeet(wind.altitude).toFixed(0)} feet</b><br>Dirección: ${wind.windDir.toFixed(2)}°<br>Velocidad: ${wind.windSpeedKMH} km/h / ${kmPerHourToKnots(wind.windSpeedKMH).toFixed(2)} nudos.<br>`);
+        route.bindPopup(`<b>Altitud: ${wind.altitude.toFixed(0)} m / ${metersToFeet(wind.altitude).toFixed(0)} feet</b><br>Dirección: ${wind.direction.toFixed(2)}°<br>Velocidad: ${wind.speedKMH} km/h / ${kmPerHourToKnots(wind.speedKMH).toFixed(2)} nudos.<br>`);
         route.addTo(this.map);
     }
 

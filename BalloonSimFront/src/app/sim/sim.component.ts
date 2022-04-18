@@ -145,8 +145,8 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
   changeBalloonDirection() {
     if (balloon) {
       const actWind = GLOBAL.Winds.getWind(balloon.altitude);
-      windDir = actWind.windDir;
-      windSpeed = actWind.windSpeed;
+      windDir = actWind.direction;
+      windSpeed = actWind.speed;
     }
   }
 }

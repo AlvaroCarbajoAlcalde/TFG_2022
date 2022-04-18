@@ -108,8 +108,8 @@
         <tbody>
             <tr *ngFor="let wind of windList">
                 <td>{{wind.altitude}} m / {{wind.altitudeFeet}} feet</td>
-                <td>{{wind.windDir.toFixed(2)}}°</td>
-                <td>{{wind.windSpeedKMH}} km/h / {{toKnots(wind.windSpeed).toFixed(1)}} nudos.</td>
+                <td>{{wind.direction.toFixed(2)}}°</td>
+                <td>{{wind.speedKMH}} km/h / {{toKnots(wind.speed).toFixed(1)}} nudos.</td>
                 <td>
                     <div class="actions">
                         <input #colorPicker title="Cambia el color del viento" *ngIf="wind.color" type="color" class="colorpicker" value={{wind.color}} (change)="windsMap.changeWindColor(wind, colorPicker.value)">

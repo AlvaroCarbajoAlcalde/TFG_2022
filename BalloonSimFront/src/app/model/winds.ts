@@ -91,17 +91,17 @@ export default class Winds {
                 //If wind is close to the next one, return average:
                 if (altitude + this.GAP_WINDS > maxAlt && this.windsList[i + 1]) {
                     const percentage = (altitude + this.GAP_WINDS - maxAlt) / this.GAP_WINDS;
-                    speed = this.windsList[i].windSpeed * (1 - percentage) + this.windsList[i + 1].windSpeed * percentage;
+                    speed = this.windsList[i].speed * (1 - percentage) + this.windsList[i + 1].speed * percentage;
                     //Average direction
-                    const maxDirection = Math.max(this.windsList[i].windDir, this.windsList[i + 1].windDir);
-                    const minDirection = Math.min(this.windsList[i].windDir, this.windsList[i + 1].windDir);
+                    const maxDirection = Math.max(this.windsList[i].direction, this.windsList[i + 1].direction);
+                    const minDirection = Math.min(this.windsList[i].direction, this.windsList[i + 1].direction);
                     if (maxDirection - minDirection > 180) direction = maxDirection - (maxDirection - minDirection - 360) * percentage;
-                     else direction = (this.windsList[i].windDir * (1 - percentage) + this.windsList[i + 1].windDir * percentage) % 360;
+                     else direction = (this.windsList[i].direction * (1 - percentage) + this.windsList[i + 1].direction * percentage) % 360;
                 } else {
                     //Slightly random speed and direction
-                    speed = this.windsList[i].windSpeed;
+                    speed = this.windsList[i].speed;
                     speed = randomBetween(speed - 0.01, speed + 0.01);
-                    direction = this.windsList[i].windDir;
+                    direction = this.windsList[i].direction;
                     direction = randomBetween(direction - 0.45, direction + 0.45);
                 }
                 return new Wind(altitude, direction, speed);
@@ -127,9 +127,9 @@ export default class Winds {
 export class Wind {
     public altitude: number;
     public altitudeFeet: number;
-    public windDir: number;
-    public windSpeed: number;
-    public windSpeedKMH: number;
+    public direction: number;
+    public speed: number;
+    public speedKMH: number;
     public color!: string;
     public seeOnMap: boolean;
 
@@ -137,18 +137,18 @@ export class Wind {
      * Create a new wind
      * 
      * @param altitude altitude in meters
-     * @param windDir direction in degrees
+     * @param direction direction in degrees
      * @param windSpeed speed in m/s
      */
-    constructor(altitude: number, windDir: number, windSpeed: number) {
+    constructor(altitude: number, direction: number, windSpeed: number) {
         this.altitude = altitude;
         if (this.altitude < 0) this.altitude = 0;
-        this.windDir = windDir;
-        if (this.windDir < 0) this.windDir += 360;
-        if (this.windDir > 360) this.windDir -= 360;
-        this.windSpeed = windSpeed;
-        if (this.windSpeed < 0) this.windSpeed = 0;
-        this.windSpeedKMH = metersPerSecondToKmPerHour(this.windSpeed).toFixed(2) as any;
+        this.direction = direction;
+        if (this.direction < 0) this.direction += 360;
+        if (this.direction > 360) this.direction -= 360;
+        this.speed = windSpeed;
+        if (this.speed < 0) this.speed = 0;
+        this.speedKMH = metersPerSecondToKmPerHour(this.speed).toFixed(2) as any;
         this.altitudeFeet = Math.round(metersToFeet(this.altitude));
         this.seeOnMap = true;
     }

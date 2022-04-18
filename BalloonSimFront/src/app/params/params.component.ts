@@ -289,7 +289,7 @@ export class ParamsComponent implements AfterViewInit {
     }
 
     settings.Winds.forEach((wind: Wind) => {
-      if (typeof wind.altitude != 'number' || typeof wind.windDir != 'number' || typeof wind.windSpeed != 'number') {
+      if (typeof wind.altitude != 'number' || typeof wind.direction != 'number' || typeof wind.speed != 'number') {
         alert('La altitud de los vientos no puede estar vacía');
         return;
       }
