@@ -4,5 +4,5 @@ export const environment = {
   testing: false,
   showCollisions: false,
   windyKey: '5bZScC8EM0JNhluLEQVBKWeNZs9eK3dW',
-  secondsBetweenRouteSaves: 3,
+  secondsBetweenRouteSaves: 1,
 };
