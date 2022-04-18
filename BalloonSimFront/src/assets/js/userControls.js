@@ -81,7 +81,7 @@ function setGasListener() {
                 fuel -= 0.0125;
             }
         } else if (rope.classList.contains("pressed")) {
-            balloon.temp -= 2.73;
+            balloon.temp -= 2.83;
         } else {
             if (started) balloon.temp -= 0.42;
         }

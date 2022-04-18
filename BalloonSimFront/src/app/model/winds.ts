@@ -1,7 +1,8 @@
-import { metersPerSecondToKmPerHour, metersToFeet } from "../class/methods";
+import { metersPerSecondToKmPerHour, metersToFeet, randomBetween } from "../class/methods";
 
 export default class Winds {
     public windsList: Wind[];
+    private readonly GAP_WINDS = 20;
 
     /**
      * Create a new Winds object
@@ -9,7 +10,7 @@ export default class Winds {
      */
     constructor(params: any) {
         this.windsList = [];
-        
+
         if (params) {
             this.addWind(0, 0, 0);
             this.addWindFromWindyValues(432, params['wind_u-surface'][0], params['wind_v-surface'][0]);
@@ -49,7 +50,7 @@ export default class Winds {
         //Extract direction from u and v components
         let direction = Math.atan2(vComponent, uComponent) * 180 / Math.PI;
         if (direction < 0) direction += 360;
-        
+
         //Extract speed from u and v components
         let speed = Math.sqrt(uComponent * uComponent + vComponent * vComponent);
 
@@ -74,10 +75,10 @@ export default class Winds {
     }
 
     /**
-     * Get the wind at a given altitude
+     * Get the wind at a given altitude 
      * 
-     * @param altitude altitude in meters
-     * @returns {Wind} first wind with altitude >= altitude
+     * @param {number} altitude altitude in meters
+     * @returns {Wind} first wind with altitude >= altitude and modified to simulate realistic wind
      */
     public getWind(altitude: number): Wind {
         if (altitude < 0) altitude = 0;
@@ -85,7 +86,26 @@ export default class Winds {
             const minAlt = this.windsList[i].altitude;
             const maxAlt = this.windsList[i + 1] ? this.windsList[i + 1].altitude : altitude;
             if (altitude >= minAlt && altitude <= maxAlt) {
-                return this.windsList[i];
+                let speed;
+                let direction;
+                //If wind is close to the next one, return average:
+                if (altitude + this.GAP_WINDS > maxAlt && this.windsList[i + 1]) {
+                    const percentage = (altitude + this.GAP_WINDS - maxAlt) / this.GAP_WINDS;
+                    speed = this.windsList[i].windSpeed * (1 - percentage) + this.windsList[i + 1].windSpeed * percentage;
+                    if (this.windsList[i + 1].windDir - this.windsList[i].windDir > 180) {
+                        console.log('herewego')
+                        direction = (this.windsList[i].windDir + 360) * (1 - percentage) + (this.windsList[i + 1].windDir) * percentage;
+                    } else {
+                        direction = this.windsList[i].windDir * (1 - percentage) + this.windsList[i + 1].windDir * percentage;
+                    }
+                } else {
+                    //Slightly random speed and direction
+                    speed = this.windsList[i].windSpeed;
+                    speed = randomBetween(speed - 0.01, speed + 0.01);
+                    direction = this.windsList[i].windDir;
+                    direction = randomBetween(direction - 0.45, direction + 0.45);
+                }
+                return new Wind(altitude, direction, speed);
             }
         }
         console.error("No wind found for altitude: ", altitude);
@@ -125,7 +145,8 @@ export class Wind {
         this.altitude = altitude;
         if (this.altitude < 0) this.altitude = 0;
         this.windDir = windDir;
-        if (this.windDir < 0 || this.windDir > 359.999) this.windDir = 0;
+        if(this.windDir < 0) this.windDir += 360;
+        if(this.windDir > 360) this.windDir -= 360;
         this.windSpeed = windSpeed;
         if (this.windSpeed < 0) this.windSpeed = 0;
         this.windSpeedKMH = metersPerSecondToKmPerHour(this.windSpeed).toFixed(2) as any;

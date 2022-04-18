@@ -89,3 +89,14 @@ export function distanceToString(distance: number): string {
     }
     return toReturn;
 }
+
+/**
+ * Gets a random number between min and max
+ * 
+ * @param {number} min minimum value
+ * @param {number} max maximum value
+ * @returns {number} random number between min and max 
+ */
+export function randomBetween(min: number, max: number): number {
+    return Math.random() * (max - min) + min;
+}
