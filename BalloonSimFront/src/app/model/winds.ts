@@ -92,12 +92,11 @@ export default class Winds {
                 if (altitude + this.GAP_WINDS > maxAlt && this.windsList[i + 1]) {
                     const percentage = (altitude + this.GAP_WINDS - maxAlt) / this.GAP_WINDS;
                     speed = this.windsList[i].windSpeed * (1 - percentage) + this.windsList[i + 1].windSpeed * percentage;
-                    if (this.windsList[i + 1].windDir - this.windsList[i].windDir > 180) {
-                        console.log('herewego')
-                        direction = (this.windsList[i].windDir + 360) * (1 - percentage) + (this.windsList[i + 1].windDir) * percentage;
-                    } else {
-                        direction = this.windsList[i].windDir * (1 - percentage) + this.windsList[i + 1].windDir * percentage;
-                    }
+                    //Average direction
+                    const maxDirection = Math.max(this.windsList[i].windDir, this.windsList[i + 1].windDir);
+                    const minDirection = Math.min(this.windsList[i].windDir, this.windsList[i + 1].windDir);
+                    if (maxDirection - minDirection > 180) direction = maxDirection - (maxDirection - minDirection - 360) * percentage;
+                     else direction = (this.windsList[i].windDir * (1 - percentage) + this.windsList[i + 1].windDir * percentage) % 360;
                 } else {
                     //Slightly random speed and direction
                     speed = this.windsList[i].windSpeed;
@@ -145,8 +144,8 @@ export class Wind {
         this.altitude = altitude;
         if (this.altitude < 0) this.altitude = 0;
         this.windDir = windDir;
-        if(this.windDir < 0) this.windDir += 360;
-        if(this.windDir > 360) this.windDir -= 360;
+        if (this.windDir < 0) this.windDir += 360;
+        if (this.windDir > 360) this.windDir -= 360;
         this.windSpeed = windSpeed;
         if (this.windSpeed < 0) this.windSpeed = 0;
         this.windSpeedKMH = metersPerSecondToKmPerHour(this.windSpeed).toFixed(2) as any;

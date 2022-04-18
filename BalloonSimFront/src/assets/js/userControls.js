@@ -10,6 +10,7 @@ function clickBurner(trigger) {
  */
 function unClickBurner(trigger) {
     trigger.classList.remove("pressed");
+    canvas.focus();
 }
 
 /**
@@ -24,6 +25,7 @@ function clickRope() {
  */
 function unClickRope() {
     rope.classList.remove("pressed");
+    canvas.focus();
 }
 
 /**
@@ -40,6 +42,7 @@ function clickBurner2() {
 function unClickBurner2() {
     triggerL.classList.remove("pressed");
     triggerR.classList.remove("pressed");
+    canvas.focus();
 }
 
 /**
