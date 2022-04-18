@@ -15,6 +15,7 @@ declare const endSim: any;
 declare const setSelectedSkybox: any;
 declare let testing: any;
 declare let showCollisions: any;
+declare let userControllsAvailable: any;
 declare let startPoint: any;
 declare let windDir: any;
 declare let windSpeed: any;
@@ -41,6 +42,7 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
   async ngOnInit(): Promise<void> {
     await GLOBAL.initGLOBAL();
     backgroundController.stopInterval();
+    userControllsAvailable = true;
     this.seconds = 0;
     this.isMapCentered = true;
     document.body.classList.add('no-overflow');
