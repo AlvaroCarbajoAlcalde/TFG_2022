@@ -52,6 +52,7 @@ var altPressure;
 var altMedUp;
 var altMedDown;
 var altAltitude;
+var altAltitudeM;
 
 //Meters
 var mX;

@@ -7,6 +7,7 @@ import { GLOBAL } from '../class/global';
 import RequestController from '../class/requestController';
 import {faGasPump} from '@fortawesome/free-solid-svg-icons';
 import { COLORS } from '../class/colors';
+import { Wind } from '../model/winds';
 
 declare const resizeCanvas: any;
 declare const queryHTML: any;
@@ -36,6 +37,7 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
   private seconds!: number;
   private isMapCentered!: boolean;
   public gasIcon = faGasPump;
+  public winds!: Wind[];
 
   constructor(private router: Router) { }
 
@@ -45,6 +47,7 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
     userControllsAvailable = true;
     this.seconds = 0;
     this.isMapCentered = true;
+    this.winds = GLOBAL.Winds.windsList;
     document.body.classList.add('no-overflow');
 
     //Position of balloon

@@ -1,16 +1,4 @@
 /**
- * Shows the data in the tablet
- */
-//TODO change interface
-function showPositionInTablet() {
-    if (testing) {
-        positionX.innerHTML = `LAT: ${balloon.calcDegreesLat()}`;
-        positionZ.innerHTML = `LON: ${balloon.calcDegreesLon()}`;
-        positionY.innerHTML = `X: ${balloon.pointer.position.x}<br>Z: ${balloon.pointer.position.z}<br>Y: ${balloon.pointer.position.y}<br>`;
-    }
-}
-
-/**
  * Shows the data in the altimeter
  */
 function showDataInAltimeter() {
@@ -24,6 +12,7 @@ function showDataInAltimeter() {
     }
     altPressure.innerHTML = `Pressure<br>${(actPressure - balloon.altitude * 0.112).toFixed(1)} hPa`;
     altAltitude.innerHTML = `${parseInt(balloon.altitude * 3.28)} feet`;
+    altAltitudeM.innerHTML = `${balloon.altitude.toFixed(1)} m`;
     if (started) setAltBar();
 }
 
@@ -51,7 +40,7 @@ function timer() {
     let h = 0;
 
     clockInterval = setInterval(() => {
-        s++;
+        if (started) s++;
         if (s == 60) {
             s = 0;
             m++;
@@ -60,7 +49,7 @@ function timer() {
                 h++;
             }
         }
-        altTime.innerHTML = `Flight Time: ${getNum2Dig(h)}:${getNum2Dig(m)}:${getNum2Dig(s)}`;
+        altTime.innerHTML = `${getNum2Dig(h)}:${getNum2Dig(m)}:${getNum2Dig(s)}`;
     }, 1000);
 }
 

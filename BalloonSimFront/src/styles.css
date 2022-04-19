@@ -445,12 +445,6 @@ h2 {
     transition: opacity 1.2s;
 }
 
-#tablet .tablet-show-contents {
-    background: rgba(255, 255, 255, 0.76);
-    padding: 0;
-    margin: 0;
-}
-
 #tabletContent {
     position: relative;
     width: 401px;
@@ -459,10 +453,27 @@ h2 {
     margin-left: 16px;
 }
 
-.tablet-show-contents {
-    z-index: 3;
+.flight-time label {
+    font-size: large;
+    text-align: center;
+    font-family: "digital";
+    background-color: whitesmoke;
+    border-top-right-radius: 14px;
+    border-top-left-radius: 14px;
+    padding: 8px;
+    box-shadow: 0px 0px 18px -13px black;
+}
+
+.flight-time {
     position: absolute;
-    top: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    width: 100%;
+    flex-direction: row;
+    bottom: 0px;
 }
 
 #mapCentering {
@@ -765,7 +776,7 @@ h2 {
 
 #altPressure {
     position: absolute;
-    top: 127px;
+    top: 140px;
     font-size: 0.8em;
     left: 37px;
     width: 80px;
@@ -774,19 +785,20 @@ h2 {
     padding: 3px;
 }
 
-#altTime {
-    position: absolute;
-    font-size: 0.65em;
-    top: 176px;
-    left: 9px;
-    width: 120px;
-    text-align: center;
-}
-
 #altAltitude {
     position: absolute;
     font-size: 0.68em;
     top: 106px;
+    left: 37px;
+    width: 87px;
+    text-align: right;
+    text-align: right;
+}
+
+#altAltitudeM {
+    position: absolute;
+    font-size: 0.68em;
+    top: 120px;
     left: 37px;
     width: 87px;
     text-align: right;

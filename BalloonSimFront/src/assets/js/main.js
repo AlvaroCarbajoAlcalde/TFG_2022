@@ -27,12 +27,13 @@ function queryHTML() {
         //Altimeter
         altTemp = document.getElementById("altTemp");
         altSpeedUp = document.getElementById("altSpeedAlt");
-        altTime = document.getElementById("altTime");
+        altTime = document.querySelector(".flight-time label");
         altWind = document.getElementById("altSpeed");
         altPressure = document.getElementById("altPressure");
         altMedUp = document.getElementById("altDiffUp");
         altMedDown = document.getElementById("altDiffDown");
         altAltitude = document.getElementById("altAltitude");
+        altAltitudeM = document.getElementById("altAltitudeM");
 
         //FuelMeter start
         setFuelMeter();
@@ -76,14 +77,15 @@ function loop() {
         if (userControllsAvailable) {
             actTemp = (initTemp - (balloon.altitude - 400) / 154);
             balloon.calculateAscentRatio();
-            showPositionInTablet();
             showDataInAltimeter();
         }
 
         balloon.moveBalloonToPointer();
         moveSkybox();
 
-        if (started && !testing && userControllsAvailable) balloon.setSpeeds(windDir, windSpeed);
+        if (started && !testing && userControllsAvailable) {
+            balloon.setSpeeds(windDir, windSpeed);
+        }
     });
 }
 

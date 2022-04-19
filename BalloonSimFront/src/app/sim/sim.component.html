@@ -5,10 +5,8 @@
                 <div class="map-frame">
                     <div id="mapCenteringBack" (click)="toggleMapCentering()"></div>
                     <div id="mapCentering" class="center" (click)="toggleMapCentering()"></div>
-                    <div class="tablet-show-contents">
-                        <p id="positionX"></p>
-                        <p id="positionZ"></p>
-                        <p id="positionY"></p>
+                    <div class="flight-time">
+                        <label>00:00:00</label>
                     </div>
                     <div id="map"></div>
                 </div>
@@ -38,10 +36,10 @@
             <label id="altSpeed">Wind: 63° <br />23.3 m/s</label>
             <label id="altSpeedAlt">6 m/s</label>
             <label id="altAltitude">6000 feet</label>
+            <label id="altAltitudeM">300 m</label>
             <label id="altPressure">Pressure<br />932.1 hPa</label>
-            <label id="altTime">Flight Time: 02:21:49</label>
-            <img id="altRuler" src="../../assets/img/ruler.png" />
-            <img id="altRulerInv" src="../../assets/img/rulerinv.png" />
+            <img id="altRuler" alt="ruler" src="../../assets/img/ruler.png" />
+            <img id="altRulerInv" alt="rulerinv" src="../../assets/img/rulerinv.png" />
             <div id="altDiffContainer">
                 <div id="altDiffUp"></div>
                 <div id="altDiffDown"></div>
