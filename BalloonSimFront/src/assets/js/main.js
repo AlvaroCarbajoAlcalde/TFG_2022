@@ -110,4 +110,7 @@ function endSim() {
     canvas.remove();
     canvas = null;
     game.innerHML = "";
+
+    //Reload the page to avoid webgl crashes
+    setTimeout(() => { window.location.reload() }, 50);
 }
