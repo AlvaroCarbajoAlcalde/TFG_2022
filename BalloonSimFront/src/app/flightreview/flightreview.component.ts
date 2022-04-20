@@ -37,6 +37,7 @@ export class FlightReviewComponent implements OnInit, OnDestroy {
   public x10icon = faForwardFast;
   public stopIcon = faStopCircle;
   public speed: number = 1;
+  private secondsBetweenPoints!: number;
 
   constructor(private router: Router, private _Activatedroute: ActivatedRoute) { }
 
@@ -54,6 +55,9 @@ export class FlightReviewComponent implements OnInit, OnDestroy {
 
     this.routes = await RequestController.getRoute(this.flightID);
     document.getElementsByTagName('input')[0].max = (this.routes.length - 1).toString();
+    
+    if (this.routes[1])this.secondsBetweenPoints = this.routes[1].seconds  - this.routes[0].seconds;
+    else this.secondsBetweenPoints = this.routes[0].seconds;
 
     //Position of balloon
     startPoint.x = this.routes[0].x;
@@ -139,12 +143,10 @@ export class FlightReviewComponent implements OnInit, OnDestroy {
         }
         this.inputRange.style.backgroundSize = `${(this.timeValue) * 100 / (this.routes.length - 1)}% 100%`;
       }
-    }, 1000 / this.speed);
+    }, this.secondsBetweenPoints * 1000 / this.speed);
   }
 
   setSpeed(value: number) {
-    console.log("value",value);
-    console.log(this.speed)
     this.speed = value;
     this.stopInterval();
     this.startInterval();
