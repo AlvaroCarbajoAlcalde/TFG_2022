@@ -1256,7 +1256,11 @@ button.normal:hover {
     background: transparent;
 }
 
-#time-selector label {
+#actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-evenly;
     color: var(--darker);
     text-align: center;
     font-weight: bold;
@@ -1266,4 +1270,13 @@ button.normal:hover {
     border-top-right-radius: 10px;
     background-color: var(--lighter);
     margin-bottom: -3px;
+    width: 150px;
+}
+
+#actions a {
+    cursor: pointer;
+}
+
+#actions a.big fa-icon {
+    font-size: 1.5em;
 }

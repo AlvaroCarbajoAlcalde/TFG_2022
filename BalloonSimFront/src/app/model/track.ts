@@ -10,6 +10,7 @@ export default class Track {
   public x: number;
   public y: number;
   public z: number;
+  public coords: { x: number, y: number, z: number };
 
   /**
    * Creates an instance of Track.
@@ -27,5 +28,6 @@ export default class Track {
     this.x = params.x;
     this.y = params.y;
     this.z = params.z;
+    this.coords = { x: params.x, y: params.y, z: params.z };
   }
 }

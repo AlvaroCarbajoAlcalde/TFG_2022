@@ -11,6 +11,7 @@ import { faEye, faFileExport } from '@fortawesome/free-solid-svg-icons';
 import { WindsMap } from '../class/windsMap';
 import { GLOBAL } from '../class/global';
 import { COLORS } from '../class/colors';
+import Track from '../model/track';
 
 @Component({
   selector: 'app-flightview',
@@ -39,6 +40,7 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
   public eyeIcon = faEye;
   public exportIcon = faFileExport;
   public windsMap!: WindsMap;
+  public routes!: Track[];
 
   constructor(private _Activatedroute: ActivatedRoute, private router: Router) { }
 
@@ -86,10 +88,10 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
     });
     track.addTo(this.map);
 
-    const routes = await RequestController.getRoute(this.flightid);
+    this.routes = await RequestController.getRoute(this.flightid);
 
     //Takeoff marker
-    const takeoffMarker = L.circleMarker(new L.LatLng(routes[0].lat, routes[0].lon), {
+    const takeoffMarker = L.circleMarker(new L.LatLng(this.routes[0].lat, this.routes[0].lon), {
       radius: 5,
       color: COLORS.red,
       fillColor: 'white',
@@ -98,21 +100,21 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
     });
     takeoffMarker.addTo(this.map);
 
-    this.map.panTo(new L.LatLng(routes[0].lat, routes[0].lon));
+    this.map.panTo(new L.LatLng(this.routes[0].lat, this.routes[0].lon));
 
     //Foreach route
     this.maxSpeed = 0;
     this.maxSpeedY = 0;
     this.minSpeedY = 0;
     this.maxAltitude = 0;
-    this.minAltitude = routes[0].altitude;
-    this.takeoffAltitude = routes[0].altitude;
+    this.minAltitude = this. routes[0].altitude;
+    this.takeoffAltitude = this. routes[0].altitude;
     this.distance = 0;
-    this.remainingFuel = routes[routes.length - 1].fuel;
-    const firstLatLng = new L.LatLng(routes[0].lat, routes[0].lon);
-    const lastLatLng = new L.LatLng(routes[routes.length - 1].lat, routes[routes.length - 1].lon);
+    this.remainingFuel = this.routes[this.routes.length - 1].fuel;
+    const firstLatLng = new L.LatLng(this.routes[0].lat, this. routes[0].lon);
+    const lastLatLng = new L.LatLng(this.routes[this.routes.length - 1].lat, this.routes[this.routes.length - 1].lon);
     this.straightLineDistance = firstLatLng.distanceTo(lastLatLng);
-    let previousLatlng = new L.LatLng(routes[0].lat, routes[0].lon);
+    let previousLatlng = new L.LatLng(this.routes[0].lat, this.routes[0].lon);
     let sumAltitude = 0;
     const labelSeconds: string[] = [];
     const dataAltitude: number[] = [];
@@ -121,7 +123,7 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
     const dataDirection: number[] = [];
     const dataSpeedY: number[] = [];
 
-    routes.forEach((point) => {
+    this.routes.forEach((point) => {
       if (point.altitude > this.maxAltitude) this.maxAltitude = point.altitude;
       if (point.altitude < this.minAltitude) this.minAltitude = point.altitude;
       if (point.speed > this.maxSpeed) this.maxSpeed = point.speed;
@@ -140,14 +142,14 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
       sumAltitude += point.altitude;
     });
 
-    this.avgAltitude = sumAltitude / routes.length;
+    this.avgAltitude = sumAltitude / this.routes.length;
     this.distance = parseFloat(this.distance.toFixed(2));
     this.createGraphicData(labelSeconds, dataAltitude, dataFuel, dataSpeed, dataDirection, dataSpeedY);
 
     this.windList = await RequestController.getFlightWinds(this.flightid);
     this.weather = await RequestController.getFlightWeather(this.flightid) as Weather;
 
-    this.windsMap = new WindsMap("mapWinds", this.windList, [routes[0].lat, routes[0].lon]);
+    this.windsMap = new WindsMap("mapWinds", this.windList, [this.routes[0].lat, this.routes[0].lon]);
     this.windsMap.updateWindsMap();
   }
 

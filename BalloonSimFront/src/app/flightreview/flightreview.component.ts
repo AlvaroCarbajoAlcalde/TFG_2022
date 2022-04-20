@@ -4,6 +4,7 @@ import backgroundController from '../class/backgroundController';
 import { GLOBAL } from '../class/global';
 import { timeInSecondsToString } from '../class/methods';
 import RequestController from '../class/requestController';
+import { faStopCircle, faPlay, faForward, faForwardFast, faForwardStep, faPlayCircle } from '@fortawesome/free-solid-svg-icons';
 import Track from '../model/track';
 
 declare const resizeCanvas: any;
@@ -25,10 +26,22 @@ export class FlightReviewComponent implements OnInit, OnDestroy {
   private routes!: Track[];
   private labelTime!: HTMLLabelElement;
   public timeInSecondsToString = timeInSecondsToString;
+  public interval!: any;
+  public intervalSpeed!: number;
+  private timeValue: number = 0;
+  private inputRange!: HTMLInputElement;
+  public startIcon = faPlayCircle;
+  public x1icon = faPlay;
+  public x2icon = faForwardStep;
+  public x5icon = faForward;
+  public x10icon = faForwardFast;
+  public stopIcon = faStopCircle;
+  public speed: number = 1;
 
   constructor(private router: Router, private _Activatedroute: ActivatedRoute) { }
 
   async ngOnInit(): Promise<void> {
+    this.inputRange = document.querySelector('input') as HTMLInputElement;
     userControllsAvailable = false;
     backgroundController.stopInterval();
     document.body.classList.add('no-overflow');
@@ -70,12 +83,70 @@ export class FlightReviewComponent implements OnInit, OnDestroy {
     this.router.navigate([`flight-details/${this.flightID}`]);
   }
 
-  public changeTime(value: any){
+  /**
+   * Changes the time 
+   * @param {number} value value of the input
+   */
+  public changeTime(value: any) {
+    this.stopInterval();
     value = value as number;
-    balloon.pointer.position.x = this.routes[value].x;
-    balloon.pointer.position.y = this.routes[value].y;
-    balloon.pointer.position.z = this.routes[value].z;
+    this.timeValue = value;
+    this.moveBalloon(this.routes[value].coords);
     this.labelTime.innerHTML = timeInSecondsToString(this.routes[value].seconds, true);
-    (<HTMLInputElement>document.querySelector('input')).style.backgroundSize = (value) * 100 / (this.routes.length - 1) + '% 100%'
+    this.inputRange.style.backgroundSize = `${(value) * 100 / (this.routes.length - 1)}% 100%`;
+  }
+
+  /**
+   * Moves the balloon to the position given
+   * @param {{ x: number, y: number, z: number }} coords the coordinates
+   */
+  public moveBalloon(coords: { x: number, y: number, z: number }) {
+    balloon.pointer.position.x = coords.x;
+    balloon.pointer.position.y = coords.y;
+    balloon.pointer.position.z = coords.z;
+  }
+
+  /**
+   * Stops the interval
+   */
+  public stopInterval() {
+    clearInterval(this.interval);
+    this.interval = null;
+  }
+
+  /**
+   * Starts the interval
+   */
+  public startInterval() {
+    if (this.interval) clearInterval(this.interval);
+    this.interval = setInterval(() => {
+      if (balloon) {
+        this.timeValue++;
+        if (this.timeValue > this.routes.length - 1) this.timeValue = this.routes.length - 1;
+        this.labelTime.innerHTML = timeInSecondsToString(this.routes[this.timeValue].seconds, true);
+        this.inputRange.value = this.timeValue.toString();
+
+        const previousPoint = this.routes[this.timeValue - 1].coords;
+        //Move balloon in 30 steps to simulate realistic movement
+        for (let i = 0; i < 30; i++) {
+          const nextPoint = this.routes[this.timeValue].coords;
+          const x = previousPoint.x + (nextPoint.x - previousPoint.x) / 30 * i;
+          const y = previousPoint.y + (nextPoint.y - previousPoint.y) / 30 * i;
+          const z = previousPoint.z + (nextPoint.z - previousPoint.z) / 30 * i;
+          setTimeout(() => {
+            if (this.interval) this.moveBalloon({ x, y, z });
+          }, (i * 100 / 3) / this.speed);
+        }
+        this.inputRange.style.backgroundSize = `${(this.timeValue) * 100 / (this.routes.length - 1)}% 100%`;
+      }
+    }, 1000 / this.speed);
+  }
+
+  setSpeed(value: number) {
+    console.log("value",value);
+    console.log(this.speed)
+    this.speed = value;
+    this.stopInterval();
+    this.startInterval();
   }
 }

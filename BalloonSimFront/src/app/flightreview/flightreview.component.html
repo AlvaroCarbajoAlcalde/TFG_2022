@@ -4,7 +4,28 @@
     </section>
 
     <section id="time-selector">
-        <label id="label-time">00:00</label>
+        <div id="actions">
+            <a *ngIf="speed==1" (click)="setSpeed(2)" title="Velocidad normal">
+                <fa-icon [icon]="x1icon"></fa-icon>
+            </a>
+            <a *ngIf="speed==2" (click)="setSpeed(5)" title="Velocidad x2">
+                <fa-icon [icon]="x2icon"></fa-icon>
+            </a>
+            <a *ngIf="speed==5" (click)="setSpeed(10)" title="Velocidad x5">
+                <fa-icon [icon]="x5icon"></fa-icon>
+            </a>
+            <a *ngIf="speed==10" (click)="setSpeed(1)" title="Velocidad x10">
+                <fa-icon [icon]="x10icon"></fa-icon>
+            </a>
+            <label id="label-time">00:00</label>
+            <a class="big" *ngIf="!interval" (click)="speed = 1; startInterval()" title="Start">
+                <fa-icon [icon]="startIcon"></fa-icon>
+            </a>
+            <a class="big" *ngIf="interval" (click)="speed = 1; stopInterval()" title="Stop">
+                <fa-icon [icon]="stopIcon"></fa-icon>
+            </a>
+        </div>
+
         <input #timeselector title="Tiempo del vuelo" type="range" min="0" value="0" (input)="changeTime(timeselector.value)">
     </section>
 
