@@ -139,7 +139,7 @@ export class FlightReviewComponent implements OnInit, OnDestroy {
           const z = previousPoint.z + (nextPoint.z - previousPoint.z) / 30 * i;
           setTimeout(() => {
             if (this.interval) this.moveBalloon({ x, y, z });
-          }, (i * 100 / 3) / this.speed);
+          }, (this.secondsBetweenPoints * i * 100 / 3) / this.speed);
         }
         this.inputRange.style.backgroundSize = `${(this.timeValue) * 100 / (this.routes.length - 1)}% 100%`;
       }
