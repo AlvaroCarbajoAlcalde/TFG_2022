@@ -107,11 +107,11 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
     this.maxSpeedY = 0;
     this.minSpeedY = 0;
     this.maxAltitude = 0;
-    this.minAltitude = this. routes[0].altitude;
-    this.takeoffAltitude = this. routes[0].altitude;
+    this.minAltitude = this.routes[0].altitude;
+    this.takeoffAltitude = this.routes[0].altitude;
     this.distance = 0;
     this.remainingFuel = this.routes[this.routes.length - 1].fuel;
-    const firstLatLng = new L.LatLng(this.routes[0].lat, this. routes[0].lon);
+    const firstLatLng = new L.LatLng(this.routes[0].lat, this.routes[0].lon);
     const lastLatLng = new L.LatLng(this.routes[this.routes.length - 1].lat, this.routes[this.routes.length - 1].lon);
     this.straightLineDistance = firstLatLng.distanceTo(lastLatLng);
     let previousLatlng = new L.LatLng(this.routes[0].lat, this.routes[0].lon);

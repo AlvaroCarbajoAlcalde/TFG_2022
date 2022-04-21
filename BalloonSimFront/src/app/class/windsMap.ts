@@ -7,7 +7,7 @@ import { kmPerHourToKnots, metersToFeet } from "./methods";
 
 export class WindsMap {
 
-    private map: L.Map;
+    private map!: L.Map;
     private actColor!: number;
     private readonly colorsWindLines = ['#c0c0c0', '#ff0000', '#ffa500', '#0000ff', '#808000', '#800080', '#00ff00', '#000080', '#00ffff', '#ff00ff', '#008000', '#800000', '#808080', '#ffff00', '#008080', '#000000', '#ffffff'];
     private windsList!: Wind[];
@@ -20,6 +20,7 @@ export class WindsMap {
      * @param {L.LatLngTuple} center center of the map
      */
     constructor(mapId: string, windList: Wind[], center: L.LatLngTuple) {
+        if(!document.getElementById(mapId)) return; 
         this.center = center;
         this.windsList = windList;
         this.map = L.map(mapId, { center: GLOBAL.MAP_CENTER, zoom: 10 });
@@ -53,6 +54,8 @@ export class WindsMap {
      * Updates the winds map
      */
     public updateWindsMap() {
+        if(!this.map) return;
+
         //Remove previous winds
         this.map.eachLayer((layer: any) => { if (layer.options.color) this.map.removeLayer(layer) });
 
