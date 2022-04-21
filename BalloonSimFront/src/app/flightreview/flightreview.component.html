@@ -18,10 +18,10 @@
                 <fa-icon [icon]="x10icon"></fa-icon>
             </a>
             <label id="label-time">00:00</label>
-            <a class="big" *ngIf="!interval" (click)="speed = 1; startInterval()" title="Start">
+            <a class="big" *ngIf="!interval" (click)="startInterval()" title="Start">
                 <fa-icon [icon]="startIcon"></fa-icon>
             </a>
-            <a class="big" *ngIf="interval" (click)="speed = 1; stopInterval()" title="Stop">
+            <a class="big" *ngIf="interval" (click)="stopInterval()" title="Stop">
                 <fa-icon [icon]="stopIcon"></fa-icon>
             </a>
         </div>

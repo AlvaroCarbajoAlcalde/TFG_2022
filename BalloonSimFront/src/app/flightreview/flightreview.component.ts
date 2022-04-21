@@ -126,7 +126,7 @@ export class FlightReviewComponent implements OnInit, OnDestroy {
     this.interval = setInterval(() => {
       if (balloon) {
         this.timeValue++;
-        if (this.timeValue > this.routes.length - 1) this.timeValue = this.routes.length - 1;
+        if (this.timeValue > this.routes.length - 1) return;
         this.labelTime.innerHTML = timeInSecondsToString(this.routes[this.timeValue].seconds, true);
         this.inputRange.value = this.timeValue.toString();
 
