@@ -2,7 +2,6 @@ import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as L from 'leaflet';
 import { environment } from 'src/environments/environment';
-import backgroundController from '../class/backgroundController';
 import { GLOBAL } from '../class/global';
 import RequestController from '../class/requestController';
 import {faGasPump} from '@fortawesome/free-solid-svg-icons';
@@ -43,7 +42,6 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
 
   async ngOnInit(): Promise<void> {
     await GLOBAL.initGLOBAL();
-    backgroundController.stopInterval();
     userControllsAvailable = true;
     this.seconds = 0;
     this.isMapCentered = true;
@@ -121,7 +119,6 @@ export class SimComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnDestroy(): void {
     document.body.classList.remove('no-overflow');
-    backgroundController.startInterval();
     clearInterval(this.mapUpdateInterval);
     clearInterval(this.pointsSaveInterval);
   }

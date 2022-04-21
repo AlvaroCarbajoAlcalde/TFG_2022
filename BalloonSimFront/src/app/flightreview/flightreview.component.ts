@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import backgroundController from '../class/backgroundController';
 import { GLOBAL } from '../class/global';
 import { timeInSecondsToString } from '../class/methods';
 import RequestController from '../class/requestController';
@@ -44,7 +43,6 @@ export class FlightReviewComponent implements OnInit, OnDestroy {
   async ngOnInit(): Promise<void> {
     this.inputRange = document.querySelector('input') as HTMLInputElement;
     userControllsAvailable = false;
-    backgroundController.stopInterval();
     document.body.classList.add('no-overflow');
     this.labelTime = document.getElementById('label-time') as HTMLLabelElement;
     started = false;
@@ -76,7 +74,6 @@ export class FlightReviewComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     document.body.classList.remove('no-overflow');
-    backgroundController.startInterval();
   }
 
   /**

@@ -73,6 +73,7 @@ function setGasListener() {
     const triggerR = document.getElementById("triggerRight");
     const triggerL = document.getElementById("triggerLeft");
     gasListener = setInterval(() => {
+        if (!triggerL || !triggerR || !rope) return;
         if (triggerL.classList.contains("pressed") && triggerR.classList.contains("pressed")) {
             if (fuel > 0) {
                 balloon.temp += 2.1;

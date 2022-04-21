@@ -58,6 +58,7 @@ export class ParamsComponent implements AfterViewInit {
     //#endregion
 
     //Map
+    if(!document.getElementById('map')) return;
     this.map = L.map('map', { center: GLOBAL.MAP_CENTER, zoom: 10 });
     const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 15, minZoom: 10 });
     tiles.addTo(this.map);
