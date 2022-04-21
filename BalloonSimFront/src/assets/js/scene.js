@@ -13,21 +13,11 @@ function createScene() {
     setSkybox();
     setGround();
     setBalloon();
-    setFireEffect();
 
     if (userControllsAvailable) {
         if (testing) setMovementTest();
         else setMovement();
     }
-}
-
-//TODO - Add fire effect
-function setFireEffect() {
-    // particleSystem = new BABYLON.ParticleSystem("particles", 200);
-    // particleSystem.particleTexture = new BABYLON.Texture("../assets/img/fire.png", scene);
-    // particleSystem.emitter = pointer;
-    // particleSystem.maxSize = 0.01;
-    // particleSystem.start();
 }
 
 /**
@@ -92,6 +82,66 @@ function setSkybox() {
 }
 
 /**
+ * Builds the ground map at the given position
+ * 
+ * @param {number} i x position
+ * @param {number} j y position
+ * @param {number} k order of the ground 
+ */
+async function buildGround(i, j, k) {
+    const positionZ = mapSize * -i - mapSize / 2 + mapTotalSize;
+    const positionX = mapSize * j + mapSize / 2;
+
+    //Base Material
+    const materialBack = new BABYLON.StandardMaterial("material", scene);
+    materialBack.diffuseTexture = new BABYLON.Texture("../assets/textures/backMap.jpg", scene);
+    materialBack.diffuseTexture.wrapU = BABYLON.Texture.CLAMP_ADDRESSMODE;
+    materialBack.diffuseTexture.wrapV = BABYLON.Texture.CLAMP_ADDRESSMODE;
+    materialBack.specularColor = new BABYLON.Color4(0, 0, 0, 0);
+
+    const baseGround = BABYLON.MeshBuilder.CreateGroundFromHeightMap(
+        `base_ground_${k}`,
+        `../assets/maps/topo/topo_${k}.gif`, {
+            width: mapSize,
+            height: mapSize,
+            subdivisions: 100,
+            maxHeight: 420,
+            minHeight: 0,
+        }
+    );
+    baseGround.material = materialBack;
+    baseGround.position.x = positionX;
+    baseGround.position.z = positionZ;
+    baseGround.position.y = -5;
+
+    //Material
+    const materialGMap = new BABYLON.StandardMaterial("material", scene);
+    materialGMap.diffuseTexture = new BABYLON.Texture(`../assets/maps/sat/m_${i}_${j}.jpg`, scene);
+    materialGMap.diffuseTexture.wrapU = BABYLON.Texture.CLAMP_ADDRESSMODE;
+    materialGMap.diffuseTexture.wrapV = BABYLON.Texture.CLAMP_ADDRESSMODE;
+    materialGMap.specularColor = new BABYLON.Color4(0, 0, 0, 0);
+    materialGMap.alpha = 1.0;
+
+    //Elevation
+    const ground = BABYLON.MeshBuilder.CreateGroundFromHeightMap(
+        `ground_${k}`,
+        `../assets/maps/topo/topo_${k}.gif`, {
+            width: mapSize,
+            height: mapSize,
+            subdivisions: 100,
+            maxHeight: 420,
+            minHeight: 0,
+        }
+    );
+    ground.material = materialGMap;
+    ground.position.x = positionX;
+    ground.position.z = positionZ;
+
+    //Shows the coliision box of the ground
+    if (showCollisions) ground.showBoundingBox = true;
+}
+
+/**
  * Creates the ground map
  */
 function setGround() {
@@ -99,64 +149,7 @@ function setGround() {
 
     for (let i = 0; i < 15; i++) {
         for (let j = 0; j < 15; j++) {
-            const positionZ = mapSize * -i - mapSize / 2 + mapTotalSize;
-            const positionX = mapSize * j + mapSize / 2;
-
-            //Base Material
-            const materialBack = new BABYLON.StandardMaterial("material", scene);
-            materialBack.diffuseTexture = new BABYLON.Texture("../assets/textures/backMap.png", scene);
-            materialBack.diffuseTexture.wrapU = BABYLON.Texture.CLAMP_ADDRESSMODE;
-            materialBack.diffuseTexture.wrapV = BABYLON.Texture.CLAMP_ADDRESSMODE;
-            materialBack.specularColor = new BABYLON.Color4(0, 0, 0, 0);
-
-            //Base
-            // const baseGround = BABYLON.MeshBuilder.CreateGround(`baseground_${k}`, { height: mapSize, width: mapSize });
-            // baseGround.material = materialBack;
-            // baseGround.position.x = positionX;
-            // baseGround.position.z = positionZ;
-            // baseGround.position.y = 14;
-
-            const baseGround = BABYLON.MeshBuilder.CreateGroundFromHeightMap(
-                `base_ground_${k}`,
-                `../assets/maps/topo/topo_${k}.gif`, {
-                    width: mapSize,
-                    height: mapSize,
-                    subdivisions: 100,
-                    maxHeight: 420,
-                    minHeight: 0,
-                }
-            );
-            baseGround.material = materialBack;
-            baseGround.position.x = positionX;
-            baseGround.position.z = positionZ;
-            baseGround.position.y = -5;
-
-            //Material
-            const materialGMap = new BABYLON.StandardMaterial("material", scene);
-            materialGMap.diffuseTexture = new BABYLON.Texture(`../assets/maps/sat/m_${i}_${j}.jpg`, scene);
-            materialGMap.diffuseTexture.wrapU = BABYLON.Texture.CLAMP_ADDRESSMODE;
-            materialGMap.diffuseTexture.wrapV = BABYLON.Texture.CLAMP_ADDRESSMODE;
-            materialGMap.specularColor = new BABYLON.Color4(0, 0, 0, 0);
-            materialGMap.alpha = 1.0;
-
-            //Elevation
-            const ground = BABYLON.MeshBuilder.CreateGroundFromHeightMap(
-                `ground_${k}`,
-                `../assets/maps/topo/topo_${k}.gif`, {
-                    width: mapSize,
-                    height: mapSize,
-                    subdivisions: 100,
-                    maxHeight: 420,
-                    minHeight: 0,
-                }
-            );
-            ground.material = materialGMap;
-            ground.position.x = positionX;
-            ground.position.z = positionZ;
-
-            //Shows the coliision box of the ground
-            if (showCollisions) ground.showBoundingBox = true;
-
+            buildGround(i, j, k);
             k++;
         }
     }

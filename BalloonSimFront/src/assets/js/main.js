@@ -48,6 +48,7 @@ function startGame() {
     createScene();
     scene.executeWhenReady(() => {
         console.timeEnd("load-game");
+        //setGround();
 
         game.appendChild(canvas);
         engine.resize();

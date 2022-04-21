@@ -59,7 +59,8 @@ export class FlightviewComponent implements OnInit, AfterViewInit {
       return;
     }
 
-    (<HTMLElement>document.getElementById('flightname')).innerHTML = this.flight.name;
+    if (document.getElementById('flightname'))
+      (<HTMLElement>document.getElementById('flightname')).innerHTML = this.flight.name;
 
     //Marker Icon
     L.Marker.prototype.options.icon = L.icon({
