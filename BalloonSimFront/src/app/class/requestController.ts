@@ -31,7 +31,7 @@ export default class RequestController {
    *  
    * @param {string} takeoff the takeoff name 
    * @param {string} name name of the flight
-   * @returns {Promise<Flight>} id of the flight
+   * @returns {Promise<numbner>} id of the flight
    */
   public static async startFlight(takeoff: string, name: string): Promise<number> {
     let toReturn: number = 0;
